@@ -41,4 +41,6 @@ void				ft_lst_bubble_sort(t_list *node, int (*c)(t_list *node));
 void				ft_lst_swap(t_list *node1, t_list *node2);
 t_list				*ft_lst_reverse(t_list *root);
 void				ft_lstcpy(t_list **dest, t_list *src);
+void				ft_lstshow_x(t_list *list, int x);
+
 #endif
