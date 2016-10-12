@@ -1,0 +1,85 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prompt_actions_char.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
+/*   Updated: 2016/03/03 13:19:51 by qdequele         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <21sh.h>
+
+static void	inser_char(char c)
+{
+	t_shell	*shell;
+	t_list	*new;
+
+	shell = recover_shell();
+	new = ft_lstnew(&c, sizeof(char));
+	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_position);
+	shell->prompt->i_position++;
+	shell->prompt->l_length++;
+	tputs(tgoto(IMSTR, 0, 0), 0, ft_tputs);
+	ft_putchar(c);
+	tputs(tgoto(EISTR, 0, 0), 0, ft_tputs);
+}
+
+static void	free_char(void *content, size_t size)
+{
+	UNUSED(size);
+	free(content);
+}
+
+t_status	action_insert_char(char *buf)
+{
+	if (buf[0])
+		inser_char(buf[0]);
+	if (buf[1])
+		inser_char(buf[1]);
+	if (buf[2])
+		inser_char(buf[2]);
+	return (READING);
+}
+
+t_status	action_delete_char(char *buf)
+{
+	t_shell	*shell;
+
+	if (!BACK_SPACE)
+		return (TRYING);
+	shell = recover_shell();
+	if(shell->prompt->i_position <= shell->prompt->l_length
+		&& shell->prompt->i_position > 0)
+	{
+		tputs(tgetstr("le", NULL), 1, ft_tputs);
+		tputs(tgetstr("dm", NULL), 1, ft_tputs);
+		tputs(tgetstr("dc", NULL), 1, ft_tputs);
+		tputs(tgetstr("de", NULL), 1, ft_tputs);
+		shell->prompt->i_position--;
+		shell->prompt->l_length--;
+		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
+	}
+	return (READING);
+}
+
+t_status	action_delete_next_char(char *buf)
+{
+	t_shell	*shell;
+
+	if (!DELETE)
+		return (TRYING);
+	shell = recover_shell();
+	if(shell->prompt->i_position < shell->prompt->l_length
+		&& shell->prompt->i_position >= 0)
+	{
+		tputs(tgetstr("dm", NULL), 1, ft_tputs);
+		tputs(tgetstr("dc", NULL), 1, ft_tputs);
+		tputs(tgetstr("de", NULL), 1, ft_tputs);
+		shell->prompt->l_length--;
+		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
+	}
+	return (READING);
+}
