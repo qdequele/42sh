@@ -32,6 +32,8 @@ int					builtins_env(t_list **env, char **cmds);
 int					builtins_exit(t_list **env, char **cmds);
 int					builtins_setenv(t_list **env, char **cmds);
 int					builtins_unsetenv(t_list **env, char **cmds);
+int 				builtins_history(t_list **env, char **cmds);
+void				bultins_one_history(char *str);
 /*
 **	builtins help
 */

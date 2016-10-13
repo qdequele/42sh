@@ -20,6 +20,7 @@ static t_builtin	*builtins_init(void)
 		{"setenv", builtins_setenv},
 		{"unsetenv", builtins_unsetenv},
 		{"exit", builtins_exit},
+		{"history", builtins_history},
 		{NULL, NULL}
 	};
 
