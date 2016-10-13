@@ -49,27 +49,33 @@ int			builtins_history(t_list **env, char **cmds)
 void		bultins_one_history(char *cmds)
 {
 	t_shell		*shell;
+	char 		*str;
 	int 		i;
 
 	shell = recover_shell();
 	i = ft_atoi(ft_strsub(cmds, 1, ft_strlen(cmds)));
-	if ((shell->history = ft_lst_seek(shell->history, ft_strsub(cmds, 1, ft_strlen(cmds)))) != NULL)
+	str = ft_strsub(cmds, 1, ft_strlen(cmds));
+	if ((shell->history = ft_lst_seek(shell->history, str)) != NULL)
 	{
-		cmds = ft_strjoin("!", (char*)shell->history);
-		// remplacer le prompt actuel par cmds[0]
+		(void)str;
+		//exec str;
 	}
 	else
 	{
-		if (i < ft_lstcount(shell->history) && i > 0)
-		{
-			shell->history = ft_lstget_at(shell->history, i);
-			// remplacer le prompt actuel par (char*)shell->history->content;
-		}
-		else
-		{
-			ft_putstr_fd("42sh : no such event: ", 2);
-			ft_putnbr(i);
-			ft_putchar('\n');
-		}
+		ft_putstr_fd("42sh : no such event: ", 2);
+		ft_putstr_fd(cmds, 2);
+		ft_putchar('\n');
+		return ;
+	}
+	if (i < ft_lstcount(shell->history) && i > 0)
+	{
+		shell->history = ft_lstget_at(shell->history, i);
+		//exec shell->history->content;
+	}
+	else
+	{
+		ft_putstr_fd("42sh : no such event: ", 2);
+		ft_putnbr(i);
+		ft_putchar('\n');
 	}
 }
