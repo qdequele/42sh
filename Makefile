@@ -6,12 +6,12 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/03/03 13:07:29 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/12 16:17:54 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Define the program
-NAME		=	sh
+NAME		=	42sh
 LIB			=	./libft/libft.a
 _SRC		=	builtins/builtins_cd.c\
 				builtins/builtins_env.c\
@@ -37,7 +37,7 @@ _SRC		=	builtins/builtins_cd.c\
 				signals/signal_handlers.c\
 				term/term.c\
 				term/term_utils.c\
-				21sh.c
+				42sh.c
 
 SRC			=	$(addprefix srcs/,$(_SRC))
 OBJ			=	$(SRC:.c=.o)

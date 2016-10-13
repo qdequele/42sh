@@ -6,11 +6,11 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/12 14:10:56 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/12 16:15:59 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include <42sh.h>
 
 char	*prompt_create_line(void)
 {

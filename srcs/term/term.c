@@ -6,11 +6,11 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/12 13:49:46 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/12 16:16:06 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include <42sh.h>
 
 t_term		*recover_term(void)
 {
