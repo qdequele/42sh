@@ -16,10 +16,10 @@ LIB			=	./libft/libft.a
 _SRC		=	builtins/builtins_cd.c\
 				builtins/builtins_env.c\
 				builtins/builtins_exit.c\
+				builtins/builtins_history.c\
 				builtins/builtins_init.c\
 				builtins/builtins_setenv.c\
 				builtins/builtins_unsetenv.c\
-				builtins/builtins_history.c\
 				cmd/cmd.c\
 				env/env_parser.c\
 				env/env_utils.c\

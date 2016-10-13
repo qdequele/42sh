@@ -43,5 +43,6 @@ t_list				*ft_lst_reverse(t_list *root);
 void				ft_lstcpy(t_list **dest, t_list *src);
 void				ft_lstshow_x(t_list *list, int x);
 t_list				*ft_lstget_at(t_list *lst, int at);
+t_list 				*ft_lst_seek(t_list *list, char *str);
 
 #endif

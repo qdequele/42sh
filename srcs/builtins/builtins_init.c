@@ -23,7 +23,6 @@ static t_builtin	*builtins_init(void)
 		{"history", builtins_history},
 		{NULL, NULL}
 	};
-
 	return ((void *)f);
 }
 
