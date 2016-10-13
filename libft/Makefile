@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 14:30:45 by qdequele          #+#    #+#              #
-#    Updated: 2016/02/26 11:40:08 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/13 12:26:15 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ FT_IS_SRC			=	$(addprefix ft_is/,$(_FT_IS_SRC))
 _FT_LST_SRC			=	ft_lstnew.c ft_lstdelone.c ft_lstcount.c ft_lstdel.c\
 						ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstaddend.c\
 						ft_lstsort.c ft_lstreverse.c ft_lstcpy.c ft_lstadd_at.c\
-						ft_lstdel_at.c void	ft_lstshow_x.c
+						ft_lstdel_at.c	ft_lstshow_x.c
 
 FT_LST_SRC			=	$(addprefix ft_lst/,$(_FT_LST_SRC))
 
