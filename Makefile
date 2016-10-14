@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/14 16:22:13 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/14 17:58:35 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,14 @@ _SRC		=	builtins/builtins_cd.c\
 				prompt/actions/prompt_actions_cmd.c\
 				prompt/actions/prompt_actions_history.c\
 				prompt/actions/prompt_actions_move.c\
-				prompt/actions/prompt_actions_move_word.c\
-				prompt/actions/prompt_actions_move_ext.c\
+				prompt/actions/prompt_actions_move-word.c\
+				prompt/actions/prompt_actions_move-ext.c\
+				prompt/utils/prompt_utils_clear.c\
+				prompt/utils/prompt_utils_string-to-list.c\
+				prompt/utils/prompt_utils_free-char.c\
 				prompt/prompt.c\
 				prompt/prompt_find.c\
 				prompt/prompt_init.c\
-				prompt/utils/clear_prompt.c\
-				prompt/utils/string_to_list.c\
-				prompt/utils/free_char.c\
 				shell/shell.c\
 				shell/shell_init.c\
 				shell/shell_print.c\
