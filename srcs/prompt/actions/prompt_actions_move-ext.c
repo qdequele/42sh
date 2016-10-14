@@ -23,7 +23,7 @@ t_status	action_move_start(char *buf)
 	term = recover_term();
     while (shell->prompt->i_position > 0)
 	{
-		action_move_left(NULL);
+		utils_move_left();
 	}
 	return (READING);
 }
@@ -39,7 +39,7 @@ t_status	action_move_end(char *buf)
 	term = recover_term();
     while (shell->prompt->i_position < shell->prompt->l_length)
 	{
-		action_move_right(NULL);
+		utils_move_right();
 	}
 	return (READING);
 }

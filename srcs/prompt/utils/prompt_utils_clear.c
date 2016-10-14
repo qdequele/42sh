@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_prompt.c                                     :+:      :+:    :+:   */
+/*   prompt_utils_clear.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,6 +14,13 @@
 
 void	clean_prompt(void)
 {
-	// action_move_start();
-	tputs((tgetstr("cd", NULL)), 0, ft_tputs);
+	t_shell	*shell;
+
+	shell = recover_shell();
+	utils_move_end();
+	while (shell->prompt->i_position > 0)
+	{
+		utils_move_left();
+		tputs(tgoto((tgetstr("dc", NULL)), 0, 0), 0, ft_tputs);
+	}
 }
