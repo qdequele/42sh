@@ -28,7 +28,6 @@ typedef struct	s_shell
 {
 	t_list		*history;
 	int			history_position;
-	int 		first_history;
 	int			last_exit_code;
 	t_prompt	*prompt;
 }				t_shell;
