@@ -28,7 +28,7 @@ static void		ft_move_to_history(void)
 	tmp_list = ft_lstget_at(shell->history, shell->history_position);
 	ft_putstr((char*)tmp_list->content);
 	shell->i_position = ft_strlen((char*)tmp_list->content);
-	ft_string_to_lchar((char*)tmp_list->content);
+	string_to_list((char*)tmp_list->content);
 
 }
 
