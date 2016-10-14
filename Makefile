@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/12 16:17:54 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/14 16:22:13 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME		=	42sh
 LIB			=	./libft/libft.a
 _SRC		=	builtins/builtins_cd.c\
+				builtins/builtins_echo.c\
 				builtins/builtins_env.c\
 				builtins/builtins_exit.c\
 				builtins/builtins_history.c\
@@ -28,6 +29,7 @@ _SRC		=	builtins/builtins_cd.c\
 				prompt/actions/prompt_actions_history.c\
 				prompt/actions/prompt_actions_move.c\
 				prompt/actions/prompt_actions_move_word.c\
+				prompt/actions/prompt_actions_move_ext.c\
 				prompt/prompt.c\
 				prompt/prompt_find.c\
 				prompt/prompt_init.c\

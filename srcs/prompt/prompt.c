@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/12 16:15:59 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/14 16:23:35 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 char	*prompt_create_line(void)
 {
 	t_prompt	*prompt;
-	char		buf[4];
+	char		buf[7];
 	t_status	status;
 	t_shell		*shell;
 
 	shell = recover_shell();
 	prompt = init_prompt();
 	shell->prompt = prompt;
-	ft_bzero(buf, 4);
-	while (read(0, buf, 4))
+	ft_bzero(buf, 7);
+	while (read(0, buf, 7))
 	{
-		// printf("%i - %i - %i - %i\n", buf[0], buf[1], buf[2], buf[3]);
+		// printf("%i - %i - %i - %i - %i - %i - %i\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6]);
 		status = prompt_find_function(buf);
-		ft_bzero(buf, 4);
+		ft_bzero(buf, 7);
 		if (status == FOUND)
 			return (convert_prompt_to_string());
 	}

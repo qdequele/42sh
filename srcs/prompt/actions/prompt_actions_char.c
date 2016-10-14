@@ -24,16 +24,15 @@ static void	inser_char(char c)
 	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_position);
 	shell->prompt->i_position++;
 	shell->prompt->l_length++;
-	tputs(tgetstr("SA", NULL), 1, ft_tputs);
 	tputs(IMSTR, 0, ft_tputs);
-	ft_putchar(c);
+	ft_putchar_fd(c, term->tty);
 	tputs(EISTR, 0, ft_tputs);
-	if (shell->prompt->i_position < shell->prompt->l_length)
-	{
-		tputs(SCSTR, 0, ft_tputs);//Save curent position
+	// if (shell->prompt->i_position < shell->prompt->l_length)
+	// {
+	// 	tputs(SCSTR, 0, ft_tputs);//Save curent position
 		
-		tputs(RCSTR, 0, ft_tputs);//Go back to saved position
-	}
+	// 	tputs(RCSTR, 0, ft_tputs);//Go back to saved position
+	// }
 }
 
 static void	free_char(void *content, size_t size)
@@ -57,7 +56,7 @@ t_status	action_delete_char(char *buf)
 {
 	t_shell	*shell;
 
-	if (!BACK_SPACE)
+	if (!BACK_SPACE || buf != NULL)
 		return (TRYING);
 	shell = recover_shell();
 	if(shell->prompt->i_position <= shell->prompt->l_length
@@ -78,7 +77,7 @@ t_status	action_delete_next_char(char *buf)
 {
 	t_shell	*shell;
 
-	if (!DELETE)
+	if (!DELETE || buf != NULL)
 		return (TRYING);
 	shell = recover_shell();
 	if(shell->prompt->i_position < shell->prompt->l_length

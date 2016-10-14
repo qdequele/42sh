@@ -14,7 +14,7 @@
 
 t_status	action_exec_cmd(char *buf)
 {
-	if (!ENTER)
+	if (!ENTER || buf != NULL)
 		return (TRYING);
 	ft_putchar('\n');
 	return (FOUND);
@@ -22,14 +22,14 @@ t_status	action_exec_cmd(char *buf)
 
 t_status	action_ignore_input(char *buf)
 {
-	if (!IGNORE_1)
+	if (!IGNORE_1 || buf != NULL)
 		return (TRYING);
 	return (READING);
 }
 
 t_status	action_shell_quit(char *buf)
 {
-	if (!QUIT)
+	if (!QUIT || buf != NULL)
 		return (TRYING);
 	return (READING);
 }

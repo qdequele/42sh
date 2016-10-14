@@ -28,6 +28,8 @@ static void		*get_actions_list(void)
 		action_exec_cmd,
 		action_history_up,
 		action_history_down,
+		action_move_max_top,
+		action_move_max_bottom,
 		action_ignore_input,
 		action_shell_quit,
 		action_insert_char

@@ -17,7 +17,7 @@ t_status action_move_up(char *buf)
 	t_shell		*shell;
 	t_term		*term;
 
-	if (!SHIFT_UP)
+	if (!SHIFT_UP || buf != NULL)
 		return (TRYING);
 	shell = recover_shell();
 	term = recover_term();
@@ -41,7 +41,7 @@ t_status action_move_down(char *buf)
 	t_term		*term;
 	int			delta;
 
-	if (!SHIFT_DOWN)
+	if (!SHIFT_DOWN || buf != NULL)
 		return (TRYING);
 	shell = recover_shell();
 	term = recover_term();
@@ -66,7 +66,7 @@ t_status action_move_left(char *buf)
 {
 	t_shell		*shell;
 
-	if (!LEFT)
+	if (!LEFT || buf != NULL)
 		return (TRYING);
 	shell = recover_shell();
 	if(shell->prompt->i_position > 0)
@@ -82,7 +82,7 @@ t_status action_move_right(char *buf)
 	t_shell		*shell;
 	t_term		*term;
 
-	if (!RIGHT)
+	if (!RIGHT || buf != NULL)
 		return (TRYING);
 	shell = recover_shell();
 	term = recover_term();

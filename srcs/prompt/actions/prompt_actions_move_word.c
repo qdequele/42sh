@@ -17,7 +17,7 @@ t_status	action_move_next_word(char *buf)
 	t_shell		*shell;
 	t_term		*term;
 
-	if (!SHIFT_RIGHT)
+	if (!SHIFT_RIGHT || buf != NULL)
 		return (TRYING);
 	shell = recover_shell();
 	term = recover_term();
@@ -29,32 +29,7 @@ t_status	action_move_last_word(char *buf)
 	t_shell		*shell;
 	t_term		*term;
 
-	if (!SHIFT_LEFT)
-		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-	return (READING);
-}
-
-t_status	action_move_start(char *buf)
-{
-	t_shell		*shell;
-	t_term		*term;
-
-	if (!HOME || !FN_LEFT)
-		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-	tputs(tgoto(HOSTR, 0, 0), 0, ft_tputs);
-	return (READING);
-}
-
-t_status	action_move_end(char *buf)
-{
-	t_shell		*shell;
-	t_term		*term;
-
-	if (!END || !FN_RIGHT)
+	if (!SHIFT_LEFT || buf != NULL)
 		return (TRYING);
 	shell = recover_shell();
 	term = recover_term();
