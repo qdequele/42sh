@@ -170,5 +170,10 @@ t_status	prompt_find_function(char *buf);
 t_prompt	*init_prompt(void);
 char		*get_current_folder(void);
 int			get_current_folder_length(void);
+/*
+** utils
+*/
+void		clean_prompt(void);
+void		string_to_list(char *str);
 
 #endif

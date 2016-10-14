@@ -56,7 +56,7 @@ t_status	action_delete_char(char *buf)
 {
 	t_shell	*shell;
 
-	if (!BACK_SPACE || buf != NULL)
+	if (!BACK_SPACE )
 		return (TRYING);
 	shell = recover_shell();
 	if(shell->prompt->i_position <= shell->prompt->l_length
@@ -77,7 +77,7 @@ t_status	action_delete_next_char(char *buf)
 {
 	t_shell	*shell;
 
-	if (!DELETE || buf != NULL)
+	if (!DELETE )
 		return (TRYING);
 	shell = recover_shell();
 	if(shell->prompt->i_position < shell->prompt->l_length
