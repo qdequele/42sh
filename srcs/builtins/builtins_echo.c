@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <shell.h>
+#include <ft_sh.h>
 
 static	void	ft_put_echo(char *str)
 {

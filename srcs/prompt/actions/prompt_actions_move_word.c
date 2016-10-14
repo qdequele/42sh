@@ -35,31 +35,3 @@ t_status	action_move_last_word(char *buf)
 	term = recover_term();
 	return (READING);
 }
-<<<<<<< HEAD
-=======
-
-t_status	action_move_start(char *buf)
-{
-	t_shell		*shell;
-	t_term		*term;
-
-	if (!HOME || !FN_LEFT)
-		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-	tputs(HOSTR, 0, ft_tputs);
-	return (READING);
-}
-
-t_status	action_move_end(char *buf)
-{
-	t_shell		*shell;
-	t_term		*term;
-
-	if (!END || !FN_RIGHT)
-		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-	return (READING);
-}
->>>>>>> ff371352c7024c200be46d38181cde2e2c5e1e48

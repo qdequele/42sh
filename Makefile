@@ -21,7 +21,6 @@ _SRC		=	builtins/builtins_cd.c\
 				builtins/builtins_init.c\
 				builtins/builtins_setenv.c\
 				builtins/builtins_unsetenv.c\
-				builtins/builtins_echo.c\
 				cmd/cmd.c\
 				env/env_parser.c\
 				env/env_utils.c\
@@ -35,7 +34,8 @@ _SRC		=	builtins/builtins_cd.c\
 				prompt/prompt_find.c\
 				prompt/prompt_init.c\
 				prompt/utils/clear_prompt.c\
-				promptutils/string_to_list.c\
+				prompt/utils/string_to_list.c\
+				prompt/utils/free_char.c\
 				shell/shell.c\
 				shell/shell_init.c\
 				shell/shell_print.c\
@@ -43,7 +43,7 @@ _SRC		=	builtins/builtins_cd.c\
 				signals/signal_handlers.c\
 				term/term.c\
 				term/term_utils.c\
-				42sh.c
+				main.c
 
 SRC			=	$(addprefix srcs/,$(_SRC))
 OBJ			=	$(SRC:.c=.o)

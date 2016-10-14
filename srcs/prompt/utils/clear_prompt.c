@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <42shell.h>
+#include <ft_sh.h>
 
 void	clean_prompt(void)
 {
-	action_move_start(HOME);
+	// action_move_start();
 	tputs((tgetstr("cd", NULL)), 0, ft_tputs);
 }

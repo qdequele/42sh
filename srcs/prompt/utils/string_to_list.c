@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <42shell.h>
+#include <ft_sh.h>
 
 void	string_to_list(char *str)
 {
@@ -29,6 +29,6 @@ void	string_to_list(char *str)
 		ft_strdel(&dst);
 		i++;
 	}
-	ft_lst_reverse(&shell->prompt->line);
+	ft_lst_reverse(shell->prompt->line);
 	str[i] = '\0';
 }

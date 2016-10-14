@@ -35,12 +35,6 @@ static void	inser_char(char c)
 	// }
 }
 
-static void	free_char(void *content, size_t size)
-{
-	UNUSED(size);
-	free(content);
-}
-
 t_status	action_insert_char(char *buf)
 {
 	if (buf[0])
