@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:04 by qdequele          #+#    #+#             */
-/*   Updated: 2016/02/19 17:18:24 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/13 14:14:34 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void				ft_lst_swap(t_list *node1, t_list *node2);
 t_list				*ft_lst_reverse(t_list *root);
 void				ft_lstcpy(t_list **dest, t_list *src);
 void				ft_lstshow_x(t_list *list, int x);
+void				*ft_lstget_at(t_list **list, int at);
 
 #endif
