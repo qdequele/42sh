@@ -12,7 +12,7 @@
 
 #include <42shell.h>
 
-void	ft_clean_prompt(void)
+void	clean_prompt(void)
 {
 	action_move_start(HOME);
 	tputs((tgetstr("cd", NULL)), 0, ft_tputs);

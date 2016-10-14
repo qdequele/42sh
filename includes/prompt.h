@@ -161,7 +161,7 @@ int			get_current_folder_length(void);
 /*
 ** utils
 */
-void		ft_clean_prompt(void);
+void		clean_prompt(void);
 void		string_to_list(char *str);
 
 #endif

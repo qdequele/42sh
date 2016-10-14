@@ -20,7 +20,7 @@ static void		ft_move_to_history(void)
 	shell = recover_shell();
 	tmp_list = shell->history;
 	ft_lstdel(shell->prompt->line, free_char);
-	ft_clear_prompt();
+	clean_prompt();
 	if (shell->history_position < 0)
 		shell->history_position = ft_lstcount(shell->history) - 1;
 	else if (shell->history_position >= ft_lstcount(shell->history))
