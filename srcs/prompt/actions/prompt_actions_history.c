@@ -12,40 +12,56 @@
 
 #include <42shell.h>
 
-t_status	action_history_up(char *buf)
-{
-	if (!UP)
-		return (TRYING);
-	return (READING);
-}
-
-t_status	action_history_down(char *buf)
-{
-	if (!DOWN)
-		return (TRYING);
-	return (READING);
-}
-
-
-
-
-void			ft_move_to_history(void)
+static void		ft_move_to_history(void)
 {
 	t_shell		*shell;
-	t_prompt	*prompt;
 	t_list		*tmp_list;
 
-	shell = ft_shell();
-	prompt = shell->prompt;
-	tmp_list = prompt->history;
-	ft_lstdel(prompt->line, free_char);
-	ft_clean_prompt();
-	if (prompt->history_position < 0)
-		prompt->history_position = ft_lstlen(prompt->history) - 1;
-	else if (prompt->history_position >= ft_lstlen(prompt->history))
-		prompt->history_position = 0;
-	tmp_list = ft_lstget_at(prompt->history, prompt->history_position);
+	shell = recover_shell();
+	tmp_list = shell->history;
+	ft_lstdel(shell->prompt->line, free_char);
+	ft_clear_prompt();
+	if (shell->history_position < 0)
+		shell->history_position = ft_lstcount(shell->history) - 1;
+	else if (shell->history_position >= ft_lstcount(shell->history))
+		shell->history_position = 0;
+	tmp_list = ft_lstget_at(shell->history, shell->history_position);
 	ft_putstr((char*)tmp_list->content);
-	prompt->x = ft_strlen((char*)tmp_list->content);
+	shell->i_position = ft_strlen((char*)tmp_list->content);
 	ft_string_to_lchar((char*)tmp_list->content);
+
+}
+
+t_status		action_history_up(char *buf)
+{
+	t_shell *shell;
+
+	shell = revover_shell()
+	if (!UP)
+		return (TRYING);
+	else if (shell->first_process == 0) 
+	{
+		shell->first_process++;
+		shell->index_history = ft_lstcount(shell->history);
+	}	
+	shell->index_history--;
+	move_to_history();
+	return (READING);
+}
+
+t_status		action_history_down(char *buf)
+{
+	t_shell *shell;
+
+	shell = recover_shell();
+	if (!DOWN)
+		return (TRYING);
+	else if (shell->first_process == 0) 
+	{
+		shell->first_process++;
+		shell->index_history = ft_lstcount(shell->history);
+	}
+	shell->index_history++;
+	move_to_history();
+	return (READING);
 }

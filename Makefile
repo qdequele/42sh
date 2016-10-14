@@ -32,6 +32,8 @@ _SRC		=	builtins/builtins_cd.c\
 				prompt/prompt.c\
 				prompt/prompt_find.c\
 				prompt/prompt_init.c\
+				prompt/utils/clear_prompt.c\
+				promptutils/string_to_list.c\
 				shell/shell.c\
 				shell/shell_init.c\
 				shell/shell_print.c\

@@ -45,7 +45,7 @@ t_status	action_move_start(char *buf)
 		return (TRYING);
 	shell = recover_shell();
 	term = recover_term();
-	tputs(tgoto(HOSTR, 0, 0), 0, ft_tputs);
+	tputs(HOSTR, 0, ft_tputs);
 	return (READING);
 }
 

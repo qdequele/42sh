@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clean_prompt.c                                  :+:      :+:    :+:   */
+/*   clean_prompt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,17 +14,6 @@
 
 void	ft_clean_prompt(void)
 {
-	t_shell		*shell;
-	t_prompt	*prompt;
-
-	shell = recover_shell();
-	prompt = shell->prompt;
-	prompt->l_lenght = ft_lstcount(prompt->line);
-	while (prompt->x < prompt->l_lenght)
-		ft_arrow_right();
-	while (prompt->i_position > 0)
-	{
-		ft_arrow_left();
-		tputs(tgoto((tgetstr("dc", NULL)), 0, 0), 0, tputs_putchar);
-	}
+	action_move_start(HOME);
+	tputs((tgetstr("cd", NULL)), 0, ft_tputs);
 }
