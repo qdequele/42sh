@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <42sh.h>
+#include <ft_sh.h>
 
 static void	print_erno(char *str, int err)
 {

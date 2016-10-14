@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <42sh.h>
+#include <ft_sh.h>
 
 t_status	action_move_next_word(char *buf)
 {

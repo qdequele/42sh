@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <42shell.h>
+#include <ft_sh.h>
 
 static void		ft_move_to_history(void)
 {

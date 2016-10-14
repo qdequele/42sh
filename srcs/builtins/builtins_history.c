@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_history.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by eebersol          #+#    #+#             */
-/*   Updated: 2016/04/21 16:49:09 by eebersol         ###   ########.fr       */
+/*   Updated: 2016/10/14 16:53:58 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <42sh.h>
+#include <ft_sh.h>
 
 static	void	display_history(t_list *list)
 {

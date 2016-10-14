@@ -6,11 +6,11 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/12 16:15:53 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/14 16:53:58 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <42sh.h>
+#include <ft_sh.h>
 
 static int	is_formated(char *str)
 {

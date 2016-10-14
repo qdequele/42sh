@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <42sh.h>
+#include <ft_sh.h>
 
 t_status	action_exec_cmd(char *buf)
 {
-	if (!ENTER || buf != NULL)
+	if (!ENTER )
 		return (TRYING);
 	ft_putchar('\n');
 	return (FOUND);
@@ -22,14 +22,14 @@ t_status	action_exec_cmd(char *buf)
 
 t_status	action_ignore_input(char *buf)
 {
-	if (!IGNORE_1 || buf != NULL)
+	if (!IGNORE_1 )
 		return (TRYING);
 	return (READING);
 }
 
 t_status	action_shell_quit(char *buf)
 {
-	if (!QUIT || buf != NULL)
+	if (!QUIT )
 		return (TRYING);
 	return (READING);
 }
