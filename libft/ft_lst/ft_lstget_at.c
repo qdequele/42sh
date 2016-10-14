@@ -3,26 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstget_at.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/02 21:41:01 by eebersol          #+#    #+#             */
-/*   Updated: 2016/05/02 21:41:02 by eebersol         ###   ########.fr       */
+/*   Created: 2015/12/07 09:57:54 by qdequele          #+#    #+#             */
+/*   Updated: 2016/10/14 15:37:41 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-t_list	*ft_lstget_at(t_list *lst, int at)
+void	*ft_lstget_at(t_list **list, int at)
 {
-	int i;
+	t_list	*tmp;
+	t_list	*prev;
+	int		count;
 
-	i = 0;
-	while (lst)
+	if (!list || !(*list))
+		return (NULL);
+	tmp = *list;
+	prev = NULL;
+	count = 0;
+	while (count != at && tmp->next != NULL)
 	{
-		if (i == at)
-			return (lst);
-		lst = lst->next;
-		i++;
+		prev = tmp;
+		tmp = tmp->next;
+		count++;
 	}
-	return (NULL);
+	if (count == at)
+	{
+		if (prev)
+			prev->next = tmp->next;
+		else
+			*list = tmp->next;
+        return (tmp->content);
+	}
+    return (NULL);
 }

@@ -16,15 +16,24 @@ static void	inser_char(char c)
 {
 	t_shell	*shell;
 	t_list	*new;
+	t_term	*term;
 
 	shell = recover_shell();
+	term = recover_term();
 	new = ft_lstnew(&c, sizeof(char));
 	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_position);
 	shell->prompt->i_position++;
 	shell->prompt->l_length++;
-	tputs(tgoto(IMSTR, 0, 0), 0, ft_tputs);
+	tputs(tgetstr("SA", NULL), 1, ft_tputs);
+	tputs(IMSTR, 0, ft_tputs);
 	ft_putchar(c);
-	tputs(tgoto(EISTR, 0, 0), 0, ft_tputs);
+	tputs(EISTR, 0, ft_tputs);
+	if (shell->prompt->i_position < shell->prompt->l_length)
+	{
+		tputs(SCSTR, 0, ft_tputs);//Save curent position
+		
+		tputs(RCSTR, 0, ft_tputs);//Go back to saved position
+	}
 }
 
 static void	free_char(void *content, size_t size)
@@ -54,10 +63,10 @@ t_status	action_delete_char(char *buf)
 	if(shell->prompt->i_position <= shell->prompt->l_length
 		&& shell->prompt->i_position > 0)
 	{
-		tputs(tgetstr("le", NULL), 1, ft_tputs);
-		tputs(tgetstr("dm", NULL), 1, ft_tputs);
-		tputs(tgetstr("dc", NULL), 1, ft_tputs);
-		tputs(tgetstr("de", NULL), 1, ft_tputs);
+		tputs(LESTR, 1, ft_tputs);// move left
+		tputs(DMSTR, 1, ft_tputs);// enter in delete mode
+		tputs(DCSTR, 1, ft_tputs);// delete char
+		tputs(EDSTR, 1, ft_tputs);// exit delete mode
 		shell->prompt->i_position--;
 		shell->prompt->l_length--;
 		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
@@ -75,9 +84,9 @@ t_status	action_delete_next_char(char *buf)
 	if(shell->prompt->i_position < shell->prompt->l_length
 		&& shell->prompt->i_position >= 0)
 	{
-		tputs(tgetstr("dm", NULL), 1, ft_tputs);
-		tputs(tgetstr("dc", NULL), 1, ft_tputs);
-		tputs(tgetstr("de", NULL), 1, ft_tputs);
+		tputs(DMSTR, 1, ft_tputs);// enter in delete mode
+		tputs(DCSTR, 1, ft_tputs);// delete char
+		tputs(EDSTR, 1, ft_tputs);// exit delete mode
 		shell->prompt->l_length--;
 		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
 	}

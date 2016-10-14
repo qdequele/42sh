@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/03/03 13:32:52 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/13 12:56:45 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@
 ** HOSTR - Move to home
 ** CRSTR - Move to the begining of the string
 ** CMSTR - Move to row #1 columns #2
-**
-** 
+** SCSTR - Save current position of the cursor
+** RCSTR - Recover the last save position cursor
 */
+
 # define CLSTR (tgetstr("cl", NULL))
 # define USSTR (tgetstr("us", NULL))
 # define MRSTR (tgetstr("mr", NULL))
@@ -81,13 +82,15 @@
 # define DMSTR (tgetstr("dm", NULL))
 # define EDSTR (tgetstr("ed", NULL))
 
-# define LESTR (tgetstr("LE", NULL))
-# define RISTR (tgetstr("RI", NULL))
-# define UPSTR (tgetstr("UP", NULL))
-# define DOSTR (tgetstr("DO", NULL))
+# define LESTR (tgetstr("le", NULL))
+# define RISTR (tgetstr("ri", NULL))
+# define UPSTR (tgetstr("up", NULL))
+# define DOSTR (tgetstr("do", NULL))
 # define HOSTR (tgetstr("ho", NULL))
 # define CRSTR (tgetstr("cr", NULL))
 # define CMSTR (tgetstr("cm", NULL))
+# define SCSTR (tgetstr("sc", NULL))
+# define RCSTR (tgetstr("rc", NULL))
 
 typedef enum	e_status
 {
