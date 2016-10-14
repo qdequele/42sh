@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_history.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/14 16:53:58 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/04/21 16:49:09 by eebersol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		bultins_one_history(char *cmds)
 	if ((shell->history = ft_lst_seek(shell->history, str)) != NULL)
 	{
 		(void)str;
-		//exec str;
+		//exec st
 	}
 	else
 	{

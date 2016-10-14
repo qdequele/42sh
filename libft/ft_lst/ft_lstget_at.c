@@ -12,30 +12,17 @@
 
 #include "../libft.h"
 
-t_list	*ft_lstget_at(t_list *list, int at)
+t_list	*ft_lstget_at(t_list *lst, int at)
 {
-	t_list	*tmp;
-	t_list	*prev;
-	int		count;
+	int i;
 
-	if (!list || !(list))
-		return (NULL);
-	tmp = list;
-	prev = NULL;
-	count = 0;
-	while (count != at && tmp->next != NULL)
+	i = 0;
+	while (lst)
 	{
-		prev = tmp;
-		tmp = tmp->next;
-		count++;
+		if (i == at)
+			return (lst);
+		lst = lst->next;
+		i++;
 	}
-	if (count == at)
-	{
-		if (prev)
-			prev->next = tmp->next;
-		else
-			list = tmp->next;
-        return (tmp);
-	}
-    return (NULL);
+	return (NULL);
 }

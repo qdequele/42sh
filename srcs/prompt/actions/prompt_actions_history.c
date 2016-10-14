@@ -12,15 +12,18 @@
 
 #include <ft_sh.h>
 
+
 static void		move_to_history(void)
 {
 	t_shell		*shell;
+	t_prompt	*prompt;
 	t_list		*tmp_list;
 
 	shell = recover_shell();
+	prompt = shell->prompt;
 	tmp_list = shell->history;
-	ft_lstdel(&shell->prompt->line, free_char);
 	clean_prompt();
+	ft_lstdel(&prompt->line, free_char);
 	if (shell->history_position < 0)
 		shell->history_position = ft_lstcount(shell->history) - 1;
 	else if (shell->history_position >= ft_lstcount(shell->history))
@@ -39,9 +42,11 @@ t_status		action_history_up(char *buf)
 	shell = recover_shell();
 	if (!UP)
 		return (TRYING);
-		shell->history_position =  ft_lstcount(shell->history) - shell->history_position;	
-	shell->history_position++;
-	move_to_history();
+	if (ft_lstcount(shell->history) > 0)
+	{
+		move_to_history();
+		shell->history_position++;
+	}
 	return (READING);
 }
 
@@ -52,8 +57,10 @@ t_status		action_history_down(char *buf)
 	shell = recover_shell();
 	if (!DOWN)
 		return (TRYING);
-	shell->history_position = ft_lstcount(shell->history) - shell->history_position;
-	shell->history_position--;
-	move_to_history();
+	if (ft_lstcount(shell->history) > 0)
+	{
+		move_to_history();
+		shell->history_position--;
+	}
 	return (READING);
 }
