@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:22:56 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/14 18:20:56 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@
 # define DMSTR (tgetstr("dm", NULL))
 # define EDSTR (tgetstr("ed", NULL))
 
-# define LESTR (tgetstr("le", NULL))
-# define RISTR (tgetstr("ri", NULL))
+# define LESTR (tgetstr("LE", NULL))
+# define RISTR (tgetstr("RI", NULL))
 # define UPSTR (tgetstr("up", NULL))
 # define DOSTR (tgetstr("do", NULL))
 # define HOSTR (tgetstr("ho", NULL))
@@ -176,5 +176,18 @@ int			get_current_folder_length(void);
 void		clean_prompt(void);
 void		string_to_list(char *str);
 void		free_char(void *content, size_t size);
-
+/*
+** utils_move
+*/
+void 		utils_move_up(void);
+void 		utils_move_down(void);
+void 		utils_move_left(void);
+void 		utils_move_right(void);
+/*
+** utils_move_ext
+*/
+void		utils_move_start(void);
+void		utils_move_end(void);
+void		utils_move_max_top(void);
+void		utils_move_max_bottom(void);
 #endif

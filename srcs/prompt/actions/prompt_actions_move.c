@@ -14,87 +14,32 @@
 
 t_status action_move_up(char *buf)
 {
-	t_shell		*shell;
-	t_term		*term;
-
-	if (!SHIFT_UP )
+	if (!SHIFT_UP)
 		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-	if (shell->prompt->p_length + shell->prompt->i_position > term->wins.ws_col)
-	{
-		tputs(tgoto(UPSTR, 0, 0), 0, ft_tputs);
-		shell->prompt->i_position -= term->wins.ws_col;
-		if (shell->prompt->i_position < 0)
-		{
-			shell->prompt->i_position = 0;
-			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
-			tputs(tgoto(RISTR, 0, shell->prompt->p_length), 0, ft_tputs);
-		}
-	}
+	utils_move_up();
 	return (READING);
 }
 
 t_status action_move_down(char *buf)
 {
-	t_shell		*shell;
-	t_term		*term;
-	int			delta;
-
-	if (!SHIFT_DOWN )
+	if (!SHIFT_DOWN)
 		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-	if (shell->prompt->i_position + term->wins.ws_col <= shell->prompt->l_length)
-	{
-		tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
-		shell->prompt->i_position += term->wins.ws_col;
-	}
-	else
-	{
-		delta = (shell->prompt->p_length + shell->prompt->l_length)
-			% term->wins.ws_col;
-		tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
-		tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
-		tputs(tgoto(RISTR, 0, delta), 0, ft_tputs);
-		shell->prompt->i_position = shell->prompt->l_length;
-	}
+	utils_move_down();
 	return (READING);
 }
 
 t_status action_move_left(char *buf)
 {
-	t_shell		*shell;
-
-	if (!LEFT )
+	if (!LEFT)
 		return (TRYING);
-	shell = recover_shell();
-	if(shell->prompt->i_position > 0)
-	{
-		shell->prompt->i_position--;
-		tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
-	}
+	utils_move_left();
 	return (READING);
 }
 
 t_status action_move_right(char *buf)
 {
-	t_shell		*shell;
-	t_term		*term;
-
-	if (!RIGHT )
+	if (!RIGHT)
 		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-	if(shell->prompt->i_position < shell->prompt->l_length)
-	{
-		shell->prompt->i_position++;
-		if ((shell->prompt->i_position + shell->prompt->p_length - 1) % term->wins.ws_col == 0){
-			tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
-			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
-		}
-		else
-			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
-	}
+	utils_move_right();
 	return (READING);
 }
