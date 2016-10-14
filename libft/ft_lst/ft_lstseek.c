@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstget_at.c                                     :+:      :+:    :+:   */
+/*   ft_lstseek.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 09:57:54 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 15:37:41 by qdequele         ###   ########.fr       */
+/*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
+/*   Updated: 2016/10/12 16:15:54 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	*ft_lstget_at(t_list **list, int at)
+t_list 		*ft_lst_seek(t_list *list, char *str)
 {
-	t_list	*tmp;
-	t_list	*prev;
-	int		count;
-
-	if (!list || !(*list))
-		return (NULL);
-	tmp = *list;
-	prev = NULL;
-	count = 0;
-	while (count != at && tmp->next != NULL)
+	while (list)
 	{
-		prev = tmp;
-		tmp = tmp->next;
-		count++;
-	}
-	if (count == at)
-	{
-		if (prev)
-			prev->next = tmp->next;
+		if (ft_strcmp((char*)list->content, str) == 0)
+			return (list);
 		else
-			*list = tmp->next;
-        return (tmp->content);
+			list = list->next;
 	}
-    return (NULL);
+	return (NULL);
 }

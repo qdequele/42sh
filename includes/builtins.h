@@ -30,8 +30,11 @@ typedef struct		s_builtin
 int					builtins_cd(t_list **env, char **cmds);
 int					builtins_env(t_list **env, char **cmds);
 int					builtins_exit(t_list **env, char **cmds);
+int					builtins_history(t_list **env, char **cmds);
 int					builtins_setenv(t_list **env, char **cmds);
 int					builtins_unsetenv(t_list **env, char **cmds);
+void				bultins_one_history(char *str);
+int					builtins_echo(t_list **env, char **cmds);
 /*
 **	builtins help
 */

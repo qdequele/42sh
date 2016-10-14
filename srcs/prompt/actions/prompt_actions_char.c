@@ -28,16 +28,12 @@ static void	inser_char(char c)
 	tputs(IMSTR, 0, ft_tputs);
 	ft_putchar(c);
 	tputs(EISTR, 0, ft_tputs);
-	// if (shell->prompt->l_length + shell->prompt->p_length > term->wins.ws_col)
-	// {
-	// 	tputs(SCSTR, 0, ft_tputs);//Save curent position
-	// 	tputs(DOSTR, 0, ft_tputs);//move to bottom
-	// 	tputs(CRSTR, 0, ft_tputs);//Move to start of lile
-	// 	tputs(IMSTR, 0, ft_tputs);//start write mode
-	// 	ft_putchar((char)ft_lstget_at(&shell->prompt->line, shell->prompt->i_position + term->wins.ws_col) * term->wins.ws_col - shell->prompt->p_length));//write the deleted char
-	// 	tputs(EISTR, 0, ft_tputs);//stop write mode
-	// 	tputs(RCSTR, 0, ft_tputs);//Go back to saved position
-	// }
+	if (shell->prompt->i_position < shell->prompt->l_length)
+	{
+		tputs(SCSTR, 0, ft_tputs);//Save curent position
+		
+		tputs(RCSTR, 0, ft_tputs);//Go back to saved position
+	}
 }
 
 static void	free_char(void *content, size_t size)
