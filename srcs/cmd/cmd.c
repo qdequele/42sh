@@ -14,7 +14,7 @@
 
 static void	print_erno(char *str, int err)
 {
-	print_shell_err("ftsh : ");
+	print_shell_err("42sh : ");
 	if (err)
 		print_shell_err(strerror(errno));
 	else

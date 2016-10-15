@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_init.c                                       :+:      :+:    :+:   */
+/*   prompt_utils_show-end-of-line.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/15 11:55:57 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/15 12:57:08 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-t_shell		*recover_shell(void)
+void    print_eol(void)
 {
-	static t_shell	shell;
-	return (&shell);
-}
-
-void		init_shell(void)
-{
-	t_shell		*shell;
+    t_shell		*shell;
+	t_term		*term;
+    int         index;
+    void        *tmp;
+    int         i;
+    char        *string;
 
 	shell = recover_shell();
-	shell = (t_shell*)malloc(sizeof(t_shell));
-	shell->history = NULL;
-	shell->history_position = 0;
-	shell->last_exit_code = 0;
-	shell->prompt = NULL;
+	term = recover_term();
+    index = shell->prompt->i_position;
+    i = 0;
+    string = (char *)malloc(sizeof(char) * (shell->prompt->l_length - index));
+    while (index + i < shell->prompt->l_length)
+    {
+        tmp = ft_lstget_at(shell->prompt->line, index + i)->content;
+        string[i] = *(char*)tmp;
+        i++;
+    }
+    write(term->tty, string, i);
+    shell->prompt->i_position += i;
+    while (i > 0)
+    {
+        utils_move_left();
+        i--;
+    }
 }

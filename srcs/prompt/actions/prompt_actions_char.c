@@ -27,12 +27,10 @@ static void	inser_char(char c)
 	tputs(IMSTR, 0, ft_tputs);
 	ft_putchar_fd(c, term->tty);
 	tputs(EISTR, 0, ft_tputs);
-	// if (shell->prompt->i_position < shell->prompt->l_length)
-	// {
-	// 	tputs(SCSTR, 0, ft_tputs);//Save curent position
-		
-	// 	tputs(RCSTR, 0, ft_tputs);//Go back to saved position
-	// }
+	if (shell->prompt->i_position < shell->prompt->l_length)
+	{
+		print_eol();
+	}
 }
 
 t_status	action_insert_char(char *buf)

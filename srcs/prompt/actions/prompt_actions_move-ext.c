@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_move_ext.c                          :+:      :+:    :+:   */
+/*   prompt_actions_move-ext.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:53:50 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/14 18:52:23 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_status	action_move_start(char *buf)
 		return (TRYING);
 	shell = recover_shell();
 	term = recover_term();
-    while (shell->prompt->i_position > 0)
+    while (shell->prompt->i_position > 1)
 	{
 		utils_move_left();
 	}
