@@ -16,6 +16,7 @@ t_status	action_exec_cmd(char *buf)
 {
 	if (!ENTER )
 		return (TRYING);
+	utils_move_end();
 	ft_putchar('\n');
 	return (FOUND);
 }
