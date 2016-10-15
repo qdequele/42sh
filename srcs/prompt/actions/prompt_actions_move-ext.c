@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 18:52:23 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/15 17:38:38 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,17 @@
 
 t_status	action_move_start(char *buf)
 {
-	t_shell		*shell;
-	t_term		*term;
-
 	if (!HOME || !FN_LEFT)
 		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-    while (shell->prompt->i_position > 1)
-	{
-		utils_move_left();
-	}
+    utils_move_start();
 	return (READING);
 }
 
 t_status	action_move_end(char *buf)
 {
-	t_shell		*shell;
-	t_term		*term;
-
 	if (!END || !FN_RIGHT)
 		return (TRYING);
-	shell = recover_shell();
-	term = recover_term();
-    while (shell->prompt->i_position < shell->prompt->l_length)
-	{
-		utils_move_right();
-	}
+	utils_move_end();
 	return (READING);
 }
 
