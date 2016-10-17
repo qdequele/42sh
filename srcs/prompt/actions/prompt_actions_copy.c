@@ -12,28 +12,62 @@
 
 #include <ft_sh.h>
 
+static t_status  action_copy_quit(char *buf)
+{
+	(void)buf;
+	return (EXIT);
+}
+static void		*get_actions_copy(void)
+{
+	static t_status (*f[])(char *) = {
+		action_move_right,
+		action_move_left,
+		action_exec_cmd,
+		action_paste,
+		action_copy,
+		action_copy_quit
+	};
+	
+	return ((void *)f);
+}
+
 t_status		action_copy(char *buf)
 {
 	t_shell		*shell;
+	t_term 		*term;
 	t_prompt	*prompt;
 
 	shell = recover_shell();
+	term = recover_term();
 	prompt = shell->prompt;
-	if (!Alt_C)
+	if (!ALT_C)
 		return (TRYING);
-	else if (prompt->copy_mode != 1 && Alt_C)
-		prompt->copy_mode  = 1;
-	else 
+	if (prompt->i_position != ft_lstcount(prompt->line))
 	{
-		tputs(MESTR, 0, ft_tputs);
-		prompt->copy_mode = 0;
-	}
-	if (prompt->i_position != ft_lstcount(prompt->line) && prompt->copy_mode == 1)
-	{
+		prompt->str_cpy[prompt->i_copy] = *(char*)(ft_lstget_at(prompt->line, prompt->i_position)->content);
 		tputs(MRSTR, 0, ft_tputs);
-		prompt->str_cpy[prompt->i_copy] = (char)ft_lstget_at(prompt->line, prompt->i_position)->content;
-		ft_putchar(prompt->str_cpy[prompt->i_position]);
+		ft_putchar_fd(prompt->str_cpy[prompt->i_copy], term->tty);
+		tputs(MESTR, 0, ft_tputs);
+		prompt->i_position++;
 		prompt->i_copy++;
+	}
+	return (TRYING);
+}
+
+
+t_status	main_action_copy(char *buf)
+{
+	t_status	(**actions_copy)(char *);
+	t_status	status_copy;
+
+	actions_copy = get_actions_copy();
+	if (!ALT_C && !ALT_V)
+		return (EXIT);
+	status_copy = TRYING;
+	while ((*actions_copy && status_copy == TRYING) || status_copy != EXIT)
+	{
+		status_copy = (*actions_copy)(buf);
+		actions_copy++;
 	}
 	return (READING);
 }

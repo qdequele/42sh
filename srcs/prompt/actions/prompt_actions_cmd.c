@@ -32,5 +32,5 @@ t_status	action_shell_quit(char *buf)
 {
 	if (!QUIT )
 		return (TRYING);
-	return (READING);
+	return (EXIT);
 }

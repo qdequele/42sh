@@ -42,8 +42,8 @@
 # define QUIT ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
 
 
-# define Alt_C (buf[0] == -61 && buf[1] == -89 && buf[2] == 0)
-# define Alt_V (buf[0] == -30 && buf[1] == -120 && buf[2] == -102)
+# define ALT_C (buf[0] == -61 && buf[1] == -89 && buf[2] == 0)
+# define ALT_V (buf[0] == -30 && buf[1] == -120 && buf[2] == -102)
 /*
 ** CLSTR- Clear the screen
 ** MESTR - Turn off all attributes
@@ -106,7 +106,8 @@ typedef enum	e_status
 {
 	TRYING,
 	READING,
-	FOUND
+	FOUND,
+	EXIT
 }				t_status;
 
 typedef struct	s_prompt
@@ -172,6 +173,7 @@ t_status	prompt_find_function(char *buf);
 /*
 ** Prompt_actions_copy.c
 */
+t_status	main_action_copy(char *buf);
 t_status	action_copy(char *buf);
 /*
 ** Prompt_actions_paste.c
