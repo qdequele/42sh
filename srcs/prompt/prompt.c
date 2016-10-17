@@ -29,7 +29,12 @@ char	*prompt_create_line(void)
 		status = prompt_find_function(buf);
 		ft_bzero(buf, 7);
 		if (status == FOUND)
+		{
+			printf("--------------------------\n");
+			ft_lstshow_x(shell->prompt->line, 0);
+			printf("--------------------------\n");
 			return (list_to_string());
+		}
 	}
 	return (NULL);
 }

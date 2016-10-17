@@ -24,6 +24,7 @@ static void		move_to_history(void)
 	term = recover_term();
 	prompt = shell->prompt;
 	tmp_list = shell->history;
+	ft_lstdel(&shell->prompt->line, free_char);
 	if (prompt->line)
 		clean_prompt();
 	if (shell->history_position < 0)
@@ -34,7 +35,6 @@ static void		move_to_history(void)
 	ft_putstr_fd((char*)tmp_list->content, term->tty);
 	shell->prompt->i_position = ft_strlen((char*)tmp_list->content) + 1;
 	string_to_list((char*)tmp_list->content);
-
 }
 
 t_status		action_history_up(char *buf)

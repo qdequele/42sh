@@ -47,7 +47,7 @@ char	*list_to_string(void)
 	line[prompt->l_length] = '\0';
 	i = 0;
 	tmp = prompt->line;
-	while (tmp != NULL && i <= prompt->l_length)
+	while (tmp != NULL && i <= ft_lstcount(shell->prompt->line))
 	{
 		car = (char*)tmp->content;
 		line[i] = car[0];
