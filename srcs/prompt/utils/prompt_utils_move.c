@@ -49,7 +49,7 @@ void    utils_move_left(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	if(shell->prompt->i_position > 0)
+	if(shell->prompt->i_position >= 0)
 	{
 		shell->prompt->i_position--;
 		if (shell->prompt->i_position != 0)

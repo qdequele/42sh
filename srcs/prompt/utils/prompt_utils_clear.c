@@ -17,10 +17,13 @@ void	clean_prompt(void)
 	t_shell	*shell;
 
 	shell = recover_shell();
-	utils_move_end();
-	while (shell->prompt->i_position > 0)
+	while(shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
-		utils_move_left();
+		utils_move_right();
+	}
+	while (shell->prompt->i_position >= 0)
+	{
 		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
+		utils_move_left();
 	}
 }
