@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 15:03:21 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:39:00 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	utils_move_end(void)
 
 	shell = recover_shell();
 	term = recover_term();
-    while (shell->prompt->i_position < shell->prompt->l_length)
+    while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
 	}
