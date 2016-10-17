@@ -23,11 +23,10 @@ static void	inser_char(char c)
 	new = ft_lstnew(&c, sizeof(char));
 	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_position);
 	shell->prompt->i_position++;
-	shell->prompt->l_length++;
 	tputs(IMSTR, 0, ft_tputs);
 	ft_putchar_fd(c, term->tty);
 	tputs(EISTR, 0, ft_tputs);
-	if (shell->prompt->i_position < shell->prompt->l_length)
+	if (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		print_eol();
 	}
@@ -51,15 +50,14 @@ t_status	action_delete_char(char *buf)
 	if (!BACK_SPACE )
 		return (TRYING);
 	shell = recover_shell();
-	if(shell->prompt->i_position <= shell->prompt->l_length
+	if(shell->prompt->i_position <= ft_lstcount(shell->prompt->line)
 		&& shell->prompt->i_position > 0)
 	{
-		tputs(LESTR, 1, ft_tputs);// move left
+		tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);// move left
 		tputs(DMSTR, 1, ft_tputs);// enter in delete mode
 		tputs(DCSTR, 1, ft_tputs);// delete char
 		tputs(EDSTR, 1, ft_tputs);// exit delete mode
 		shell->prompt->i_position--;
-		shell->prompt->l_length--;
 		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
 	}
 	return (READING);
@@ -72,13 +70,12 @@ t_status	action_delete_next_char(char *buf)
 	if (!DELETE )
 		return (TRYING);
 	shell = recover_shell();
-	if(shell->prompt->i_position < shell->prompt->l_length
+	if(shell->prompt->i_position < ft_lstcount(shell->prompt->line)
 		&& shell->prompt->i_position >= 0)
 	{
 		tputs(DMSTR, 1, ft_tputs);// enter in delete mode
 		tputs(DCSTR, 1, ft_tputs);// delete char
 		tputs(EDSTR, 1, ft_tputs);// exit delete mode
-		shell->prompt->l_length--;
 		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
 	}
 	return (READING);

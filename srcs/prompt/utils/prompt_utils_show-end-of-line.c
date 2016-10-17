@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 16:11:09 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:39:23 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void    print_eol(void)
     if (index == 0) 
         index = 1;
     i = 0;
-    string = (char *)malloc(sizeof(char) * (shell->prompt->l_length - index));
-    while (index + i < shell->prompt->l_length)
+    string = (char *)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) - index));
+    while (index + i < ft_lstcount(shell->prompt->line))
     {
         tmp = ft_lstget_at(shell->prompt->line, index + i)->content;
         string[i] = *(char*)tmp;

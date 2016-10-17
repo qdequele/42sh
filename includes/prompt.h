@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 14:51:35 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:38:56 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ typedef struct	s_prompt
 	t_list		*line;
 	int			i_position;
 	int			p_length;
-	int			l_length;
 	int 		i_copy;
 	char 		*str_cpy;
 	int 		copy_mode;
