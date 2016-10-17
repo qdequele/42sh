@@ -27,6 +27,7 @@ static void		*get_actions_list(void)
 		action_delete_next_char,
 		action_exec_cmd,
 		action_history_up,
+		action_autocomplete,
 		action_history_down,
 		action_move_max_top,
 		action_move_max_bottom,

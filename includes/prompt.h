@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 19:46:50 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 14:51:35 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define QUIT ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
 
 /*
-** CL_STR- Clear the screen
+** CLSTR- Clear the screen
 ** MESTR - Turn off all attributes
 ** MRSTR - Turn on reverse video mode
 ** TESTR - Strings to end programs using cup
@@ -112,17 +112,16 @@ typedef struct	s_prompt
 	int			i_position;
 	int			p_length;
 	int			l_length;
-	int			start_col;
-	int			start_line;
-	int			end_col;
-	int			end_line;
 }				t_prompt;
 
 /*
 ** Prompt.c
 */
 char		*prompt_create_line(void);
-char		*convert_prompt_to_string(void);
+/*
+** Prompt_actions_autocomplete.c
+*/
+t_status	action_autocomplete(char *buf);
 /*
 ** Prompt_actions_char.c
 */
@@ -175,6 +174,7 @@ int			get_current_folder_length(void);
 */
 void		clean_prompt(void);
 void		string_to_list(char *str);
+char		*list_to_string(void);
 void		free_char(void *content, size_t size);
 void  	  	print_eol(void);
 /*

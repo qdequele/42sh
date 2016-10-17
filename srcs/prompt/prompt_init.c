@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:54:01 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 14:49:36 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ t_prompt	*init_prompt(void)
 	prompt->i_position = 0;
 	prompt->l_length = 0;
 	prompt->p_length = get_current_folder_length();
-	prompt->start_col = prompt->p_length + 1;
-	prompt->start_line = tgetnum("li");
-	prompt->end_col = prompt->start_col;
-	prompt->end_line = prompt->start_line;
 	return (prompt);
 }
 

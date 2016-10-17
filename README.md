@@ -24,7 +24,7 @@ prototype : - X : blabla (username)
 - F : move up alt+up (qdequele)
 - F : move down alt+down (qdequele)
 - X : quotes " ' (eebersol)
-- X : Good implementation of tab or spaces ()
+- X : Good implementation of tab or spaces (qdequele)
 
 ###Bonus
 

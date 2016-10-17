@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/14 19:46:17 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/17 14:52:00 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ _SRC		=	builtins/builtins_cd.c\
 				cmd/cmd.c\
 				env/env_parser.c\
 				env/env_utils.c\
+				prompt/actions/prompt_actions_autocomplete.c\
 				prompt/actions/prompt_actions_char.c\
 				prompt/actions/prompt_actions_cmd.c\
 				prompt/actions/prompt_actions_history.c\
@@ -31,11 +32,11 @@ _SRC		=	builtins/builtins_cd.c\
 				prompt/actions/prompt_actions_move-word.c\
 				prompt/actions/prompt_actions_move-ext.c\
 				prompt/utils/prompt_utils_clear.c\
+				prompt/utils/prompt_utils_conversion.c\
 				prompt/utils/prompt_utils_move.c\
 				prompt/utils/prompt_utils_move-ext.c\
 				prompt/utils/prompt_utils_free-char.c\
 				prompt/utils/prompt_utils_show-end-of-line.c\
-				prompt/utils/prompt_utils_string-to-list.c\
 				prompt/prompt.c\
 				prompt/prompt_find.c\
 				prompt/prompt_init.c\
