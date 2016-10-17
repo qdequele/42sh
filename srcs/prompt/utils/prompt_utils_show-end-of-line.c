@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/15 12:57:08 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:11:09 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void    print_eol(void)
 	shell = recover_shell();
 	term = recover_term();
     index = shell->prompt->i_position;
+    if (index == 0) 
+        index = 1;
     i = 0;
     string = (char *)malloc(sizeof(char) * (shell->prompt->l_length - index));
     while (index + i < shell->prompt->l_length)

@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/15 17:34:38 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:07:18 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,15 @@ void    utils_move_up(void)
 {
 	t_shell		*shell;
 	t_term		*term;
+	int 		i;
 
 	shell = recover_shell();
 	term = recover_term();
-	if (shell->prompt->p_length + shell->prompt->i_position > term->wins.ws_col)
+	i = 0;
+	while (i < term->wins.ws_col && shell->prompt->i_position > 0)
 	{
-		tputs(tgoto(UPSTR, 0, 0), 0, ft_tputs);
-		shell->prompt->i_position -= term->wins.ws_col;
-		if (shell->prompt->i_position < 0)
-		{
-			shell->prompt->i_position = 0;
-			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
-			tputs(tgoto(RISTR, 0, shell->prompt->p_length), 0, ft_tputs);
-		}
+		utils_move_left();
+		i++;
 	}
 }
 
@@ -36,23 +32,15 @@ void    utils_move_down(void)
 {
 	t_shell		*shell;
 	t_term		*term;
-	int			delta;
+	int 		i;
 
 	shell = recover_shell();
 	term = recover_term();
-	if (shell->prompt->i_position + term->wins.ws_col <= shell->prompt->l_length)
+	i = 0;
+	while (i < term->wins.ws_col && shell->prompt->i_position < shell->prompt->l_length)
 	{
-		tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
-		shell->prompt->i_position += term->wins.ws_col;
-	}
-	else
-	{
-		delta = (shell->prompt->p_length + shell->prompt->l_length)
-			% term->wins.ws_col;
-		tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
-		tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
-		tputs(tgoto(RISTR, 0, delta), 0, ft_tputs);
-		shell->prompt->i_position = shell->prompt->l_length;
+		utils_move_right();
+		i++;
 	}
 }
 
@@ -61,10 +49,11 @@ void    utils_move_left(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	if(shell->prompt->i_position > 0)
+	if(shell->prompt->i_position >= 0)
 	{
 		shell->prompt->i_position--;
-		tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
+		if (shell->prompt->i_position != 0)
+			tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
 	}
 }
 

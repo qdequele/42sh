@@ -32,7 +32,7 @@ static void		move_to_history(void)
 		shell->history_position = 0;
 	tmp_list = ft_lstget_at(shell->history, shell->history_position);
 	ft_putstr_fd((char*)tmp_list->content, term->tty);
-	shell->prompt->i_position = ft_strlen((char*)tmp_list->content) + 1;
+	shell->prompt->i_position = ft_strlen((char*)tmp_list->content);
 	string_to_list((char*)tmp_list->content);
 
 }
