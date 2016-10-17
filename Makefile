@@ -30,6 +30,8 @@ _SRC		=	builtins/builtins_cd.c\
 				prompt/actions/prompt_actions_move.c\
 				prompt/actions/prompt_actions_move-word.c\
 				prompt/actions/prompt_actions_move-ext.c\
+				prompt/actions/prompt_actions_copy.c\
+				prompt/actions/prompt_actions_paste.c\
 				prompt/utils/prompt_utils_clear.c\
 				prompt/utils/prompt_utils_move.c\
 				prompt/utils/prompt_utils_move-ext.c\

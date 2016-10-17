@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_to_list.c                                   :+:      :+:    :+:   */
+/*   prompt_actions_paste.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,28 @@
 
 #include <ft_sh.h>
 
-void	string_to_list(char *str)
+t_status	action_paste(char *buf)
 {
 	t_shell		*shell;
-	char		*dst;
+	t_prompt	*prompt;
 	size_t		i;
 
 	shell = recover_shell();
+	prompt = shell->prompt;
 	i = 0;
-	while (i < ft_strlen(str))
+	if (!Alt_V)
+		return (TRYING);
+	while (i < ft_strlen(prompt->str_cpy))
 	{
-		dst = ft_strnew(ft_strlen(str));
-		dst[0] = str[i];
-		ft_lstadd(&shell->prompt->line,
-			ft_lstnew(dst, (sizeof(char) )));
-		ft_strdel(&dst);
+		ft_lstadd_at(&prompt->line,
+			ft_lstnew(&prompt->str_cpy[i], sizeof(char*)), prompt->i_position + i);
 		i++;
 	}
-	shell->prompt->line = ft_lst_reverse(shell->prompt->line);
+	prompt->i_copy = prompt->i_position;
+	tputs(SCSTR, 0, ft_tputs);
+	clean_prompt();
+	ft_lstshow_x(prompt->line, 0);
+	tputs(RCSTR, 0, ft_tputs);
+	prompt->i_position = prompt->i_copy;
+	return (READING);
 }
