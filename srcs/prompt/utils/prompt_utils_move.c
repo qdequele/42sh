@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 16:39:13 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 18:18:07 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,10 @@ void    utils_move_left(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	if(shell->prompt->i_position >= 0)
+	if(shell->prompt->i_position > 0)
 	{
 		shell->prompt->i_position--;
-		if (shell->prompt->i_position != 0)
-			tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
+		tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
 	}
 }
 

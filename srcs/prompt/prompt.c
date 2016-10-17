@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 14:50:59 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 18:13:50 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,7 @@ char	*prompt_create_line(void)
 		status = prompt_find_function(buf);
 		ft_bzero(buf, 7);
 		if (status == FOUND)
-		{
-			printf("--------------------------\n");
-			ft_lstshow_x(shell->prompt->line, 0);
-			printf("--------------------------\n");
 			return (list_to_string());
-		}
 	}
 	return (NULL);
 }
