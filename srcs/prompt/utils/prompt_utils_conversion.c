@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_to_list.c                                   :+:      :+:    :+:   */
+/*   prompt_utils_conversion.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by eebersol          #+#    #+#             */
-/*   Updated: 2016/05/04 20:39:59 by eebersol         ###   ########.fr       */
+/*   Updated: 2016/10/17 14:34:14 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,29 @@ void	string_to_list(char *str)
 		i++;
 	}
 	shell->prompt->line = ft_lst_reverse(shell->prompt->line);
+}
+
+char	*list_to_string(void)
+{
+	char		*line;
+	char		*car;
+	t_list		*tmp;
+	int			i;
+	t_shell		*shell;
+	t_prompt	*prompt;
+
+	shell = recover_shell();
+	prompt = shell->prompt;
+	line = (char*)malloc(sizeof(char) * (prompt->l_length + 1));
+	line[prompt->l_length] = '\0';
+	i = 0;
+	tmp = prompt->line;
+	while (tmp != NULL && i <= prompt->l_length)
+	{
+		car = (char*)tmp->content;
+		line[i] = car[0];
+		tmp = tmp->next;
+		i++;
+	}
+	return (line);
 }
