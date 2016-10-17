@@ -21,7 +21,7 @@ void    utils_move_up(void)
 	shell = recover_shell();
 	term = recover_term();
 	i = 0;
-	while (i < term->wins.ws_col && shell->prompt->i_position > 0)
+	while (i < term->wins.ws_col && shell->prompt->i_position >= 0)
 	{
 		utils_move_left();
 		i++;
