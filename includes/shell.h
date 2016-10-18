@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 15:10:44 by RAZOR            ###   ########.fr       */
+/*   Updated: 2016/10/18 17:21:40 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,21 @@
 
 # define UNUSED(x) (void)(x)
 
+typedef enum	e_mode
+{
+	NORMAL,
+	COPY,
+	HISTORY,
+	AUTOCOMPLETE
+}				t_mode;
+
 typedef struct	s_shell
 {
 	t_list		*history;
 	int			history_position;
 	int			last_exit_code;
 	t_prompt	*prompt;
+	t_mode		mode;
 }				t_shell;
 
 /*

@@ -12,39 +12,21 @@
 
 #include <ft_sh.h>
 
-static void		*get_actions_list(void)
-{
-	static t_status (*f[])(char *) = {
-		action_move_next_word,
-		action_move_last_word,
-		action_move_up,
-		action_move_down,
-		action_move_right,
-		action_move_left,
-		action_move_start,
-		action_move_end,
-		action_delete_char,
-		action_delete_next_char,
-		action_exec_cmd,
-		action_history_up,
-		action_autocomplete,
-		action_history_down,
-		action_move_max_top,
-		action_move_max_bottom,
-		action_ignore_input,
-		action_shell_quit,
-		action_insert_char
-	};
-
-	return ((void *)f);
-}
-
 t_status		prompt_find_function(char *buf)
 {
 	t_status	(**actions)(char *);
 	t_status	status;
+	t_shell		*shell;
 
-	actions = get_actions_list();
+	shell = recover_shell();
+	if (shell->mode == COPY)
+		actions = get_actions_copy();
+	else if (shell->mode == HISTORY)
+		actions = get_actions_history();
+	else if (shell->mode == AUTOCOMPLETE)
+		actions = get_actions_autocomplete();
+	else (shell->mode == NORMAL)
+		actions = get_actions_normal();
 	status = TRYING;
 	while (*actions && status == TRYING)
 	{
