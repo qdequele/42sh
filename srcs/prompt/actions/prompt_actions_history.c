@@ -25,8 +25,7 @@ static void		move_to_history(void)
 	prompt = shell->prompt;
 	tmp_list = shell->history;
 	ft_lstdel(&shell->prompt->line, free_char);
-	if (prompt->line)
-		clean_prompt();
+	clean_prompt();
 	if (shell->history_position < 0)
 		shell->history_position = ft_lstcount(shell->history) - 1;
 	else if (shell->history_position > ft_lstcount(shell->history) - 1)
