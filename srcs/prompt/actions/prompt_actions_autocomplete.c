@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 19:48:32 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 19:51:34 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ static int	ft_open_folder_path(char *path, t_list **list_bin)
 static void stock_cmd_binaire(t_shell *shell, t_list **list_bin)
 {
 	t_list		*env;
-	char		*name_bin;
+	// char		*name_bin;
 	char		**tab_bin;
 	int			i;
 
 	(void)shell;
 	i = 0;
 	(void)shell;
-	name_bin = NULL;
+	// name_bin = NULL;
 	env = g_env;
 	tab_bin = ft_strsplit(env_get(env, "PATH"), ':');
 	while (tab_bin[i])

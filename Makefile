@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/18 17:12:05 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/18 19:50:25 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ _SRC		=	builtins/builtins_cd.c\
 
 SRC			=	$(addprefix srcs/,$(_SRC))
 OBJ			=	$(SRC:.c=.o)
-CFLAGS		=	-Wall -Wextra -Werror -g -ggdb
+CFLAGS		=	-Wall -Wextra -Werror
 INCLUDES	=	-I./libft/ -I./includes/
 
 all: $(NAME)
