@@ -1,24 +1,92 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_char.c                               :+:      :+:    :+:   */
+/*   prompt_actions_autocomplete.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/03/03 13:19:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 17:58:41 by RAZOR            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
+static t_builtin	*builtins_init(void)
+{
+	static t_builtin	f[] = {
+		{"cd", builtins_cd},
+		{"env", builtins_env},
+		{"setenv", builtins_setenv},
+		{"unsetenv", builtins_unsetenv},
+		{"exit", builtins_exit},
+		{"history", builtins_history},
+		{"echo", builtins_echo},
+		{NULL, NULL}
+	};
+	return ((void *)f);
+}
+
+void ft_print_lst(t_list *lst)
+{
+	while (lst)
+	{
+		ft_putendl((char *)lst->content);
+		lst = lst->next;
+	}
+}
+
+static void stock_cmd_binaire(t_shell *shell, t_list **list_bin)
+{
+	t_list		*env;
+	char		*name_bin;
+	char		**tab_bin;
+	int			i;
+
+	i = 0;
+	name_bin = NULL;
+	env = g_env;
+	tab_bin = ft_strsplit(env_get(env, "PATH"), ':');
+	while (tab_bin[i])
+	{
+		
+		name_bin = ft_strdup(builtins[i].name);
+		ft_lstaddend(list_bin, ft_lstnew(name_bin, sizeof(ft_strlen(name_bin))));
+		ft_strdel(&name_bin);
+		i++;
+	}
+}
+
+static void stock_cmd_builtins(t_list **list_bin)
+{
+	t_builtin	*builtins;
+	char		*name_bin;
+	int			i;
+
+	i = 0;
+	name_bin = NULL;
+	builtins = builtins_init();
+	while (builtins[i].name)
+	{
+		name_bin = ft_strdup(builtins[i].name);
+		ft_lstaddend(list_bin, ft_lstnew(name_bin, sizeof(ft_strlen(name_bin))));
+		ft_strdel(&name_bin);
+		i++;
+	}
+}
+
 t_status	action_autocomplete(char *buf)
 {
 	t_shell	*shell;
+	t_list	*list_bin;
+	char	*line;
 
+	list_bin = NULL;
 	if (!TAB)
 		return (TRYING);
 	shell = recover_shell();
-	printf("#autocomplete\n");
+	line = list_to_string();
+	stock_cmd_builtins(&list_bin);
+	stock_cmd_binaire(shell, &list_bin);
 	return (READING);
 }
