@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_paste.c                             :+:      :+:    :+:   */
+/*   prompt_actions_cut.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,28 +12,31 @@
 
 #include <ft_sh.h>
 
-t_status	action_paste(char *buf)
+t_status	action_cut(char *buf)
 {
 	t_shell		*shell;
 	t_prompt	*prompt;
-	size_t		i;
+	t_list		*cur;
+	int			i;
+	int			j;
 
 	shell = recover_shell();
 	prompt = shell->prompt;
-	i = 0;
-	if (!ALT_V)
+	if (!ALT_X)
 		return (TRYING);
-	while (i < ft_strlen(prompt->str_cpy))
-	{
-		ft_lstadd_at(&prompt->line,
-			ft_lstnew(&prompt->str_cpy[i], sizeof(char*)), prompt->i_position + i);
-		i++;
-	}
-	i = prompt->i_position;
-	tputs(SCSTR, 0, ft_tputs);
+	j = prompt->i_position;
+	i = prompt->i_position - prompt->i_copy;
+	cur = prompt->line;
 	clean_prompt();
-	ft_lstshow_x(prompt->line, 0);
-	tputs(RCSTR, 0, ft_tputs);
-	prompt->i_position = i;
+	while (j-- > i)
+	{
+		cur = prompt->line;
+		ft_lstdel_at(&cur, j, &free_char);
+	}
+	cur = prompt->line;
+	tputs(MESTR, 0, ft_tputs);
+	ft_lstshow_x(cur, 0);
+	tputs(RCSTR , 0, ft_tputs);
+	prompt->i_position = j + 1;
 	return (READING);
 }

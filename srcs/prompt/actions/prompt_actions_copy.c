@@ -25,6 +25,7 @@ static void		*get_actions_copy(void)
 		action_exec_cmd,
 		action_paste,
 		action_copy,
+		action_cut,
 		action_copy_quit
 	};
 	
@@ -42,6 +43,8 @@ t_status		action_copy(char *buf)
 	prompt = shell->prompt;
 	if (!ALT_C)
 		return (TRYING);
+	// if (prompt->i_copy == 0)
+	// 	tputs(SCSTR, 0, ft_tputs);
 	if (prompt->i_position != ft_lstcount(prompt->line))
 	{
 		prompt->str_cpy[prompt->i_copy] = *(char*)(ft_lstget_at(prompt->line, prompt->i_position)->content);
@@ -50,6 +53,7 @@ t_status		action_copy(char *buf)
 		tputs(MESTR, 0, ft_tputs);
 		prompt->i_position++;
 		prompt->i_copy++;
+
 	}
 	return (TRYING);
 }

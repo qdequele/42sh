@@ -12,6 +12,7 @@
 
 #include "../libft.h"
 #include <stdio.h>
+
 void	ft_lstadd_at(t_list **lst, t_list *new, int at)
 {
 	int	i;
@@ -28,10 +29,9 @@ void	ft_lstadd_at(t_list **lst, t_list *new, int at)
 	else {
 		while (i < at)
 		{
-			printf("add midle\n");
 			tmp = tmp->next;
 			if (tmp == NULL)
-			break ;
+				break ;
 			i++;
 		}
 		if (tmp != NULL)
