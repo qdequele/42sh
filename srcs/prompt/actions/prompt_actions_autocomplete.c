@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 17:24:06 by RAZOR            ###   ########.fr       */
+/*   Updated: 2016/10/18 19:48:32 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static t_builtin	*builtins_init(void)
 
 void ft_print_lst(t_list *lst)
 {
-	t_term *term;
+	// t_term *term;
 
-	term = recover_term();
+	// term = recover_term();
 	// ft_putnbr(term->wins.ws_col);
 	// ft_putnbr(term->wins.ws_row);
 	while (lst)
@@ -105,13 +105,13 @@ t_status	action_autocomplete(char *buf)
 {
 	t_shell	*shell;
 	t_list	*list_bin;
-	char	*line;
+	// char	*line;
 
 	list_bin = NULL;
 	if (!TAB)
 		return (TRYING);
 	shell = recover_shell();
-	line = list_to_string();
+	// line = list_to_string();
 	stock_cmd_builtins(&list_bin);
 	stock_cmd_binaire(shell, &list_bin);
 	ft_print_lst(list_bin);
