@@ -68,6 +68,7 @@ static void stock_cmd_binaire(t_shell *shell, t_list **list_bin)
 	char		**tab_bin;
 	int			i;
 
+	(void)shell;
 	i = 0;
 	(void)shell;
 	name_bin = NULL;
@@ -75,6 +76,7 @@ static void stock_cmd_binaire(t_shell *shell, t_list **list_bin)
 	tab_bin = ft_strsplit(env_get(env, "PATH"), ':');
 	while (tab_bin[i])
 	{
+
 		ft_open_folder_path(tab_bin[i], list_bin);
 		ft_strdel(&tab_bin[i]);
 		i++;

@@ -17,8 +17,8 @@ prototype : - X : blabla (username)
 - O : move to right (qdequele)
 - O : History (eebersol)
 - X : Copy/Past/Cut (eebersol)
-- X : move word left alt+left (qdequele)
-- X : move word right alt+right (qdequele)
+- O : move word left alt+left (qdequele)
+- O : move word right alt+right (qdequele)
 - O : move start fn+left | home (qdequele)
 - O : move end fn+right | end (qdequele)
 - O : move up alt+up (qdequele)
@@ -29,9 +29,9 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - X : history search builtins history | ctrl+R (eebersol)
-- X : autocomplete ()
-- F : Move max top (qdequele)
-- F : Move max bottom (qdequele)
+- X : autocomplete (gbourson)
+- O : Move max top (qdequele)
+- O : Move max bottom (qdequele)
 
 ##Command execution
 
@@ -74,3 +74,4 @@ prototype : - X : blabla (username)
 
 - Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
 - home ne vas pas à la bonne destination la premiere fois
+-multi-ligne sur paste.

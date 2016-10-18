@@ -12,13 +12,35 @@
 
 #include <ft_sh.h>
 
-static	void	ft_put_echo(char *str)
+static	char 	*check_second_quote(char *str)
+{
+	char 	*dst;
+	size_t 	i;
+	int 	j;
+
+	i = 0;
+	j = 0;
+	dst = ft_strnew(1);
+	while (str[i] != '\0')
+	{
+		if (str[i] != '"')
+		{
+			dst[j] = str[i];
+			j++;
+		}
+		i++;
+	}
+	return (dst);
+
+}
+static	void	put_echo(char *str)
 {
 	int i;
 
 	i = 0;
-	if (str[0] == '"' && str[ft_strlen(str) - 1] == '"')
-		str = ft_strsub(str, 1, ft_strlen(str) - 2);
+	printf("coucou\n");
+	str = check_second_quote(str);
+	printf("str = %s\n", str);
 	while(str[i] != '\0')
 	{
 		if (str[i] == '\\')
@@ -43,7 +65,7 @@ int		builtins_echo(t_list **env, char **cmds)
 		j++;
 	while (j < i)
 	{
-		ft_put_echo(cmds[j]);
+		put_echo(cmds[j]);
 		ft_putchar(' ');
 		j++;
 	}

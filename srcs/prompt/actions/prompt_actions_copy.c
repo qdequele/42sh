@@ -29,8 +29,6 @@ t_status		action_copy(char *buf)
 	prompt = shell->prompt;
 	if (!ALT_C)
 		return (TRYING);
-	// if (prompt->i_copy == 0)
-	// 	tputs(SCSTR, 0, ft_tputs);
 	if (prompt->i_position != ft_lstcount(prompt->line))
 	{
 		prompt->str_cpy[prompt->i_copy] = *(char*)(ft_lstget_at(prompt->line, prompt->i_position)->content);
@@ -51,7 +49,7 @@ t_status	main_action_copy(char *buf)
 	t_status	status_copy;
 
 	actions_copy = get_actions_copy();
-	if (!ALT_C && !ALT_V)
+	if (!ALT_C && !ALT_V && !ALT_B)
 		return (EXIT);
 	status_copy = TRYING;
 	while ((*actions_copy && status_copy == TRYING) || status_copy != EXIT)

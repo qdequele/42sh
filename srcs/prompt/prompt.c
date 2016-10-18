@@ -26,7 +26,7 @@ char	*prompt_create_line(void)
 	ft_bzero(buf, 9);
 	while (read(0, buf, 9))
 	{
-		// printf("%i - %i - %i - %i - %i - %i - %i - %i - %i|\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6], buf[7], buf[8]);
+		//printf("%i - %i - %i - %i - %i - %i - %i - %i - %i|\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6], buf[7], buf[8]);
 		if ((copy_status = main_action_copy(buf)) == EXIT)
 			status = prompt_find_function(buf);
 		ft_bzero(buf, 9);
