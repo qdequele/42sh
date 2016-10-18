@@ -6,12 +6,12 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:10:53 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 22:33:26 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 16:14:51 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-#include <stdio.h>
+
 void	ft_lstadd_at(t_list **lst, t_list *new, int at)
 {
 	int	i;
@@ -25,13 +25,13 @@ void	ft_lstadd_at(t_list **lst, t_list *new, int at)
 		ft_lstadd(lst, new);
 	else if (at == ft_lstcount(tmp))
 		ft_lstaddend(lst, new);
-	else {
+	else 
+	{
 		while (i < at)
 		{
-			printf("add midle\n");
 			tmp = tmp->next;
 			if (tmp == NULL)
-			break ;
+				break ;
 			i++;
 		}
 		if (tmp != NULL)
