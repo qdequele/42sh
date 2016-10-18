@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is.h                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/16 11:19:06 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 17:54:41 by qdequele         ###   ########.fr       */
+/*   Created: 2015/11/24 16:15:30 by qdequele          #+#    #+#             */
+/*   Updated: 2016/10/18 17:55:41 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_IS_H
-# define FT_IS_H
+#include "../libft.h"
 
-int		ft_isalnum(int c);
-int		ft_isalpha(int c);
-int		ft_isascii(int c);
-int		ft_isdigit(int c);
-int		ft_islower(int c);
-int		ft_isnegative(int nb);
-int		ft_isprint(int c);
-int		ft_isspace(int c);
-int		ft_isupper(int c);
-
-#endif
+int		ft_isspace(int c)
+{
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\0');
+}

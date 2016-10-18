@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 14:30:45 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/18 13:33:35 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/18 17:54:59 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ FT_ARR_SRC			=	$(addprefix ft_array/,$(_FT_ARR_SRC))
 
 #Define FT_IS
 _FT_IS_SRC			=	ft_isprint.c ft_isalnum.c ft_isascii.c ft_isalpha.c \
-						ft_isdigit.c ft_isnegative.c ft_isupper.c ft_islower.c
+						ft_isdigit.c ft_isnegative.c ft_isupper.c ft_islower.c\
+						ft_isspace.c
 
 FT_IS_SRC			=	$(addprefix ft_is/,$(_FT_IS_SRC))
 
