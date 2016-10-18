@@ -17,7 +17,6 @@ static void		move_to_history(void)
 {
 	t_shell		*shell;
 	t_term		*term;
-	t_prompt	*prompt;
 	t_list		*tmp_list;
 
 	shell = recover_shell();
