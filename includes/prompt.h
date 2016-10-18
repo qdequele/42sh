@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 15:09:47 by RAZOR            ###   ########.fr       */
+/*   Updated: 2016/10/18 14:02:48 by RAZOR            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@
 # define IGNORE_1 ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49))
 # define QUIT ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
 
+
+# define ALT_C (buf[0] == -61 && buf[1] == -89 && buf[2] == 0)
+# define ALT_V (buf[0] == -30 && buf[1] == -120 && buf[2] == -102)
 /*
 ** CLSTR- Clear the screen
 ** MESTR - Turn off all attributes
@@ -103,7 +106,8 @@ typedef enum	e_status
 {
 	TRYING,
 	READING,
-	FOUND
+	FOUND,
+	EXIT
 }				t_status;
 
 typedef struct	s_prompt
@@ -111,7 +115,9 @@ typedef struct	s_prompt
 	t_list		*line;
 	int			i_position;
 	int			p_length;
-	int			l_length;
+	int 		i_copy;
+	char 		*str_cpy;
+	int 		copy_mode;
 }				t_prompt;
 
 /*
@@ -163,6 +169,15 @@ t_status	action_move_max_bottom(char *buf);
 ** Prompt_find.c
 */
 t_status	prompt_find_function(char *buf);
+/*
+** Prompt_actions_copy.c
+*/
+t_status	main_action_copy(char *buf);
+t_status	action_copy(char *buf);
+/*
+** Prompt_actions_paste.c
+*/
+t_status	action_paste(char *buf);
 /*
 ** Prompt_init.c
 */

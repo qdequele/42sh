@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/17 14:34:14 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:38:49 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ void	string_to_list(char *str)
 		dst = ft_strnew(ft_strlen(str));
 		dst[0] = str[i];
 		ft_lstadd(&shell->prompt->line,
-			ft_lstnew(dst, (sizeof(char*) * ft_strlen(dst))));
+			ft_lstnew(dst, (sizeof(char) )));
 		ft_strdel(&dst);
 		i++;
 	}
-	ft_lst_reverse(shell->prompt->line);
-	str[i] = '\0';
+	shell->prompt->line = ft_lst_reverse(shell->prompt->line);
 }
 
 char	*list_to_string(void)
@@ -44,11 +43,11 @@ char	*list_to_string(void)
 
 	shell = recover_shell();
 	prompt = shell->prompt;
-	line = (char*)malloc(sizeof(char) * (prompt->l_length + 1));
-	line[prompt->l_length] = '\0';
+	line = (char*)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) + 1));
+	line[ft_lstcount(shell->prompt->line)] = '\0';
 	i = 0;
 	tmp = prompt->line;
-	while (tmp != NULL && i <= prompt->l_length)
+	while (tmp != NULL && i <= ft_lstcount(shell->prompt->line))
 	{
 		car = (char*)tmp->content;
 		line[i] = car[0];

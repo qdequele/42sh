@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 14:49:36 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:36:02 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ t_prompt	*init_prompt(void)
 	prompt = (t_prompt*)malloc(sizeof(t_prompt));
 	prompt->line = NULL;
 	prompt->i_position = 0;
-	prompt->l_length = 0;
 	prompt->p_length = get_current_folder_length();
+	prompt->i_copy = 0;
+	prompt->str_cpy = ft_strnew(1);
 	return (prompt);
 }
 
