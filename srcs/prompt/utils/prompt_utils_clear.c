@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/17 16:18:45 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 16:10:44 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	clean_prompt(void)
 	{
 		utils_move_right();
 	}
-	while (shell->prompt->i_position >= 0)
+	while (shell->prompt->i_position > 0)
 	{
 		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 		utils_move_left();

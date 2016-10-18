@@ -21,6 +21,8 @@ int			main(int argc, char **argv, char **environ)
 		ft_putendl_fd("21sh cannot have arguments", 2);
 		return (0);
 	}
+	ft_console_log_clear();
+	ft_console_log("start 42sh\n\n");
 	env_parse_to_list(&g_env, environ);
 	init_signals();
 	if (init_term() == -1)
