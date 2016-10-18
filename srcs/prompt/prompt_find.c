@@ -25,7 +25,7 @@ t_status		prompt_find_function(char *buf)
 		actions = get_actions_history();
 	else if (shell->mode == AUTOCOMPLETE)
 		actions = get_actions_autocomplete();
-	else (shell->mode == NORMAL)
+	else
 		actions = get_actions_normal();
 	status = TRYING;
 	while (*actions && status == TRYING)

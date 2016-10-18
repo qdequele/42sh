@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 17:20:02 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 17:30:05 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ void		*get_actions_history(void);
 /*
 ** Prompt_actions_copy.c
 */
+t_status  	action_copy_quit(char *buf);
 t_status	main_action_copy(char *buf);
 t_status	action_copy(char *buf);
 /*

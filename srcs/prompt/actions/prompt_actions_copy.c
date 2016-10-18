@@ -3,33 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   prompt_actions_copy.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by eebersol          #+#    #+#             */
-/*   Updated: 2016/05/04 20:39:59 by eebersol         ###   ########.fr       */
+/*   Updated: 2016/10/18 17:30:19 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-static t_status  action_copy_quit(char *buf)
+t_status  action_copy_quit(char *buf)
 {
 	(void)buf;
 	return (EXIT);
-}
-static void		*get_actions_copy(void)
-{
-	static t_status (*f[])(char *) = {
-		action_move_right,
-		action_move_left,
-		action_exec_cmd,
-		action_paste,
-		action_copy,
-		action_cut,
-		action_copy_quit
-	};
-	
-	return ((void *)f);
 }
 
 t_status		action_copy(char *buf)
