@@ -27,10 +27,3 @@ t_status	action_ignore_input(char *buf)
 		return (TRYING);
 	return (READING);
 }
-
-t_status	action_shell_quit(char *buf)
-{
-	if (!QUIT )
-		return (TRYING);
-	return (EXIT);
-}

@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 16:51:01 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 19:15:05 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void		*get_actions_normal(void)
 		action_move_max_top,
 		action_move_max_bottom,
 		action_ignore_input,
-		action_shell_quit,
 		action_insert_char
 	};
 	return ((void *)f);

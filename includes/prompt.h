@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 17:30:05 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 19:15:29 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ t_status	action_delete_next_char(char *buf);
 */
 t_status	action_exec_cmd(char *buf);
 t_status	action_ignore_input(char *buf);
-t_status	action_shell_quit(char *buf);
 t_status	action_insert_char(char *buf);
 /*
 ** Prompt_actions_history.c
