@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 15:10:44 by RAZOR            ###   ########.fr       */
+/*   Updated: 2016/10/18 17:26:17 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,19 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <sys/types.h>
+# include <dirent.h>
 # include <errno.h>
 # include <stdio.h>
 
 # define UNUSED(x) (void)(x)
+
+typedef enum	e_mode
+{
+	NORMAL,
+	COPY,
+	HISTORY,
+	AUTOCOMPLETE
+}				t_mode;
 
 typedef struct	s_shell
 {
@@ -30,6 +39,7 @@ typedef struct	s_shell
 	int			history_position;
 	int			last_exit_code;
 	t_prompt	*prompt;
+	t_mode		mode;
 }				t_shell;
 
 /*

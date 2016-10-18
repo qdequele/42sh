@@ -14,9 +14,13 @@
 
 t_status action_move_up(char *buf)
 {
+	t_shell		*shell;
+
+	shell = recover_shell();
 	if (!SHIFT_UP)
 		return (TRYING);
-	utils_move_up();
+	if (shell->mode == NORMAL)
+		utils_move_up();
 	return (READING);
 }
 

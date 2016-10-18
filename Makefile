@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/17 14:52:00 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/18 17:12:05 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ _SRC		=	builtins/builtins_cd.c\
 				prompt/utils/prompt_utils_free-char.c\
 				prompt/utils/prompt_utils_show-end-of-line.c\
 				prompt/prompt.c\
+				prompt/prompt_actions_list.c\
 				prompt/prompt_find.c\
 				prompt/prompt_init.c\
 				shell/shell.c\

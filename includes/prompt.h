@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 14:02:48 by RAZOR            ###   ########.fr       */
+/*   Updated: 2016/10/18 17:30:05 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@
 # define HOME ((buf[0] == 27 && buf[1] == 91 && buf[2] == 72))
 # define END ((buf[0] == 27 && buf[1] == 91 && buf[2] == 70))
 # define IGNORE_1 ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49))
-# define QUIT ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
+# define QUIT_NORMALE ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
+# define QUIT_COPY ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
 
 
 # define ALT_C (buf[0] == -61 && buf[1] == -89 && buf[2] == 0)
@@ -173,8 +174,16 @@ t_status	action_move_max_bottom(char *buf);
 */
 t_status	prompt_find_function(char *buf);
 /*
+** Prompt_action_list.c
+*/
+void		*get_actions_normal(void);
+void		*get_actions_copy(void);
+void		*get_actions_autocomplete(void);
+void		*get_actions_history(void);
+/*
 ** Prompt_actions_copy.c
 */
+t_status  	action_copy_quit(char *buf);
 t_status	main_action_copy(char *buf);
 t_status	action_copy(char *buf);
 /*

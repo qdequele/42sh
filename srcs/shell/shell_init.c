@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/15 11:55:57 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 16:19:50 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void		init_shell(void)
 	shell->history_position = 0;
 	shell->last_exit_code = 0;
 	shell->prompt = NULL;
+	shell->mode = NORMAL;
 }
