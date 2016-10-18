@@ -3,6 +3,7 @@
 X : Todo
 O : Done
 F : Need Fix
+I : Impossible
 
 prototype : - X : blabla (username)
 
@@ -29,6 +30,7 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - X : history search builtins history | ctrl+R (eebersol)
+- I : History reduce with content already write (qdequele) ! trop dure, il faut avoir un "shadow line"
 - X : autocomplete (gbourson)
 - O : Move max top (qdequele)
 - O : Move max bottom (qdequele)
