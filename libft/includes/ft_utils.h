@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:53 by qdequele          #+#    #+#             */
-/*   Updated: 2016/02/26 11:39:28 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 13:58:41 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,8 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_wordcount(char const *s, char c);
 int				ft_wordlen(char const *s, char c);
+void    		ft_console_log(char *str);
+void    		ft_console_log_num(int num);
+void    		ft_console_log_clear(void);
 
 #endif

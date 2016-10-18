@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 18:18:07 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/18 14:57:09 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,20 @@ void    utils_move_up(void)
 	shell = recover_shell();
 	term = recover_term();
 	i = 0;
+	ft_console_log("utils_move_up\n");
+	ft_console_log("i_position before : ");
+	ft_console_log_num(shell->prompt->i_position);
+	ft_console_log("\n");
 	while (i < term->wins.ws_col && shell->prompt->i_position >= 0)
 	{
 		utils_move_left();
 		i++;
 	}
+	if (shell->prompt->i_position > 0)
+		shell->prompt->i_position--;
+	ft_console_log("i_position after : ");
+	ft_console_log_num(shell->prompt->i_position);
+	ft_console_log("\n\n");
 }
 
 void    utils_move_down(void)
@@ -37,11 +46,18 @@ void    utils_move_down(void)
 	shell = recover_shell();
 	term = recover_term();
 	i = 0;
-	while (i < term->wins.ws_col && shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	ft_console_log("utils_move_down\n");
+	ft_console_log("i_position before : ");
+	ft_console_log_num(shell->prompt->i_position);
+	ft_console_log("\n");
+	while (i <= term->wins.ws_col && shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
 		i++;
 	}
+	ft_console_log("i_position after : ");
+	ft_console_log_num(shell->prompt->i_position);
+	ft_console_log("\n\n");
 }
 
 void    utils_move_left(void)
@@ -66,7 +82,14 @@ void    utils_move_right(void)
 	if(shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		shell->prompt->i_position++;
-		if ((shell->prompt->i_position + shell->prompt->p_length - 1) % term->wins.ws_col == 0){
+		// ft_console_log("utils_move_right\n");
+		// ft_console_log("position : ");
+		// ft_console_log_num(shell->prompt->i_position + shell->prompt->p_length);
+		// ft_console_log("\n");
+		// ft_console_log("ws_col : ");
+		// ft_console_log_num(term->wins.ws_col);
+		// ft_console_log("\n\n");
+		if ((shell->prompt->i_position + shell->prompt->p_length) % term->wins.ws_col == 0){
 			tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
 			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
 		}

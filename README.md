@@ -21,10 +21,10 @@ prototype : - X : blabla (username)
 - X : move word right alt+right (qdequele)
 - O : move start fn+left | home (qdequele)
 - O : move end fn+right | end (qdequele)
-- F : move up alt+up (qdequele)
-- F : move down alt+down (qdequele)
+- O : move up alt+up (qdequele)
+- O : move down alt+down (qdequele)
 - X : quotes " ' (eebersol)
-- X : Good implementation of tab or spaces (qdequele)
+- 0 : Good implementation of tab or spaces (qdequele)
 
 ###Bonus
 
