@@ -45,6 +45,7 @@
 
 # define ALT_C (buf[0] == -61 && buf[1] == -89 && buf[2] == 0)
 # define ALT_V (buf[0] == -30 && buf[1] == -120 && buf[2] == -102)
+# define ALT_X (buf[0] == -30 && buf[1] == -119 && buf[2] == -120 && buf[3] == 0)
 /*
 ** CLSTR- Clear the screen
 ** MESTR - Turn off all attributes
@@ -119,6 +120,7 @@ typedef struct	s_prompt
 	int 		i_copy;
 	char 		*str_cpy;
 	int 		copy_mode;
+	int 		cut_len;
 }				t_prompt;
 
 /*
@@ -186,6 +188,11 @@ t_status	action_copy(char *buf);
 ** Prompt_actions_paste.c
 */
 t_status	action_paste(char *buf);
+t_status	action_copy(char *buf);
+/*
+** Prompt_actions_cut.c
+*/
+t_status	action_cut(char *buf);
 /*
 ** Prompt_init.c
 */
