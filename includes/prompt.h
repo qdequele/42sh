@@ -45,6 +45,7 @@
 # define ALT_C (buf[0] == -61 && buf[1] == -89 && buf[2] == 0)
 # define ALT_V (buf[0] == -30 && buf[1] == -120 && buf[2] == -102)
 # define ALT_X (buf[0] == -30 && buf[1] == -119 && buf[2] == -120 && buf[3] == 0)
+# define ALT_B (buf[0] == -30 && buf[1] == -120 && buf[2] == -85 && buf[3] == 0)
 /*
 ** CLSTR- Clear the screen
 ** MESTR - Turn off all attributes
@@ -185,6 +186,10 @@ t_status	action_copy(char *buf);
 ** Prompt_actions_cut.c
 */
 t_status	action_cut(char *buf);
+/*
+** Prompt_actions_free_copy.c
+*/
+t_status 	action_free(char *buf);
 /*
 ** Prompt_init.c
 */

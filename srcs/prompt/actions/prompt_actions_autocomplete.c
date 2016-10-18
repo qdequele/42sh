@@ -43,14 +43,14 @@ static void stock_cmd_binaire(t_shell *shell, t_list **list_bin)
 	char		**tab_bin;
 	int			i;
 
+	(void)shell;
 	i = 0;
 	name_bin = NULL;
 	env = g_env;
 	tab_bin = ft_strsplit(env_get(env, "PATH"), ':');
 	while (tab_bin[i])
 	{
-		
-		name_bin = ft_strdup(builtins[i].name);
+		// name_bin = ft_strdup(builtins[i].name);
 		ft_lstaddend(list_bin, ft_lstnew(name_bin, sizeof(ft_strlen(name_bin))));
 		ft_strdel(&name_bin);
 		i++;
