@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 14:30:45 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/18 17:54:59 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/18 20:00:26 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,8 @@ SRC					=	$(FT_ARR_SRC) $(FT_IS_SRC) $(FT_LST_SRC) $(FT_MEM_SRC)\
 						$(FT_PARSER_SRC)
 INCLUDES			=	./includes/
 OBJ					=	$(SRC:.c=.o)
-CFLAGS				=	-Wall -Wextra -Werror
+_CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra
 
 all: $(NAME)
 
