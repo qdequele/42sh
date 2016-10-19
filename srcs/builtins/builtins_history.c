@@ -18,7 +18,7 @@ static	void	display_history(t_list *list)
 	int		i;
 
 	cur = list;
-	i = 0;
+	i = 1;
 	while (cur)
 	{
 		ft_putnbr(i);

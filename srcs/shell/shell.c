@@ -34,6 +34,12 @@ void		shell_exec_line(char *line)
 	while (l_cmd[i])
 	{
 		cmds = ft_str_to_tab(l_cmd[i]);
+		if (cmds[0][0] == '!')
+		{
+			cmds[0] = action_seek_to_history(cmds[0]);
+			if (cmds[0] == NULL)
+				return ;
+		}
 		shell_core(&env, cmds);
 		i++;
 	}

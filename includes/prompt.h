@@ -47,6 +47,9 @@
 # define ALT_V (buf[0] == -30 && buf[1] == -120 && buf[2] == -102)
 # define ALT_X (buf[0] == -30 && buf[1] == -119 && buf[2] == -120 && buf[3] == 0)
 # define ALT_B (buf[0] == -30 && buf[1] == -120 && buf[2] == -85 && buf[3] == 0)
+
+# define SEEK_HISTORY ((buf[0] == 33 && buf[1] == 0 && buf[2] == 0))
+
 /*
 ** CLSTR- Clear the screen
 ** MESTR - Turn off all attributes
@@ -149,6 +152,7 @@ t_status	action_insert_char(char *buf);
 */
 t_status	action_history_up(char *buf);
 t_status	action_history_down(char *buf);
+char		*action_seek_to_history(char *buf);
 /*
 ** Prompt_actions_move.c
 */
