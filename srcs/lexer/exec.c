@@ -31,10 +31,12 @@ t_cmd 	*parse_cmd(char *cmd)
 	size_t		i;
 
 	i = 0;
-	while (i < (ft_strlen(cmd)) && cmd[i] != '|')
+	while (i < (ft_strlen(cmd)) && cmd[i] != '|' && cmd[i] != '<')
 		i++;
 	if (ft_strchr(cmd, '|'))
 		return (parse_pipe(cmd));
+	if (ft_strchr(cmd, '<'))
+		return (parse_heredoc(cmd));
 	else
 		return (build_exec(cmd));
 }
@@ -49,6 +51,8 @@ void	exec_cmd(t_cmd *cmd)
 		pipe = (t_pipe*)cmd;
 		exec_pipe(cmd);
 	}
+	else if (cmd->type == HEREDOC)
+		exec_heredoc(cmd);
 	else if (cmd->type == EXEC)
 	{
 		exec = (t_exec*)cmd;

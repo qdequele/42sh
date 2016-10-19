@@ -44,8 +44,8 @@ typedef struct   s_error
 typedef struct   s_heredoc 
 {
     t_type      type;
-    t_type      *left;
-    t_type      *right;
+    t_cmd       *left;
+    t_list      *right;
 }               t_heredoc;
 
 typedef struct  s_redirection 
@@ -66,6 +66,14 @@ typedef struct          s_exec
 /*
 ** lexer.c
 */
+/*
+** heredoc.c
+*/
+t_cmd   *build_heredoc(char *left, t_list *list);
+t_cmd   *parse_heredoc(char *complet_pipe);
+t_list  *heredoc_right(char *s1);
+void    exec_heredoc(t_cmd *cmd);
+void    print_stdout(t_heredoc *p_cmd, int *p);
 /*
 ** pipe.c
 */

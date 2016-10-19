@@ -32,6 +32,8 @@ char 	*body_right(char *cmd, char c)
 	while (cmd[i] != c && cmd[i] != '\0')
 		i++;
 	i++;
+	if (c == '<')
+		i += 2;
 	cmd = ft_strsub(cmd, i, ft_strlen(cmd) - i);
 	ft_strtrim(cmd);
 	return (cmd);
