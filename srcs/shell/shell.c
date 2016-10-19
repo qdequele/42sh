@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:54:05 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/19 17:27:17 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		shell_exec_line(char *line)
 	while (l_cmd[i])
 	{
 		cmds = ft_str_to_tab(l_cmd[i]);
-		shell_core(&env, cmds);
+		shell_core(&env, cmds);//TODO : Starting here
 		i++;
 	}
 }

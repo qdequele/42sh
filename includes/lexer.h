@@ -1,33 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh.h                                            :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:24:35 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/19 17:21:03 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_H
-# define SH_H
+#ifndef LEXER_H
+# define LEXER_H
 # include <libft.h>
-# include <builtins.h>
-# include <cmd.h>
-# include <env.h>
-# include <prompt.h>
-# include <shell.h>
-# include <sig.h>
-# include <term.h>
-# include <lexer.h>
 
-# include <sys/wait.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <errno.h>
+typedef enum    e_type
+{
+    ERROR,
+    REDIRECTION,
+    PIPE,
+    HEREDOC,
+    EXEC
+}               t_type;
+
+typedef struc s_cmd 
+{
+    t_type      type;
+}               t_cmd;
+
+typedef struc   s_pipe 
+{
+    t_type      type;
+    t_type      left;
+    t_type      right;
+}               t_pipe;
+
+typedef struc   s_error 
+{
+    t_type      type;
+    char        *msg;
+}               t_error;
+
+typedef struc   s_heredoc 
+{
+    t_type      type;
+    t_type      left;
+    t_type      right;
+}               t_heredoc;
+
+
 
 #endif
