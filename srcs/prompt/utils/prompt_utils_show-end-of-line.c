@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 12:51:31 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/19 15:48:23 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void    print_eol(void)
     }
     write(term->tty, string, i);
     shell->prompt->i_position += i;
-    while (i >= 0)
+    while (i > 0)
     {
         utils_move_left();
         i--;
