@@ -14,11 +14,6 @@
 # define FT_UTILS_H
 # define BUFF_SIZE 64
 
-typedef enum 	e_bool
-{ 
-	FALSE, 
-	TRUE 
-} 				t_bool;
 
 typedef struct	s_color {
 	double		r;

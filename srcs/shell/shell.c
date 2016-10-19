@@ -25,6 +25,7 @@ void		shell_exec_line(char *line)
 {
 	char	**cmds;
 	char	**l_cmd;
+	t_cmd 	*cmd;
 	t_list	*env;
 	int		i;
 
@@ -40,7 +41,12 @@ void		shell_exec_line(char *line)
 			if (cmds[0] == NULL)
 				return ;
 		}
-		shell_core(&env, cmds); //TODO : Starting here
+		if ((cmd = parse_cmd(l_cmd[i])) && builtins_find(l_cmd[i]) == 0)
+		{
+			exec_cmd(cmd);
+		}
+		else
+			shell_core(&env, cmds); //TODO : Starting here
 		i++;
 	}
 }

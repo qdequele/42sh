@@ -31,8 +31,8 @@ typedef struct  s_cmd
 typedef struct   s_pipe 
 {
     t_type      type;
-    t_type      left;
-    t_type      right;
+    t_cmd       *left;
+    t_cmd       *right;
 }               t_pipe;
 
 typedef struct   s_error 
@@ -44,8 +44,8 @@ typedef struct   s_error
 typedef struct   s_heredoc 
 {
     t_type      type;
-    t_type      left;
-    t_type      right;
+    t_type      *left;
+    t_type      *right;
 }               t_heredoc;
 
 typedef struct  s_redirection 
@@ -56,6 +56,32 @@ typedef struct  s_redirection
     int         mode;
 }               t_redirection;
 
+typedef struct          s_exec
+{
+    t_type              type;
+    char                *cmd;
+    char                **opt;
+}                       t_exec;
 
+/*
+** lexer.c
+*/
+/*
+** pipe.c
+*/
+t_cmd   *build_pipe(char *left, char *right);
+t_cmd   *parse_pipe(char *complet_pipe);
+void    exec_pipe(t_cmd *cmd);
+/*
+** exec.c
+*/
+void    exec_cmd(t_cmd *cmd);
+t_cmd  *parse_cmd(char *cmd);
+t_cmd   *build_exec(char *str);
+/*
+** utils/body.c
+*/
+char    *body_left(char *cmd, char c);
+char    *body_right(char *cmd, char c);
 
 #endif
