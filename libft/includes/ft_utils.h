@@ -6,13 +6,19 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:53 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 13:58:41 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/19 17:37:32 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_UTILS_H
 # define FT_UTILS_H
 # define BUFF_SIZE 64
+
+typedef enum 	e_bool
+{ 
+	FALSE, 
+	TRUE 
+} 				t_bool;
 
 typedef struct	s_color {
 	double		r;
