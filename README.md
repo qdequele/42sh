@@ -40,7 +40,7 @@ prototype : - X : blabla (username)
 ###Mandatory
 
 - O : Line separator ; (qdequele)
-- X : pipes | ()
+- O : pipes | ()
 - X : redirect << < >> > ()
 - X : file descriptor agregator 2>&- ()
 - X : Catch execution return number $? ()
@@ -49,7 +49,7 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - X : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) ()
-- X : heredoc << ()
+- F : heredoc << ()
 - X : back quotes ` ()
 - X : sub shells () ()
 - X : local varaibles unset export ()
