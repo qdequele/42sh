@@ -44,7 +44,7 @@ prototype : - X : blabla (username)
 - X : redirect << < >> > ()
 - X : file descriptor agregator 2>&- ()
 - X : Catch execution return number $? ()
-- X : Logic operation || && ()
+- X : Logic operation || && (qdequele)
 
 ###Bonus
 
@@ -52,7 +52,7 @@ prototype : - X : blabla (username)
 - F : heredoc << ()
 - X : back quotes ` ()
 - X : sub shells () ()
-- X : local varaibles unset export ()
+- X : local varaibles unset export $ ()
 - X : Job controls job / fg / bg / & ()
 - X : Shell script ()
 
