@@ -51,7 +51,7 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - X : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) ()
-- X : heredoc << ()
+- F : heredoc << ()
 - X : back quotes ` ()
 - X : sub shells () ()
 - X : local varaibles unset export ()
