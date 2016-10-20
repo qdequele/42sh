@@ -27,6 +27,7 @@ _SRC		=	builtins/builtins_cd.c\
 				lexer/pipe.c\
 				lexer/exec.c\
 				lexer/utils/body.c\
+				lexer/utils/fork_close.c\
 				lexer/heredoc.c\
 				prompt/actions/prompt_actions_autocomplete.c\
 				prompt/actions/prompt_actions_char.c\

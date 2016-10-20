@@ -38,5 +38,7 @@ char 	*action_seek_to_history(char *cmds)
 		return (NULL);
 	}	
 	ft_putendl_fd(str, term->tty);
+	ft_lstdel(&shell->prompt->line, free_char);
+	string_to_list(str);
 	return (str);
 }

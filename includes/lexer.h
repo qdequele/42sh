@@ -67,13 +67,17 @@ typedef struct          s_exec
 ** lexer.c
 */
 /*
+** utils/fork_close.c
+*/
+void    fork_close(int *f1);
+/*
 ** heredoc.c
 */
 t_cmd   *build_heredoc(char *left, t_list *list);
 t_cmd   *parse_heredoc(char *complet_pipe);
 t_list  *heredoc_right(char *s1);
 void    exec_heredoc(t_cmd *cmd);
-void    print_stdout(t_heredoc *p_cmd, int *p);
+void    put_heredoc_result(t_heredoc *p_cmd, int *p);
 /*
 ** pipe.c
 */

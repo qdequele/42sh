@@ -17,7 +17,9 @@ void		shell_core(t_list **env, char **cmds)
 	if (cmds[0] && builtins_find(cmds[0]))
 		builtins_exec(env, cmds);
 	else if (cmds[0])
+	{
 		shell_find_cmd(*env, cmds);
+	}
 }
 
 
@@ -46,7 +48,9 @@ void		shell_exec_line(char *line)
 			exec_cmd(cmd);
 		}
 		else
+		{
 			shell_core(&env, cmds); //TODO : Starting here
+		}
 		i++;
 	}
 }

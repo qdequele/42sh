@@ -14,6 +14,8 @@
 
 static void	print_erno(char *str, int err)
 {
+	if (str[0] == '!') // Permet de remplacer de !index, par ce qu'il y a dans l'history
+		str = list_to_string();
 	print_shell_err("42sh : ");
 	if (err)
 		print_shell_err(strerror(errno));

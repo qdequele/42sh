@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// need to be replace by gbourson builtins_echo
 #include <ft_sh.h>
 
 static	char 	*check_second_quote(char *str)
@@ -38,9 +39,7 @@ static	void	put_echo(char *str)
 	int i;
 
 	i = 0;
-	printf("coucou\n");
 	str = check_second_quote(str);
-	printf("str = %s\n", str);
 	while(str[i] != '\0')
 	{
 		if (str[i] == '\\')
