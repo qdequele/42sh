@@ -32,7 +32,8 @@ char	*prompt_create_line(void)
 		ft_bzero(buf, 9);
 		if (status == FOUND)
 		{
-			return (list_to_string());
+			if (check_quote(list_to_string()) != NULL)
+				return (check_quote(list_to_string()));
 		}
 	}
 	return (NULL);

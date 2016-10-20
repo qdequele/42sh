@@ -87,7 +87,7 @@ void	exec_heredoc(t_cmd *cmd)
 	if (pipe(p) == 0)
 	{
 		if ((pid[0] = fork()) == 0)
-			print_stdout(p_cmd, p);
+			put_heredoc_result(p_cmd, p);
 		else if ((pid[1] = fork()) == 0)
 		{
 			dup2(p[0], 0);

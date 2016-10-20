@@ -56,12 +56,12 @@ typedef struct  s_redirection
     int         mode;
 }               t_redirection;
 
-typedef struct          s_exec
+typedef struct  s_exec
 {
-    t_type              type;
-    char                *cmd;
-    char                **opt;
-}                       t_exec;
+    t_type      type;
+    char        *cmd;
+    char        **opt;
+}               t_exec;
 
 /*
 ** lexer.c
