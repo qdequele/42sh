@@ -23,6 +23,8 @@ t_prompt	*init_prompt(void)
 	prompt->i_copy = 0;
 	prompt->str_cpy = ft_strnew(1);
 	prompt->cut_len = 0;
+	prompt->quote_type = 0;
+	prompt->quote_number = 0;
 	return (prompt);
 }
 

@@ -56,8 +56,5 @@ void	exec_pipe(t_cmd *cmd)
 		exec_cmd(p_cmd->right);
 		exit(0);
 	}
-	close(pipes[0]);
-	close(pipes[1]);
-	waitpid(-1, 0, 0);
-	waitpid(-1, 0, 0);
+	fork_close(pipes);
 }

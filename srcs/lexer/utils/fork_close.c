@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   body.c                                             :+:      :+:    :+:   */
+/*   fork_close.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,26 +12,10 @@
 
 #include <ft_sh.h>
 
-char	*body_left(char *cmd, char c)
+void	fork_close(int *f1)
 {
-	int 	i;
-
-	i = 0;
-	while (cmd[i] != c)
-		i++;
-	cmd = ft_strsub(cmd, 0, i);
-	return (cmd);
-}
-
-char 	*body_right(char *cmd, char c)
-{
-	int 	i;
-
-	i = 0;
-	while (cmd[i] != c)
-		i++;
-	cmd = ft_strsub(cmd, i, ft_strlen(cmd) - i);
-	return (cmd);
-
-
+	close(f1[0]);
+	close(f1[1]);
+	waitpid(-1, 0, 0);
+	waitpid(-1, 0, 0);
 }

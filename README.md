@@ -34,14 +34,16 @@ prototype : - X : blabla (username)
 - X : autocomplete (gbourson)
 - O : Move max top (qdequele)
 - O : Move max bottom (qdequele)
+- X : Operator || and &&
 
 ##Command execution
 
 ###Mandatory
 
 - O : Line separator ; (qdequele)
-- O : pipes | ()
-- X : redirect << < >> > ()
+- O : pipes | (eebersol)
+- X : redirect  < >> > ()
+- O : herdoc << (eebersol)
 - X : file descriptor agregator 2>&- ()
 - X : Catch execution return number $? ()
 - X : Logic operation || && (qdequele)

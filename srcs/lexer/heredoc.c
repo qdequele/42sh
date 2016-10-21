@@ -42,6 +42,8 @@ t_list	*heredoc_right(char *s1)
 	ret = NULL;
 	buf = ft_strnew(1);
 	list = NULL;
+
+	
 	ft_putstr("heredoc> ");
 	while (read(0, buf, 1))
 	{
@@ -62,7 +64,7 @@ t_list	*heredoc_right(char *s1)
 	return (list);
 }
 
-void	print_stdout(t_heredoc *p_cmd, int *p)
+void 	put_heredoc_result(t_heredoc *p_cmd, int *p)
 {
 	dup2(p[1], 1);
 	close(p[0]);
@@ -85,7 +87,7 @@ void	exec_heredoc(t_cmd *cmd)
 	if (pipe(p) == 0)
 	{
 		if ((pid[0] = fork()) == 0)
-			print_stdout(p_cmd, p);
+			put_heredoc_result(p_cmd, p);
 		else if ((pid[1] = fork()) == 0)
 		{
 			dup2(p[0], 0);
@@ -93,10 +95,7 @@ void	exec_heredoc(t_cmd *cmd)
 			exec_cmd(p_cmd->left);
 			exit(0);
 		}
-		close(p[0]);
-		close(p[1]);
-		waitpid(-1, 0, 0);
-		waitpid(-1, 0, 0);
+		fork_close(p);
 	}
 	else
 		exit(2);
