@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 11:03:23 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/21 16:02:47 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 16:24:46 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ char 		**str_split_str(char *str, char *cmp)
 	nb_match = ft_nmatch(str, ft_strfjoin(ft_strdup("* "), ft_strfjoin(ft_strdup(cmp), ft_strdup(" *"))));
 	l_str = ft_strsplit(str, ' ');
 	ret = (char **)malloc(sizeof(char *) * (nb_match + 1));
+	if (nb_match == 0)
+	{
+		ret[0] = ft_strdup(str);
+		return (ret);
+	}
 	if (ret == NULL)
 		return (NULL);
 	while(l_str[i])
