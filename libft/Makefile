@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 14:30:45 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/19 00:56:38 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/21 13:29:38 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ FT_STR_SRC			=	$(addprefix ft_str/,$(_FT_STR_SRC))
 _FT_UTILS_SRC		=	ft_atoi.c ft_itoa.c ft_bzero.c ft_toupper.c ft_tolower.c\
 						ft_nbrlen.c ft_nbrlen_base.c ft_wordlen.c ft_wordcount.c\
 						ft_itoa_base.c ft_get_next_line.c ft_colors.c \
-						ft_console.c
+						ft_console.c ft_match.c ft_nmatch.c
 
 FT_UTILS_SRC		=	$(addprefix ft_utils/,$(_FT_UTILS_SRC))
 

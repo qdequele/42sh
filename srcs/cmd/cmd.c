@@ -35,7 +35,7 @@ static int	shell_exec_cmd(t_list *env, char **cmds, char *path)
 	status = 0;
 	pid = fork();
 	if (pid == -1)
-		return (1)
+		return (1);
 	if (pid != 0)
 		waitpid(pid, &status, 0);
 	else

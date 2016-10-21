@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:31:13 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 15:55:57 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_cmd	*parse_pipe(char *complet_pipe)
 	return (build_pipe(left_cmd, right_cmd));
 }
 
-void	exec_pipe(t_cmd *cmd)
+int	exec_pipe(t_cmd *cmd)
 {
 	t_pipe	*p_cmd;
 	int		pipes[2];
@@ -41,7 +41,10 @@ void	exec_pipe(t_cmd *cmd)
 
 	p_cmd = (t_pipe*)cmd;
 	if (pipe(pipes) != 0)
+	{
 		ft_putendl_fd("pipe error", 2);
+		return (1);
+	}
 	else if ((pid[0] = fork()) == 0)
 	{
 		dup2(pipes[1], STDOUT_FILENO);
@@ -57,4 +60,5 @@ void	exec_pipe(t_cmd *cmd)
 		exit(0);
 	}
 	fork_close(pipes);
+	return (0);
 }

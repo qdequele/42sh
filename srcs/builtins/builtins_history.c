@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/20 17:08:46 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 15:01:52 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static	void	display_history(t_list *list)
 	{
 		ft_putnbr(i);
 		ft_putstr("     ");
-		ft_putendl_fd(cur->content, 1);
+		if (cur->content_size != 0)
+			ft_putstr_c(RED, ft_strjoin(cur->content, "\n"));
+		else
+			ft_putendl_fd(cur->content, 1);
 		cur = cur->next;
 		i++;
 	}

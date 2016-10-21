@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:51:24 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 15:59:13 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ void    fork_close(int *f1);
 t_cmd   *build_heredoc(char *left, t_list *list);
 t_cmd   *parse_heredoc(char *complet_pipe);
 t_list  *heredoc_right(char *s1);
-void    exec_heredoc(t_cmd *cmd);
+int     exec_heredoc(t_cmd *cmd);
 void    put_heredoc_result(t_heredoc *p_cmd, int *p);
 /*
 ** pipe.c
 */
 t_cmd   *build_pipe(char *left, char *right);
 t_cmd   *parse_pipe(char *complet_pipe);
-void    exec_pipe(t_cmd *cmd);
+int     exec_pipe(t_cmd *cmd);
 /*
 ** exec.c
 */
-void    exec_cmd(t_cmd *cmd);
+int     exec_cmd(t_cmd *cmd);
 t_cmd  *parse_cmd(char *cmd);
 t_cmd   *build_exec(char *str);
 /*

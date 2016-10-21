@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:56 by qdequele          #+#    #+#             */
-/*   Updated: 2016/02/16 11:25:25 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 13:47:54 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ char	*ft_strstr(const char *s1, const char *s2);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s);
 char	*ft_freejoin(char *s1, char *s2);
+char 	**str_split_str(char *str, char *cmp);
 
 #endif

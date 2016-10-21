@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:31:13 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 16:01:01 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_cmd 	*parse_cmd(char *cmd)
 		return (build_exec(cmd));
 }
 
-void	exec_cmd(t_cmd *cmd)
+int		exec_cmd(t_cmd *cmd)
 {
 	t_pipe	*pipe;
 	t_exec	*exec;
@@ -49,13 +49,14 @@ void	exec_cmd(t_cmd *cmd)
 	if (cmd->type == PIPE)
 	{
 		pipe = (t_pipe*)cmd;
-		exec_pipe(cmd);
+		return(exec_pipe(cmd));
 	}
 	else if (cmd->type == HEREDOC)
-		exec_heredoc(cmd);
+		return(exec_heredoc(cmd));
 	else if (cmd->type == EXEC)
 	{
 		exec = (t_exec*)cmd;
-		shell_find_cmd(g_env, exec->opt);
+		return (shell_find_cmd(g_env, exec->opt));
 	}
+	return (1);
 }

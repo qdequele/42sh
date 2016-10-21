@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 17:26:17 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 16:05:02 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,12 @@ typedef struct	s_shell
 /*
 **	Shell.c
 */
-void		shell_core(t_list **env, char **cmds);
-void		shell_exec_line(char *line);
+int			shell_core(t_list **env, char **cmds);
+int			shell_exec_line(char *line);
 void		shell_get_lines(void);
+int 		shell_parse_or_line(char *cmd);
+int 		shell_parse_and_line(char *cmd);
+int 		shell_parse_semicolon_line(char *line);
 /*
 **	Shell_init.c
 */
