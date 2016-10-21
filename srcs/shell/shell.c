@@ -6,22 +6,27 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:27:47 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 12:55:16 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-void		shell_core(t_list **env, char **cmds)
+int		shell_core(t_list **env, char **cmds)
 {
 	if (cmds[0] && builtins_find(cmds[0]))
-		builtins_exec(env, cmds);
+		return(builtins_exec(env, cmds));
 	else if (cmds[0])
-		shell_find_cmd(*env, cmds);
+		return(shell_find_cmd(*env, cmds));
 }
 
 
-void		shell_exec_line(char *line)
+void		shell_exec_line(char *cmd)
+{
+
+}
+
+int 		shell_parse_line(char *line)
 {
 	char	**cmds;
 	char	**l_cmd;
@@ -39,7 +44,7 @@ void		shell_exec_line(char *line)
 		{
 			cmds[0] = action_seek_to_history(cmds[0]);
 			if (cmds[0] == NULL)
-				return ;
+				return (0);
 		}
 		if ((cmd = parse_cmd(l_cmd[i])) && builtins_find(l_cmd[i]) == 0)
 		{

@@ -49,6 +49,7 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - X : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) ()
+- X : catch last exit code in history
 - F : heredoc << ()
 - X : back quotes ` ()
 - X : sub shells () ()

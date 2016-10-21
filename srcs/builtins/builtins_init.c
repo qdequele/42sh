@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:53:59 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/20 17:09:52 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ int					builtins_exec(t_list **env, char **cmds)
 			return (builtins[i].f(env, cmds));
 		i++;
 	}
-	return (0);
+	return (1);
 }

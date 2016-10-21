@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:53:57 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/20 17:06:34 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ int			builtins_cd(t_list **env, char **cmds)
 	getcwd(new_path, 1024);
 	env_add_or_modify(env, ft_strdup("PWD"), ft_strdup(new_path));
 	env_add_or_modify(env, ft_strdup("OLDPWD"), ft_strdup(old_path));
-	return (1);
+	return (0);
 }

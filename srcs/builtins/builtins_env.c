@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:53:58 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/20 17:07:37 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				builtins_env(t_list **env, char **cmds)
 	options = builtins_env_options();
 	option_init(&options, 1);
 	if (options_parser(&options, 1, cmds, "env") == 0)
-		return (0);
+		return (1);
 	i = 1;
 	tmp_env = (options[0].used) ? NULL : env_cpy(*env);
 	while (cmds[i] && cmds[i][0] == '-')
@@ -65,5 +65,5 @@ int				builtins_env(t_list **env, char **cmds)
 		shell_core(&tmp_env, &cmds[i]);
 	else
 		env_show(tmp_env);
-	return (1);
+	return (0);
 }
