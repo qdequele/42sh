@@ -34,13 +34,18 @@ static int	shell_exec_cmd(t_list *env, char **cmds, char *path)
 
 	status = 0;
 	pid = fork();
-	if (pid == -1)
-		return (1);
 	if (pid != 0)
+	{
+		ft_console_log("shell_exec_cmd : waitpid\n");
 		waitpid(pid, &status, 0);
+	}
 	else
+	{
+		ft_console_log("shell_exec_cmd : execve\n");
 		execve(path, cmds, env_parse_from_list(env));
-	return (0);
+		ft_console_log("shell_exec_cmd : after execve\n");
+	}
+	return (status);
 }
 
 int		shell_find_cmd(t_list *env, char **cmds)
@@ -53,12 +58,21 @@ int		shell_find_cmd(t_list *env, char **cmds)
 	i = 0;
 	while (paths && paths[i + 1])
 	{
+		ft_console_log("shell_find_cmd : test 1\n");
 		if (i == 0)
 			path = cmds[0];
+		ft_console_log("shell_find_cmd : test 2\n");
 		if (access(path, X_OK) == 0)
-			return (shell_exec_cmd(env, cmds, path));
+			{
+				ft_console_log("shell_find_cmd : test 3\n");
+				return (shell_exec_cmd(env, cmds, path));
+			}
 		else if (i == 0 && ft_strchr(cmds[0], '/'))
+		{
+			ft_console_log("shell_find_cmd : test 4\n");
 			return (print_erno(cmds[0], 1));
+		}
+		ft_console_log("shell_find_cmd : test 5\n");
 		path = ft_strfjoin(ft_strfjoin(paths[i], "/"), cmds[0]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 11:03:23 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/21 16:24:46 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/22 19:54:51 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ char 		**str_split_str(char *str, char *cmp)
 	j = 0;
 	if (str == NULL || cmp == NULL)
 		return (NULL);
-	nb_match = ft_nmatch(str, ft_strfjoin(ft_strdup("* "), ft_strfjoin(ft_strdup(cmp), ft_strdup(" *"))));
+	nb_match = ft_nmatch(ft_strdup(str), ft_strdup(ft_strjoin(ft_strdup("*"), ft_strjoin(ft_strdup(cmp), ft_strdup("*")))));
 	l_str = ft_strsplit(str, ' ');
-	ret = (char **)malloc(sizeof(char *) * (nb_match + 1));
+	ret = (char **)malloc(sizeof(char *) * (nb_match + 2));
+	ret[nb_match + 1] = NULL;
 	if (nb_match == 0)
 	{
 		ret[0] = ft_strdup(str);
@@ -63,9 +64,15 @@ char 		**str_split_str(char *str, char *cmp)
 		return (NULL);
 	while(l_str[i])
 	{
-		if (ft_strcmp(l_str[i], cmp) == 0)
+		if (ft_strcmp(ft_strdup(l_str[i]), ft_strdup(cmp)) == 0)
 			j++;
-		ret[j] = ft_strfjoin(ret[j], ft_strfjoin(ft_strdup(" "), l_str[i]));
+		else
+		{
+			if (ret[j] == NULL)
+				ret[j] = ft_strdup(l_str[i]);
+			else
+				ret[j] = ft_strdup(ft_strjoin(ft_strdup(ret[j]), ft_strjoin(ft_strdup(" "), ft_strdup(l_str[i]))));
+		}
 		i++;
 	}
 	return (ret);

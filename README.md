@@ -45,19 +45,18 @@ prototype : - X : blabla (username)
 - X : redirect  < >> > ()
 - O : herdoc << (eebersol)
 - X : file descriptor agregator 2>&- ()
-- X : Catch execution return number $? ()
-- X : Logic operation || && (qdequele)
+- X : Catch execution return number $? (qdequele)
+- F : Logic operation || && (qdequele)
 
 ###Bonus
 
-- X : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) ()
-- X : catch last exit code in history
-- F : heredoc << ()
-- X : back quotes ` ()
-- X : sub shells () ()
-- X : local varaibles unset export $ ()
+- F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol)
+- F : catch last exit code in history (qdequele)
+- X : back quotes ` (eebersol)
+- X : sub shells () (eebersol)
+- X : local varaibles unset export $ (qdequele)
 - X : Job controls job / fg / bg / & ()
-- X : Shell script ()
+- I : Shell script ()
 
 ##Builtins
 
@@ -73,10 +72,8 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - O : History (eebersol)
-- X : Read ()
+- X : Read (qdequele)
 
 #Liste des bugs :
 
-- Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
-- home ne vas pas à la bonne destination la premiere fois
--multi-ligne sur paste.
+- 
