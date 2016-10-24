@@ -21,11 +21,24 @@ static void	inser_char(char c)
 	shell = recover_shell();
 	term = recover_term();
 	new = ft_lstnew(&c, sizeof(char));
+	ft_console_log("add char : ");
+    ft_console_log((char *)(new->content));
+    ft_console_log(" at position : ");
+	ft_console_log_num(shell->prompt->i_position);
+	ft_console_log("\n");
 	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_position);
 	shell->prompt->i_position++;
+	ft_console_log("i_position after : ");
+    ft_console_log_num(shell->prompt->i_position);
+    ft_console_log("\n");
 	tputs(IMSTR, 0, ft_tputs);
 	ft_putchar_fd(c, term->tty);
 	tputs(EISTR, 0, ft_tputs);
+	ft_console_log("i_position : ");
+	ft_console_log_num(shell->prompt->i_position);
+    ft_console_log(" vs l_length : ");
+	ft_console_log_num(ft_lstcount(shell->prompt->line));
+    ft_console_log("\n");
 	if (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		print_eol();
@@ -36,9 +49,9 @@ t_status	action_insert_char(char *buf)
 {
 	if (buf[0])
 		inser_char(buf[0]);
-	if (buf[1])
+	else if (buf[1])
 		inser_char(buf[1]);
-	if (buf[2])
+	else
 		inser_char(buf[2]);
 	return (READING);
 }

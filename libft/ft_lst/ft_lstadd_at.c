@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:10:53 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 16:14:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/24 13:35:47 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstadd_at(t_list **lst, t_list *new, int at)
 	int	i;
 	t_list 			*tmp;
 
-	i = 0;
+	i = 1;
 	tmp = *lst;
 	if (at > ft_lstcount(tmp) || at < 0)
 		return ;

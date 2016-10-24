@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/22 20:10:13 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/24 11:37:30 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,11 @@ void	shell_get_lines(void)
 		print_shell();
 		shell->history_position = 0;
 		line = prompt_create_line();
+		ft_console_log(line);
+		ft_console_log("\n");
 		ret = shell_parse_semicolon_line(line);
 		ft_lstadd(&shell->history,
-			ft_lstnew(line, ret));
+			ft_lstnew(line, sizeof(char) * ft_strlen(line)));
 	}
 	return ;
 }
