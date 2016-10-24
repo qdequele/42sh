@@ -24,11 +24,14 @@ _SRC		=	builtins/builtins_cd.c\
 				cmd/cmd.c\
 				env/env_parser.c\
 				env/env_utils.c\
+				lexer/lexer.c\
 				lexer/pipe.c\
 				lexer/exec.c\
 				lexer/utils/body.c\
 				lexer/utils/fork_close.c\
 				lexer/heredoc.c\
+				lexer/redirection.c\
+				lexer/parse_redirection.c\
 				prompt/actions/prompt_actions_autocomplete.c\
 				prompt/actions/prompt_actions_char.c\
 				prompt/actions/prompt_actions_cmd.c\

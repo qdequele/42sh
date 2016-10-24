@@ -36,7 +36,7 @@ void		shell_exec_line(char *line)
 	l_cmd = ft_strsplit(line, ';');
 	while (l_cmd[i])
 	{
-		cmds = ft_str_to_tab(l_cmd[i]);
+		cmds = ft_str_to_tab(l_cmd[i]); // Pb str_to_tab
 		if (cmds[0][0] == '!')
 		{
 			cmds[0] = action_seek_to_history(cmds[0]);
@@ -67,8 +67,10 @@ void	shell_get_lines(void)
 		print_shell();
 		shell->history_position = 0;
 		line = prompt_create_line();
+		// printf("SHell_get_line 1.1 : %s\n", line);
 		ft_lstadd(&shell->history,
-			ft_lstnew(line, sizeof(char) * ft_strlen(line)));
+			ft_lstnew(line, sizeof(char*) * ft_strlen(line))); // pb line ici
+		// printf("SHell_get_line 2 .1: %s\n", line);
 		shell_exec_line(line);
 	}
 	return ;

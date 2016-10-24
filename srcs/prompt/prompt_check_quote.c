@@ -12,18 +12,40 @@
 
 #include <ft_sh.h>
 
+int 	quote_close(char *str, char c)
+{
+	int i;
+	int j;
+	
+	i = 0;
+	j = 0;
+	while(str[i] != '\0')
+	{
+		if (str[i] == c)
+			j++;
+		if (j == 2)\
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 char 	*remove_quote (char type, char *str)
 {
 	char 	*dst;
 	int 	i;
 	int 	j;
+	int 	k;
 
 	i = 0;
 	j = 0;
+	k = 0;
 	dst = ft_strnew(1);
 	while (str[i] != '\0')
 	{
-		if (str[i] != type)
+		if (str[i] == type)
+			k++;
+		else if (str[i] != type && k != 2)
 		{
 			dst[j] = str[i];
 			j++;
@@ -33,7 +55,7 @@ char 	*remove_quote (char type, char *str)
 	return (dst);
 }
 // TODO : actualiser la longueur du prompt et la i_position si error
-char 	*check_quote(char *line)
+int 	check_quote(char *line)
 {
 	t_shell 	*shell;
 	t_prompt 	*prompt;
@@ -46,28 +68,24 @@ char 	*check_quote(char *line)
 	j = 0;
 	while (line[i] != '\0')
 	{
-		// if ((line[i] == ('"' | '`' | '\'' | '(')) && prompt->quote_number < 2)
 		if ((line[i] == '"' || line[i] == '\'' || line[i] == '(' || line[i] == '`')
 			&& prompt->quote_number < 2)
 		{
 			prompt->quote_type = line[i];
-			prompt->quote_number++;
-		}
-		else if (prompt->quote_number == 2)
-		{
-			prompt->quote_type = line[i];
-			prompt->quote_number = 1;
+			if (quote_close(ft_strsub(line, i, ft_strlen(line)), prompt->quote_type) == 1 && prompt->quote_error == 0)
+			{
+				line = remove_quote(prompt->quote_type, ft_strsub(line, i, ft_strlen(line)));
+				prompt->quote_number = 0;	
+			}
+			else
+			{
+				display_quote_error(prompt->quote_type);
+				return (0);
+			}
 		}
 		i++;
 	}
-	if (prompt->quote_number % 2 != 0)
-		display_quote_error(prompt->quote_type);
-	else 
-	{
-		line = remove_quote(prompt->quote_type, line);
-		return (line);
-	}
-	return (NULL);
+	return (1);
 }
 
 void	print_error(char flag)

@@ -32,8 +32,10 @@ char	*prompt_create_line(void)
 		ft_bzero(buf, 9);
 		if (status == FOUND)
 		{
-			if (check_quote(list_to_string()) != NULL)
-				return (check_quote(list_to_string()));
+			if (check_quote(list_to_string()) == 1)
+			{
+				return (remove_quote(prompt->quote_type, list_to_string()));
+			}
 		}
 	}
 	return (NULL);

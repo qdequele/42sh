@@ -24,7 +24,7 @@ prototype : - X : blabla (username)
 - O : move end fn+right | end (qdequele)
 - O : move up alt+up (qdequele)
 - O : move down alt+down (qdequele)
-- X : quotes " ' (eebersol)
+- F : quotes " ' (eebersol)
 - 0 : Good implementation of tab or spaces (qdequele)
 
 ###Bonus
@@ -42,7 +42,7 @@ prototype : - X : blabla (username)
 
 - O : Line separator ; (qdequele)
 - O : pipes | (eebersol)
-- X : redirect  < >> > ()
+- O : redirect  < >> > (eebersol)
 - O : herdoc << (eebersol)
 - X : file descriptor agregator 2>&- ()
 - X : Catch execution return number $? ()
@@ -51,8 +51,8 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - X : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) ()
-- F : heredoc << ()
-- X : back quotes ` ()
+- O : heredoc << (eebersol)
+- F : back quotes ` (eebersol)
 - X : sub shells () ()
 - X : local varaibles unset export ()
 - X : Job controls job / fg / bg / & ()
@@ -79,3 +79,4 @@ prototype : - X : blabla (username)
 - Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
 - home ne vas pas à la bonne destination la premiere fois
 -multi-ligne sur paste.
+-SHELL get line soucis buffer
