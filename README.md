@@ -83,4 +83,5 @@ prototype : - X : blabla (username)
 - Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
 - home ne vas pas à la bonne destination la premiere fois
 -multi-ligne sur paste.
+- pb builtin_cd ne marche pas
 

@@ -51,7 +51,7 @@ int		exec_cmd(t_cmd *cmd)
 	else if (cmd->type == EXEC)
 	{
 		exec = (t_exec*)cmd;
-		return (shell_find_cmd(g_env, exec->opt));
+		return (shell_core(&g_env, exec->opt));
 	}
 	return (1);
 }

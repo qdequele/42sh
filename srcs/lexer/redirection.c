@@ -33,12 +33,15 @@ void			exec_redirection(t_cmd *cmd)
 	int					old_fd;
 
 	rcmd = (t_redirection*)cmd;
-	if ((new_fd = open(rcmd->right, rcmd->mode, S_IRUSR | S_IWUSR)) == -1)
+	if (rcmd->fd_right != 0)
+		new_fd = rcmd->fd_right;
+	else if ((new_fd = open(rcmd->right, rcmd->mode, S_IRUSR | S_IWUSR)) == -1)
 	{
-		// error_no_file(rcmd->right);
+		// error_no_file->right);
 		printf("ERRROR\n");
 		return ;
 	}
+	printf("new_fd = [%d]\n", new_fd);
 	old_fd = dup(rcmd->fd_left);
 	printf("L : [%s] R : [%s] - M [%d] O [%d] N [%d]\n", (char*)rcmd->left, (char*)rcmd->right, rcmd->mode, new_fd, old_fd);
 	dup2(new_fd, rcmd->fd_left);

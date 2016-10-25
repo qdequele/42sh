@@ -42,10 +42,13 @@ int 	*parse_fd(char *pattern)
 		fd[0] = ft_atoi(&pattern[0]);
 	else
 		fd[0] = 1;
-	if (ft_isdigit(pattern[(ft_strlen(pattern) - 1)]))
+	printf("1\n");
+	if (ft_isdigit(pattern[(ft_strlen(pattern) - 1)])
+		&& ft_isdigit(pattern[(ft_strlen(pattern) - 2)] == '&'))
 		fd[1] = ft_atoi(&pattern[ft_strlen(pattern) - 1]);
 	else
-		fd[1] = 1;
+		fd[1] = 0;
+	printf("2\n");
 	return (fd);
 }
 
@@ -72,9 +75,10 @@ char 	*parse_right(char *str)
 
 	i = 1;
 	begin_str = ft_strchr(str, '>');
+	printf("begin_str = %s\n", begin_str);
 	while (begin_str[i] != '\0')
 	{
-		if (begin_str[i - 1] && begin_str[i - 1] == '>' && (ft_isdigit(begin_str[i]) || begin_str[i] == ' '))
+		if (begin_str[i - 1] && begin_str[i - 1] == '>' && (ft_isdigit(begin_str[i]) || begin_str[i] == ' ' ))
 		{
 			return(ft_strtrim(ft_strsub(begin_str, i, ft_strlen(str))));
 		}
@@ -93,9 +97,13 @@ t_cmd	*parse_redirection(char *str)
 
 	fd = (int*)malloc(sizeof(int) * 2);
 	left = parse_left(str);
+	printf("3\n");
 	right = parse_right(str);
+	printf("4 [%s]\n", right);
 	pattern = ft_strtrim(ft_strsub(str, ft_strlen(left), ft_strlen(str) - (ft_strlen(right) + 2)));
+	printf("5\n");
 	fd = parse_fd(pattern);
+	printf("[%d] [%s]\n", fd[1], right);
 	mode = parse_mode(pattern);
 	return (build_redirection(left, right, mode, fd[0], fd[1]));
 
