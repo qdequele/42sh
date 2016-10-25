@@ -17,7 +17,7 @@ prototype : - X : blabla (username)
 - O : move to left (qdequele)
 - O : move to right (qdequele)
 - O : History (eebersol)
-- X : Copy/Past/Cut (eebersol)
+- O : Copy/Past/Cut (eebersol)
 - O : move word left alt+left (qdequele)
 - O : move word right alt+right (qdequele)
 - O : move start fn+left | home (qdequele)
@@ -46,7 +46,7 @@ prototype : - X : blabla (username)
 - O : herdoc << (eebersol)
 - X : file descriptor agregator 2>&- ()
 - X : Catch execution return number $? (qdequele)
-- F : Logic operation || && (qdequele)
+- O : Logic operation || && (qdequele)
 
 ###Bonus
 
@@ -83,5 +83,4 @@ prototype : - X : blabla (username)
 - Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
 - home ne vas pas à la bonne destination la premiere fois
 -multi-ligne sur paste.
--SHELL get line soucis buffer
 
