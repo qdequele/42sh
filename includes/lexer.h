@@ -12,10 +12,11 @@
 
 #ifndef LEXER_H
 # define LEXER_H
-# include <libft.h>\
+# include <libft.h>
 
 # define M_WRITE_APPEND (O_WRONLY | O_NONBLOCK | O_CREAT | O_APPEND)
 # define M_WRITE_TRUNC (O_WRONLY | O_NONBLOCK | O_CREAT | O_TRUNC)
+# define M_READ_TRUNC (O_RDONLY | O_NONBLOCK | O_CREAT | O_TRUNC)
 
 typedef enum    e_type
 {
@@ -111,5 +112,10 @@ t_cmd   *build_exec(char *str);
 */
 char    *body_left(char *cmd, char c);
 char    *body_right(char *cmd, char c);
-
+/*
+** close_fd.c
+*/
+t_cmd   *parse_close_fd(char *str);
+char    *parse_left_close_fd(char *str);
+int     parse_fd_close_fd(char *str);
 #endif

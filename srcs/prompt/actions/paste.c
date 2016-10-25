@@ -17,9 +17,11 @@ t_status	action_paste(char *buf)
 	t_shell		*shell;
 	t_prompt	*prompt;
 	size_t		i;
+	int 		j;
 
 	shell = recover_shell();
 	prompt = shell->prompt;
+	j = 0;
 	i = 0;
 	if (!ALT_V)
 		return (TRYING);
@@ -30,10 +32,12 @@ t_status	action_paste(char *buf)
 		i++;
 	}
 	i = prompt->i_position;
-	tputs(SCSTR, 0, ft_tputs);
 	clean_prompt();
 	ft_lstshow_x(prompt->line, 0);
-	tputs(RCSTR, 0, ft_tputs);
-	prompt->i_position = i;
+	prompt->i_position = ft_lstcount(prompt->line);
+	while ((size_t)prompt->i_position > i)
+	{
+		utils_move_left();
+	}
 	return (READING);
 }
