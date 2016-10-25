@@ -127,7 +127,6 @@ typedef struct	s_prompt
 	int 		cut_len;
 	char 		quote_type;
 	int 		quote_number;
-	int 		quote_error;
 }				t_prompt;
 
 /*

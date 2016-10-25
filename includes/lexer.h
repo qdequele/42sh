@@ -118,4 +118,8 @@ char    *body_right(char *cmd, char c);
 t_cmd   *parse_close_fd(char *str);
 char    *parse_left_close_fd(char *str);
 int     parse_fd_close_fd(char *str);
+/*
+** parse_fd_aggregator.c
+*/
+t_cmd   *parse_fd_aggregator(char *str);
 #endif

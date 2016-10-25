@@ -33,6 +33,7 @@ _SRC		=	builtins/cd.c\
 				lexer/parse_redirection.c\
 				lexer/redirection.c\
 				lexer/close_fd.c\
+				lexer/fd_aggregator.c\
 				prompt/actions/autocomplete.c\
 				prompt/actions/char.c\
 				prompt/actions/cmd.c\

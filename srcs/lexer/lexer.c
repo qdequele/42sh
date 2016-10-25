@@ -31,8 +31,12 @@ t_cmd 	*parse_cmd(char *cmd)
 	{
 		return (parse_close_fd(cmd));
 	}
-	else if (ft_strchr(cmd, '>'))
+	else if (ft_strchr(cmd, '>') && (p_heredoc = ft_strchr(cmd, '&')) && p_heredoc[1] != '-')
 	 	return (parse_redirection(cmd));
+	if ((p_heredoc = ft_strchr(cmd, '&')) && p_heredoc[1] == '-')
+	{
+		return (parse_fd_aggregator(cmd));
+	}
 	else
 		return (build_exec(cmd));
 }   

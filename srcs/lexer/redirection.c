@@ -34,14 +34,14 @@ void			exec_redirection(t_cmd *cmd)
 
 
 	rcmd = (t_redirection*)cmd;
-	if (rcmd->fd_right > 0)
+	new_fd = rcmd->fd_right;
+	if (rcmd->fd_right == -1)
 	{
-		new_fd = rcmd->fd_right;
 		dup2(new_fd, rcmd->fd_left);
 		exec_cmd(rcmd->left);
 		return ;
 	}
-	if ((new_fd = open(rcmd->right, rcmd->mode, S_IRUSR | S_IWUSR)) == -1)
+	if (rcmd->mode == 0 && (new_fd = open(rcmd->right, rcmd->mode, S_IRUSR | S_IWUSR)) == -1)
 	{
 		// error_no_file->right);
 		printf("ERRROR\n");

@@ -25,7 +25,6 @@ t_prompt	*init_prompt(void)
 	prompt->cut_len = 0;
 	prompt->quote_type = 0;
 	prompt->quote_number = 0;
-	prompt->quote_error = 0;
 	return (prompt);
 }
 

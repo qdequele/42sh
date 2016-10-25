@@ -46,7 +46,7 @@ int 	*parse_fd(char *pattern)
 		&& pattern[(ft_strlen(pattern) - 2)] == '&')
 		fd[1] = ft_atoi(&pattern[ft_strlen(pattern) - 1]);
 	else
-		fd[1] = 1;
+		fd[1] = -1;
 	return (fd);
 }
 

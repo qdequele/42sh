@@ -19,9 +19,9 @@ int 	quote_close(char *str, char c)
 	
 	i = 0;
 	j = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if (str[i] == c)
+		if (str[i] == c || (str[i] == ')' && c == '('))
 			j++;
 		if (j == 2)\
 			return (1);
@@ -41,7 +41,6 @@ char 	*remove_quote (char type, char *str)
 	j = 0;
 	k = 0;
 	dst = ft_strnew(1);
-	printf("debut check_quote : %s\n", str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == type)
@@ -53,7 +52,6 @@ char 	*remove_quote (char type, char *str)
 		}
 		i++;
 	}
-	printf("Fin check_quote : %s\n", dst);
 	return (dst);
 }
 // TODO : actualiser la longueur du prompt et la i_position si error
@@ -70,11 +68,11 @@ int 	check_quote(char *line)
 	j = 0;
 	while (line[i] != '\0')
 	{
-		if ((line[i] == '"' || line[i] == '\'' || line[i] == '(' || line[i] == '`')
+		if ((line[i] == '"' || line[i] == '\'' || line[i] == '(' || line[i] == ')' || line[i] == '`')
 			&& prompt->quote_number < 2)
 		{
 			prompt->quote_type = line[i];
-			if (quote_close(ft_strsub(line, i, ft_strlen(line)), prompt->quote_type) == 1 && prompt->quote_error == 0)
+			if (quote_close(ft_strsub(line, i, ft_strlen(line)), prompt->quote_type) == 1)
 			{
 				line = remove_quote(prompt->quote_type, ft_strsub(line, i, ft_strlen(line)));
 				prompt->quote_number = 0;	
