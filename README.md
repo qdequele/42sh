@@ -24,7 +24,7 @@ prototype : - X : blabla (username)
 - O : move end fn+right | end (qdequele)
 - O : move up alt+up (qdequele)
 - O : move down alt+down (qdequele)
-- X : quotes " ' (eebersol)
+- F : quotes " ' (eebersol)
 - 0 : Good implementation of tab or spaces (qdequele)
 
 ###Bonus
@@ -42,7 +42,7 @@ prototype : - X : blabla (username)
 
 - O : Line separator ; (qdequele)
 - O : pipes | (eebersol)
-- X : redirect  < >> > ()
+- O : redirect  < >> > (eebersol)
 - O : herdoc << (eebersol)
 - X : file descriptor agregator 2>&- ()
 - X : Catch execution return number $? (qdequele)
@@ -50,6 +50,10 @@ prototype : - X : blabla (username)
 
 ###Bonus
 
+- O : heredoc << (eebersol)
+- F : back quotes ` (eebersol)
+- X : sub shells () ()
+- X : local varaibles unset export ()
 - F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol)
 - F : catch last exit code in history (qdequele)
 - X : back quotes ` (eebersol)
@@ -75,3 +79,9 @@ prototype : - X : blabla (username)
 - X : Read (qdequele)
 
 #Liste des bugs :
+
+- Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
+- home ne vas pas à la bonne destination la premiere fois
+-multi-ligne sur paste.
+- pb builtin_cd ne marche pas
+

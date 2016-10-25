@@ -26,25 +26,12 @@ t_cmd	*build_exec(char *str)
 }
 
 
-t_cmd 	*parse_cmd(char *cmd)
-{
-	size_t		i;
-
-	i = 0;
-	while (i < (ft_strlen(cmd)) && cmd[i] != '|' && cmd[i] != '<')
-		i++;
-	if (ft_strchr(cmd, '|'))
-		return (parse_pipe(cmd));
-	if (ft_strchr(cmd, '<'))
-		return (parse_heredoc(cmd));
-	else
-		return (build_exec(cmd));
-}
-
 int		exec_cmd(t_cmd *cmd)
 {
 	t_pipe	*pipe;
 	t_exec	*exec;
+	t_heredoc *heredoc;
+	t_redirection *redirection;
 
 	if (cmd->type == PIPE)
 	{
@@ -52,11 +39,19 @@ int		exec_cmd(t_cmd *cmd)
 		return(exec_pipe(cmd));
 	}
 	else if (cmd->type == HEREDOC)
-		return(exec_heredoc(cmd));
+	{
+		heredoc = (t_heredoc*)cmd;
+		exec_heredoc(cmd);
+	}
+	else if (cmd->type == REDIRECTION)
+	{
+		redirection = (t_redirection*)cmd;
+		exec_redirection(cmd);
+	}
 	else if (cmd->type == EXEC)
 	{
 		exec = (t_exec*)cmd;
-		return (shell_find_cmd(g_env, exec->opt));
+		return (shell_core(&g_env, exec->opt));
 	}
 	return (1);
 }

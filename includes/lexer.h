@@ -12,7 +12,10 @@
 
 #ifndef LEXER_H
 # define LEXER_H
-# include <libft.h>
+# include <libft.h>\
+
+# define M_WRITE_APPEND (O_WRONLY | O_NONBLOCK | O_CREAT | O_APPEND)
+# define M_WRITE_TRUNC (O_WRONLY | O_NONBLOCK | O_CREAT | O_TRUNC)
 
 typedef enum    e_type
 {
@@ -51,6 +54,8 @@ typedef struct   s_heredoc
 typedef struct  s_redirection 
 {
     t_type      type;
+    t_cmd       *left;
+    char        *right;
     int         fd_left;
     int         fd_right;
     int         mode;
@@ -66,6 +71,7 @@ typedef struct  s_exec
 /*
 ** lexer.c
 */
+t_cmd  *parse_cmd(char *cmd);
 /*
 ** utils/fork_close.c
 */
@@ -85,9 +91,19 @@ t_cmd   *build_pipe(char *left, char *right);
 t_cmd   *parse_pipe(char *complet_pipe);
 int     exec_pipe(t_cmd *cmd);
 /*
+** redirection.c
+*/
+t_cmd   *build_redirection(char *left, char *right, int mode, int fd_left, int fd_right);
+void    exec_redirection(t_cmd *cmd);
+t_cmd   *parse_redirection(char *redirection);
+char    *parse_left(char *str);
+char    *parse_right(char *str);
+int     *parse_fd(char *pattern);
+int     parse_mode(char *pattern);
+/*
 ** exec.c
 */
-int     exec_cmd(t_cmd *cmd);
+int       exec_cmd(t_cmd *cmd);
 t_cmd  *parse_cmd(char *cmd);
 t_cmd   *build_exec(char *str);
 /*

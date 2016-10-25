@@ -127,6 +127,7 @@ typedef struct	s_prompt
 	int 		cut_len;
 	char 		quote_type;
 	int 		quote_number;
+	int 		quote_error;
 }				t_prompt;
 
 /*
@@ -235,8 +236,11 @@ void		utils_move_max_bottom(void);
 /*
 ** prompt_check_quote.c
 */
-char 		*check_quote();
+int 		check_quote();
+// char  		*check_quote();
 void		print_error(char flag);
 void		display_quote_error(char c);
 char 		*remove_quote (char type, char *str);
+int 		quote_close(char *str, char c);
+
 #endif
