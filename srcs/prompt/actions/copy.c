@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_copy.c                              :+:      :+:    :+:   */
+/*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/18 17:30:19 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/25 16:44:16 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,25 @@ t_status		action_copy(char *buf)
 	shell = recover_shell();
 	term = recover_term();
 	prompt = shell->prompt;
+	prompt->str_cpy = ft_strnew(ft_lstcount(prompt->line));
 	if (!ALT_C)
 		return (TRYING);
 	if (prompt->i_position != ft_lstcount(prompt->line))
 	{
+		ft_console_log("test 1 : ");
+		ft_console_log_num(prompt->i_position);
+		ft_console_log("\n");
 		prompt->str_cpy[prompt->i_copy] = *(char*)(ft_lstget_at(prompt->line, prompt->i_position)->content);
 		tputs(MRSTR, 0, ft_tputs);
+		ft_console_log("test 2 : ");
+		ft_console_log_num(prompt->i_position);
+		ft_console_log(" -> ");
+		ft_console_log(&prompt->str_cpy[prompt->i_copy]);
+		ft_console_log("\n");
 		ft_putchar_fd(prompt->str_cpy[prompt->i_copy], term->tty);
+		ft_console_log("test 3 : ");
+		ft_console_log_num(prompt->i_position);
+		ft_console_log("\n");
 		tputs(MESTR, 0, ft_tputs);
 		prompt->i_position++;
 		prompt->i_copy++;
