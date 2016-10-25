@@ -6,59 +6,59 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/18 19:58:39 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/25 11:18:38 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Define the program
 NAME		=	42sh
 LIB			=	./libft/libft.a
-_SRC		=	builtins/builtins_cd.c\
-				builtins/builtins_echo.c\
-				builtins/builtins_env.c\
-				builtins/builtins_exit.c\
-				builtins/builtins_history.c\
-				builtins/builtins_init.c\
-				builtins/builtins_setenv.c\
-				builtins/builtins_unsetenv.c\
+_SRC		=	builtins/cd.c\
+				builtins/echo.c\
+				builtins/env.c\
+				builtins/exit.c\
+				builtins/history.c\
+				builtins/init.c\
+				builtins/setenv.c\
+				builtins/unsetenv.c\
 				cmd/cmd.c\
-				env/env_parser.c\
-				env/env_utils.c\
+				env/parser.c\
+				env/utils.c\
 				lexer/pipe.c\
 				lexer/exec.c\
 				lexer/utils/body.c\
 				lexer/utils/fork_close.c\
 				lexer/heredoc.c\
-				prompt/actions/prompt_actions_autocomplete.c\
-				prompt/actions/prompt_actions_char.c\
-				prompt/actions/prompt_actions_cmd.c\
-				prompt/actions/prompt_actions_history.c\
-				prompt/actions/prompt_actions_move.c\
-				prompt/actions/prompt_actions_move-word.c\
-				prompt/actions/prompt_actions_move-ext.c\
-				prompt/actions/prompt_actions_copy.c\
-				prompt/actions/prompt_actions_paste.c\
-				prompt/actions/prompt_actions_free_copy.c\
-				prompt/actions/prompt_actions_seek_to_history.c\
-				prompt/actions/prompt_actions_cut.c\
-				prompt/utils/prompt_utils_clear.c\
-				prompt/utils/prompt_utils_conversion.c\
-				prompt/utils/prompt_utils_move.c\
-				prompt/utils/prompt_utils_move-ext.c\
-				prompt/utils/prompt_utils_free-char.c\
-				prompt/utils/prompt_utils_show-end-of-line.c\
+				prompt/actions/autocomplete.c\
+				prompt/actions/char.c\
+				prompt/actions/cmd.c\
+				prompt/actions/history.c\
+				prompt/actions/move.c\
+				prompt/actions/move_word.c\
+				prompt/actions/move_ext.c\
+				prompt/actions/copy.c\
+				prompt/actions/paste.c\
+				prompt/actions/free_copy.c\
+				prompt/actions/seek_to_history.c\
+				prompt/actions/cut.c\
+				prompt/utils/clear.c\
+				prompt/utils/conversion.c\
+				prompt/utils/move.c\
+				prompt/utils/move_ext.c\
+				prompt/utils/free_char.c\
+				prompt/utils/show_end_of_line.c\
 				prompt/prompt.c\
-				prompt/prompt_actions_list.c\
-				prompt/prompt_find.c\
-				prompt/prompt_init.c\
-				prompt/prompt_check_quote.c\
+				prompt/actions_list.c\
+				prompt/find.c\
+				prompt/init.c\
+				prompt/check_quote.c\
 				shell/shell.c\
-				shell/shell_init.c\
-				shell/shell_print.c\
+				shell/init.c\
+				shell/print.c\
 				signals/signal.c\
-				signals/signal_handlers.c\
+				signals/handlers.c\
 				term/term.c\
-				term/term_utils.c\
+				term/utils.c\
 				main.c
 
 SRC			=	$(addprefix srcs/,$(_SRC))
