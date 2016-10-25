@@ -28,10 +28,10 @@ t_cmd	*build_exec(char *str)
 
 int		exec_cmd(t_cmd *cmd)
 {
-	t_pipe	*pipe;
-	t_exec	*exec;
-	t_heredoc *heredoc;
-	t_redirection *redirection;
+	t_pipe			*pipe;
+	t_exec			*exec;
+	t_heredoc 		*heredoc;
+	t_redirection	*redirection;
 
 	if (cmd->type == PIPE)
 	{

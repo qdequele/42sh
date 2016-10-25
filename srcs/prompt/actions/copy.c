@@ -29,6 +29,8 @@ t_status		action_copy(char *buf)
 	prompt = shell->prompt;
 	if (!ALT_C)
 		return (TRYING);
+	if (prompt->str_cpy[0] == '\0')
+		prompt->str_cpy = malloc(sizeof(char) *(ft_lstcount(prompt->line) + 1));
 	if (prompt->i_position != ft_lstcount(prompt->line))
 	{
 		prompt->str_cpy[prompt->i_copy] = *(char*)(ft_lstget_at(prompt->line, prompt->i_position)->content);
