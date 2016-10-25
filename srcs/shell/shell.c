@@ -6,59 +6,113 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:27:47 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/24 15:50:42 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-void		shell_core(t_list **env, char **cmds)
+int		shell_core(t_list **env, char **cmds)
 {
 	if (cmds[0] && builtins_find(cmds[0]))
-		builtins_exec(env, cmds);
+		return(builtins_exec(env, cmds));
 	else if (cmds[0])
-	{
-		shell_find_cmd(*env, cmds);
+		return(shell_find_cmd(*env, cmds));
+	else {
+		return (1);
 	}
 }
 
 
-void		shell_exec_line(char *line)
+int		shell_exec_line(char *line)
 {
-	char	**cmds;
-	char	**l_cmd;
 	t_cmd 	*cmd;
 	t_list	*env;
-	int		i;
+	char	**cmds;
 
 	env = g_env;
-	i = 0;
-	l_cmd = ft_strsplit(line, ';');
-	while (l_cmd[i])
+	cmds = ft_str_to_tab(line);
+	if (cmds[0][0] == '!')
 	{
-		cmds = ft_str_to_tab(l_cmd[i]); // Pb str_to_tab
-		if (cmds[0][0] == '!')
+		cmds[0] = action_seek_to_history(cmds[0]);
+		if (cmds[0] == NULL)
+			return (0);
+	}
+	if ((cmd = parse_cmd(line)) && builtins_find(line) == 0)
+	{
+		return (exec_cmd(cmd));
+	}
+	else
+	{
+		return (shell_core(&env, cmds));
+	}
+}
+
+
+int 		shell_parse_or_line(char *cmd)
+{
+	char	**l_cmd;
+	int		i;
+	int 	ret;
+
+	i = 0;
+	ret = 0;
+	l_cmd = str_split_str(cmd, "||");
+	while (l_cmd[i] != NULL && ft_strlen(l_cmd[i]) > 0)
+	{
+		ret = shell_parse_and_line(l_cmd[i]);
+		if (ret == 0)
 		{
-			cmds[0] = action_seek_to_history(cmds[0]);
-			if (cmds[0] == NULL)
-				return ;
-		}
-		if ((cmd = parse_cmd(l_cmd[i])) && builtins_find(l_cmd[i]) == 0)
-		{
-			exec_cmd(cmd);
-		}
-		else
-		{
-			shell_core(&env, cmds); //TODO : Starting here
+			return (0);
 		}
 		i++;
 	}
+	return (1);
+}
+
+int 		shell_parse_and_line(char *cmd)
+{
+	char	**l_cmd;
+	int		i;
+	int 	ret;
+
+	i = 0;
+	ret = 0;
+	l_cmd = str_split_str(cmd, "&&");
+	while (l_cmd[i])
+	{
+		ret = shell_exec_line(l_cmd[i]);
+		if (ret != 0)
+		{
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int 		shell_parse_semicolon_line(char *line)
+{
+	char	**l_cmd;
+	int		i;
+	int 	ret;
+
+	i = 0;
+	ret = 0;
+	l_cmd = ft_strsplit(line, ';');
+	while (l_cmd[i] != NULL && ft_strlen(l_cmd[i]) > 0)
+	{
+		ret = shell_parse_or_line(l_cmd[i]);
+		i++;
+	}
+	return (ret);
 }
 
 void	shell_get_lines(void)
 {
 	t_shell	*shell;
 	char	*line;
+	int 	ret;
 
 	shell = recover_shell();
 	init_shell();
@@ -67,11 +121,9 @@ void	shell_get_lines(void)
 		print_shell();
 		shell->history_position = 0;
 		line = prompt_create_line();
-		// printf("SHell_get_line 1.1 : %s\n", line);
+		ret = shell_parse_semicolon_line(line);
 		ft_lstadd(&shell->history,
-			ft_lstnew(line, sizeof(char*) * ft_strlen(line))); // pb line ici
-		// printf("SHell_get_line 2 .1: %s\n", line);
-		shell_exec_line(line);
+			ft_lstnew(line, sizeof(char) * ft_strlen(line)));
 	}
 	return ;
 }

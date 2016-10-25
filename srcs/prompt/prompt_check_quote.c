@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 16:36:02 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/24 15:56:20 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char 	*remove_quote (char type, char *str)
 	j = 0;
 	k = 0;
 	dst = ft_strnew(1);
+	printf("debut check_quote : %s\n", str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == type)
@@ -52,6 +53,7 @@ char 	*remove_quote (char type, char *str)
 		}
 		i++;
 	}
+	printf("Fin check_quote : %s\n", dst);
 	return (dst);
 }
 // TODO : actualiser la longueur du prompt et la i_position si error

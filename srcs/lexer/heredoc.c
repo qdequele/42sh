@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:27:47 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/21 16:00:10 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void 	put_heredoc_result(t_heredoc *p_cmd, int *p)
 	exit(0);
 }
 
-void	exec_heredoc(t_cmd *cmd)
+int	 exec_heredoc(t_cmd *cmd)
 {
 	t_heredoc	*p_cmd;
 	int			p[2];
@@ -96,7 +96,11 @@ void	exec_heredoc(t_cmd *cmd)
 			exit(0);
 		}
 		fork_close(p);
+		return (0);
 	}
 	else
+	{
 		exit(2);
+		return (1);
+	}
 }

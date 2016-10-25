@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd.h                                              :+:      :+:    :+:   */
+/*   ft_nmatch.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/21 15:04:02 by qdequele         ###   ########.fr       */
+/*   Created: 2015/09/13 11:07:43 by qdequele          #+#    #+#             */
+/*   Updated: 2016/10/21 17:13:57 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CMD_H
-# define CMD_H
-# include <libft.h>
+#include "../libft.h"
 
-int		shell_find_cmd(t_list *env, char **cmds);
-
-#endif
+int		ft_nmatch(char *s1, char *s2)
+{
+	if (*s1 != '\0' && *s2 == '*')
+		return (ft_nmatch(s1 + 1, s2) + ft_nmatch(s1, s2 + 1));
+	if (*s1 == '\0' && *s2 == '*')
+		return (ft_nmatch(s1, s2 + 1));
+	if (*s1 == *s2 && *s1 != '\0' && *s2 != '\0')
+		return (ft_nmatch(s1 + 1, s2 + 1));
+	if (*s1 == *s2 && *s1 == '\0' && *s2 == '\0')
+		return (1);
+	return (0);
+}

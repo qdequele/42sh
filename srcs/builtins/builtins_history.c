@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_history.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by eebersol          #+#    #+#             */
-/*   Updated: 2016/04/21 16:49:09 by eebersol         ###   ########.fr       */
+/*   Updated: 2016/10/21 15:01:52 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static	void	display_history(t_list *list)
 	{
 		ft_putnbr(i);
 		ft_putstr("     ");
-		ft_putendl_fd(cur->content, 1);
+		if (cur->content_size != 0)
+			ft_putstr_c(RED, ft_strjoin(cur->content, "\n"));
+		else
+			ft_putendl_fd(cur->content, 1);
 		cur = cur->next;
 		i++;
 	}
@@ -39,11 +42,11 @@ int			builtins_history(t_list **env, char **cmds)
 	{
 		ft_putstr_fd("42sh : no such event: ", 2);
 		ft_putstr_fd(cmds[1], 2);
-		return (0);
+		return (1);
 	}
 	shell->history = ft_lst_reverse(shell->history);
 	display_history(shell->history);
-	return (1);
+	return (0);
 }
 
 void		bultins_one_history(char *cmds)
@@ -58,7 +61,6 @@ void		bultins_one_history(char *cmds)
 	if ((shell->history = ft_lst_seek(shell->history, str)) != NULL)
 	{
 		(void)str;
-		//exec st
 	}
 	else
 	{
@@ -70,7 +72,6 @@ void		bultins_one_history(char *cmds)
 	if (i < ft_lstcount(shell->history) && i > 0)
 	{
 		shell->history = ft_lstget_at(shell->history, i);
-		//exec shell->history->content;
 	}
 	else
 	{

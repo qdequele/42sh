@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_echo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by eebersol          #+#    #+#             */
-/*   Updated: 2016/04/09 17:23:20 by eebersol         ###   ########.fr       */
+/*   Updated: 2016/10/20 17:07:06 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,5 @@ int		builtins_echo(t_list **env, char **cmds)
 	}
 	if (ft_strcmp("-n", cmds[1]) != 0)
 		ft_putchar('\n');
-	return (1);
+	return (0);
 }

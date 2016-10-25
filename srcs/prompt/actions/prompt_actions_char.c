@@ -36,9 +36,9 @@ t_status	action_insert_char(char *buf)
 {
 	if (buf[0])
 		inser_char(buf[0]);
-	if (buf[1])
+	else if (buf[1])
 		inser_char(buf[1]);
-	if (buf[2])
+	else
 		inser_char(buf[2]);
 	return (READING);
 }

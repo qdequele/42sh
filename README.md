@@ -45,18 +45,22 @@ prototype : - X : blabla (username)
 - O : redirect  < >> > (eebersol)
 - O : herdoc << (eebersol)
 - X : file descriptor agregator 2>&- ()
-- X : Catch execution return number $? ()
-- X : Logic operation || && ()
+- X : Catch execution return number $? (qdequele)
+- F : Logic operation || && (qdequele)
 
 ###Bonus
 
-- X : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) ()
 - O : heredoc << (eebersol)
 - F : back quotes ` (eebersol)
 - X : sub shells () ()
 - X : local varaibles unset export ()
+- F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol)
+- F : catch last exit code in history (qdequele)
+- X : back quotes ` (eebersol)
+- X : sub shells () (eebersol)
+- X : local varaibles unset export $ (qdequele)
 - X : Job controls job / fg / bg / & ()
-- X : Shell script ()
+- I : Shell script ()
 
 ##Builtins
 
@@ -72,7 +76,7 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - O : History (eebersol)
-- X : Read ()
+- X : Read (qdequele)
 
 #Liste des bugs :
 
@@ -80,3 +84,4 @@ prototype : - X : blabla (username)
 - home ne vas pas à la bonne destination la premiere fois
 -multi-ligne sur paste.
 -SHELL get line soucis buffer
+

@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 18:49:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/24 15:46:45 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*prompt_create_line(void)
 		{
 			if (check_quote(list_to_string()) == 1)
 			{
-				return (remove_quote(prompt->quote_type, list_to_string()));
+				return (list_to_string());
 			}
 		}
 	}

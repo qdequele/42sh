@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static void	print_erno(char *str, int err)
+static int	print_erno(char *str, int err)
 {
 	if (str[0] == '!') // Permet de remplacer de !index, par ce qu'il y a dans l'history
 		str = list_to_string();
@@ -24,9 +24,10 @@ static void	print_erno(char *str, int err)
 	print_shell_err(": ");
 	print_shell_err(str);
 	print_shell_err("\n");
+	return (1);
 }
 
-static void	shell_exec_cmd(t_list *env, char **cmds, char *path)
+static int	shell_exec_cmd(t_list *env, char **cmds, char *path)
 {
 	pid_t	pid;
 	int		status;
@@ -37,9 +38,10 @@ static void	shell_exec_cmd(t_list *env, char **cmds, char *path)
 		waitpid(pid, &status, 0);
 	else
 		execve(path, cmds, env_parse_from_list(env));
+	return (status);
 }
 
-void		shell_find_cmd(t_list *env, char **cmds)
+int		shell_find_cmd(t_list *env, char **cmds)
 {
 	char	**paths;
 	char	*path;
@@ -52,17 +54,11 @@ void		shell_find_cmd(t_list *env, char **cmds)
 		if (i == 0)
 			path = cmds[0];
 		if (access(path, X_OK) == 0)
-		{
-			shell_exec_cmd(env, cmds, path);
-			return ;
-		}
+			return (shell_exec_cmd(env, cmds, path));
 		else if (i == 0 && ft_strchr(cmds[0], '/'))
-		{
-			print_erno(cmds[0], 1);
-			return ;
-		}
+			return (print_erno(cmds[0], 1));
 		path = ft_strfjoin(ft_strfjoin(paths[i], "/"), cmds[0]);
 		i++;
 	}
-	print_erno(cmds[0], 0);
+	return (print_erno(cmds[0], 0));
 }
