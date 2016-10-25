@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/25 15:56:21 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/25 15:57:21 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void    utils_move_right(void)
 			tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
 			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
 		}
-		else {
+		else
+		{
             tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
         }
 	}
