@@ -33,9 +33,11 @@ t_status	action_paste(char *buf)
 	}
 	i = prompt->i_position;
 	clean_prompt();
-	while ((size_t)j < i)
-		utils_move_right();
 	ft_lstshow_x(prompt->line, 0);
-	prompt->i_position = i;
+	prompt->i_position = ft_lstcount(prompt->line);
+	while ((size_t)prompt->i_position > i)
+	{
+		utils_move_left();
+	}
 	return (READING);
 }

@@ -26,5 +26,5 @@ void	clean_prompt(void)
 		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 		utils_move_left();
 	}
-	exit(0);
+	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 }
