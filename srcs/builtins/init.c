@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_init.c                                    :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/20 17:09:52 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/25 15:36:02 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static t_builtin	*builtins_init(void)
 		{"env", builtins_env},
 		{"setenv", builtins_setenv},
 		{"unsetenv", builtins_unsetenv},
+		{"export", builtins_setenv},
+		{"unset", builtins_unsetenv},
 		{"exit", builtins_exit},
 		{"history", builtins_history},
 		{"echo", builtins_echo},
