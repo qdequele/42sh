@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_utils_move.c                                :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 18:01:26 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/25 15:57:21 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void    utils_move_up(void)
 		utils_move_left();
 		i++;
 	}
-	if (shell->prompt->i_position > 0)
-		shell->prompt->i_position--;
 }
 
 void    utils_move_down(void)
@@ -39,7 +37,8 @@ void    utils_move_down(void)
 	shell = recover_shell();
 	term = recover_term();
 	i = 0;
-	while (i <= term->wins.ws_col && shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	while (i < term->wins.ws_col
+	&& shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
 		i++;
@@ -68,11 +67,13 @@ void    utils_move_right(void)
 	if(shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		shell->prompt->i_position++;
-		if ((shell->prompt->i_position + shell->prompt->p_length) % term->wins.ws_col == 0){
+		if ((shell->prompt->i_position + shell->prompt->p_length)
+			% term->wins.ws_col == 0){
 			tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
 			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
 		}
-		else {
+		else
+		{
             tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
         }
 	}
