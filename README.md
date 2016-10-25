@@ -24,17 +24,17 @@ prototype : - X : blabla (username)
 - O : move end fn+right | end (qdequele)
 - O : move up alt+up (qdequele)
 - O : move down alt+down (qdequele)
-- F : quotes " ' (eebersol)
+- F : quotes " ' ` () (eebersol + qdequele)
 - 0 : Good implementation of tab or spaces (qdequele)
 
 ###Bonus
 
-- X : history search builtins history | ctrl+R (eebersol)
+- O : history search builtins history | ctrl+R (eebersol)
 - I : History reduce with content already write (qdequele) ! trop dure, il faut avoir un "shadow line"
-- X : autocomplete (gbourson)
+- X : autocomplete (qdequele)
 - O : Move max top (qdequele)
 - O : Move max bottom (qdequele)
-- X : Operator || and &&
+- O : Operator || and && (qdequele)
 
 ##Command execution
 
@@ -43,22 +43,16 @@ prototype : - X : blabla (username)
 - O : Line separator ; (qdequele)
 - O : pipes | (eebersol)
 - O : redirect  < >> > (eebersol)
-- O : herdoc << (eebersol)
-- X : file descriptor agregator 2>&- ()
+- X : file descriptor agregator 2>&- (eebersol)
 - X : Catch execution return number $? (qdequele)
 - O : Logic operation || && (qdequele)
 
 ###Bonus
 
 - O : heredoc << (eebersol)
-- F : back quotes ` (eebersol)
-- X : sub shells () ()
-- X : local varaibles unset export ()
 - F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol)
 - F : catch last exit code in history (qdequele)
-- X : back quotes ` (eebersol)
-- X : sub shells () (eebersol)
-- X : local varaibles unset export $ (qdequele)
+- O : local varaibles unset export $ (qdequele)
 - X : Job controls job / fg / bg / & ()
 - I : Shell script ()
 
