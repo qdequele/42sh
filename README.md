@@ -44,7 +44,7 @@ prototype : - X : blabla (username)
 - O : pipes | (eebersol)
 - O : redirect  < >> > (eebersol)
 - O : file descriptor agregator 2>&- (eebersol)
-- X : Catch execution return number $? (qdequele)
+- O : Catch execution return number $? (qdequele)
 - O : Logic operation || && (qdequele)
 
 ###Bonus

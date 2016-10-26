@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/21 16:05:02 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/26 13:04:47 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,9 @@ void		init_shell(void);
 */
 void		print_shell();
 void		print_shell_err(char *s);
+/*
+**	utils.c
+*/
+char   	 	*replace_vars(char *line);
 
 #endif

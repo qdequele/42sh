@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/25 11:18:38 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/26 12:33:36 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ _SRC		=	builtins/cd.c\
 				shell/shell.c\
 				shell/init.c\
 				shell/print.c\
+				shell/utils.c\
 				signals/signal.c\
 				signals/handlers.c\
 				term/term.c\
