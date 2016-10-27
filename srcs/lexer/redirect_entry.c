@@ -12,43 +12,23 @@
 
 #include <ft_sh.h>
 
-
-char 	*parse_left_close_fd(char *str)
+t_cmd	*parse_redirect_entry(char *cmd)
 {
-	int i;
+	char 	**body;
+	int  	*fd;
+	char 	*pattern;
+	char 	*type_of;
+	int 	mode;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i + 1] == '<' && ft_isdigit(str[i]))
-			return (ft_strtrim(ft_strsub(str, 0 , i)));
-		i++;
-	}
-	return (" ");
-}
-
-int 	parse_fd_close_fd(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (ft_isdigit(str[i]) && str[i + 1] == '<')
-			return (ft_atoi(&str[i]));
-		i++;
-	}
-	return (0);
-}
-
-t_cmd	*parse_close_fd(char *str)
-{
-	char *left;
-	int  fd;
-	int mode;
-
-	left = parse_left_close_fd(str);
-	fd = parse_fd_close_fd(str);
-	mode = 0;
-	return (build_redirection(left, " ", mode, fd, 0));
+	fd = (int*)malloc(sizeof(int) * 2);
+	body = (char**)malloc(sizeof(char*) * 2);
+	body [0]  = parse_left(cmd);
+	body[1] = parse_right(cmd);
+	pattern = ft_strtrim(ft_strsub(cmd, ft_strlen(body[0]) + 1, 1));
+	fd = parse_fd(pattern);
+	fd[0] = 0;
+	type_of = parse_type(pattern);
+	mode = parse_mode(pattern);
+	// printf("left : [%s] | right : [%s] | mode : [%d] | pattern  : [%s] | type : [%s] | fd_left [%d] | fd_right [%d]\n", body[0], body[1], mode, pattern, type_of, fd[0], fd[1]);
+	return (build_redirection(body, mode, fd, type_of));
 }

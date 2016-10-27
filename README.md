@@ -79,3 +79,13 @@ prototype : - X : blabla (username)
 -multi-ligne sur paste.
 - pb builtin_cd ne marche pas
 
+
+
+
+Ne pas y faire attention :
+
+1>&- , 2>&- , 1>&2 , 2>&1 || -> aggregateur de file descriptor;
+
+> , >>  || -> redirection de la sortie standard
+
+< , <<  || -> heredoc et redirection de l'entrée standard
