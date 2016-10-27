@@ -43,8 +43,8 @@ prototype : - X : blabla (username)
 - O : Line separator ; (qdequele)
 - O : pipes | (eebersol)
 - O : redirect  < >> > (eebersol)
-- X : file descriptor agregator 2>&- (eebersol)
-- X : Catch execution return number $? (qdequele)
+- O : file descriptor agregator 2>&- (eebersol)
+- O : Catch execution return number $? (qdequele)
 - O : Logic operation || && (qdequele)
 
 ###Bonus

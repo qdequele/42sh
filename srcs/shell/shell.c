@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/25 16:01:06 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/26 13:05:42 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ void	shell_get_lines(void)
 {
 	t_shell	*shell;
 	char	*line;
-	int 	ret;
 
 	shell = recover_shell();
 	init_shell();
@@ -121,7 +120,7 @@ void	shell_get_lines(void)
 		print_shell();
 		shell->history_position = 0;
 		line = prompt_create_line();
-		ret = shell_parse_semicolon_line(ft_strdup(line));
+		shell->last_exit_code = shell_parse_semicolon_line(replace_vars(ft_strdup(line)));
 		ft_lstadd(&shell->history,
 			ft_lstnew(line, sizeof(char) * ft_strlen(line)));
 	}
