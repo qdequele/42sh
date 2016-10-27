@@ -31,6 +31,7 @@ static int	is_formated(char *str)
 
 int			builtins_setenv(t_list **env, char **cmds)
 {
+	printf("cmds[1] : [%s] cmds[2] ; [%s]\n", cmds[1], cmds[2]);
 	if (!cmds[1])
 	{
 		env_show(*env);
@@ -41,12 +42,12 @@ int			builtins_setenv(t_list **env, char **cmds)
 		ft_putstr_c(RED, "setenv: Too many arguments.\n");
 		return (1);
 	}
-	else if (is_formated(cmds[1]) == -1)
+	else if (is_formated(cmds[1]) == -1 && !EXPORTS)
 	{
 		ft_putstr_c(RED, "setenv: Variable name must begin with a letter.\n");
 		return (1);
 	}
-	else if (is_formated(cmds[1]) == 0)
+	else if (is_formated(cmds[1]) == 0 && !EXPORTS)
 	{
 		ft_putstr_c(RED, "setenv: Variable name must contain ");
 		ft_putstr_c(RED, "alphanumeric characters.\n");

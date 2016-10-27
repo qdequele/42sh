@@ -84,8 +84,4 @@ prototype : - X : blabla (username)
 
 Ne pas y faire attention :
 
-1>&- , 2>&- , 1>&2 , 2>&1 || -> aggregateur de file descriptor;
-
-> , >>  || -> redirection de la sortie standard
-
-< , <<  || -> heredoc et redirection de l'entrée standard
+READ : manque les options, fixer le segfault quand pas de printf, cree une liste pour les variables exports.

@@ -41,9 +41,7 @@ t_list	*heredoc_right(char *s1)
 
 	ret = NULL;
 	buf = ft_strnew(1);
-	list = NULL;
-
-	
+	list = NULL;	
 	ft_putstr("heredoc> ");
 	while (read(0, buf, 1))
 	{

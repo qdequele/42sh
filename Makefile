@@ -19,6 +19,7 @@ _SRC		=	builtins/cd.c\
 				builtins/exit.c\
 				builtins/history.c\
 				builtins/init.c\
+				builtins/read.c\
 				builtins/setenv.c\
 				builtins/unsetenv.c\
 				cmd/cmd.c\
