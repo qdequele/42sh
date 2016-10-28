@@ -18,7 +18,7 @@ t_status	action_move_next_word(char *buf)
 	t_term		*term;
 	int 		i;
 
-	__DEBUG__
+	
 	if (!SHIFT_RIGHT)
 		return (TRYING);
 	shell = recover_shell();
@@ -44,7 +44,7 @@ t_status	action_move_last_word(char *buf)
 	t_term		*term;
 	int 		i;
 
-	__DEBUG__
+	
 	if (!SHIFT_LEFT)
 		return (TRYING);
 	shell = recover_shell();

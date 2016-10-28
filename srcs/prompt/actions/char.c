@@ -18,7 +18,6 @@ void	inser_char(char c)
 	t_list	*new;
 	t_term	*term;
 
-	__DEBUG__
 	shell = recover_shell();
 	term = recover_term();
 	new = ft_lstnew(&c, sizeof(char));

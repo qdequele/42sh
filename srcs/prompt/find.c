@@ -24,10 +24,10 @@ t_status		prompt_find_function(char *buf)
 	else
 		actions = get_actions_normal();
 	status = TRYING;
-	__DEBUG__
+	
 	while (*actions && status == TRYING)
 	{
-		__DEBUG__
+		
 		status = (*actions)(buf);
 		actions++;
 	}

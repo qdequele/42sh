@@ -53,6 +53,7 @@ _SRC		=	builtins/cd.c\
 				prompt/utils/free_char.c\
 				prompt/utils/line_cut.c\
 				prompt/utils/lst_sort.c\
+				prompt/utils/erase.c\
 				prompt/utils/show_end_of_line.c\
 				prompt/prompt.c\
 				prompt/actions_list.c\

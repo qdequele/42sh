@@ -19,7 +19,7 @@ t_status	action_paste(char *buf)
 	size_t		i;
 	int 		j;
 
-	__DEBUG__
+	
 	shell = recover_shell();
 	prompt = shell->prompt;
 	j = 0;

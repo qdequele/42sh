@@ -41,7 +41,7 @@ t_status		action_history_up(char *buf)
 	t_shell 	*shell;
 
 	shell = recover_shell();
-	__DEBUG__
+	
 	if (!UP)
 		return (TRYING);
 	if (ft_lstcount(shell->history) > 0)
@@ -57,7 +57,7 @@ t_status		action_history_down(char *buf)
 	t_shell *shell;
 
 	shell = recover_shell();
-	__DEBUG__
+	
 	if (!DOWN)
 		return (TRYING);
 	if (ft_lstcount(shell->history) > 0)

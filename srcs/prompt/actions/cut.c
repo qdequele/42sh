@@ -20,7 +20,6 @@ t_status	action_cut(char *buf)
 	int			i;
 	int			j;
 
-	__DEBUG__
 	shell = recover_shell();
 	prompt = shell->prompt;
 	if (!ALT_X)

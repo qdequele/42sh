@@ -14,7 +14,7 @@
 
 t_status	action_move_start(char *buf)
 {
-	__DEBUG__
+	
 	if (!HOME || !FN_LEFT)
 		return (TRYING);
     utils_move_start();
@@ -23,7 +23,7 @@ t_status	action_move_start(char *buf)
 
 t_status	action_move_end(char *buf)
 {
-	__DEBUG__
+	
 	if (!END || !FN_RIGHT)
 		return (TRYING);
 	utils_move_end();
@@ -35,7 +35,7 @@ t_status	action_move_max_top(char *buf)
 	t_shell		*shell;
 	t_term		*term;
 
-	__DEBUG__
+	
 	if (!SHIFT_MAJ_UP)
 		return (TRYING);
 	shell = recover_shell();
@@ -59,7 +59,7 @@ t_status	action_move_max_bottom(char *buf)
 	t_shell		*shell;
 	t_term		*term;
 
-	__DEBUG__
+	
 	if (!SHIFT_MAJ_DOWN)
 		return (TRYING);
 	shell = recover_shell();

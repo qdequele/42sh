@@ -17,7 +17,6 @@ t_status 	action_free(char *buf)
 	t_shell 	*shell;
 	t_prompt 	*prompt;
 
-	__DEBUG__
 	shell = recover_shell();
 	prompt = shell->prompt;
 	if (!ALT_B)
