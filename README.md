@@ -84,4 +84,8 @@ prototype : - X : blabla (username)
 
 Ne pas y faire attention :
 
-READ : manque les options, fixer le segfault quand pas de printf, cree une liste pour les variables exports.
+READ : manque les options, fixer le segfault quand pas de printf, cree une liste pour les variables exports. creer un unset et export
+
+Variable locale : Set affiche la liste des variables locales.
+				 .Unset -> pareil que unsetenv sauf qu'il permet en plus de supprimer les variables locales cree avec read.
+				 .Export pareil que setenv sauf qu'il ajoute aussi dans variable local

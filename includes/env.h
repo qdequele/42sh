@@ -20,6 +20,13 @@ typedef struct		s_env
 	char			*value;
 }					t_env;
 
+typedef struct 		s_local
+{
+	char 			*key;
+	char			*value;
+}					t_local;
+
+t_list 				*g_local;
 t_list				*g_env;
 
 /*

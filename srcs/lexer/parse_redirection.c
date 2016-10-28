@@ -58,7 +58,6 @@ int 	*parse_fd(char *pattern)
 		fd[0] = ft_atoi(&pattern[0]);
 	else
 		fd[0] = 1;
-	printf("|%c|\n", pattern[(ft_strlen(pattern) - 1)]);
 	if (ft_isdigit(pattern[(ft_strlen(pattern) - 1)]))
 		fd[1] = ft_atoi(&pattern[ft_strlen(pattern) - 1]);
 	else 

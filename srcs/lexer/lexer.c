@@ -29,7 +29,9 @@ t_cmd 	*parse_cmd(char *cmd)
 	else if (_REDIRECT_ENTRY_)
 		return (parse_redirect_entry(cmd));
 	else if (_REDIRECTION_ || _AGGREGATOR_FD_)
+	{
 	 	return (parse_redirection(cmd));
+	}
 	else
 		return (build_exec(cmd));
 }   
