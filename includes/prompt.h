@@ -241,11 +241,7 @@ void		utils_move_max_bottom(void);
 /*
 ** prompt_check_quote.c
 */
-<<<<<<< HEAD
-int			check_quote();
-=======
-int 		check_quote();
->>>>>>> f249f06e515103cfac96d2697c761830bd83b499
+int			check_quote(char *str);
 void		print_error(char flag);
 void		display_quote_error(char c);
 char		*remove_quote (char type, char *str);
