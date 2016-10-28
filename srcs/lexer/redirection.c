@@ -35,8 +35,8 @@ void			exec_redirection(t_cmd *cmd)
 
 	rcmd = (t_redirection*)cmd;
 	new_fd = rcmd->fd[1];
-	ft_console("DEBUT EXEC REDIRECTION\n");
-	ft_console("New_fd = %d\n", rcmd->fd[1]);
+	ft_console("begin exec_redirection\n");
+	ft_console("newfd : %d\n", rcmd->fd[1]);
 	if (rcmd->fd[1] == -1)
 	{
 		dup2(new_fd, rcmd->fd[1]);
@@ -46,23 +46,21 @@ void			exec_redirection(t_cmd *cmd)
 	if (rcmd->mode != 0  && (new_fd = open(rcmd->right, rcmd->mode, S_IRUSR | S_IWUSR)) == -1)
 	{
 		// error_no_file->right);
-		ft_console("ERRROR\n");
+		ft_console("error\n");
 		return ;
 	}
 	old_fd = dup(rcmd->fd[0]);
-	ft_console("%d = dup(%d)\n", old_fd, rcmd->fd[0]);
+	ft_console("%d : dup(%d)\n", old_fd, rcmd->fd[0]);
 	// ft_console("1.1 Old : [%d] New : [%d] - fd[0] : [%d] | fd[1] : [%d]\n", old_fd, new_fd, rcmd->fd[0], rcmd->fd[1]);
-	ft_console("dup2(new_fd, rcmd->fd[0]) -- dup2(%d, %d)\n", new_fd, rcmd->fd[0]);
-	printf("dup2(new_fd, rcmd->fd[0]) -- dup2(%d, %d)\n", new_fd, rcmd->fd[0]);
+	ft_console("dup2(%d, %d)\n", new_fd, rcmd->fd[0]);
 	dup2(new_fd, rcmd->fd[0]);
 	// close(new_fd);
 	ft_console("exec_cmd(%s)\n", (char*)rcmd->left);
 	exec_cmd(rcmd->left);
-	ft_console("dup2(old_fd, rcmd->fd[0]) -- dup2(%d, %d)\n", old_fd, rcmd->fd[0]);
+	ft_console("dup2(%d, %d)\n", old_fd, rcmd->fd[0]);
 	dup2(old_fd, rcmd->fd[0]);
 
 }
-
 t_cmd	*parse_redirection(char *str)
 {
 	char 	**body;
@@ -71,7 +69,7 @@ t_cmd	*parse_redirection(char *str)
 	int  	*fd;
 	int 	mode;
 
-	ft_console("DEBUT PARSE REDIRECTION\n");
+	ft_console("debut parse redirection\n");
 	fd = (int*)malloc(sizeof(int) * 2);
 	body = (char**)malloc(sizeof(char *) * 2);
 	body[0] = parse_left(str);

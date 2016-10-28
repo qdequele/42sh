@@ -28,7 +28,6 @@ char	*prompt_create_line(void)
 	{
 		if (!TAB)
 		{
-			ft_console("reset autocompletion position\n");
 			shell->autocomplete_position = 0;
 		}	
 		if ((copy_status = main_action_copy(buf)) == EXIT)
