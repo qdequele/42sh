@@ -30,7 +30,6 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - O : history search builtins history | ctrl+R (eebersol)
-- I : History reduce with content already write (qdequele) ! trop dure, il faut avoir un "shadow line"
 - X : autocomplete (qdequele)
 - O : Move max top (qdequele)
 - O : Move max bottom (qdequele)
@@ -51,10 +50,8 @@ prototype : - X : blabla (username)
 
 - O : heredoc << (eebersol)
 - F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol)
-- F : catch last exit code in history (qdequele)
 - O : local varaibles unset export $ (qdequele)
 - X : Job controls job / fg / bg / & ()
-- I : Shell script ()
 
 ##Builtins
 
@@ -76,6 +73,5 @@ prototype : - X : blabla (username)
 
 - Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
 - home ne vas pas à la bonne destination la premiere fois
--multi-ligne sur paste.
 - pb builtin_cd ne marche pas
 
