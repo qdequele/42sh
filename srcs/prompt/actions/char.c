@@ -12,12 +12,13 @@
 
 #include <ft_sh.h>
 
-static void	inser_char(char c)
+void	inser_char(char c)
 {
 	t_shell	*shell;
 	t_list	*new;
 	t_term	*term;
 
+	__DEBUG__
 	shell = recover_shell();
 	term = recover_term();
 	new = ft_lstnew(&c, sizeof(char));
@@ -45,21 +46,9 @@ t_status	action_insert_char(char *buf)
 
 t_status	action_delete_char(char *buf)
 {
-	t_shell	*shell;
-
 	if (!BACK_SPACE )
 		return (TRYING);
-	shell = recover_shell();
-	if(shell->prompt->i_position <= ft_lstcount(shell->prompt->line)
-		&& shell->prompt->i_position > 0)
-	{
-		tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);// move left
-		tputs(DMSTR, 1, ft_tputs);// enter in delete mode
-		tputs(DCSTR, 1, ft_tputs);// delete char
-		tputs(EDSTR, 1, ft_tputs);// exit delete mode
-		shell->prompt->i_position--;
-		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
-	}
+	erase_one_char();
 	return (READING);
 }
 

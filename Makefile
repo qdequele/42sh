@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/26 12:33:36 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/27 13:36:49 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ _SRC		=	builtins/cd.c\
 				prompt/utils/move.c\
 				prompt/utils/move_ext.c\
 				prompt/utils/free_char.c\
+				prompt/utils/line_cut.c\
+				prompt/utils/lst_sort.c\
 				prompt/utils/show_end_of_line.c\
 				prompt/prompt.c\
 				prompt/actions_list.c\

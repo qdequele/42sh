@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_cut.c                               :+:      :+:    :+:   */
+/*   cut.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eebersol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by eebersol          #+#    #+#             */
-/*   Updated: 2016/05/04 20:39:59 by eebersol         ###   ########.fr       */
+/*   Updated: 2016/10/28 12:10:47 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_status	action_cut(char *buf)
 	int			i;
 	int			j;
 
+	__DEBUG__
 	shell = recover_shell();
 	prompt = shell->prompt;
 	if (!ALT_X)

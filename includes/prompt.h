@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 19:15:29 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/28 16:57:08 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,17 +121,20 @@ typedef struct	s_prompt
 	t_list		*line;
 	int			i_position;
 	int			p_length;
-	int 		i_copy;
-	char 		*str_cpy;
-	int 		copy_mode;
-	int 		cut_len;
-	char 		quote_type;
-	int 		quote_number;
+	int			i_copy;
+	char		*str_cpy;
+	int			copy_mode;
+	int			cut_len;
+	char		quote_type;
+	int			quote_number;
 }				t_prompt;
 
 /*
 ** Prompt.c
 */
+void		get_cmd_list(t_list **possibilities, char *last_word);
+void		get_builtins_list(t_list **possibilities, char *last_word);
+void		get_files_list(t_list **possibilities, char *last_word);
 char		*prompt_create_line(void);
 /*
 ** Prompt_actions_autocomplete.c
@@ -188,7 +191,7 @@ void		*get_actions_history(void);
 /*
 ** Prompt_actions_copy.c
 */
-t_status  	action_copy_quit(char *buf);
+t_status	action_copy_quit(char *buf);
 t_status	main_action_copy(char *buf);
 t_status	action_copy(char *buf);
 /*
@@ -203,7 +206,7 @@ t_status	action_cut(char *buf);
 /*
 ** Prompt_actions_free_copy.c
 */
-t_status 	action_free(char *buf);
+t_status	action_free(char *buf);
 /*
 ** Prompt_init.c
 */
@@ -217,14 +220,17 @@ void		clean_prompt(void);
 void		string_to_list(char *str);
 char		*list_to_string(void);
 void		free_char(void *content, size_t size);
-void  	  	print_eol(void);
+void		print_eol(void);
+void		inser_char(char c);
+void		erase_one_char(void);
+void 		erase_x_chars(int x);
 /*
 ** utils_move
 */
-void 		utils_move_up(void);
-void 		utils_move_down(void);
-void 		utils_move_left(void);
-void 		utils_move_right(void);
+void		utils_move_up(void);
+void		utils_move_down(void);
+void		utils_move_left(void);
+void		utils_move_right(void);
 /*
 ** utils_move_ext
 */
@@ -235,11 +241,20 @@ void		utils_move_max_bottom(void);
 /*
 ** prompt_check_quote.c
 */
-int 		check_quote();
-// char  		*check_quote();
+int			check_quote();
 void		print_error(char flag);
 void		display_quote_error(char c);
-char 		*remove_quote (char type, char *str);
-int 		quote_close(char *str, char c);
+char		*remove_quote (char type, char *str);
+int			quote_close(char *str, char c);
+/*
+** utils/line_cut.c
+*/
+char		*before_last_word(char *str, int c);
+char		*get_last_word(char *str, int c);
+/*
+** utils/lst_sort.c
+*/
+int			sort_by_lexycography(t_list *node);
+void 		clean_last_x_char(int i);
 
 #endif

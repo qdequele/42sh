@@ -14,6 +14,7 @@
 
 t_status action_move_up(char *buf)
 {
+	__DEBUG__
 	if (!SHIFT_UP)
 		return (TRYING);
 	utils_move_up();
@@ -22,6 +23,7 @@ t_status action_move_up(char *buf)
 
 t_status action_move_down(char *buf)
 {
+	__DEBUG__
 	if (!SHIFT_DOWN)
 		return (TRYING);
 	utils_move_down();
@@ -30,6 +32,7 @@ t_status action_move_down(char *buf)
 
 t_status action_move_left(char *buf)
 {
+	__DEBUG__
 	if (!LEFT)
 		return (TRYING);
 	utils_move_left();
@@ -38,6 +41,7 @@ t_status action_move_left(char *buf)
 
 t_status action_move_right(char *buf)
 {
+	__DEBUG__
 	if (!RIGHT)
 		return (TRYING);
 	utils_move_right();

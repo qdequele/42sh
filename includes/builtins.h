@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/03/03 13:32:52 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/26 15:02:01 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int					builtins_echo(t_list **env, char **cmds);
 /*
 **	builtins help
 */
+t_builtin			*builtins_init(void);
 int					builtins_find(char *cmd);
 int					builtins_exec(t_list **env, char **cmds);
 

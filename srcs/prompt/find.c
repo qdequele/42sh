@@ -21,15 +21,13 @@ t_status		prompt_find_function(char *buf)
 	shell = recover_shell();
 	if (shell->mode == COPY)
 		actions = get_actions_copy();
-	else if (shell->mode == HISTORY)
-		actions = get_actions_history();
-	else if (shell->mode == AUTOCOMPLETE)
-		actions = get_actions_autocomplete();
 	else
 		actions = get_actions_normal();
 	status = TRYING;
+	__DEBUG__
 	while (*actions && status == TRYING)
 	{
+		__DEBUG__
 		status = (*actions)(buf);
 		actions++;
 	}

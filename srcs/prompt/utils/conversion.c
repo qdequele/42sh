@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_utils_conversion.c                          :+:      :+:    :+:   */
+/*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/24 15:38:46 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/28 11:58:29 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	string_to_list(char *str)
 char	*list_to_string(void)
 {
 	char		*line;
-	char		*car;
+	char		car;
 	t_list		*tmp;
 	int			i;
 	t_shell		*shell;
@@ -49,8 +49,8 @@ char	*list_to_string(void)
 	tmp = prompt->line;
 	while (tmp != NULL && i <= ft_lstcount(shell->prompt->line))
 	{
-		car = (char*)tmp->content;
-		line[i] = car[0];
+		car = *(char*)tmp->content;
+		line[i] = car;
 		tmp = tmp->next;
 		i++;
 	}
