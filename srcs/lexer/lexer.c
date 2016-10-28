@@ -19,24 +19,17 @@ t_cmd 	*parse_cmd(char *cmd)
 
 	i = 0;
 	p_heredoc = NULL;
+	// printf("cmd : [%s]\n", cmd);
 	while (i < (ft_strlen(cmd)) && cmd[i] != '|' && cmd[i] != '<')
 		i++;
-	if (ft_strchr(cmd, '|'))
+	if (_PIPE_)
 		return (parse_pipe(cmd));
-	if ((p_heredoc = ft_strchr(cmd, '<')) && p_heredoc[1] == '<')
-	{	
+	if (_HEREDOC_)
 		return (parse_heredoc(cmd));
-	}
-	else if (ft_strchr(cmd, '<'))
-	{
-		return (parse_close_fd(cmd));
-	}
-	else if (ft_strchr(cmd, '>') && (p_heredoc = ft_strchr(cmd, '&')) && p_heredoc[1] != '-')
+	else if (_REDIRECT_ENTRY_)
+		return (parse_redirect_entry(cmd));
+	else if (_REDIRECTION_ || _AGGREGATOR_FD_)
 	 	return (parse_redirection(cmd));
-	if ((p_heredoc = ft_strchr(cmd, '&')) && p_heredoc[1] == '-')
-	{
-		return (parse_fd_aggregator(cmd));
-	}
 	else
 		return (build_exec(cmd));
 }   

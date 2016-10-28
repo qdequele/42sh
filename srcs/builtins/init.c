@@ -24,6 +24,7 @@ t_builtin	*builtins_init(void)
 		{"exit", builtins_exit},
 		{"history", builtins_history},
 		{"echo", builtins_echo},
+		{"read", builtins_read},
 		{NULL, NULL}
 	};
 	return ((void *)f);

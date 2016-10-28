@@ -14,6 +14,8 @@
 # define BUILTINS_H
 # include <libft.h>
 
+
+#define EXPORTS (ft_strcmp(cmds[0], "export") == 0)
 typedef int	(*t_func)(t_list **env, char **cmds);
 
 typedef struct stat	t_stat;
@@ -35,6 +37,13 @@ int					builtins_setenv(t_list **env, char **cmds);
 int					builtins_unsetenv(t_list **env, char **cmds);
 void				bultins_one_history(char *str);
 int					builtins_echo(t_list **env, char **cmds);
+/*
+** read.c
+*/
+int 				builtins_read(t_list **env, char **cmds);
+int					count_words(char *s, char c);
+void				create_last_var(char *var_name, char **var_value);
+void				create_var(char *var_name, char *var_value);
 /*
 **	builtins help
 */

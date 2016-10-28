@@ -75,3 +75,9 @@ prototype : - X : blabla (username)
 - home ne vas pas à la bonne destination la premiere fois
 - pb builtin_cd ne marche pas
 
+
+
+
+Ne pas y faire attention :
+
+READ : manque les options, fixer le segfault quand pas de printf, cree une liste pour les variables exports.
