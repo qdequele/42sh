@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/26 13:05:42 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/28 16:12:46 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,10 @@ int		shell_exec_line(char *line)
 		if (cmds[0] == NULL)
 			return (0);
 	}
-	if ((cmd = parse_cmd(line)) && builtins_find(line) == 0)
-	{
+	if ((cmd = parse_cmd(ft_strdup(line))) && builtins_find(line) == 0)
 		return (exec_cmd(cmd));
-	}
 	else
-	{
 		return (shell_core(&env, cmds));
-	}
 }
 
 
@@ -62,9 +58,7 @@ int 		shell_parse_or_line(char *cmd)
 	{
 		ret = shell_parse_and_line(l_cmd[i]);
 		if (ret == 0)
-		{
 			return (0);
-		}
 		i++;
 	}
 	return (1);
@@ -83,9 +77,7 @@ int 		shell_parse_and_line(char *cmd)
 	{
 		ret = shell_exec_line(l_cmd[i]);
 		if (ret != 0)
-		{
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -119,6 +111,7 @@ void	shell_get_lines(void)
 	{
 		print_shell();
 		shell->history_position = 0;
+		shell->autocomplete_position = 0;
 		line = prompt_create_line();
 		shell->last_exit_code = shell_parse_semicolon_line(replace_vars(ft_strdup(line)));
 		ft_lstadd(&shell->history,

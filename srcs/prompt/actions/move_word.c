@@ -18,6 +18,7 @@ t_status	action_move_next_word(char *buf)
 	t_term		*term;
 	int 		i;
 
+	__DEBUG__
 	if (!SHIFT_RIGHT)
 		return (TRYING);
 	shell = recover_shell();
@@ -29,9 +30,6 @@ t_status	action_move_next_word(char *buf)
 	{
 		i++;
 	}
-	ft_console_log("i : ");
-	ft_console_log_num(i);
-	ft_console_log("\n");
 	while (i >= 0)
 	{
 		utils_move_right();
@@ -46,6 +44,7 @@ t_status	action_move_last_word(char *buf)
 	t_term		*term;
 	int 		i;
 
+	__DEBUG__
 	if (!SHIFT_LEFT)
 		return (TRYING);
 	shell = recover_shell();
@@ -57,9 +56,6 @@ t_status	action_move_last_word(char *buf)
 	{
 		i++;
 	}
-	ft_console_log("i : ");
-	ft_console_log_num(i);
-	ft_console_log("\n");
 	while (i > 0)
 	{
 		utils_move_left();

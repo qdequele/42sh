@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_list.c                              :+:      :+:    :+:   */
+/*   actions_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 19:15:05 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/28 12:02:26 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,6 @@ void		*get_actions_copy(void)
 		action_paste,
 		action_copy,
 		action_copy_quit
-	};
-	return ((void *)f);
-}
-
-void		*get_actions_autocomplete(void)
-{
-	static t_status (*f[])(char *) = {
-		
-	};
-	return ((void *)f);
-}
-
-void		*get_actions_history(void)
-{
-	static t_status (*f[])(char *) = {
-		
 	};
 	return ((void *)f);
 }

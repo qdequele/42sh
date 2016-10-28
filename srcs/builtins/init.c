@@ -6,13 +6,13 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/25 15:36:02 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/26 15:01:44 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-static t_builtin	*builtins_init(void)
+t_builtin	*builtins_init(void)
 {
 	static t_builtin	f[] = {
 		{"cd", builtins_cd},

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_copy.c                                        :+:      :+:    :+:   */
+/*   lst_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/28 12:10:48 by qdequele         ###   ########.fr       */
+/*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
+/*   Updated: 2016/10/27 14:43:16 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-t_status 	action_free(char *buf)
+int		sort_by_lexycography(t_list *node)
 {
-	t_shell 	*shell;
-	t_prompt 	*prompt;
+	t_list	*n_elem;
 
-	__DEBUG__
-	shell = recover_shell();
-	prompt = shell->prompt;
-	if (!ALT_B)
-		return (TRYING);
-	prompt->str_cpy = ft_strnew(1);
-	prompt->i_copy = 0;
-	return (READING);
+	n_elem = node->next;
+	if (n_elem && ft_strlen((char *)(node->content)) > ft_strlen((char *)(n_elem->content)) > 0)
+		return (1);
+	return (0);
 }

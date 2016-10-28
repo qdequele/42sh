@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_copy.c                                        :+:      :+:    :+:   */
+/*   ft_printf_printf_flags.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/28 12:10:48 by qdequele         ###   ########.fr       */
+/*   Created: 2015/11/24 14:12:26 by qdequele          #+#    #+#             */
+/*   Updated: 2016/10/26 19:11:10 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_sh.h>
+#include "../libft.h"
 
-t_status 	action_free(char *buf)
+int			printf_flag_s(va_list ap)
 {
-	t_shell 	*shell;
-	t_prompt 	*prompt;
+	char	*s;
 
-	__DEBUG__
-	shell = recover_shell();
-	prompt = shell->prompt;
-	if (!ALT_B)
-		return (TRYING);
-	prompt->str_cpy = ft_strnew(1);
-	prompt->i_copy = 0;
-	return (READING);
+	s = va_arg(ap, char *);
+	ft_putstr(s);
+	return (ft_strlen(s));
+}
+
+int			printf_flag_c(va_list ap)
+{
+	char	c;
+
+	c = (char)va_arg(ap, int);
+	ft_putchar(c);
+	return (1);
+}
+
+int			printf_flag_d(va_list ap)
+{
+	char	*d;
+
+	d = ft_itoa(va_arg(ap, int));
+	ft_putstr(d);
+	return (ft_strlen(d));
 }

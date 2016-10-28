@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/25 16:23:16 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/28 12:10:34 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_status	action_paste(char *buf)
 	size_t		i;
 	int 		j;
 
+	__DEBUG__
 	shell = recover_shell();
 	prompt = shell->prompt;
 	j = 0;

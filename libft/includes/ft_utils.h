@@ -6,14 +6,14 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:53 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/21 13:29:10 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/26 19:39:04 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_UTILS_H
 # define FT_UTILS_H
 # define BUFF_SIZE 64
-
+# define __DEBUG__ ft_console_log_line(__FUNCTION__, __LINE__);
 
 typedef struct	s_color {
 	double		r;
@@ -42,7 +42,9 @@ int				ft_tolower(int c);
 int				ft_wordcount(char const *s, char c);
 int				ft_wordlen(char const *s, char c);
 void    		ft_console_log(char *str);
+void		    ft_console_log_char(char c);
 void    		ft_console_log_num(int num);
+void    		ft_console_log_line(const char *func, int line);
 void    		ft_console_log_clear(void);
 int				ft_match(char *s1, char *s2);
 int				ft_nmatch(char *s1, char *s2);

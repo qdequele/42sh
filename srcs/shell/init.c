@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_init.c                                       :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/18 16:19:50 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/27 17:42:43 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void		init_shell(void)
 	shell->last_exit_code = 0;
 	shell->prompt = NULL;
 	shell->mode = NORMAL;
+	shell->posibilities = NULL;
+	shell->autocomplete_position = 0;
 }

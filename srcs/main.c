@@ -35,21 +35,3 @@ int			main(int argc, char **argv, char **environ)
 	reset_term();
 	return (0);
 }
-
-// test de str_split_str
-// int main(void)
-// {
-// 	char 	*str;
-// 	char 	**res;
-// 	int 	i;
-
-// 	str = ft_strdup("ls toto && tata && pouet tutu && pwd");
-// 	res = str_split_str(str, "&&");
-// 	i = 0;
-// 	while (res[i])
-// 	{
-// 		printf("str[%i] = |%s|\n", i, res[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }

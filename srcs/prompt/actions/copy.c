@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/25 16:44:16 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/28 12:11:03 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_status		action_copy(char *buf)
 	t_term 		*term;
 	t_prompt	*prompt;
 
+	__DEBUG__
 	shell = recover_shell();
 	term = recover_term();
 	prompt = shell->prompt;
@@ -51,6 +52,7 @@ t_status	main_action_copy(char *buf)
 	t_status	(**actions_copy)(char *);
 	t_status	status_copy;
 
+	__DEBUG__
 	actions_copy = get_actions_copy();
 	if (!ALT_C && !ALT_V && !ALT_B)
 		return (EXIT);

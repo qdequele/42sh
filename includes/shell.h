@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/26 13:04:47 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/28 12:03:04 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@
 typedef enum	e_mode
 {
 	NORMAL,
-	COPY,
-	HISTORY,
-	AUTOCOMPLETE
+	COPY
 }				t_mode;
 
 typedef struct	s_shell
 {
 	t_list		*history;
 	int			history_position;
+	t_list		*posibilities;
+	int 		autocomplete_position;
 	int			last_exit_code;
 	t_prompt	*prompt;
 	t_mode		mode;
