@@ -1,6 +1,0 @@
-exec_cmd()
-cDEBUT EXEC REDIRECTION$
-New_fd = 2$
-6 = dup(1)$
-dup2(new_fd, rcmd->fd[0]) -- dup2(2, 1)$
-dup2(old_fd, rcmd->fd[0]) -- dup2(8, 1)

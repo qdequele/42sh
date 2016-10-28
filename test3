@@ -1,1 +1,0 @@
-dup2(new_fd, rcmd->fd[0]) -- dup2(2, 1)$
