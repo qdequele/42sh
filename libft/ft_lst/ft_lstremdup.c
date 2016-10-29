@@ -1,40 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel_at.c                                     :+:      :+:    :+:   */
+/*   ft_lstremdup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 09:57:54 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/29 15:17:10 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/29 16:59:26 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_lstdel_at(t_list **list, int at, void (*del)(void *, size_t))
+void	ft_lstremdup(t_list **list, int (*comp)(void *, void *), void (*del)(void *, size_t))
 {
-	t_list	*tmp;
 	t_list	*prev;
+	t_list	*next;
 	int		count;
 
 	if (!list || !(*list))
 		return ;
-	tmp = *list;
-	prev = NULL;
-	count = 0;
-	while (count != at && tmp->next != NULL)
+	prev = *list;
+	next = prev->next;
+	count = 1;
+	while (prev && next)
 	{
-		prev = tmp;
-		tmp = tmp->next;
+		while (comp(prev->content, next->content))
+		{
+			ft_lstdel_at(list, count, del);
+			next = prev->next;
+		}
+		prev = next;
+		next = prev->next;
 		count++;
 	}
-	if (count == at)
-	{
-		if (prev)
-			prev->next = tmp->next;
-		else
-			*list = tmp->next;
-		del(tmp->content, tmp->content_size);
-	}
+}
+
+int		ft_lstremdup_str(void *prev, void *next)
+{
+	if (ft_strcmp((char *)prev, (char *)next) == 0)
+		return (1);
+	else
+		return (0);
 }

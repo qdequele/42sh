@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:53 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/26 19:39:04 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/29 15:10:24 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_UTILS_H
 # define BUFF_SIZE 64
 # define __DEBUG__ ft_console_log_line(__FUNCTION__, __LINE__);
+# define __BREAK__ // BREAK //
 
 typedef struct	s_color {
 	double		r;
