@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/30 13:38:48 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/30 13:50:25 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ static void show_possibilities(void)
 	shell = recover_shell();
 	line = get_last_word(list_to_string(), ' ');
 	len = ft_strlen(line);
-	ft_console("len : %d\n", len);
 	if (shell->autocomplete_position >= ft_lstcount(shell->posibilities))
 		return ;
 	new_line = ft_strdup((char *)(ft_lstget_at(shell->posibilities, shell->autocomplete_position)->content));
