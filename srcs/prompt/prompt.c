@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/28 16:29:31 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/30 17:38:48 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,13 @@ char	*prompt_create_line(void)
 	while (read(0, buf, 9))
 	{
 		if (!TAB)
-		{
 			shell->autocomplete_position = 0;
-		}	
 		if ((copy_status = main_action_copy(buf)) == EXIT)
-		{
 			status = prompt_find_function(buf);
-		}
 		ft_bzero(buf, 9);
 		if (status == FOUND)
-		{
 			if (check_quote(list_to_string()) == 1)
-			{
 				return (list_to_string());
-			}
-		}
 	}
 	return (NULL);
 }

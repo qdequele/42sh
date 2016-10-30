@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/30 13:50:25 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/30 17:51:17 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,9 +152,11 @@ static void show_possibilities(void)
 t_status	action_autocomplete(char *buf)
 {
 	t_shell	*shell;
+	char	*line;
 
 	shell = recover_shell();
-	if (!TAB)
+	line = list_to_string();
+	if (!TAB || ft_strlen(line) == 0 || line[ft_strlen(line) - 1] == ' ')
 		return (TRYING);
 	if (shell->autocomplete_position == 0)
 	{

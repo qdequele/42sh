@@ -34,7 +34,14 @@ void	inser_char(char c)
 
 t_status	action_insert_char(char *buf)
 {
-	if (buf[0])
+	if (TAB)
+	{
+		inser_char(' ');
+		inser_char(' ');
+		inser_char(' ');
+		inser_char(' ');
+	}
+	else if (buf[0])
 		inser_char(buf[0]);
 	else if (buf[1])
 		inser_char(buf[1]);
