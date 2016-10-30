@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/29 17:26:24 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/30 13:38:48 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,13 @@ void 	get_files_list(t_list **possibilities, char *last_word)
 	}
 }
 
+/*
+** private
+** DESCRIPTION  : Liste toutes les possibilitées (dossier/fichier/exec) qui commence par le mot qui vien d'être entree
+** EXPLICATIONS : tout d'abord on commence par supprimer l'ancienne liste si il y en à une. 
+** On recherche toutes les correspondances (dossier/fichier/exec/builtins). On trie dans le sens lexycographique pour que les mots les plus petits apparaissent d'abord.
+** Puis on finit par supprimer les doublon. Du genre un meme exec dans /usr/bin et dans /usr/sbin
+*/
 static void set_possibilities(void)
 {
 	t_shell	*shell;
@@ -126,6 +133,7 @@ static void show_possibilities(void)
 	shell = recover_shell();
 	line = get_last_word(list_to_string(), ' ');
 	len = ft_strlen(line);
+	ft_console("len : %d\n", len);
 	if (shell->autocomplete_position >= ft_lstcount(shell->posibilities))
 		return ;
 	new_line = ft_strdup((char *)(ft_lstget_at(shell->posibilities, shell->autocomplete_position)->content));

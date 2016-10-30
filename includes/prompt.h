@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/28 16:57:08 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/30 13:48:08 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,8 @@ void		print_eol(void);
 void		inser_char(char c);
 void		erase_one_char(void);
 void 		erase_x_chars(int x);
+void		delete_one_char(void);
+void 		delete_x_chars(int x);
 /*
 ** utils_move
 */

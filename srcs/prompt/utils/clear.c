@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/29 17:13:12 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/30 13:48:53 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ void 	clean_last_x_char(int i)
 	}
 	while (shell->prompt->i_position > 0 && i > 0)
 	{
-		erase_one_char();
+		ft_console("erase i :%d\n", i);
+		delete_one_char();
 		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 		utils_move_left();
 		i--;
 	}
-	utils_move_right();
-	erase_one_char();
+	// utils_move_right();
+	delete_one_char();
 	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 }

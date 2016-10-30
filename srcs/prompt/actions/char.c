@@ -53,18 +53,8 @@ t_status	action_delete_char(char *buf)
 
 t_status	action_delete_next_char(char *buf)
 {
-	t_shell	*shell;
-
 	if (!DELETE )
 		return (TRYING);
-	shell = recover_shell();
-	if(shell->prompt->i_position < ft_lstcount(shell->prompt->line)
-		&& shell->prompt->i_position >= 0)
-	{
-		tputs(DMSTR, 1, ft_tputs);// enter in delete mode
-		tputs(DCSTR, 1, ft_tputs);// delete char
-		tputs(EDSTR, 1, ft_tputs);// exit delete mode
-		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
-	}
+	delete_one_char();
 	return (READING);
 }
