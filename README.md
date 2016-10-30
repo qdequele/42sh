@@ -30,7 +30,7 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - O : history search builtins history | ctrl+R (eebersol)
-- X : autocomplete (qdequele)
+- O : autocomplete (qdequele)
 - O : Move max top (qdequele)
 - O : Move max bottom (qdequele)
 - O : Operator || and && (qdequele)
@@ -45,12 +45,14 @@ prototype : - X : blabla (username)
 - O : file descriptor agregator 2>&- (eebersol)
 - O : Catch execution return number $? (qdequele)
 - O : Logic operation || && (qdequele)
+- X : ctrl+c didn't quit the shell (qdequele)
+- X : double ctrl+d quit the shell (qdequele)
 
 ###Bonus
 
 - O : heredoc << (eebersol)
 - F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol)
-- O : local varaibles unset export $ (qdequele)
+- F : local varaibles unset export $ (qdequele)
 - X : Job controls job / fg / bg / & ()
 
 ##Builtins
@@ -69,11 +71,21 @@ prototype : - X : blabla (username)
 - O : History (eebersol)
 - X : Read (qdequele)
 
+##General
+
+- X : Leaks
+- X : Norme
+- X : Segfaut
+- X : Signals
+- X : Builtins Posix
+
 #Liste des bugs :
 
 - Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
 - home ne vas pas à la bonne destination la premiere fois
 - pb builtin_cd ne marche pas
+
+
 
 
 
