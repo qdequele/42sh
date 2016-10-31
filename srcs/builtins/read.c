@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:31:13 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 14:38:30 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ void	create_var(char *var_name, char *var_value)
 	char 	**set_env;
 
 	set_env = (char**)malloc(sizeof(char*) * 3);
-	printf("coucou\n");
 	set_env[0] = "setenv";
 	set_env[1] = ft_strtrim(var_name);
 	set_env[2] = ft_strtrim(var_value);
-		printf("coucou\n");
 	builtins_setenv(&g_env, set_env);
 }
 

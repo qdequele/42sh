@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:53:56 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 15:27:30 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ t_term		*recover_term(void)
 
 int			init_term(void)
 {
-	char	buff[4096];
 	t_term	*term;
 
 	term = recover_term();
+	vars_init();
 	if ((term->term_name = getenv("TERM")) == NULL)
 		return (-1);
-	if (tgetent(buff, term->term_name) != 1)
+	if (tgetent(NULL, term->term_name) != 1)
 		return (-1);
 	if (tcgetattr(0, &(term->old_term)) == -1)
 		return (0);

@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/29 15:45:28 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/31 13:31:31 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,14 @@ _SRC		=	builtins/cd.c\
 				builtins/read.c\
 				builtins/setenv.c\
 				builtins/unsetenv.c\
+				builtins/export.c\
+				builtins/set.c\
+				builtins/unset.c\
+				builtins/utils/parser.c\
+				builtins/utils/env.c\
+				builtins/utils/remove_key.c\
+				builtins/utils/vars.c\
 				cmd/cmd.c\
-				env/parser.c\
-				env/utils.c\
 				lexer/utils/body.c\
 				lexer/utils/fork_close.c\
 				lexer/exec.c\

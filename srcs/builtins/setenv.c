@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_setenv.c                                  :+:      :+:    :+:   */
+/*   setenv.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/20 18:01:40 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 14:33:00 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	is_formated(char *str)
 
 int			builtins_setenv(t_list **env, char **cmds)
 {
-	printf("cmds[1] : [%s] cmds[2] ; [%s]\n", cmds[1], cmds[2]);
+	// printf("cmds[1] : [%s] cmds[2] ; [%s]\n", cmds[1], cmds[2]);
 	if (!cmds[1])
 	{
 		env_show(*env);

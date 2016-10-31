@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_utils.c                                        :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:54:00 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 11:48:56 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,26 +72,4 @@ void	env_add_or_modify(t_list **l_env, char *key, char *value)
 	env->key = key;
 	env->value = value;
 	ft_lstaddend(l_env, ft_lstnew(env, sizeof(t_env)));
-}
-
-void	env_remove(t_list *l_env, char *key)
-{
-	t_list	*elem;
-	t_env	*env;
-
-	elem = l_env;
-	if (elem)
-	{
-		while (elem)
-		{
-			env = elem->content;
-			if (ft_strcmp(env->key, key) == 0)
-			{
-				if (env->value)
-					free(env->value);
-				return ;
-			}
-			elem = elem->next;
-		}
-	}
 }

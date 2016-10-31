@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/28 12:55:14 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 11:50:17 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <libft.h>
 # include <builtins.h>
 # include <cmd.h>
-# include <env.h>
 # include <prompt.h>
 # include <shell.h>
 # include <sig.h>

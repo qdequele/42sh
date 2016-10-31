@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/26 15:01:44 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 15:27:08 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ t_builtin	*builtins_init(void)
 		{"env", builtins_env},
 		{"setenv", builtins_setenv},
 		{"unsetenv", builtins_unsetenv},
-		{"export", builtins_setenv},
-		{"unset", builtins_unsetenv},
+		{"export", builtins_export},
+		{"unset", builtins_unset},
+		{"set", builtins_set},
 		{"exit", builtins_exit},
 		{"history", builtins_history},
 		{"echo", builtins_echo},

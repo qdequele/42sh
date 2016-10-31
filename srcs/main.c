@@ -16,6 +16,7 @@ int			main(int argc, char **argv, char **environ)
 {
 	UNUSED(argv);
 	g_env = NULL;
+	g_vars = NULL;
 	if (argc > 1)
 	{
 		ft_putendl_fd("21sh cannot have arguments", 2);
