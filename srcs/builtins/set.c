@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 15:52:14 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 18:04:02 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,19 @@ static int	check_variable(char **cmds, int i)
 int			builtins_set(t_list **env, char **cmds)
 {
 	t_list	**l_var;
-	t_list	*tmp_l_var;
 	int		i;
 
 	(void)env;
 	i = 1;
-	__DEBUG__
 	if (cmds[i] && ft_strcmp(cmds[i], "-g") == 0)
 	{
-		__DEBUG__
-		tmp_l_var = vars_recover();
-		l_var = &tmp_l_var;
+		l_var = vars_recover();
 		i++;
 	}
 	else
-	{
-		__DEBUG__
 		l_var = &g_vars;
-	}
 	if (!cmds[i])
 	{
-		__DEBUG__
 		vars_show(*l_var);
 		return (0);
 	}
@@ -82,13 +74,9 @@ int			builtins_set(t_list **env, char **cmds)
 		return (1);
 	else
 	{
-		__DEBUG__
 		if (!cmds[i + 1])
 			cmds[i + 1] = ft_strdup(" ");
-		__DEBUG__
 		vars_add_or_modify(l_var, cmds[i], cmds[i + 1]);
-		__DEBUG__
-		vars_show(*l_var);
 		return (0);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:14:23 by qdequele          #+#    #+#             */
-/*   Updated: 2015/12/07 11:39:12 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 17:15:04 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,22 @@ void	ft_lstaddend(t_list **alst, t_list *new)
 	t_list	*list;
 
 	list = *alst;
-	if (*alst == NULL && new)
+	__DEBUG__
+	if ((*alst == NULL || (*alst)->content == NULL )&& new)
+	{
+		__DEBUG__
 		*alst = new;
+	}
 	else
 	{
+		__DEBUG__
 		while (list->next)
 		{
+			__DEBUG__
 			list = list->next;
 		}
+		__DEBUG__
 		list->next = new;
+		__DEBUG__
 	}
 }
