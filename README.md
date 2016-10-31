@@ -65,11 +65,16 @@ prototype : - X : blabla (username)
 - O : env (qdequele)
 - O : setenv (qdequele)
 - O : unsetenv (qdequele)
+- O : set (qdequele)
+- O : unset (qdequele)
+- O : export (qdequele)
+- O : readonly (qdequele)
+- O : unreadonly (qdequele)
 
 ###Bonus
 
 - O : History (eebersol)
-- X : Read (qdequele)
+- X : Read (eebersol)
 
 ##General
 

@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 15:53:49 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 18:37:56 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,13 @@ void				create_var(char *var_name, char *var_value, char opt);
 **	utils - vars_utils.c
 */
 void				vars_init(void);
-t_list				*vars_recover(void);
+t_list				**vars_recover(void);
 void				vars_show(t_list *l_var);
+void				vars_show_global(t_list *l_var);
 char				*vars_get(t_list *l_var, char *f_key);
 void				vars_add_or_modify(t_list **l_vars, char *key, char *value);
+void				vars_change_readonly(t_list **l_vars, char *key, int rdo);
+int					builtins_readonly(t_list **env, char **cmds);
+int					builtins_unreadonly(t_list **env, char **cmds);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/31 13:31:31 by qdequele         ###   ########.fr        #
+#    Updated: 2016/10/31 18:40:27 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ _SRC		=	builtins/cd.c\
 				builtins/export.c\
 				builtins/set.c\
 				builtins/unset.c\
+				builtins/readonly.c\
+				builtins/unreadonly.c\
 				builtins/utils/parser.c\
 				builtins/utils/env.c\
 				builtins/utils/remove_key.c\
