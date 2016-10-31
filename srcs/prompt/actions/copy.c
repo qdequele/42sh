@@ -52,7 +52,7 @@ t_status	main_action_copy(char *buf)
 	t_status	status_copy;
 
 	actions_copy = get_actions_copy();
-	if (!ALT_C && !ALT_V && !ALT_B)
+	if (!ALT_C && !ALT_V && !ALT_B && !ALT_X)
 		return (EXIT);
 	status_copy = TRYING;
 	while ((*actions_copy && status_copy == TRYING) || status_copy != EXIT)

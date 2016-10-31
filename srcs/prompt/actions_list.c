@@ -45,6 +45,7 @@ void		*get_actions_copy(void)
 		action_exec_cmd,
 		action_paste,
 		action_copy,
+		action_cut,
 		action_copy_quit
 	};
 	return ((void *)f);

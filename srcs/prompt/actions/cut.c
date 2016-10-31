@@ -36,7 +36,8 @@ t_status	action_cut(char *buf)
 	cur = prompt->line;
 	tputs(MESTR, 0, ft_tputs);
 	ft_lstshow_x(cur, 0);
-	tputs(RCSTR , 0, ft_tputs);
-	prompt->i_position = j + 1;
+	prompt->i_position = ft_lstcount(prompt->line);
+	while(prompt->i_position > i)
+	 	utils_move_left();
 	return (READING);
 }
