@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:03:00 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 18:40:44 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,20 @@ void	vars_add_or_modify(t_list **l_vars, char *key, char *value)
 	var->value = value;
 	var->readonly = 0;
 	ft_lstaddend(l_vars, ft_lstnew(var, sizeof(t_var)));
+}
+
+void	vars_change_readonly(t_list **l_vars, char *key, int rdo)
+{
+	t_list	*elem;
+
+	elem = *l_vars;
+	while (elem && elem->content)
+	{
+		if (ft_strcmp(((t_var *)elem->content)->key, key) == 0)
+		{
+			((t_var *)elem->content)->readonly = rdo;
+			return ;
+		}
+		elem = elem->next;
+	}
 }

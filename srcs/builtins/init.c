@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 15:27:08 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/31 18:40:01 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_builtin	*builtins_init(void)
 		{"history", builtins_history},
 		{"echo", builtins_echo},
 		{"read", builtins_read},
+		{"readonly", builtins_readonly},
+		{"unreadonly", builtins_unreadonly},
 		{NULL, NULL}
 	};
 	return ((void *)f);
