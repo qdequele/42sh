@@ -74,7 +74,7 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - O : History (eebersol)
-- X : Read (qdequele)
+- X : Read (eebersol)
 
 ##General
 
