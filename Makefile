@@ -29,6 +29,7 @@ _SRC		=	builtins/cd.c\
 				builtins/utils/env.c\
 				builtins/utils/remove_key.c\
 				builtins/utils/vars.c\
+				builtins/utils/read_create_var.c\
 				cmd/cmd.c\
 				lexer/utils/body.c\
 				lexer/utils/fork_close.c\

@@ -12,34 +12,59 @@
 
 #include <ft_sh.h>
 
-void	create_var(char *var_name, char *var_value)
+static 	char 	*read_read()
 {
-	char 	**set_env;
+	char buf[9];
+	char *ret;
 
-	set_env = (char**)malloc(sizeof(char*) * 3);
-	set_env[0] = "setenv";
-	set_env[1] = ft_strtrim(var_name);
-	set_env[2] = ft_strtrim(var_value);
-	builtins_setenv(&g_env, set_env);
+	ft_bzero(buf, 9);
+	ret = NULL;
+	ft_putstr_c(GREEN, "Read>");
+	while (read(0, buf, 9))
+	{
+		if (BACK_SPACE)
+		{
+			tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
+			tputs(DMSTR, 1, ft_tputs);
+			tputs(DCSTR, 1, ft_tputs);
+			tputs(EDSTR, 1, ft_tputs);
+			ret = ft_strsub(ret, 0, ft_strlen(ret) - 1);
+		}
+		else 
+		{
+			ft_putchar(buf[0]);
+			ret = ft_freejoin(ret, buf);
+		}
+		if (ENTER)
+			return (ret);
+	}
+	return (ret);
 }
-
-void	create_last_var(char *var_name, char **var_value)
+char			*check_value(char opt, char *var_value)
 {
-	char 	*last_var;
-	int 	i;
+	int i;
+	int j;
+	char *new_value;
 
 	i = 0;
-	while (var_value[i])
+	j = 0;
+	new_value = ft_strnew(1);
+	while (var_value[i] != '\0')
 	{
-		if (i > 0)
-			last_var = ft_freejoin(last_var, " ");
-		last_var = ft_freejoin(last_var, var_value[i]);
-		i++;
+		if ((var_value[i] == '\\' && opt == 'r'))
+			i++;
+		else
+		{
+			new_value[j] = var_value[i];
+			i++;
+			j++;
+		}
 	}
-	create_var(var_name, last_var);
+	return (new_value);
+
 }
 
-int		count_words(char *s, char c)
+int				count_words(char *s, char c)
 {
 	int		words;
 	int		i;
@@ -56,46 +81,41 @@ int		count_words(char *s, char c)
 }
 
 
-int 	builtins_read(t_list **env, char **cmds)
-{
-	char 	buf[9];
-	char 	*ret;
+int 			builtins_read(t_list **env, char **cmds)
+{	
 	char 	**var_value;
+	char 	opt;
+	char 	*ret;
 	int 	nbr_var;
 	int 	nbr_words;
 	int 	i;
 
 	(void)env;
-	i = 0;
-	nbr_var = ft_count_raw_aoc(cmds) - 1;
-	ft_bzero(buf, 9);
-	ret = NULL;
-	while (read(0, buf, 9))
+	i = 1;
+	opt = 0;
+	if (cmds[i] && READ_OPT_R)
 	{
-		ft_putchar(buf[0]);
-		ret = ft_freejoin(ret, buf);
-		if (BACK_SPACE)
-		{
-			// delete char;
-		}
-		if (ENTER)
-			break ;
+		opt = 'r';
+		i++;
 	}
+	ret = read_read();
+	nbr_var = ft_count_raw_aoc(&cmds[i]);
 	var_value = ft_strsplit(ret, ' ');
 	nbr_words = count_words(ret, ' ');
 	if (nbr_var == 1)
 	{
-		printf("Toto\n");
-		create_last_var(cmds[1], var_value);
+		// printf("Toto\n");
+		create_last_var(cmds[i], var_value, opt);
 	}
 	else if (nbr_var <= nbr_words)
 	{
+		i = 0;
 		while (i++ <= nbr_var)
 		{
 			if (i == nbr_var)
-				create_last_var(cmds[i], &var_value[i - 1]);
+				create_last_var(cmds[i], &var_value[i - 1], opt);
 			else
-				create_var(cmds[i], var_value[i - 1]);
+				create_var(cmds[i], var_value[i - 1], opt);
 		}
 	}
 	return (0);

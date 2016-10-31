@@ -16,6 +16,8 @@
 
 
 #define EXPORTS (ft_strcmp(cmds[0], "export") == 0)
+#define READ_OPT_R (ft_strcmp(cmds[1], "-r") == 0)
+
 typedef int	(*t_func)(t_list **env, char **cmds);
 
 typedef struct stat	t_stat;
@@ -62,8 +64,7 @@ int					builtins_echo(t_list **env, char **cmds);
 */
 int					builtins_read(t_list **env, char **cmds);
 int					count_words(char *s, char c);
-void				create_last_var(char *var_name, char **var_value);
-void				create_var(char *var_name, char *var_value);
+char				*check_value(char opt, char *var_value);
 /*
 **	builtins utils
 */
@@ -82,6 +83,11 @@ char				**env_parse_from_list(t_list *l_env);
 void				env_show(t_list *l_env);
 char				*env_get(t_list *l_env, char *f_key);
 void				env_add_or_modify(t_list **l_env, char *key, char *value);
+/*
+** utils - read_cretate_var.c
+*/
+void				create_last_var(char *var_name, char **var_value, char opt);
+void				create_var(char *var_name, char *var_value, char opt);
 /*
 **	utils - vars_utils.c
 */
