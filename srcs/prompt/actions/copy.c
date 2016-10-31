@@ -27,7 +27,6 @@ t_status		action_copy(char *buf)
 	shell = recover_shell();
 	term = recover_term();
 	prompt = shell->prompt;
-	prompt->str_cpy = ft_strnew(ft_lstcount(prompt->line));
 	if (!ALT_C)
 		return (TRYING);
 	if (prompt->str_cpy[0] == '\0')

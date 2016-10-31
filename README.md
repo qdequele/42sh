@@ -60,7 +60,7 @@ prototype : - X : blabla (username)
 ###Mandatory
 
 - O : cd (qdequele)
-- O : echo (eebersol)
+- F : echo (eebersol)
 - O : exit (qdequele)
 - O : env (qdequele)
 - O : setenv (qdequele)
@@ -74,7 +74,7 @@ prototype : - X : blabla (username)
 ###Bonus
 
 - O : History (eebersol)
-- X : Read (eebersol)
+- O : Read (eebersol)
 
 ##General
 
@@ -89,16 +89,3 @@ prototype : - X : blabla (username)
 - Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
 - home ne vas pas à la bonne destination la premiere fois
 - pb builtin_cd ne marche pas
-
-
-
-
-
-
-Ne pas y faire attention :
-
-READ : manque les options, fixer le segfault quand pas de printf, cree une liste pour les variables exports. creer un unset et export
-
-Variable locale : Set affiche la liste des variables locales.
-				 .Unset -> pareil que unsetenv sauf qu'il permet en plus de supprimer les variables locales cree avec read.
-				 .Export pareil que setenv sauf qu'il ajoute aussi dans variable local
