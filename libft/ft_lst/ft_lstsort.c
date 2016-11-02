@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:17:19 by qdequele          #+#    #+#             */
-/*   Updated: 2015/12/07 11:33:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/02 11:43:47 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_lst_bubble_sort(t_list *node, int (*c)(t_list *node))
 	{
 		swapped = 0;
 		ptr1 = node;
-		while (ptr1->next != lptr)
+		while (ptr1 && ptr1->next != lptr)
 		{
 			if (c(ptr1))
 			{

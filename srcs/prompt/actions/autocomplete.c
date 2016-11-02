@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/30 17:51:17 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/02 11:42:31 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ static void set_possibilities(void)
 	get_files_list(&(shell->posibilities), line);
 	ft_lst_bubble_sort(shell->posibilities, sort_by_lexycography);
 	ft_lstremdup(&shell->posibilities, ft_lstremdup_str, free_char);
-	// ft_lstiter(shell->posibilities, show_list);
 }
 
 static void show_possibilities(void)
