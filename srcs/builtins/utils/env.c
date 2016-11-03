@@ -49,7 +49,7 @@ char	*env_get(t_list *l_env, char *f_key)
 			elem = elem->next;
 		}
 	}
-	return ("");
+	return (NULL);
 }
 
 void	env_add_or_modify(t_list **l_env, char *key, char *value)
