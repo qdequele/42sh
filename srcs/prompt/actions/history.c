@@ -12,7 +12,6 @@
 
 #include <ft_sh.h>
 
-
 static void		move_to_history(void)
 {
 	t_shell		*shell;
@@ -44,10 +43,10 @@ t_status		action_history_up(char *buf)
 	
 	if (!UP)
 		return (TRYING);
-	if (ft_lstcount(shell->history) > 0)
+	if (ft_lstcount(shell->history) >= -1)
 	{
-		move_to_history();
 		shell->history_position++;
+		move_to_history();
 	}
 	return (READING);
 }
@@ -62,8 +61,8 @@ t_status		action_history_down(char *buf)
 		return (TRYING);
 	if (ft_lstcount(shell->history) > 0)
 	{
-		move_to_history();
 		shell->history_position--;
+		move_to_history();
 	}
 	return (READING);
 }

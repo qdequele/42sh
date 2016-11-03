@@ -110,12 +110,12 @@ void	shell_get_lines(void)
 	while (1)
 	{
 		print_shell();
-		shell->history_position = 0;
+		shell->history_position = -1;
 		shell->autocomplete_position = 0;
 		line = prompt_create_line();
-		shell->last_exit_code = shell_parse_semicolon_line(replace_vars(ft_strdup(line)));
+		shell->last_exit_code = shell_parse_semicolon_line(replace_vars(ft_strdup(line)));	
 		ft_lstadd(&shell->history,
-			ft_lstnew(line, sizeof(char) * ft_strlen(line)));
+			ft_lstnew(line, sizeof(char*) * ft_strlen(line)));
 	}
 	return ;
 }
