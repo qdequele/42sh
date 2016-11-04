@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-char 	display_quote_error(char c)
+char	display_quote_error(char c)
 {
 	char flag;
 
@@ -20,7 +20,7 @@ char 	display_quote_error(char c)
 		return (flag = 'b');
 	else if (c == '"')
 		return (flag = 'd');
-	else if (c == '(' )
+	else if (c == '(')
 		return (flag = 1);
 	else
 		return (flag = 0);
@@ -34,10 +34,9 @@ int		print_error(char flag)
 		ft_putchar_fd(flag, 2);
 	ft_putstr_fd("quote>", 2);
 	return (0);
-
 }
 
-int 	quote_close(char *str, char c)
+int		quote_close(char *str, char c)
 {
 	if (c == '(')
 		c = ')';
@@ -47,14 +46,14 @@ int 	quote_close(char *str, char c)
 		return (0);
 }
 
-int 	check_quote(char *line)
+int		check_quote(char *line)
 {
-	int 		i;
+	int		i;
 
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == '"' || line[i] == '\'' || line[i] == '(' 
+		if (line[i] == '"' || line[i] == '\'' || line[i] == '('
 			|| line[i] == '`')
 		{
 			if (line[i + 1] && quote_close(&line[i + 1], line[i]) == 1)

@@ -12,51 +12,62 @@
 
 #include <ft_sh.h>
 
-static 		char *remove_backslash(char **cmds)
+static	char	*check_second_quote(char *str)
 {
-	char *ret;
-	char *tmp;
-	int i;
-	int j;
-
+	char	*dst;
+	size_t	i;
+	int		j;
 
 	i = 0;
 	j = 0;
-	ret = ft_array_to_string(&cmds[1]);
-	tmp =ft_strnew(ft_strlen(ret));
-	while (ret[i] != '\0')
+	dst = ft_strnew(1);
+	while (str[i] != '\0')
 	{
-		if (ret[i] != '\\' || (ret[i] == '\\' && ret[i + 1] == '\\'))
+		if (str[i] != '"')
 		{
-			tmp[j] = ret[i];
+			dst[j] = str[i];
 			j++;
-
 		}
 		i++;
 	}
-	return (tmp);
+	return (dst);
+}
+
+static	void	put_echo(char *str)
+{
+	int	i;
+
+	i = 0;
+	str = check_second_quote(str);
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\\')
+			i += 2;
+		else
+		{
+			ft_putchar(str[i]);
+			i++;
+		}
+	}
 }
 
 int				builtins_echo(t_list **env, char **cmds)
 {
-	char 	*ret;
-	int 	i;
+	int	i;
+	int	j;
 
 	(void)env;
-	i = 1;
+	i = ft_count_raw_aoc(cmds);
+	j = 1;
 	if (ft_strcmp("-n", cmds[1]) == 0)
+		j++;
+	while (j < i)
 	{
-		ret = &*cmds[2];
-		i = 2;
+		put_echo(cmds[j]);
+		ft_putchar(' ');
+		j++;
 	}
-	else
-	{
-		ret = remove_backslash(cmds);
-	}
-	ft_putstr_fd(ret, recover_term()->tty);
-	if (i < 2)
-	{
-		ft_putchar_fd('\n', recover_term()->tty);
-	}
+	if (ft_strcmp("-n", cmds[1]) != 0)
+		ft_putchar('\n');
 	return (0);
 }

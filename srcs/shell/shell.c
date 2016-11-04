@@ -15,20 +15,18 @@
 int		shell_core(t_list **env, char **cmds)
 {
 	if (cmds[0] && builtins_find(cmds[0]))
-		return(builtins_exec(env, cmds));
+		return (builtins_exec(env, cmds));
 	else if (cmds[0])
 	{
-		return(shell_find_cmd(*env, cmds));
+		return (shell_find_cmd(*env, cmds));
 	}
-	else {
+	else
 		return (1);
-	}
 }
-
 
 int		shell_exec_line(char *line)
 {
-	t_cmd 	*cmd;
+	t_cmd	*cmd;
 	t_list	*env;
 	char	**cmds;
 
@@ -50,12 +48,11 @@ int		shell_exec_line(char *line)
 	}
 }
 
-
-int 		shell_parse_or_line(char *cmd)
+int		shell_parse_or_line(char *cmd)
 {
 	char	**l_cmd;
 	int		i;
-	int 	ret;
+	int		ret;
 
 	i = 0;
 	ret = 0;
@@ -70,11 +67,11 @@ int 		shell_parse_or_line(char *cmd)
 	return (1);
 }
 
-int 		shell_parse_and_line(char *cmd)
+int		shell_parse_and_line(char *cmd)
 {
 	char	**l_cmd;
 	int		i;
-	int 	ret;
+	int		ret;
 
 	i = 0;
 	ret = 0;
@@ -89,11 +86,11 @@ int 		shell_parse_and_line(char *cmd)
 	return (0);
 }
 
-int 		shell_parse_semicolon_line(char *line)
+int		shell_parse_semicolon_line(char *line)
 {
 	char	**l_cmd;
 	int		i;
-	int 	ret;
+	int		ret;
 
 	i = 0;
 	ret = 0;
@@ -110,6 +107,7 @@ void	shell_get_lines(void)
 {
 	t_shell	*shell;
 	char	*line;
+
 	shell = recover_shell();
 	init_shell();
 	while (1)
@@ -118,11 +116,13 @@ void	shell_get_lines(void)
 		shell->history_position = -1;
 		shell->autocomplete_position = 0;
 		line = prompt_create_line();
-		shell->last_exit_code = shell_parse_semicolon_line(replace_vars(ft_strdup(line)));	
+		shell->last_exit_code = shell_parse_semicolon_line(
+			replace_vars(ft_strdup(line)));
 		if (line[0] != '!')
 		{
 			ft_lstadd_at(&shell->history,
-				ft_lstnew(line, sizeof(char*) * ft_strlen(line)), shell->index_history);
+				ft_lstnew(line, sizeof(char*) *
+					ft_strlen(line)), shell->index_history);
 			shell->index_history++;
 		}
 	}

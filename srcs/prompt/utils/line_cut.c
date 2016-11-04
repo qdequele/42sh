@@ -11,17 +11,13 @@
 /* ************************************************************************** */
 
 #include <ft_sh.h>
+
 /*
 ** private
 ** DESCRIPTION  : Donne le dernier mot d'une ligne très pratique pour autocompleter ce mot
 ** EXPLICATIONS : Utilise strsplit pour couper la phrase en mot et renvoie le dernier
 */
-<<<<<<< HEAD
 char	*before_last_word(char *str, int c)
-=======
-
-char		*before_last_word(char *str, int c)
->>>>>>> origin/new_parser
 {
 	char	*dup;
 	int		i;
@@ -49,18 +45,14 @@ char		*before_last_word(char *str, int c)
 
 char	*get_last_word(char *str, int c)
 {
-<<<<<<< HEAD
 	char	**tab;
-=======
-	char	**arr;
->>>>>>> origin/new_parser
 	int		i;
 
 	if (str == NULL || str[0] == '\0')
 		return (ft_strdup(""));
-	arr = ft_strsplit(str, c);
+	tab = ft_strsplit(str, c);
 	i = 0;
-	while (arr[i] && arr[i][0])
+	while (tab[i] && tab[i][0])
 		i++;
-	return (arr[i - 1]);
+	return (tab[i - 1]);
 }

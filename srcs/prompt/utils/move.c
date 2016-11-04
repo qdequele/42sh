@@ -74,12 +74,8 @@ void	utils_move_right(void)
 			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
 		}
 		else
-<<<<<<< HEAD
 		{
 			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
 		}
-=======
-			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
->>>>>>> origin/new_parser
 	}
 }

@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/19 17:31:13 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/30 17:38:48 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-t_cmd 	*parse_cmd(char *cmd)
+char	*prompt_create_line(void)
 {
-	size_t		i;
-	char 		*p_heredoc;
+	t_prompt	*prompt;
+	char		buf[9];
+	t_status	status;
+	t_status	copy_status;
+	t_shell		*shell;
 
-	i = 0;
-	p_heredoc = NULL;
-	// printf("cmd : [%s]\n", cmd);
-	while (i < (ft_strlen(cmd)) && cmd[i] != '|' && cmd[i] != '<')
-		i++;
-	if (_HEREDOC_)
-		return (build_heredoc(cmd));
-	if (_PIPE_)
-		return (parse_pipe(cmd));
-	else if (_REDIRECT_ENTRY_)
-		return (parse_redirect_entry(cmd));
-	else if (_REDIRECTION_ || _AGGREGATOR_FD_)
+	shell = recover_shell();
+	prompt = init_prompt();
+	shell->prompt = prompt;
+	ft_bzero(buf, 9);
+	while (read(0, buf, 9))
 	{
-	 	return (parse_redirection(cmd));
+		if (!TAB)
+			shell->autocomplete_position = 0;
+		if ((copy_status = main_action_copy(buf)) == EXIT)
+			status = prompt_find_function(buf);
+		ft_bzero(buf, 9);
+		if (status == FOUND)
+			if (check_quote(list_to_string()) == 1)
+				return (list_to_string());
 	}
-	else
-		return (build_exec(cmd));
-}   
+	return (NULL);
+}

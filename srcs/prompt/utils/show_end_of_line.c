@@ -24,11 +24,7 @@ void	print_eol(void)
 	index = shell->prompt->i_position;
 	i = 0;
 	string = (char *)malloc(sizeof(char) *
-<<<<<<< HEAD
 		(ft_lstcount(shell->prompt->line) - index + 1));
-=======
-						(ft_lstcount(shell->prompt->line) - index + 1));
->>>>>>> origin/new_parser
 	while (index + i < ft_lstcount(shell->prompt->line))
 	{
 		tmp = ft_lstget_at(shell->prompt->line, index + i)->content;
