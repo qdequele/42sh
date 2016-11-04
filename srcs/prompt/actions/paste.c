@@ -18,6 +18,7 @@ t_status	action_paste(char *buf)
 	t_prompt	*prompt;
 	size_t		i;
 
+	
 	shell = recover_shell();
 	prompt = shell->prompt;
 	i = 0;
@@ -26,7 +27,7 @@ t_status	action_paste(char *buf)
 	while (i < ft_strlen(prompt->str_cpy))
 	{
 		ft_lstadd_at(&prompt->line,
-			ft_lstnew(&prompt->str_cpy[i],
+			ft_lstnew(&prompt->str_cpy[i], 
 				sizeof(char*)), prompt->i_position + i);
 		i++;
 	}

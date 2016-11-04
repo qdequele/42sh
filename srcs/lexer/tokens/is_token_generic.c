@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_sort.c                                         :+:      :+:    :+:   */
+/*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/27 14:43:16 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/19 17:31:13 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-int		sort_by_lexycography(t_list *node)
+t_cmd 	*parse_cmd(char *cmd)
 {
-	t_list	*n_elem;
+	size_t		i;
+	char 		*p_heredoc;
 
-	n_elem = node->next;
-	if (n_elem && ft_strlen((char *)(node->content)) >
-		ft_strlen((char *)(n_elem->content)) > 0)
-		return (1);
-	return (0);
-}
+	i = 0;
+	p_heredoc = NULL;
+	// printf("cmd : [%s]\n", cmd);
+	while (i < (ft_strlen(cmd)) && cmd[i] != '|' && cmd[i] != '<')
+		i++;
+	if (_HEREDOC_)
+		return (build_heredoc(cmd));
+	if (_PIPE_)
+		return (parse_pipe(cmd));
+	else if (_REDIRECT_ENTRY_)
+		return (parse_redirect_entry(cmd));
+	else if (_REDIRECTION_ || _AGGREGATOR_FD_)
+	{
+	 	return (parse_redirection(cmd));
+	}
+	else
+		return (build_exec(cmd));
+}   

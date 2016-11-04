@@ -15,7 +15,6 @@
 t_shell		*recover_shell(void)
 {
 	static t_shell	shell;
-
 	return (&shell);
 }
 
