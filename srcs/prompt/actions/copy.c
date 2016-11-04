@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-t_status  action_copy_quit(char *buf)
+t_status  		action_copy_quit(char *buf)
 {
 	(void)buf;
 	return (EXIT);
@@ -21,11 +21,9 @@ t_status  action_copy_quit(char *buf)
 t_status		action_copy(char *buf)
 {
 	t_shell		*shell;
-	t_term 		*term;
 	t_prompt	*prompt;
 
 	shell = recover_shell();
-	term = recover_term();
 	prompt = shell->prompt;
 	if (!ALT_C)
 		return (TRYING);
@@ -37,7 +35,7 @@ t_status		action_copy(char *buf)
 	{
 		prompt->str_cpy[prompt->i_copy] = *(char*)(ft_lstget_at(prompt->line, prompt->i_position)->content);
 		tputs(MRSTR, 0, ft_tputs);
-		ft_putchar_fd(prompt->str_cpy[prompt->i_copy], term->tty);
+		ft_putchar_fd(prompt->str_cpy[prompt->i_copy], recover_term()->tty);
 		tputs(MESTR, 0, ft_tputs);
 		prompt->i_position++;
 		prompt->i_copy++;

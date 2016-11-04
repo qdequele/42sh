@@ -22,10 +22,10 @@ t_cmd 	*parse_cmd(char *cmd)
 	// printf("cmd : [%s]\n", cmd);
 	while (i < (ft_strlen(cmd)) && cmd[i] != '|' && cmd[i] != '<')
 		i++;
+	if (_HEREDOC_)
+		return (build_heredoc(cmd));
 	if (_PIPE_)
 		return (parse_pipe(cmd));
-	if (_HEREDOC_)
-		return (parse_heredoc(cmd));
 	else if (_REDIRECT_ENTRY_)
 		return (parse_redirect_entry(cmd));
 	else if (_REDIRECTION_ || _AGGREGATOR_FD_)

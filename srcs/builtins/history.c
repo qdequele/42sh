@@ -44,7 +44,6 @@ int			builtins_history(t_list **env, char **cmds)
 		ft_putstr_fd(cmds[1], 2);
 		return (1);
 	}
-	shell->history = ft_lst_reverse(shell->history);
 	display_history(shell->history);
 	return (0);
 }

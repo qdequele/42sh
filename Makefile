@@ -67,7 +67,7 @@ _SRC		=	builtins/cd.c\
 				prompt/actions_list.c\
 				prompt/find.c\
 				prompt/init.c\
-				prompt/check_quote.c\
+				prompt/detect_quote.c\
 				shell/shell.c\
 				shell/init.c\
 				shell/print.c\

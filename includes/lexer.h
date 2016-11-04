@@ -94,8 +94,7 @@ t_cmd   *build_exec(char *str);
 /*
 ** heredoc.c
 */
-t_cmd   *build_heredoc(char *left, t_list *list);
-t_cmd   *parse_heredoc(char *complet_pipe);
+t_cmd   *build_heredoc(char *cmd);
 t_list  *heredoc_right(char *s1);
 int     exec_heredoc(t_cmd *cmd);
 void    put_heredoc_result(t_heredoc *p_cmd, int *p);

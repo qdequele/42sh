@@ -22,7 +22,7 @@ void	string_to_list(char *str)
 	i = 0;
 	while (i < ft_strlen(str))
 	{
-		dst = ft_strnew(ft_strlen(str));
+		dst = ft_strnew(1);
 		dst[0] = str[i];
 		ft_lstadd(&shell->prompt->line,
 			ft_lstnew(dst, (sizeof(char) )));

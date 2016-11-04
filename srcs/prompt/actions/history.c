@@ -15,24 +15,22 @@
 static void		move_to_history(void)
 {
 	t_shell		*shell;
-	t_term		*term;
 	t_prompt	*prompt;
-	t_list		*tmp_list;
 
 	shell = recover_shell();
-	term = recover_term();
 	prompt = shell->prompt;
-	tmp_list = shell->history;
 	ft_lstdel(&shell->prompt->line, free_char);
 	clean_prompt();
 	if (shell->history_position < 0)
 		shell->history_position = ft_lstcount(shell->history) - 1;
 	else if (shell->history_position > ft_lstcount(shell->history) - 1)
 		shell->history_position = 0;
-	tmp_list = ft_lstget_at(shell->history, shell->history_position);
-	ft_putstr_fd((char*)tmp_list->content, term->tty);
-	shell->prompt->i_position = ft_strlen((char*)tmp_list->content);
-	string_to_list((char*)tmp_list->content);
+	ft_putstr_fd((char*)ft_lstget_at(shell->history,
+		shell->history_position)->content, recover_term()->tty);
+	shell->prompt->i_position = ft_strlen((char*)ft_lstget_at(shell->history,
+		shell->history_position)->content);
+	string_to_list((char*)ft_lstget_at(shell->history,
+		shell->history_position)->content);
 }
 
 t_status		action_history_up(char *buf)
@@ -40,12 +38,11 @@ t_status		action_history_up(char *buf)
 	t_shell 	*shell;
 
 	shell = recover_shell();
-	
 	if (!UP)
 		return (TRYING);
-	if (ft_lstcount(shell->history) >= -1)
+	if (ft_lstcount(shell->history) > 0)
 	{
-		shell->history_position++;
+		shell->history_position--;
 		move_to_history();
 	}
 	return (READING);
@@ -56,12 +53,11 @@ t_status		action_history_down(char *buf)
 	t_shell *shell;
 
 	shell = recover_shell();
-	
 	if (!DOWN)
 		return (TRYING);
-	if (ft_lstcount(shell->history) > 0)
+	if (ft_lstcount(shell->history) >= -1)
 	{
-		shell->history_position--;
+		shell->history_position++;
 		move_to_history();
 	}
 	return (READING);

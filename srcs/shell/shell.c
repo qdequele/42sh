@@ -17,7 +17,9 @@ int		shell_core(t_list **env, char **cmds)
 	if (cmds[0] && builtins_find(cmds[0]))
 		return(builtins_exec(env, cmds));
 	else if (cmds[0])
+	{
 		return(shell_find_cmd(*env, cmds));
+	}
 	else {
 		return (1);
 	}
@@ -34,14 +36,18 @@ int		shell_exec_line(char *line)
 	cmds = ft_str_to_tab(line);
 	if (cmds[0][0] == '!')
 	{
-		cmds[0] = action_seek_to_history(cmds[0]);
+		line = action_seek_to_history(cmds[0]);
 		if (cmds[0] == NULL)
 			return (0);
 	}
 	if ((cmd = parse_cmd(ft_strdup(line))) && builtins_find(line) == 0)
+	{
 		return (exec_cmd(cmd));
+	}
 	else
+	{
 		return (shell_core(&env, cmds));
+	}
 }
 
 
@@ -104,7 +110,6 @@ void	shell_get_lines(void)
 {
 	t_shell	*shell;
 	char	*line;
-
 	shell = recover_shell();
 	init_shell();
 	while (1)
@@ -114,8 +119,12 @@ void	shell_get_lines(void)
 		shell->autocomplete_position = 0;
 		line = prompt_create_line();
 		shell->last_exit_code = shell_parse_semicolon_line(replace_vars(ft_strdup(line)));	
-		ft_lstadd(&shell->history,
-			ft_lstnew(line, sizeof(char*) * ft_strlen(line)));
+		if (line[0] != '!')
+		{
+			ft_lstadd_at(&shell->history,
+				ft_lstnew(line, sizeof(char*) * ft_strlen(line)), shell->index_history);
+			shell->index_history++;
+		}
 	}
 	return ;
 }

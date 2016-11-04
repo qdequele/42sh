@@ -241,11 +241,11 @@ void		utils_move_end(void);
 void		utils_move_max_top(void);
 void		utils_move_max_bottom(void);
 /*
-** prompt_check_quote.c
+** check_quote.c
 */
 int			check_quote(char *str);
-void		print_error(char flag);
-void		display_quote_error(char c);
+int			print_error(char flag);
+char 		display_quote_error(char c);
 char		*remove_quote (char type, char *str);
 int			quote_close(char *str, char c);
 /*

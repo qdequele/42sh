@@ -26,6 +26,7 @@ void		init_shell(void)
 	shell = (t_shell*)malloc(sizeof(t_shell));
 	shell->history = NULL;
 	shell->history_position = -1;
+	shell->index_history = 0;
 	shell->last_exit_code = 0;
 	shell->prompt = NULL;
 	shell->mode = NORMAL;

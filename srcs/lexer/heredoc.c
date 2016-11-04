@@ -12,25 +12,15 @@
 
 #include <ft_sh.h>
 
-t_cmd	*build_heredoc(char *left, t_list *list)
+t_cmd	*build_heredoc(char *cmd)
 {
 	t_heredoc *heredoc;
 
 	heredoc = (t_heredoc*)malloc(sizeof(t_heredoc));
 	heredoc->type = HEREDOC;
-	heredoc->left = parse_cmd(left);
-	heredoc->right = list;
+	heredoc->left = parse_cmd(body_left(cmd, '<'));
+	heredoc->right = heredoc_right(body_right(cmd, '<'));
 	return ((t_cmd*)heredoc);
-}
-
-t_cmd	*parse_heredoc(char *complet_pipe)
-{
-	t_list 	*list_right;
-	char	*left_cmd;
-
-	left_cmd = body_left(complet_pipe, '<');
-	list_right = heredoc_right(body_right(complet_pipe, '<'));
-	return (build_heredoc(left_cmd, list_right));
 }
 
 t_list	*heredoc_right(char *s1)
@@ -42,7 +32,7 @@ t_list	*heredoc_right(char *s1)
 	ret = NULL;
 	buf = ft_strnew(1);
 	list = NULL;	
-	ft_putstr("heredoc> ");
+	ft_putstr("heredoc>");
 	while (read(0, buf, 1))
 	{
 		ft_putchar(buf[0]);

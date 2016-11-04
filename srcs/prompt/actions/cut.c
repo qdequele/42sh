@@ -18,20 +18,18 @@ t_status	action_cut(char *buf)
 	t_prompt	*prompt;
 	t_list		*cur;
 	int			i;
-	int			j;
 
 	shell = recover_shell();
 	prompt = shell->prompt;
 	if (!ALT_X)
 		return (TRYING);
-	j = prompt->i_position;
 	i = prompt->i_position - prompt->i_copy;
 	cur = prompt->line;
 	clean_prompt();
-	while (j-- > i)
+	while (prompt->i_position-- > i)
 	{
 		cur = prompt->line;
-		ft_lstdel_at(&cur, j, &free_char);
+		ft_lstdel_at(&cur, prompt->i_position, &free_char);
 	}
 	cur = prompt->line;
 	tputs(MESTR, 0, ft_tputs);
