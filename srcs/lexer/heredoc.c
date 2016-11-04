@@ -25,8 +25,8 @@ t_cmd	*build_heredoc(char *cmd)
 
 t_list	*heredoc_right(char *s1)
 {
-	char		*buf;
 	t_list		*list;
+	char		*buf;
 	char		*ret;
 
 	ret = NULL;

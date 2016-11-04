@@ -1,45 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/03/03 13:19:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/10/26 13:08:03 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-t_status	action_move_up(char *buf)
+static  int count_quote(char *cmd)
 {
-	if (!SHIFT_UP)
-		return (TRYING);
-	utils_move_up();
-	return (READING);
-}
+    int i;
+    int j;
 
-t_status	action_move_down(char *buf)
-{
-	if (!SHIFT_DOWN)
-		return (TRYING);
-	utils_move_down();
-	return (READING);
+    i = 0;
+    j = 0;
+    while (cmd[i])
+    {
+        if (cmd[i] == '\'')
+            j++;
+        i++;
+    }
+    if (j % 4 != 0)
+        return (j);
+    else
+        return (1);
 }
-
-t_status	action_move_left(char *buf)
+char    *replace_vars(char *line)
 {
-	if (!LEFT)
-		return (TRYING);
-	utils_move_left();
-	return (READING);
-}
+    char    **cmd;
+    char    *tmp;
+    int     i;
+    t_shell	*shell;
 
-t_status	action_move_right(char *buf)
-{
-	if (!RIGHT)
-		return (TRYING);
-	utils_move_right();
-	return (READING);
+    i = 0;
+    cmd = ft_strsplit(line, ' ');
+    shell = recover_shell();
+    while(cmd[i])
+    {
+
+        if (count_quote(cmd[i]) == 1)
+        {
+            while (cmd[i][0] == '\'')
+            {
+                cmd[i] = ft_strsub(cmd[i], 1, ft_strlen(cmd[i]) - 2);
+            }
+        }
+        else if (count_quote(cmd[i]) > 2)
+            cmd[i] = ft_strsub(cmd[i], 1, ft_strlen(cmd[i]) - 2);
+        if (cmd[i][0] == '$')
+        {
+            tmp = cmd[i];
+            if (cmd[i][1] == '?' && cmd[i][2] == '\0')
+                cmd[i] = ft_itoa(shell->last_exit_code);
+            else if (!cmd[i])
+                cmd[i] = env_get(g_env, ft_strdup(&tmp[1]));
+            else
+                cmd[i] = env_get(g_vars, ft_strdup(&tmp[1]));
+            printf("2--cmd[i] = %s\n", cmd[i]);
+        }
+        i++;
+    }
+    return (ft_array_to_string(cmd));
 }

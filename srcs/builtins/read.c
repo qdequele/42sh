@@ -12,26 +12,7 @@
 
 #include <ft_sh.h>
 
-static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
-{
-	int		i;
-
-	i = 1;
-	while (i <= nbr_var)
-	{
-		if (i == nbr_var)
-		{
-			create_last_var(cmds[i], &var_value[i - 1], opt);
-		}
-		else
-		{
-			create_var(cmds[i], var_value[i - 1], opt);
-		}
-		i++;
-	}
-}
-
-static	char	*read_read(void)
+static 	char 	*read_read()
 {
 	char buf[9];
 	char *ret;
@@ -49,7 +30,7 @@ static	char	*read_read(void)
 			tputs(EDSTR, 1, ft_tputs);
 			ret = ft_strsub(ret, 0, ft_strlen(ret) - 1);
 		}
-		else
+		else 
 		{
 			ft_putchar(buf[0]);
 			ret = ft_freejoin(ret, buf);
@@ -58,6 +39,29 @@ static	char	*read_read(void)
 			return (ret);
 	}
 	return (ret);
+}
+char			*check_value(char opt, char *var_value)
+{
+	int i;
+	int j;
+	char *new_value;
+
+	i = 0;
+	j = 0;
+	new_value = ft_strnew(1);
+	while (var_value[i] != '\0')
+	{
+		if ((var_value[i] == '\\' && opt == 'r'))
+			i++;
+		else
+		{
+			new_value[j] = var_value[i];
+			i++;
+			j++;
+		}
+	}
+	return (new_value);
+
 }
 
 int				count_words(char *s, char c)
@@ -76,13 +80,15 @@ int				count_words(char *s, char c)
 	return (words);
 }
 
-int				builtins_read(t_list **env, char **cmds)
-{
-	char	**var_value;
-	int		nbr_var;
-	char	opt;
-	char	*ret;
-	int		i;
+
+int 			builtins_read(t_list **env, char **cmds)
+{	
+	char 	**var_value;
+	char 	opt;
+	char 	*ret;
+	int 	nbr_var;
+	int 	nbr_words;
+	int 	i;
 
 	(void)env;
 	i = 1;
@@ -93,11 +99,23 @@ int				builtins_read(t_list **env, char **cmds)
 		i++;
 	}
 	ret = read_read();
-	var_value = ft_strsplit(ret, ' ');
 	nbr_var = ft_count_raw_aoc(&cmds[i]);
-	if ((nbr_var) == 1)
+	var_value = ft_strsplit(ret, ' ');
+	nbr_words = count_words(ret, ' ');
+	if (nbr_var == 1)
+	{
 		create_last_var(cmds[i], var_value, opt);
-	else if (nbr_var <= count_words(ret, ' '))
-		read_bis(cmds, var_value, opt, nbr_var);
+	}
+	else if (nbr_var <= nbr_words)
+	{
+		i = 0;
+		while (i++ <= nbr_var)
+		{
+			if (i == nbr_var)
+				create_last_var(cmds[i], &var_value[i - 1], opt);
+			else
+				create_var(cmds[i], var_value[i - 1], opt);
+		}
+	}
 	return (0);
 }
