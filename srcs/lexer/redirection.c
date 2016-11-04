@@ -47,6 +47,7 @@ void			exec_redirection(t_cmd *cmd)
 	}
 	old_fd = dup(rcmd->fd[0]);
 	dup2(new_fd, rcmd->fd[0]);
+	close(new_fd);
 	exec_cmd(rcmd->left);
 	dup2(old_fd, rcmd->fd[0]);
 
@@ -63,10 +64,13 @@ t_cmd	*parse_redirection(char *str)
 	body = (char**)malloc(sizeof(char *) * 2);
 	body[0] = parse_left(str);
 	body[1] = parse_right(str);
-	pattern = ft_strtrim(ft_strsub(str, ft_strlen(body[0]), ft_strlen(str) - (ft_strlen(body[1]) + 1)));
+	pattern = ft_strtrim(ft_strsub(str, ft_strlen(body[0]), ft_strlen(str) - (ft_strlen(body[1]) + ft_strlen(body[0]) + 1)));
+	body[0] = ft_strtrim(body[0]);
+	body[1] = ft_strtrim(body[1]);
 	fd = parse_fd(pattern);
 	mode = parse_mode(pattern);
 	type_of = parse_type(pattern);
+	printf("Left : [%s]\nRight : [%s]\nmode : [%d]\npattern : [%s]\nfd[0] : [%d] -- fd[1] : [%d]\n", body[0], body[1], mode, pattern, fd[0], fd[1]);
 	return (build_redirection(body, mode, fd, type_of));
 
 }

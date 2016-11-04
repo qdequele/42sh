@@ -30,6 +30,7 @@ t_cmd	*parse_pipe(char *complet_pipe)
 
 	left_cmd = body_left(complet_pipe, '|');
 	right_cmd = body_right(complet_pipe, '|');
+	printf("PIPE : Left : [%s] Right : [%s]\n", left_cmd, right_cmd);
 	return (build_pipe(left_cmd, right_cmd));
 }
 
@@ -49,6 +50,7 @@ int	exec_pipe(t_cmd *cmd)
 	{
 		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
+		printf("exec->left\n");
 		exec_cmd(p_cmd->left);
 		exit(0);
 	}
@@ -56,6 +58,7 @@ int	exec_pipe(t_cmd *cmd)
 	{
 		dup2(pipes[0], STDIN_FILENO);
 		close(pipes[1]);
+		printf("exec->right\n");
 		exec_cmd(p_cmd->right);
 		exit(0);
 	}

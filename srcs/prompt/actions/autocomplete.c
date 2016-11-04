@@ -12,10 +12,14 @@
 
 #include <ft_sh.h>
 
-// static void show_list(t_list *elem)
+//  static void show_list(t_list *elem)
 // {
-// 	ft_console("--- line : %s\n", (char *)(elem->content));
-// }
+// 	while (elem->next != NULL)
+// 	{
+//  		printf("--- line : %s\n", (char *)(elem->content));
+//  		elem = elem->next;
+// 	}
+//  }
 
 /*
 ** public

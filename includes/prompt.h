@@ -246,7 +246,6 @@ void		utils_move_max_bottom(void);
 int			check_quote(char *str);
 int			print_error(char flag);
 char 		display_quote_error(char c);
-char		*remove_quote (char type, char *str);
 int			quote_close(char *str, char c);
 /*
 ** utils/line_cut.c
