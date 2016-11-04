@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_cmd.c                                :+:      :+:    :+:   */
+/*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 t_status	action_exec_cmd(char *buf)
 {
-	if (!ENTER )
+	if (!ENTER)
 		return (TRYING);
 	utils_move_end();
 	ft_putchar('\n');
@@ -23,7 +23,7 @@ t_status	action_exec_cmd(char *buf)
 
 t_status	action_ignore_input(char *buf)
 {
-	if (!IGNORE_1 )
+	if (!IGNORE_1)
 		return (TRYING);
 	return (READING);
 }

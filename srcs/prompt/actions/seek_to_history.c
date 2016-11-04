@@ -12,12 +12,12 @@
 
 #include <ft_sh.h>
 
-char 			*action_seek_to_history(char *cmds)
+char	*action_seek_to_history(char *cmds)
 {
-	t_shell 	*shell;
-	t_list 		*cur;
-	char 		*str;
-	int 		i;
+	t_shell		*shell;
+	t_list		*cur;
+	char		*str;
+	int			i;
 
 	shell = recover_shell();
 	cur = shell->history;
@@ -32,7 +32,7 @@ char 			*action_seek_to_history(char *cmds)
 		ft_putstr_fd("42sh : no such event: ", 2);
 		ft_putendl_fd(str, 2);
 		return (NULL);
-	}	
+	}
 	ft_lstdel(&shell->prompt->line, free_char);
 	string_to_list(str);
 	return (str);

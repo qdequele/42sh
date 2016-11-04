@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_find.c                                           :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,10 +24,8 @@ t_status		prompt_find_function(char *buf)
 	else
 		actions = get_actions_normal();
 	status = TRYING;
-	
 	while (*actions && status == TRYING)
 	{
-		
 		status = (*actions)(buf);
 		actions++;
 	}

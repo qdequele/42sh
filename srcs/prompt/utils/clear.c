@@ -17,7 +17,8 @@ void	clean_prompt(void)
 	t_shell	*shell;
 
 	shell = recover_shell();
-	while((size_t)shell->prompt->i_position < ft_lstcount(shell->prompt->line) - ft_strlen(shell->prompt->str_cpy))
+	while ((size_t)shell->prompt->i_position <
+		ft_lstcount(shell->prompt->line) - ft_strlen(shell->prompt->str_cpy))
 	{
 		utils_move_right();
 	}
@@ -29,12 +30,12 @@ void	clean_prompt(void)
 	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 }
 
-void 	clean_last_x_char(int i)
+void	clean_last_x_char(int i)
 {
 	t_shell	*shell;
 
 	shell = recover_shell();
-	while(shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
 	}

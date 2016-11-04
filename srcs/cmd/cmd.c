@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.c                                        :+:      :+:    :+:   */
+/*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 static int	print_erno(char *str, int err)
 {
-	if (str[0] == '!') // Permet de remplacer de !index, par ce qu'il y a dans l'history
+	if (str[0] == '!')
 		str = list_to_string();
 	print_shell_err("42sh : ");
 	if (err)
@@ -41,7 +41,7 @@ static int	shell_exec_cmd(t_list *env, char **cmds, char *path)
 	return (status);
 }
 
-int		shell_find_cmd(t_list *env, char **cmds)
+int			shell_find_cmd(t_list *env, char **cmds)
 {
 	char		**paths;
 	char		*path;
@@ -53,9 +53,7 @@ int		shell_find_cmd(t_list *env, char **cmds)
 	while (paths && paths[i + 1])
 	{
 		if (i == 0)
-		{
 			path = cmds[0];
-		}
 		if (access(path, X_OK) == 0 && !stat(path, &sb))
 		{
 			if (S_ISREG(sb.st_mode) && sb.st_mode & 0111)

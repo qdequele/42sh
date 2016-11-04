@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-t_builtin	*builtins_init(void)
+t_builtin			*builtins_init(void)
 {
 	static t_builtin	f[] = {
 		{"cd", builtins_cd},
@@ -30,6 +30,7 @@ t_builtin	*builtins_init(void)
 		{"unreadonly", builtins_unreadonly},
 		{NULL, NULL}
 	};
+
 	return ((void *)f);
 }
 

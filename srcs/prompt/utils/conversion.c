@@ -25,7 +25,7 @@ void	string_to_list(char *str)
 		dst = ft_strnew(1);
 		dst[0] = str[i];
 		ft_lstadd(&shell->prompt->line,
-			ft_lstnew(dst, (sizeof(char) )));
+			ft_lstnew(dst, (sizeof(char))));
 		ft_strdel(&dst);
 		i++;
 	}
@@ -39,14 +39,12 @@ char	*list_to_string(void)
 	t_list		*tmp;
 	int			i;
 	t_shell		*shell;
-	t_prompt	*prompt;
 
 	shell = recover_shell();
-	prompt = shell->prompt;
 	line = (char*)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) + 1));
 	line[ft_lstcount(shell->prompt->line)] = '\0';
 	i = 0;
-	tmp = prompt->line;
+	tmp = shell->prompt->line;
 	while (tmp != NULL && i <= ft_lstcount(shell->prompt->line))
 	{
 		car = *(char*)tmp->content;

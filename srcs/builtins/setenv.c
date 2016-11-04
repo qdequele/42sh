@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static int	is_formated(char *str)
+static	int	is_formated(char *str)
 {
 	int	i;
 
@@ -29,15 +29,9 @@ static int	is_formated(char *str)
 	return (1);
 }
 
-int			builtins_setenv(t_list **env, char **cmds)
+static	int	is_error(char **cmds)
 {
-	// printf("cmds[1] : [%s] cmds[2] ; [%s]\n", cmds[1], cmds[2]);
-	if (!cmds[1])
-	{
-		env_show(*env);
-		return (0);
-	}
-	else if (cmds[3])
+	if (cmds[3])
 	{
 		ft_putstr_c(RED, "setenv: Too many arguments.\n");
 		return (1);
@@ -53,6 +47,18 @@ int			builtins_setenv(t_list **env, char **cmds)
 		ft_putstr_c(RED, "alphanumeric characters.\n");
 		return (1);
 	}
+	return (0);
+}
+
+int			builtins_setenv(t_list **env, char **cmds)
+{
+	if (!cmds[1])
+	{
+		env_show(*env);
+		return (0);
+	}
+	if (is_error(cmds))
+		return (1);
 	else
 	{
 		if (!cmds[2])

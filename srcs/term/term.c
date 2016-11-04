@@ -15,6 +15,7 @@
 t_term		*recover_term(void)
 {
 	static t_term	term;
+
 	return (&term);
 }
 

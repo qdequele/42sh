@@ -12,9 +12,9 @@
 
 #include <ft_sh.h>
 
-t_status 	action_free(char *buf)
+t_status	action_free(char *buf)
 {
-	t_shell 	*shell;
+	t_shell		*shell;
 
 	shell = recover_shell();
 	if (!ALT_B)

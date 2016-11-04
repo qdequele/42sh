@@ -30,7 +30,7 @@ void			signal_exit(int i)
 	UNUSED(i);
 	reset_term();
 	signal(SIGQUIT, SIG_DFL);
-	exit (0);
+	exit(0);
 }
 
 void			signal_background(int i)

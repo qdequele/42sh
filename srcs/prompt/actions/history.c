@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_history.c                            :+:      :+:    :+:   */
+/*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -35,7 +35,7 @@ static void		move_to_history(void)
 
 t_status		action_history_up(char *buf)
 {
-	t_shell 	*shell;
+	t_shell		*shell;
 
 	shell = recover_shell();
 	if (!UP)

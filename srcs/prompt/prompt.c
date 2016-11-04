@@ -17,7 +17,7 @@ char	*prompt_create_line(void)
 	t_prompt	*prompt;
 	char		buf[9];
 	t_status	status;
-	t_status 	copy_status;
+	t_status	copy_status;
 	t_shell		*shell;
 
 	shell = recover_shell();

@@ -12,32 +12,31 @@
 
 #include <ft_sh.h>
 
-void    print_eol(void)
+void	print_eol(void)
 {
-    t_shell		*shell;
-	t_term		*term;
-    int         index;
-    void        *tmp;
-    int         i;
-    char        *string;
+	t_shell		*shell;
+	int			index;
+	void		*tmp;
+	int			i;
+	char		*string;
 
 	shell = recover_shell();
-	term = recover_term();
-    index = shell->prompt->i_position;
-    i = 0;
-    string = (char *)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) - index + 1));
-    while (index + i < ft_lstcount(shell->prompt->line))
-    {
-        tmp = ft_lstget_at(shell->prompt->line, index + i)->content;
-        string[i] = *(char*)tmp;
-        i++;
-    }
-    string[i] = '\0';
-    write(term->tty, ft_strdup(string), i);
-    shell->prompt->i_position += i;
-    while (i > 0)
-    {
-        utils_move_left();
-        i--;
-    }
+	index = shell->prompt->i_position;
+	i = 0;
+	string = (char *)malloc(sizeof(char) *
+		(ft_lstcount(shell->prompt->line) - index + 1));
+	while (index + i < ft_lstcount(shell->prompt->line))
+	{
+		tmp = ft_lstget_at(shell->prompt->line, index + i)->content;
+		string[i] = *(char*)tmp;
+		i++;
+	}
+	string[i] = '\0';
+	write(recover_term()->tty, ft_strdup(string), i);
+	shell->prompt->i_position += i;
+	while (i > 0)
+	{
+		utils_move_left();
+		i--;
+	}
 }

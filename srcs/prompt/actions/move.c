@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_move.c                               :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,36 +12,32 @@
 
 #include <ft_sh.h>
 
-t_status action_move_up(char *buf)
+t_status	action_move_up(char *buf)
 {
-	
 	if (!SHIFT_UP)
 		return (TRYING);
 	utils_move_up();
 	return (READING);
 }
 
-t_status action_move_down(char *buf)
+t_status	action_move_down(char *buf)
 {
-	
 	if (!SHIFT_DOWN)
 		return (TRYING);
 	utils_move_down();
 	return (READING);
 }
 
-t_status action_move_left(char *buf)
+t_status	action_move_left(char *buf)
 {
-	
 	if (!LEFT)
 		return (TRYING);
 	utils_move_left();
 	return (READING);
 }
 
-t_status action_move_right(char *buf)
+t_status	action_move_right(char *buf)
 {
-	
 	if (!RIGHT)
 		return (TRYING);
 	utils_move_right();

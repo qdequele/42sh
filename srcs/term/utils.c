@@ -14,10 +14,7 @@
 
 int		ft_tputs(int c)
 {
-	t_term	*term;
-
-	term = recover_term();
 	c = (char)c;
-	write(term->tty, &c, 1);
+	write(recover_term()->tty, &c, 1);
 	return (1);
 }

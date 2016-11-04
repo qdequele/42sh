@@ -26,7 +26,7 @@
 ** DESCRIPTION  : Liste les commandes unix qui commencent par le denier mot de la ligne entrée par l'utilisateur
 ** EXPLICATIONS : Il faut aller chercher les executables qui se trouve dans les chemins contenue dans la variable d'env PATH
 */
-void 	get_cmd_list(t_list **possibilities, char *last_word)
+void	get_cmd_list(t_list **possibilities, char *last_word)
 {
 	char		**paths;
 	int			i;
@@ -45,7 +45,7 @@ void 	get_cmd_list(t_list **possibilities, char *last_word)
 ** DESCRIPTION  : Liste les builtins qui commencent par le denier mot de la ligne entrée par l'utilisateur
 ** EXPLICATIONS : Ici les builtins sont fait maison donc on peut les retrouver grace à la commande builtins_init 
 */
-void 	get_builtins_list(t_list **possibilities, char *last_word)
+void	get_builtins_list(t_list **possibilities, char *last_word)
 {
 	t_list 		*list_new;
 	t_builtin	*builtins;
@@ -70,7 +70,7 @@ void 	get_builtins_list(t_list **possibilities, char *last_word)
 ** DESCRIPTION  : Liste les fichier et les dossiers contenue dans le path passé en parametre
 ** EXPLICATIONS : Dans le paramètre last_word, on retrouve le path (ce qui est avant le denier /) et le debut de la commande (ce qui est apprès le dernier /) 
 */
-void 	get_files_list(t_list **possibilities, char *last_word)
+void	get_files_list(t_list **possibilities, char *last_word)
 {
 	struct dirent	*pdirent;
 	DIR				*pdir;

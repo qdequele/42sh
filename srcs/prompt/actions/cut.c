@@ -35,7 +35,7 @@ t_status	action_cut(char *buf)
 	tputs(MESTR, 0, ft_tputs);
 	ft_lstshow_x(cur, 0);
 	prompt->i_position = ft_lstcount(prompt->line);
-	while(prompt->i_position > i)
-	 	utils_move_left();
+	while (prompt->i_position > i)
+		utils_move_left();
 	return (READING);
 }

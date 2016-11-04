@@ -34,6 +34,7 @@ void		*get_actions_normal(void)
 		action_ignore_input,
 		action_insert_char
 	};
+
 	return ((void *)f);
 }
 
@@ -48,5 +49,6 @@ void		*get_actions_copy(void)
 		action_cut,
 		action_copy_quit
 	};
+
 	return ((void *)f);
 }

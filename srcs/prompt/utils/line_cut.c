@@ -17,38 +17,37 @@
 ** DESCRIPTION  : Donne le dernier mot d'une ligne très pratique pour autocompleter ce mot
 ** EXPLICATIONS : Utilise strsplit pour couper la phrase en mot et renvoie le dernier
 */
-char *before_last_word(char *str, int c)
+char	*before_last_word(char *str, int c)
 {
-	char 	*dup;
-	int 	i;
-	
+	char	*dup;
+	int		i;
+
 	if (str == NULL || str[0] == '\0' || ft_strchr(str, c) == NULL)
 		return (ft_strdup("."));
 	dup = ft_strdup(str);
-	
 	i = ft_strlen(dup) - 1;
-	while (dup[i] && i >=0)
+	while (dup[i] && i >= 0)
 	{
 		if (dup[i] == c)
 		{
 			dup[i] = '\0';
-			break;
+			break ;
 		}
 		i--;
 	}
 	return (dup);
 }
-
 /*
 ** public
 ** DESCRIPTION  : Donne le dernier mot d'une ligne très pratique pour autocompleter ce mot
 ** EXPLICATIONS : Utilise strsplit pour couper la phrase en mot et renvoie le dernier
 */
-char *get_last_word(char *str, int c)
+
+char	*get_last_word(char *str, int c)
 {
-	char 	**tab;
-	int 	i;
-	
+	char	**tab;
+	int		i;
+
 	if (str == NULL || str[0] == '\0')
 		return (ft_strdup(""));
 	tab = ft_strsplit(str, c);
