@@ -14,6 +14,7 @@
 
 void		put_job_info(t_job *j, int index)
 {
+	__DEBUG__
 	ft_putstr("[");
 	ft_putnbr(index);
 	ft_putstr("] ");
@@ -35,6 +36,7 @@ int			update_process_status_by_pid(t_list *process_list,
 {
 	t_process	*p;
 
+	__DEBUG__
 	while (process_list)
 	{
 		p = process_list->content;
@@ -63,6 +65,7 @@ void		update_job_status_by_pid(t_list *job_list, pid_t pid, int status)
 {
 	t_job		*j;
 
+	__DEBUG__
 	if (!job_list)
 		return ;
 	if (pid < 1)
@@ -81,6 +84,7 @@ static void	notify_terminated_jobs(t_list *job_list)
 	t_job		*j;
 	int			i;
 
+	__DEBUG__
 	i = 0;
 	while (job_list)
 	{
@@ -102,6 +106,7 @@ void		update_job_status(void)
 	pid_t	pid;
 	int		status;
 
+	__DEBUG__
 	shell = recover_shell();
 	pid = 1;
 	while (pid > 0)

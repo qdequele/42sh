@@ -85,7 +85,6 @@ _SRC		=	builtins/utils/parser.c\
 				shell/init.c\
 				shell/print.c\
 				shell/signal.c\
-				shell/handlers.c\
 				shell/term.c\
 				main.c
 

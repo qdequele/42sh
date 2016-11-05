@@ -14,8 +14,6 @@
 # define SHELL_H
 # include <ft_sh.h>
 
-
-
 # define UNUSED(x) (void)(x)
 
 typedef enum	e_mode
@@ -77,18 +75,12 @@ char		*replace_vars(char *line);
 /*
 ** Signal.c
 */
-void	signal_handler(int i);
-void	init_signals(void);
 void	ignore_major_signals(void);
 void	reset_major_signals(void);
 void	signal_reprompt(int i);
-/*
-** Signal_handler.c
-*/
+void	signal_reprompt(int i);
 void	signal_resize_screen(int i);
-void	signal_exit(int i);
-void	signal_background(int i);
-void	signal_foreground(int i);
+
 /*
 ** Term.c
 */

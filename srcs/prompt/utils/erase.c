@@ -12,11 +12,12 @@
 
 #include <ft_sh.h>
 
-void    erase_one_char(void)
+void	erase_one_char(void)
 {
-    t_shell	*shell;
+	t_shell	*shell;
 
-    shell = recover_shell();
+	shell = recover_shell();
+	ft_console("i_position : %d, count : %d\n", shell->prompt->i_position, ft_lstcount(shell->prompt->line));
 	if(shell->prompt->i_position <= ft_lstcount(shell->prompt->line)
 		&& shell->prompt->i_position > 0)
 	{

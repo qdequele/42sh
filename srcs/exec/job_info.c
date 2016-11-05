@@ -17,16 +17,22 @@ int		is_job_success(t_job *j)
 	t_list		*process_list;
 	t_process	*p;
 
+	__DEBUG__
 	if (!job_is_completed(j))
 		return (1);
 	process_list = j->process_list;
 	while (process_list)
 	{
+		__DEBUG__
 		p = process_list->content;
 		if (p->status != 0)
+		{
+			__DEBUG__
 			return (0);
+		}
 		process_list = process_list->next;
 	}
+	__DEBUG__
 	return (1);
 }
 
@@ -35,6 +41,7 @@ int		get_job_exit_code(t_job *j)
 	t_list		*process_list;
 	t_process	*p;
 
+	__DEBUG__
 	process_list = j->process_list;
 	while (process_list)
 	{
@@ -58,6 +65,7 @@ int		get_job_raw_exit_code(t_job *j)
 	t_list		*process_list;
 	t_process	*p;
 
+	__DEBUG__
 	process_list = j->process_list;
 	while (process_list)
 	{

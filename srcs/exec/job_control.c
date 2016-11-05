@@ -16,6 +16,7 @@ void	put_job_in_background(t_job *j, int cont)
 {
 	t_shell	*shell;
 
+	__DEBUG__
 	shell = recover_shell();
 	if (cont)
 		kill(-j->pgid, SIGCONT);
@@ -28,6 +29,7 @@ void	put_job_in_foreground(t_job *j, int cont)
 	t_shell		*shell;
 	t_list		*cur;
 
+	__DEBUG__
 	shell = recover_shell();
 	if (j->pgid > 0)
 		tcsetpgrp(0, j->pgid);
@@ -52,6 +54,7 @@ void	wait_for_job(t_job *j)
 	int		status;
 	pid_t	pid;
 
+	__DEBUG__
 	status = 0;
 	pid = 0;
 	while (!job_is_completed(j) && !job_is_stopped(j))
@@ -69,6 +72,7 @@ int		job_is_completed(t_job *j)
 	t_list		*process;
 	t_process	*p;
 
+	__DEBUG__
 	process = j->process_list;
 	while (process)
 	{
@@ -77,6 +81,7 @@ int		job_is_completed(t_job *j)
 			return (0);
 		process = process->next;
 	}
+	__DEBUG__
 	return (1);
 }
 

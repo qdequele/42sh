@@ -17,6 +17,7 @@ static size_t	count_args(const char *s)
 	size_t	words;
 	size_t	i;
 
+	__DEBUG__
 	words = 0;
 	i = 0;
 	while (s[i] != '\0')
@@ -32,6 +33,7 @@ static char		*clear_str_space(char *s)
 {
 	char	*res;
 
+	__DEBUG__
 	res = s;
 	while (*s)
 	{
@@ -47,6 +49,7 @@ static char		*get_new_arg(char *arg)
 	char		*res;
 	char		*env_var;
 
+	__DEBUG__
 	res = NULL;
 	env_var = NULL;
 	if (!arg)
@@ -63,6 +66,7 @@ char			*construct_job_command(t_list *process_list)
 	t_process	*p;
 	int			i;
 
+	__DEBUG__
 	cmd = NULL;
 	while (process_list)
 	{
@@ -87,6 +91,7 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 	char	**start_split;
 	int		i;
 
+	__DEBUG__
 	i = 0;
 	clear_str_space(cmd);
 	if (!(argv = malloc(sizeof(char *) * count_args(cmd) + 1)) ||

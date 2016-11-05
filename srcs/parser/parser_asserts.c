@@ -14,6 +14,7 @@
 
 int			parser_assert_linker(t_token *t)
 {
+	__DEBUG__
 	if (!t)
 		return (0);
 	if (t->type == OR || t->type == AND || t->type == SEMI_COLON ||
@@ -24,6 +25,7 @@ int			parser_assert_linker(t_token *t)
 
 int			parser_assert_pipe(t_token *t)
 {
+	__DEBUG__
 	if (t && t->type == PIPE)
 		return (1);
 	return (0);
@@ -31,6 +33,7 @@ int			parser_assert_pipe(t_token *t)
 
 int			parser_assert_cmd(t_token *t)
 {
+	__DEBUG__
 	if (t && t->type == CMD)
 		return (1);
 	return (0);

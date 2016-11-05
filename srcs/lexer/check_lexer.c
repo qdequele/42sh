@@ -14,6 +14,7 @@
 
 static void		check_lexer_error(char *token)
 {
+	__DEBUG__
 	ft_putstr("42sh: syntax error near unexpected token `");
 	ft_putstr(token);
 	ft_putendl("`");
@@ -23,6 +24,7 @@ static int		check_lexer_single_bg(t_list *tok_list)
 {
 	t_token	*t;
 
+	__DEBUG__
 	if (!tok_list)
 		return (1);
 	t = tok_list->content;
@@ -41,6 +43,7 @@ int				check_lexer(t_list *token_list)
 	t_token	*t;
 	t_token	*t_next;
 
+	__DEBUG__
 	t = NULL;
 	if (!token_list || check_lexer_single_bg(token_list))
 		return (1);

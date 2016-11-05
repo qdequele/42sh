@@ -25,7 +25,6 @@ int			main(int argc, char **argv, char **environ)
 	ft_console_log_clear();
 	ft_console_log("start 42sh\n\n");
 	env_parse_to_list(&g_env, environ);
-	init_signals();
 	ignore_major_signals();
 	if (init_term() == -1)
 	{

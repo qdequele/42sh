@@ -20,6 +20,7 @@ char	*get_cmd_env(char *cmd, char *var_raw)
 	int		i;
 	t_shell	*shell;
 
+	__DEBUG__
 	env_value = NULL;
 	shell = recover_shell();
 	*var_raw = '\0';
