@@ -46,14 +46,14 @@ char *before_last_word(char *str, int c)
 */
 char *get_last_word(char *str, int c)
 {
-	char 	**tab;
+	char 	**arr;
 	int 	i;
 	
 	if (str == NULL || str[0] == '\0')
 		return (ft_strdup(""));
-	tab = ft_strsplit(str, c);
+	arr = ft_strsplit(str, c);
 	i = 0;
-	while (tab[i] && tab[i][0])
+	while (arr[i] && arr[i][0])
 		i++;
-	return (tab[i - 1]);
+	return (arr[i - 1]);
 }

@@ -31,7 +31,6 @@ static int	is_formated(char *str)
 
 int			builtins_setenv(t_list **env, char **cmds)
 {
-	// printf("cmds[1] : [%s] cmds[2] ; [%s]\n", cmds[1], cmds[2]);
 	if (!cmds[1])
 	{
 		env_show(*env);

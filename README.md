@@ -40,9 +40,9 @@ prototype : - X : blabla (username)
 ###Mandatory
 
 - O : Line separator ; (qdequele)
-- O : pipes | (eebersol)
-- O : redirect  < >> > (eebersol)
-- O : file descriptor agregator 2>&- (eebersol)
+- O : pipes | (eebersol + qdequele)
+- O : redirect  < >> > (eebersol + qdequele)
+- O : file descriptor agregator 2>&- (eebersol + qdequele)
 - O : Catch execution return number $? (qdequele)
 - O : Logic operation || && (qdequele)
 - X : ctrl+c didn't quit the shell (qdequele)
@@ -50,10 +50,10 @@ prototype : - X : blabla (username)
 
 ###Bonus
 
-- O : heredoc << (eebersol)
-- F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol)
+- O : heredoc << (eebersol + qdequele)
+- F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol + qdequele)
 - F : local varaibles unset export $ (qdequele)
-- X : Job controls job / fg / bg / & ()
+- X : Job controls job / fg / bg / & (qdequele)
 
 ##Builtins
 

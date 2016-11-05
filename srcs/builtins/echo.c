@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// need to be replace by gbourson builtins_echo
 #include <ft_sh.h>
 
 static	char 	*check_second_quote(char *str)

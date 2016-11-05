@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal.c                                           :+:      :+:    :+:   */
+/*   signal_handlers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,26 +12,52 @@
 
 #include <ft_sh.h>
 
-void	signal_handler(int i)
+void			signal_resize_screen(int i)
 {
-	if (i == SIGINT || i == SIGQUIT || i == SIGKILL || i == SIGSTOP)
-		signal_exit(i);
-	else if (i == SIGTSTP)
-		signal_background(i);
-	else if (i == SIGCONT)
-		signal_foreground(i);
-	else if (i == SIGWINCH)
-		signal_resize_screen(i);
-	i = 0;
+	t_term		*term;
+
+	UNUSED(i);
+	term = recover_term();
+	//TODO: Retrouver le dernier index ou etait placé l'utilisateur
+	if (ioctl(0, TIOCGWINSZ, &(term->wins)) != -1)
+	{
+		//TODO: Replacer la personne au bon endroit
+	}
 }
 
-void	init_signals(void)
+void			signal_exit(int i)
 {
-	signal(SIGINT, signal_handler);
-	signal(SIGTSTP, signal_handler);
+	UNUSED(i);
+	reset_term();
+	signal(SIGQUIT, SIG_DFL);
+	exit (0);
+}
+
+void			signal_background(int i)
+{
+	t_term	*term;
+	char	cp[2];
+
+	UNUSED(i);
+	term = recover_term();
+	cp[0] = term->term.c_cc[VSUSP];
+	cp[1] = '\0';
+	reset_term();
 	signal(SIGCONT, signal_handler);
+	signal(SIGTSTP, SIG_DFL);
+	ioctl(0, TIOCSTI, cp);
+}
+
+void			signal_foreground(int i)
+{
+	UNUSED(i);
+	signal(SIGTSTP, signal_handler);
 	signal(SIGQUIT, signal_handler);
-	signal(SIGKILL, signal_handler);
-	signal(SIGSTOP, signal_handler);
-	signal(SIGWINCH, signal_handler);
+	init_term();
+	signal_resize_screen(0);
+}
+
+void			signal_reprompt(int i)
+{
+	UNUSED(i);
 }

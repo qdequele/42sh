@@ -12,8 +12,7 @@
 
 #ifndef PROMPT_H
 # define PROMPT_H
-# include <libft.h>
-# include <termcap.h>
+# include <ft_sh.h>
 
 # define UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 65))
 # define SHIFT_UP ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 65))

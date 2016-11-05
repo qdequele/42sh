@@ -12,7 +12,7 @@
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
-# include <libft.h>
+# include <ft_sh.h>
 
 
 #define EXPORTS (ft_strcmp(cmds[0], "export") == 0)
@@ -83,6 +83,7 @@ char				**env_parse_from_list(t_list *l_env);
 void				env_show(t_list *l_env);
 char				*env_get(t_list *l_env, char *f_key);
 void				env_add_or_modify(t_list **l_env, char *key, char *value);
+int					shell_core(t_list **env, char **cmds);
 /*
 ** utils - read_cretate_var.c
 */

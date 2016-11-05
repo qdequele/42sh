@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_sh.h>
+#include <prompt.h>
 
 static 	char 	*read_read()
 {
@@ -104,7 +105,6 @@ int 			builtins_read(t_list **env, char **cmds)
 	nbr_words = count_words(ret, ' ');
 	if (nbr_var == 1)
 	{
-		// printf("Toto\n");
 		create_last_var(cmds[i], var_value, opt);
 	}
 	else if (nbr_var <= nbr_words)

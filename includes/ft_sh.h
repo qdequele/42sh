@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh.h                                            :+:      :+:    :+:   */
+/*   ft_shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,27 @@
 #ifndef SH_H
 # define SH_H
 # include <libft.h>
-# include <builtins.h>
-# include <cmd.h>
-# include <prompt.h>
-# include <shell.h>
-# include <sig.h>
-# include <term.h>
-# include <lexer.h>
 
-# include <sys/wait.h>
 # include <unistd.h>
-# include <sys/stat.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <sys/types.h>
 # include <errno.h>
+# include <dirent.h>
+# include <termios.h>
+# include <term.h>
+# include <signal.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <sys/ioctl.h>
+
+# include <builtins.h>
+# include <executor.h>
+# include <lexer.h>
+# include <parser.h>
+# include <prompt.h>
+# include <shell.h>
+
+#include <stdio.h>
 
 #endif

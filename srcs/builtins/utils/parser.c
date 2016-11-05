@@ -16,18 +16,18 @@ void	env_parse_to_list(t_list **l_env, char **environ)
 {
 	int		i;
 	t_env	*env;
-	char	**tab;
+	char	**array;
 
 	i = 0;
 	while (environ && environ[i])
 	{
 		env = (t_env *)malloc(sizeof(t_env));
-		tab = ft_strsplit(environ[i], '=');
-		env->key = tab[0];
+		array = ft_strsplit(environ[i], '=');
+		env->key = array[0];
 		if (ft_strcmp(env->key, "SHLVL") == 0)
-			env->value = ft_itoa(ft_atoi(tab[1]) + 1);
+			env->value = ft_itoa(ft_atoi(array[1]) + 1);
 		else
-			env->value = tab[1];
+			env->value = array[1];
 		ft_lstaddend(l_env, ft_lstnew(env, sizeof(t_env)));
 		i++;
 	}

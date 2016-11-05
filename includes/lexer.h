@@ -3,129 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nathan <nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/21 15:59:13 by qdequele         ###   ########.fr       */
+/*   Created: 2016/04/12 15:22:50 by qdequele          #+#    #+#             */
+/*   Updated: 2016/04/20 14:16:14 by nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
-# include <libft.h>
+# include <ft_sh.h>
 
-# define M_WRITE_APPEND (O_WRONLY | O_NONBLOCK | O_CREAT | O_APPEND)
-# define M_WRITE_TRUNC (O_WRONLY | O_NONBLOCK | O_CREAT | O_TRUNC)
-# define M_READ_TRUNC (O_RDONLY | O_NONBLOCK | O_CREAT | O_TRUNC)
-# define M_READ (O_RDONLY | O_NONBLOCK)
-
-# define _PIPE_ (ft_strchr(cmd, '|'))
-# define _HEREDOC_ (((p_heredoc = ft_strchr(cmd, '<')) && p_heredoc[1] == '<'))
-# define _REDIRECT_ENTRY_ ((ft_strchr(cmd, '<')))
-# define _REDIRECTION_ ((ft_strchr(cmd, '>') && ft_strchr(cmd, '&') == NULL))
-# define _AGGREGATOR_FD_ (ft_strchr(cmd, '&'))
-
-typedef enum    e_type
+typedef enum		e_token_type
 {
-    ERROR,
-    REDIRECTION,
-    PIPE,
-    HEREDOC,
-    EXEC
-}               t_type;
+	CMD,
+	OR,
+	AND,
+	SEMI_COLON,
+	TO_BACKGROUND,
+	PIPE,
+	QUOTE_BACK,
+	PARENT_OPEN,
+	PARENT_CLOSE,
+	TOKEN_TYPE_END_LIST
+}					t_token_type;
 
-typedef struct  s_cmd 
+typedef struct		s_token_matcher
 {
-    t_type      type;
-}               t_cmd;
+	t_token_type	type;
+	int				(*match_function)(char *);
 
-typedef struct   s_pipe 
+}					t_token_matcher;
+
+extern t_token_matcher	g_token_matcher[];
+
+typedef struct		s_token
 {
-    t_type      type;
-    t_cmd       *left;
-    t_cmd       *right;
-}               t_pipe;
-
-typedef struct   s_error 
-{
-    t_type      type;
-    char        *msg;
-}               t_error;
-
-typedef struct   s_heredoc 
-{
-    t_type      type;
-    t_cmd       *left;
-    t_list      *right;
-}               t_heredoc;
-
-typedef struct  s_redirection 
-{
-    t_type      type;
-    t_cmd       *left;
-    char        *right;
-    int         *fd;
-    int         mode;
-    char        *type_of;
-}               t_redirection;
-
-typedef struct  s_exec
-{
-    t_type      type;
-    char        *cmd;
-    char        **opt;
-}               t_exec;
+	t_token_type	type;
+	void			*content;
+}					t_token;
 
 /*
-** utils/body.c
+** Main lexer
 */
-char    *body_left(char *cmd, char c);
-char    *body_right(char *cmd, char c);
+t_list				*input_to_token_list(char *input);
+
 /*
-** utils/fork_close.c
+** Token manipulation
 */
-void    fork_close(int *f1);
+t_list				*new_token(t_token_type type, void *content);
+void				del_token(void *token_void, size_t size_content);
+
 /*
-** exec.c
+** Token matching functions
 */
-int     exec_cmd(t_cmd *cmd);
-t_cmd   *parse_cmd(char *cmd);
-t_cmd   *build_exec(char *str);
-/*
-** heredoc.c
-*/
-t_cmd   *build_heredoc(char *left, t_list *list);
-t_cmd   *parse_heredoc(char *complet_pipe);
-t_list  *heredoc_right(char *s1);
-int     exec_heredoc(t_cmd *cmd);
-void    put_heredoc_result(t_heredoc *p_cmd, int *p);
-/*
-** lexer.c
-*/
-t_cmd  *parse_cmd(char *cmd);
-/*
-** parse_redirection.c
-*/
-char    *parse_left(char *str);
-char    *parse_right(char *str);
-int     *parse_fd(char *pattern);
-int     parse_mode(char *pattern);
-char    *parse_type(char *pattern);
-/*
-** pipe.c
-*/
-t_cmd   *build_pipe(char *left, char *right);
-t_cmd   *parse_pipe(char *complet_pipe);
-int     exec_pipe(t_cmd *cmd);
-/*
-** redirect_entry.c
-*/
-t_cmd   *parse_redirect_entry(char *cmd);
-/*
-** redirection.c
-*/
-t_cmd   *build_redirection(char **body, int mode, int *fd, char *type_of);
-t_cmd   *parse_redirection(char *redirection);
-void    exec_redirection(t_cmd *cmd);
+int					is_token(char *str);
+int					is_token_or(char *line);
+int					is_token_and(char *line);
+int					is_token_semi_colon(char *line);
+int					is_token_to_background(char *line);
+int					is_token_pipe(char *line);
+int					is_token_quote_back(char *line);
+int					is_token_redir(char *line);
+int					is_token_redir_append_output(char *line);
+int					is_token_redir_truncate_output(char *line);
+int					is_token_redir_heredoc(char *line);
+int					is_token_redir_get_input(char *line);
+int					is_token_parent_open(char *line);
+int					is_token_parent_close(char *line);
+int					lexer_skip_quotes(char *input);
+int					check_lexer(t_list *token_list);
 
 #endif

@@ -12,16 +12,9 @@
 
 #ifndef SHELL_H
 # define SHELL_H
-# include <libft.h>
-# include <prompt.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <dirent.h>
-# include <errno.h>
-# include <stdio.h>
+# include <ft_sh.h>
+
+
 
 # define UNUSED(x) (void)(x)
 
@@ -40,7 +33,22 @@ typedef struct	s_shell
 	int			last_exit_code;
 	t_prompt	*prompt;
 	t_mode		mode;
+	int			signals_disabled;
+	pid_t		pgid;
+	t_list		*jobs;
 }				t_shell;
+
+typedef struct termios	t_termios;
+typedef struct winsize	t_winsize;
+
+typedef struct	s_term
+{
+	t_termios	term;
+	t_termios	old_term;
+	t_winsize	wins;
+	char		*term_name;
+	int			tty;
+}				t_term;
 
 /*
 **	Shell.c
@@ -64,6 +72,32 @@ void		print_shell_err(char *s);
 /*
 **	utils.c
 */
-char   	 	*replace_vars(char *line);
+char		*replace_vars(char *line);
+
+/*
+** Signal.c
+*/
+void	signal_handler(int i);
+void	init_signals(void);
+void	ignore_major_signals(void);
+void	reset_major_signals(void);
+void	signal_reprompt(int i);
+/*
+** Signal_handler.c
+*/
+void	signal_resize_screen(int i);
+void	signal_exit(int i);
+void	signal_background(int i);
+void	signal_foreground(int i);
+/*
+** Term.c
+*/
+t_term	*recover_term(void);
+int		init_term(void);
+int		reset_term(void);
+/*
+** Term_utils.c
+*/
+int		ft_tputs(int c);
 
 #endif
