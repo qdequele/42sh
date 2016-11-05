@@ -20,7 +20,7 @@ static 		char *remove_backslash(char **cmds)
 	int j;
 
 
-	i= 0;
+	i = 0;
 	j = 0;
 	ret = ft_array_to_string(&cmds[1]);
 	tmp =ft_strnew(ft_strlen(ret));
