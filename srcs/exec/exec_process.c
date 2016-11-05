@@ -14,38 +14,24 @@
 
 static void	get_new_stdio(t_process *p, t_io_channel *s)
 {
-	
 	if (s[0].fd != 0)
-	{
 		dup2(p->stdio[0].fd, 0);
-	}
 	if (s[1].fd != 1)
-	{
 		dup2(p->stdio[1].fd, 1);
-	}
 	if (s[2].fd != 2)
-	{
 		dup2(p->stdio[2].fd, 2);
-	}
 	if (s[0].dead_end)
-	{
 		close(0);
-	}
 	if (s[1].dead_end)
-	{
 		close(1);
-	}
 	if (s[2].dead_end)
-	{
 		close(2);
-	}
 }
 
 void		launch_process_builtin(t_process *p)
 {
 	int		save_stdio[3];
 
-	
 	save_stdio[0] = dup(0);
 	save_stdio[1] = dup(1);
 	save_stdio[2] = dup(2);
@@ -62,7 +48,6 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	char	**env;
 	pid_t	pid;
 
-	
 	if (!p)
 		exit(1);
 	pid = getpid();

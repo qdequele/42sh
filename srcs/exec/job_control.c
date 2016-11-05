@@ -16,7 +16,6 @@ void	put_job_in_background(t_job *j, int cont)
 {
 	t_shell	*shell;
 
-	
 	shell = recover_shell();
 	if (cont)
 		kill(-j->pgid, SIGCONT);
@@ -29,7 +28,6 @@ void	put_job_in_foreground(t_job *j, int cont)
 	t_shell		*shell;
 	t_list		*cur;
 
-	
 	shell = recover_shell();
 	if (j->pgid > 0)
 		tcsetpgrp(0, j->pgid);

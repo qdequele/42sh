@@ -53,7 +53,7 @@ typedef struct	s_term
 */
 int			shell_core(t_list **env, char **cmds);
 int			shell_exec_line(char *line);
-void		shell_get_lines(void);
+void		shell_start(void);
 int 		shell_parse_or_line(char *cmd);
 int 		shell_parse_and_line(char *cmd);
 int 		shell_parse_semicolon_line(char *line);

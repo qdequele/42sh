@@ -134,7 +134,7 @@ typedef struct	s_prompt
 void		get_cmd_list(t_list **possibilities, char *last_word);
 void		get_builtins_list(t_list **possibilities, char *last_word);
 void		get_files_list(t_list **possibilities, char *last_word);
-char		*prompt_create_line(void);
+char		*read_input(void);
 /*
 ** Prompt_actions_autocomplete.c
 */

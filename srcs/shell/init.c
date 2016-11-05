@@ -32,6 +32,5 @@ void		init_shell(void)
 	shell->posibilities = NULL;
 	shell->autocomplete_position = 0;
 	shell->signals_disabled = 0;
-	shell->pgid = getpgrp();
 	shell->jobs = NULL;
 }
