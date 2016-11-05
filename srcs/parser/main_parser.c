@@ -18,7 +18,7 @@ t_list					*token_list_to_job_list(t_list *token_list)
 	t_list		*token_split;
 	t_list		*token_split_end;
 
-	__DEBUG__
+	
 	job_list = NULL;
 	while (token_list)
 	{
@@ -39,7 +39,7 @@ static t_job_linker		get_token_linker(t_list *t)
 {
 	t_token *tt;
 
-	__DEBUG__
+	
 	if (!t || (t && !t->content))
 		return (LINK_THEN);
 	tt = (t_token *)t->content;
@@ -56,7 +56,7 @@ t_list					*parse_job(t_list *token_split)
 {
 	t_job		job;
 
-	__DEBUG__
+	
 	if (!token_split)
 		return (NULL);
 	ft_memset(&job, 0, sizeof(t_job));
@@ -82,7 +82,7 @@ t_list					*parse_process(t_token *t)
 {
 	t_process		p;
 
-	__DEBUG__
+	
 	if (!t || (t && t->type != CMD))
 		return (NULL);
 	ft_memset(&p, 0, sizeof(t_process));

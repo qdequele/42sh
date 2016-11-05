@@ -12,13 +12,6 @@
 
 #include <ft_sh.h>
 
-static void	print_shell_err(char *s)
-{
-	ft_putstr_fd(RED, 2);
-	ft_putstr_fd(s, 2);
-	ft_putstr_fd("\e[0m", 2);
-}
-
 static int	print_erno(char *str, int err)
 {
 	if (str[0] == '!')

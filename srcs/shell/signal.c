@@ -14,7 +14,11 @@
 
 void			signal_resize_screen(int i)
 {
+	t_term	*term;
+
 	UNUSED(i);
+	term = recover_term();
+	ioctl(0, TIOCGWINSZ, &term->wins);
 }
 
 void			signal_reprompt(int i)

@@ -20,42 +20,42 @@ char	*prompt_create_line(void)
 	t_status 	copy_status;
 	t_shell		*shell;
 
-	__DEBUG__
+	
 	shell = recover_shell();
 	prompt = init_prompt();
-	__DEBUG__
+	
 	shell->prompt = prompt;
 	ft_bzero(buf, 8);
-	__DEBUG__
+	
 	while (read(0, buf, 8))
 	{
 		// perror("read : ");
 		// ft_console("%d-%d-%d-%d-%d-%d-%d-%d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6], buf[7]);
 		if (buf[0] != 0)
 		{
-			__DEBUG__
+			
 			if (!TAB)
 			{
-				__DEBUG__
+				
 				shell->autocomplete_position = 0;
 			}
 			if ((copy_status = main_action_copy(buf)) == EXIT)
 			{
-				__DEBUG__
+				
 				status = prompt_find_function(buf);
 			}
 			ft_bzero(buf, 8);
 			if (status == FOUND)
 			{
-				__DEBUG__
+				
 				if (check_quote(list_to_string()) == 1)
 				{
-					__DEBUG__
+					
 					return (list_to_string());
 				}
 			}
 		}
-		__DEBUG__
+		
 	}
 	return (ft_strdup(""));
 }

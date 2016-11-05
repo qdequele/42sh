@@ -16,7 +16,7 @@ static int	lexer_skip_double_quote(char *input)
 {
 	int		length;
 
-	__DEBUG__
+	
 	length = 1;
 	input++;
 	while (*input && *input != '"')
@@ -39,7 +39,7 @@ static int	lexer_skip_single_quote(char *input)
 {
 	int		length;
 
-	__DEBUG__
+	
 	length = 1;
 	input++;
 	while (*input && *input != '\'')
@@ -55,7 +55,7 @@ static int	lexer_skip_single_quote(char *input)
 
 int			lexer_skip_quotes(char *input)
 {
-	__DEBUG__
+	
 	if (*input == '\'')
 		return (lexer_skip_single_quote(input));
 	if (*input == '"')

@@ -16,7 +16,7 @@ void	del_job(void *job_raw, size_t job_size)
 {
 	t_job	*j;
 
-	__DEBUG__
+	
 	if (job_size != sizeof(t_job) || !job_raw)
 		return ;
 	j = (t_job *)job_raw;
@@ -31,7 +31,7 @@ void	del_process(void *raw_process, size_t process_size)
 {
 	t_process	*p;
 
-	__DEBUG__
+	
 	if (process_size != sizeof(t_process) || !raw_process)
 		return ;
 	p = (t_process *)raw_process;

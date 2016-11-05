@@ -16,7 +16,7 @@ int		get_redir_channel(char *redir)
 {
 	int		fd;
 
-	__DEBUG__
+	
 	if (!redir || (redir && !*redir))
 		return (1);
 	if (*redir == '>')
@@ -34,7 +34,7 @@ int		count_target_length(t_process *p, char **split, char symbol,
 {
 	int		channel;
 
-	__DEBUG__
+	
 	channel = get_redir_channel(*split);
 	if (*(ft_strrchr(*split, symbol) + 1))
 	{
@@ -53,7 +53,7 @@ int		is_aggregate_fd(char *redir)
 {
 	int		i;
 
-	__DEBUG__
+	
 	i = 0;
 	while (ft_isdigit(redir[i]))
 		i++;
@@ -74,7 +74,7 @@ int		aggreagate_fd(t_process *p, char *redir)
 	int				channel_target;
 	int				i;
 
-	__DEBUG__
+	
 	channel = get_redir_channel(redir);
 	i = 0;
 	while (ft_isdigit(redir[i]))
