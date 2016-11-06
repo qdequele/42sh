@@ -36,10 +36,10 @@ void	utils_move_end(void)
 void	utils_move_max_top(void)
 {
 	t_shell		*shell;
-	t_prompt	*prompt;
+	t_term		*term;
 
 	shell = recover_shell();
-	prompt = recover_prompt();
+	term = recover_term();
 	while (shell->prompt->p_length + shell->prompt->i_position > term->wins.ws_col)
 		utils_move_up();
 }
