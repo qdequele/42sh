@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 18:49:03 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 19:04:09 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int					builtins_set(t_list **env, char **cmds);
 int					builtins_unset(t_list **env, char **cmds);
 int					builtins_export(t_list **env, char **cmds);
 void				bultins_one_history(char *str);
+void				history_free(t_list **l_history);
 int					builtins_echo(t_list **env, char **cmds);
 int					builtins_bg(t_list **env, char **cmds);
 int					builtins_fg(t_list **env, char **cmds);
