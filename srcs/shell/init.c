@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 18:28:29 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 18:43:13 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,12 @@ void		init_shell(void)
 	shell->autocomplete_position = 0;
 	shell->signals_disabled = 0;
 	shell->jobs = NULL;
+}
+
+void		free_shell()
+{
+	t_shell		*shell;
+
+	shell = recover_shell();
+	env_free(&g_env);
 }

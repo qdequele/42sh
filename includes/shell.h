@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/28 12:03:04 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:40:46 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int 		shell_parse_semicolon_line(char *line);
 */
 t_shell		*recover_shell(void);
 void		init_shell(void);
+void		free_shell(void);
+
 /*
 **	Shell_print.c
 */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:37:56 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:35:41 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ char				**env_parse_from_list(t_list *l_env);
 void				env_show(t_list *l_env);
 char				*env_get(t_list *l_env, char *f_key);
 void				env_add_or_modify(t_list **l_env, char *key, char *value);
+void				env_free(t_list **l_env);
 int					shell_core(t_list **env, char **cmds);
 /*
 ** utils - read_cretate_var.c

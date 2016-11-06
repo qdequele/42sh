@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 11:48:56 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:39:22 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,25 @@ void	env_add_or_modify(t_list **l_env, char *key, char *value)
 	env->key = key;
 	env->value = value;
 	ft_lstaddend(l_env, ft_lstnew(env, sizeof(t_env)));
+}
+
+void	env_free_one(void *elem, size_t size)
+{
+	t_env	*l_elem;
+
+	UNUSED(size);
+	l_elem = elem;
+	if (l_elem->key)
+	{
+		free(l_elem->key);
+	}
+	if (l_elem->value)
+	{
+		free(l_elem->value);
+	}
+}
+
+void	env_free(t_list **l_env)
+{
+	ft_lstdel(l_env, &env_free_one);
 }
