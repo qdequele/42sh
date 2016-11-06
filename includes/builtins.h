@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 18:35:41 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 18:49:03 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void				vars_show_global(t_list *l_var);
 char				*vars_get(t_list *l_var, char *f_key);
 void				vars_add_or_modify(t_list **l_vars, char *key, char *value);
 void				vars_change_readonly(t_list **l_vars, char *key, int rdo);
+void				vars_free(t_list **l_vars);
 int					builtins_readonly(t_list **env, char **cmds);
 int					builtins_unreadonly(t_list **env, char **cmds);
 
