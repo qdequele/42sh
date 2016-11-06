@@ -60,7 +60,7 @@ int		sort_by_lexycography(t_list *node)
 	t_list	*n_elem;
 
 	n_elem = node->next;
-	if (n_elem && ft_strlen((char *)(node->content)) > ft_strlen((char *)(n_elem->content)) > 0)
+	if (n_elem && (ft_strlen((char *)(node->content)) > ft_strlen((char *)(n_elem->content))) > 0)
 		return (1);
 	return (0);
 }
