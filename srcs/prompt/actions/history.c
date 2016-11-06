@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_history.c                            :+:      :+:    :+:   */
+/*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/03/03 13:19:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:52:25 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <ft_sh.h>
 
@@ -41,7 +42,7 @@ t_status		action_history_up(char *buf)
 	
 	if (!UP)
 		return (TRYING);
-	if (ft_lstcount(shell->history) >= -1)
+	if (ft_lstcount(shell->history) > 0)
 	{
 		shell->history_position++;
 		move_to_history();

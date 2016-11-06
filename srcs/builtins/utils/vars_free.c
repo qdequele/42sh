@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   vars_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 18:55:02 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 18:49:30 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-t_shell		*recover_shell(void)
+static void	vars_free_one(void *elem, size_t size)
 {
-	static t_shell	shell;
-	return (&shell);
+	t_var	*l_elem;
+
+	UNUSED(size);
+	l_elem = elem;
+	if (l_elem->key)
+	{
+		free(l_elem->key);
+	}
+	if (l_elem->value)
+	{
+		free(l_elem->value);
+	}
 }
 
-void		init_shell(void)
+void		vars_free(t_list **l_vars)
 {
-	t_shell		*shell;
-
-	shell = recover_shell();
-	shell->history = NULL;
-	shell->history_position = -1;
-	shell->last_exit_code = 0;
-	shell->prompt = NULL;
-	shell->mode = NORMAL;
-	shell->posibilities = NULL;
-	shell->autocomplete_position = 0;
-	shell->signals_disabled = 0;
-	shell->jobs = NULL;
-}
-
-void		free_shell()
-{
-	t_shell		*shell;
-
-	shell = recover_shell();
-	env_free(&g_env);
-	vars_free(&g_vars);
+	ft_lstdel(l_vars, &vars_free_one);
 }

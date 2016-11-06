@@ -6,13 +6,13 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 18:39:22 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 18:47:04 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-void	env_show(t_list *l_env)
+void		env_show(t_list *l_env)
 {
 	t_list	*elem;
 	t_env	*env;
@@ -31,7 +31,7 @@ void	env_show(t_list *l_env)
 	}
 }
 
-char	*env_get(t_list *l_env, char *f_key)
+char		*env_get(t_list *l_env, char *f_key)
 {
 	t_list	*elem;
 	t_env	*env;
@@ -52,7 +52,7 @@ char	*env_get(t_list *l_env, char *f_key)
 	return (NULL);
 }
 
-void	env_add_or_modify(t_list **l_env, char *key, char *value)
+void		env_add_or_modify(t_list **l_env, char *key, char *value)
 {
 	t_list	*elem;
 	t_env	*env;
@@ -74,7 +74,7 @@ void	env_add_or_modify(t_list **l_env, char *key, char *value)
 	ft_lstaddend(l_env, ft_lstnew(env, sizeof(t_env)));
 }
 
-void	env_free_one(void *elem, size_t size)
+static void	env_free_one(void *elem, size_t size)
 {
 	t_env	*l_elem;
 
@@ -90,7 +90,7 @@ void	env_free_one(void *elem, size_t size)
 	}
 }
 
-void	env_free(t_list **l_env)
+void		env_free(t_list **l_env)
 {
 	ft_lstdel(l_env, &env_free_one);
 }
