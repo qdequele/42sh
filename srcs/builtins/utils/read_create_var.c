@@ -12,6 +12,29 @@
 
 #include <ft_sh.h>
 
+char			*check_value(char opt, char *var_value)
+{
+	int		i;
+	int		j;
+	char	*new_value;
+
+	i = 0;
+	j = 0;
+	new_value = ft_strnew(1);
+	while (var_value[i] != '\0')
+	{
+		if ((var_value[i] == '\\' && opt == 'r'))
+			i++;
+		else
+		{
+			new_value[j] = var_value[i];
+			i++;
+			j++;
+		}
+	}
+	return (new_value);
+}
+
 void	create_var(char *var_name, char *var_value, char opt)
 {
 	char	**set_env;
@@ -38,7 +61,7 @@ void	create_last_var(char *var_name, char **var_value, char opt)
 			last_var = ft_freejoin(last_var, " ");
 		if (!var_value[i + 1])
 			var_value[i] = ft_strsub(var_value[i], 0,
-									ft_strlen(var_value[i]) - 1);
+				ft_strlen(var_value[i]) - 1);
 		last_var = ft_freejoin(last_var, var_value[i]);
 		i++;
 	}

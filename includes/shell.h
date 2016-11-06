@@ -26,6 +26,7 @@ typedef struct	s_shell
 {
 	t_list		*history;
 	int			history_position;
+	int			history_index;
 	t_list		*posibilities;
 	int 		autocomplete_position;
 	int			last_exit_code;

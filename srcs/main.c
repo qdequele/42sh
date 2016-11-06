@@ -61,9 +61,9 @@ void			shell_start(void)
 	char	*line;
 
 	shell = recover_shell();
+	init_shell();
 	while (1)
 	{
-		init_shell();
 		init_term();
 		print_shell();
 		shell->history_position = -1;
@@ -74,8 +74,9 @@ void			shell_start(void)
 			signal(SIGINT, SIG_IGN);
 			reset_term();
 			process_input(line);
-			ft_lstadd(&shell->history,
-				ft_lstnew(line, sizeof(char*) * ft_strlen(line)));
+			ft_lstadd_at(&shell->history,
+				ft_lstnew(line, sizeof(char*) * ft_strlen(line)), shell->history_index);
+			shell->history_index++;
 			free(line);
 			ft_lstdel(&shell->prompt->line, free_char);
 			ignore_major_signals();
