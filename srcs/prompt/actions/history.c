@@ -16,12 +16,10 @@ static void		move_to_history(void)
 {
 	t_shell		*shell;
 	t_term		*term;
-	t_prompt	*prompt;
 	t_list		*tmp_list;
 
 	shell = recover_shell();
 	term = recover_term();
-	prompt = shell->prompt;
 	tmp_list = shell->history;
 	ft_lstdel(&shell->prompt->line, free_char);
 	clean_prompt();
@@ -56,7 +54,6 @@ t_status		action_history_down(char *buf)
 	t_shell *shell;
 
 	shell = recover_shell();
-	
 	if (!DOWN)
 		return (TRYING);
 	if (ft_lstcount(shell->history) > 0)
