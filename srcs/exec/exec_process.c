@@ -69,14 +69,11 @@ int			update_process_status(t_job *j, pid_t pid, int status)
 {
 	t_list	*process;
 
-	
 	process = j->process_list;
 	while (process)
 	{
-		
 		if (((t_process *)process->content)->pid == pid)
 		{
-			
 			if (WIFEXITED(status))
 			{
 				

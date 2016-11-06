@@ -28,6 +28,9 @@ t_builtin	*builtins_init(void)
 		{"read", builtins_read},
 		{"readonly", builtins_readonly},
 		{"unreadonly", builtins_unreadonly},
+		{"jobs", builtins_jobs},
+		{"bg", builtins_bg},
+		{"fg", builtins_fg},
 		{NULL, NULL}
 	};
 	return ((void *)f);

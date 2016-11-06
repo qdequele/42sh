@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-void    utils_move_up(void)
+void	utils_move_up(void)
 {
 	t_shell		*shell;
 	t_term		*term;
@@ -28,7 +28,7 @@ void    utils_move_up(void)
 	}
 }
 
-void    utils_move_down(void)
+void	utils_move_down(void)
 {
 	t_shell		*shell;
 	t_term		*term;
@@ -45,7 +45,7 @@ void    utils_move_down(void)
 	}
 }
 
-void    utils_move_left(void)
+void	utils_move_left(void)
 {
 	t_shell		*shell;
 
@@ -57,7 +57,7 @@ void    utils_move_left(void)
 	}
 }
 
-void    utils_move_right(void)
+void	utils_move_right(void)
 {
 	t_shell		*shell;
 	t_term		*term;
@@ -74,8 +74,6 @@ void    utils_move_right(void)
 			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
 		}
 		else
-		{
-            tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
-        }
+			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
 	}
 }

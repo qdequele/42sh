@@ -59,9 +59,7 @@ void		bultins_one_history(char *cmds)
 	i = ft_atoi(ft_strsub(cmds, 1, ft_strlen(cmds)));
 	str = ft_strsub(cmds, 1, ft_strlen(cmds));
 	if ((shell->history = ft_lst_seek(shell->history, str)) != NULL)
-	{
 		(void)str;
-	}
 	else
 	{
 		ft_putstr_fd("42sh : no such event: ", 2);
@@ -70,9 +68,7 @@ void		bultins_one_history(char *cmds)
 		return ;
 	}
 	if (i < ft_lstcount(shell->history) && i > 0)
-	{
 		shell->history = ft_lstget_at(shell->history, i);
-	}
 	else
 	{
 		ft_putstr_fd("42sh : no such event: ", 2);

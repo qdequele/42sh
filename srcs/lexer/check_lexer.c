@@ -20,14 +20,14 @@ static void		check_lexer_error(char *token)
 	ft_putendl("`");
 }
 
-static int		check_lexer_single_bg(t_list *tok_list)
+static int		check_lexer_single_bg(t_list *token_list)
 {
 	t_token	*t;
 
 	
-	if (!tok_list)
+	if (!token_list)
 		return (1);
-	t = tok_list->content;
+	t = token_list->content;
 	if (!t)
 		return (1);
 	if (t->type == TO_BACKGROUND)

@@ -244,7 +244,7 @@ void		utils_move_max_bottom(void);
 */
 int			check_quote(char *str);
 void		print_error(char flag);
-void		display_quote_error(char c);
+int			display_quote_error(char c);
 char		*remove_quote (char type, char *str);
 int			quote_close(char *str, char c);
 /*

@@ -17,7 +17,6 @@ static void		process_input(char *input)
 	t_list	*token_list;
 	t_list	*job_list;
 
-	
 	token_list = input_to_token_list(input);
 	update_job_status();
 	if (check_lexer(token_list) == 0)
@@ -42,7 +41,6 @@ char	*read_input(void)
 	ft_bzero(buf, 8);
 	while (read(0, buf, 8))
 	{
-		// ft_console("%d-%d-%d-%d-%d-%d-%d-%d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6], buf[7]);
 		if (buf[0] != 0)
 		{
 			if (!TAB)
@@ -82,7 +80,6 @@ void	shell_start(void)
 			free(line);
 			ignore_major_signals();
 		}
-
 	}
 	return ;
 }
@@ -104,7 +101,6 @@ int			main(int argc, char **argv, char **environ)
 	shell = recover_shell();
 	term->tty = open("/dev/tty", O_RDWR);
 	shell->pgid = getpgrp();
-	ft_console_log_clear();
 	env_parse_to_list(&g_env, environ);
 	ignore_major_signals();
 	if (init_term() == -1)

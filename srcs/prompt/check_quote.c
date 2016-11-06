@@ -30,12 +30,12 @@ int 	quote_close(char *str, char c)
 	return (0);
 }
 
-char 	*remove_quote (char type, char *str)
+char	*remove_quote (char type, char *str)
 {
-	char 	*dst;
-	int 	i;
-	int 	j;
-	int 	k;
+	char	*dst;
+	int		i;
+	int		j;
+	int		k;
 
 	i = 0;
 	j = 0;
@@ -55,7 +55,7 @@ char 	*remove_quote (char type, char *str)
 	return (dst);
 }
 // TODO : actualiser la longueur du prompt et la i_position si error
-int 	check_quote(char *line)
+int		check_quote(char *line)
 {
 	t_shell 	*shell;
 	t_prompt 	*prompt;
@@ -64,9 +64,9 @@ int 	check_quote(char *line)
 
 	shell = recover_shell();
 	prompt = shell->prompt;
-	i = 0;
+	i = -1;
 	j = 0;
-	while (line[i] != '\0')
+	while (line[++i] != '\0')
 	{
 		if ((line[i] == '"' || line[i] == '\'' || line[i] == '(' || line[i] == ')' || line[i] == '`')
 			&& prompt->quote_number < 2)
@@ -75,15 +75,11 @@ int 	check_quote(char *line)
 			if (quote_close(ft_strsub(line, i, ft_strlen(line)), prompt->quote_type) == 1)
 			{
 				line = remove_quote(prompt->quote_type, ft_strsub(line, i, ft_strlen(line)));
-				prompt->quote_number = 0;	
+				prompt->quote_number = 0;
 			}
 			else
-			{
-				display_quote_error(prompt->quote_type);
-				return (0);
-			}
+				return(display_quote_error(prompt->quote_type));
 		}
-		i++;
 	}
 	return (1);
 }
@@ -102,7 +98,7 @@ void	print_error(char flag)
 
 }
 
-void	display_quote_error(char c)
+int		display_quote_error(char c)
 {
 	char flag;
 
@@ -116,4 +112,5 @@ void	display_quote_error(char c)
 	else if (c == '(' )
 		flag = 1;
 	print_error(flag);
+	return (0);
 }

@@ -19,10 +19,8 @@ void	utils_move_start(void)
 
 	shell = recover_shell();
 	term = recover_term();
-    while (shell->prompt->i_position >= 0)
-	{
+	while (shell->prompt->i_position >= 0)
 		utils_move_left();
-	}
 	shell->prompt->i_position--;
 	tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
 }
@@ -34,11 +32,8 @@ void	utils_move_end(void)
 
 	shell = recover_shell();
 	term = recover_term();
-	//ft_console("move_end i_position = %d - line length = %d", shell->prompt->i_position, ft_lstcount(shell->prompt->line));
-    while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
-	{
+	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 		utils_move_right();
-	}
 	tputs(tgoto(RISTR, 0, 1), 0, ft_tputs);
 }
 
@@ -49,17 +44,8 @@ void	utils_move_max_top(void)
 
 	shell = recover_shell();
 	term = recover_term();
-    while (shell->prompt->p_length + shell->prompt->i_position > term->wins.ws_col)
-	{
-		tputs(tgoto(UPSTR, 0, 0), 0, ft_tputs);
-		shell->prompt->i_position -= term->wins.ws_col;
-		if (shell->prompt->i_position < 0)
-		{
-			shell->prompt->i_position = 0;
-			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
-			tputs(tgoto(RISTR, 0, shell->prompt->p_length), 0, ft_tputs);
-		}
-	}
+	while (shell->prompt->p_length + shell->prompt->i_position > term->wins.ws_col)
+		utils_move_up();
 }
 
 void	utils_move_max_bottom(void)

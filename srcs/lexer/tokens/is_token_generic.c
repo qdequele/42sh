@@ -16,7 +16,6 @@ int		is_token(char *str)
 {
 	int		i;
 
-	
 	i = 0;
 	while (g_token_matcher[i].type != TOKEN_TYPE_END_LIST)
 	{

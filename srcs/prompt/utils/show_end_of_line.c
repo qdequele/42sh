@@ -15,14 +15,12 @@
 void    print_eol(void)
 {
 	t_shell		*shell;
-	t_term		*term;
-	int         index;
-	void        *tmp;
-	int         i;
-	char        *string;
+	int			index;
+	void		*tmp;
+	int			i;
+	char		*string;
 
 	shell = recover_shell();
-	term = recover_term();
 	index = shell->prompt->i_position;
 	i = 0;
 	string = (char *)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) - index + 1));
@@ -33,7 +31,7 @@ void    print_eol(void)
 		i++;
 	}
 	string[i] = '\0';
-	write(term->tty, ft_strdup(string), i);
+	write(recover_term()->tty, ft_strdup(string), i);
 	shell->prompt->i_position += i;
 	while (i > 0)
 	{

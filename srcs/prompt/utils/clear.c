@@ -48,3 +48,19 @@ void 	clean_last_x_char(int i)
 	delete_one_char();
 	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 }
+
+void	free_char(void *content, size_t size)
+{
+	UNUSED(size);
+	free(content);
+}
+
+int		sort_by_lexycography(t_list *node)
+{
+	t_list	*n_elem;
+
+	n_elem = node->next;
+	if (n_elem && ft_strlen((char *)(node->content)) > ft_strlen((char *)(n_elem->content)) > 0)
+		return (1);
+	return (0);
+}

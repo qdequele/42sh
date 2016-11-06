@@ -59,6 +59,9 @@ int					builtins_unset(t_list **env, char **cmds);
 int					builtins_export(t_list **env, char **cmds);
 void				bultins_one_history(char *str);
 int					builtins_echo(t_list **env, char **cmds);
+int					builtins_bg(t_list **env, char **cmds);
+int					builtins_fg(t_list **env, char **cmds);
+int					builtins_jobs(t_list **env, char **cmds);
 /*
 ** read.c
 */

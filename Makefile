@@ -33,6 +33,9 @@ _SRC		=	builtins/utils/parser.c\
 				builtins/unset.c\
 				builtins/readonly.c\
 				builtins/unreadonly.c\
+				builtins/jobs.c\
+				builtins/fg.c\
+				builtins/bg.c\
 				exec/exec_job.c\
 				exec/exec_process.c\
 				exec/exec_setup.c\
@@ -71,17 +74,12 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/utils/conversion.c\
 				prompt/utils/move.c\
 				prompt/utils/move_ext.c\
-				prompt/utils/free_char.c\
 				prompt/utils/line_cut.c\
-				prompt/utils/lst_sort.c\
 				prompt/utils/erase.c\
 				prompt/utils/show_end_of_line.c\
-				prompt/prompt.c\
-				prompt/actions_list.c\
 				prompt/find.c\
 				prompt/init.c\
 				prompt/check_quote.c\
-				shell/shell.c\
 				shell/init.c\
 				shell/print.c\
 				shell/signal.c\
