@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 19:12:58 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 21:36:04 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,10 @@ t_status	action_autocomplete(char *buf)
 	shell = recover_shell();
 	line = list_to_string();
 	if (!TAB || ft_strlen(line) == 0 || line[ft_strlen(line) - 1] == ' ')
+	{
+		free(line);
 		return (TRYING);
+	}
 	if (shell->autocomplete_position == 0)
 	{
 		set_possibilities();
