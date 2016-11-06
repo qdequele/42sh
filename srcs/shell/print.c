@@ -22,6 +22,7 @@ void	print_shell(void)
 		prompt = ft_strfjoin(prompt, ft_strrchr_n(env_get(g_env, "PWD"), '/'));
 	prompt = ft_strfjoin(prompt, ft_strdup(" $> "));
 	ft_putstr_c(CYAN, prompt);
+	free(prompt);
 }
 
 void	print_shell_err(char *s)
