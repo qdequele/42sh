@@ -31,7 +31,6 @@ int		is_token_redir_append_output(char *line)
 {
 	int		i;
 
-	
 	i = 0;
 	while (ft_isdigit(line[i]))
 		i++;
@@ -55,7 +54,6 @@ int		is_token_redir_truncate_output(char *line)
 {
 	int		i;
 
-	
 	i = 0;
 	while (ft_isdigit(line[i]))
 		i++;
@@ -79,7 +77,6 @@ int		is_token_redir_heredoc(char *line)
 {
 	int		i;
 
-	
 	i = 0;
 	while (ft_isdigit(line[i]))
 		i++;
@@ -103,7 +100,6 @@ int		is_token_redir_get_input(char *line)
 {
 	int		i;
 
-	
 	i = 0;
 	while (ft_isdigit(line[i]))
 		i++;

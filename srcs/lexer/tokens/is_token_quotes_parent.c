@@ -14,7 +14,6 @@
 
 int		is_token_quote_back(char *line)
 {
-	
 	if (*line == '`')
 		return (1);
 	return (0);
@@ -22,7 +21,6 @@ int		is_token_quote_back(char *line)
 
 int		is_token_parent_close(char *line)
 {
-	
 	if (*line == ')')
 		return (1);
 	return (0);
@@ -30,7 +28,6 @@ int		is_token_parent_close(char *line)
 
 int		is_token_parent_open(char *line)
 {
-	
 	if (*line == '(')
 		return (1);
 	return (0);

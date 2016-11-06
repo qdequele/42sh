@@ -12,7 +12,6 @@
 
 #include <ft_sh.h>
 
-
 static int		builtin_bg_default(void)
 {
 	t_job	*job;
@@ -37,7 +36,6 @@ static void		builtin_bg_one(t_job *job)
 int				builtins_bg(t_list **env, char **cmds)
 {
 	int		i;
-
 	t_job	*job;
 
 	i = 1;

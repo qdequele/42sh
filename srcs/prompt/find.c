@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_find.c                                           :+:      :+:    :+:   */
+/*   prompt_find.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -34,6 +34,7 @@ void		*get_actions_normal(void)
 		action_ignore_input,
 		action_insert_char
 	};
+
 	return ((void *)f);
 }
 
@@ -48,10 +49,11 @@ void		*get_actions_copy(void)
 		action_cut,
 		action_copy_quit
 	};
+
 	return ((void *)f);
 }
 
-t_status		prompt_find_function(char *buf)
+t_status	prompt_find_function(char *buf)
 {
 	t_status	(**actions)(char *);
 	t_status	status;
@@ -65,7 +67,6 @@ t_status		prompt_find_function(char *buf)
 	status = TRYING;
 	while (*actions && status == TRYING)
 	{
-		
 		status = (*actions)(buf);
 		actions++;
 	}

@@ -12,10 +12,9 @@
 
 #include <ft_sh.h>
 
-
 void	create_var(char *var_name, char *var_value, char opt)
 {
-	char 	**set_env;
+	char	**set_env;
 
 	set_env = (char**)malloc(sizeof(char*) * 3);
 	set_env[0] = "setenv";
@@ -26,8 +25,8 @@ void	create_var(char *var_name, char *var_value, char opt)
 
 void	create_last_var(char *var_name, char **var_value, char opt)
 {
-	char 	*last_var;
-	int 	i;
+	char	*last_var;
+	int		i;
 
 	i = 0;
 	last_var = ft_strnew(1);
@@ -38,7 +37,8 @@ void	create_last_var(char *var_name, char **var_value, char opt)
 		if (i > 0)
 			last_var = ft_freejoin(last_var, " ");
 		if (!var_value[i + 1])
-			var_value[i] = ft_strsub(var_value[i], 0, ft_strlen(var_value[i]) - 1);
+			var_value[i] = ft_strsub(var_value[i], 0,
+									ft_strlen(var_value[i]) - 1);
 		last_var = ft_freejoin(last_var, var_value[i]);
 		i++;
 	}

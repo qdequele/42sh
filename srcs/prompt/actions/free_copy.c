@@ -12,10 +12,10 @@
 
 #include <ft_sh.h>
 
-t_status 	action_free(char *buf)
+t_status	action_free(char *buf)
 {
-	t_shell 	*shell;
-	t_prompt 	*prompt;
+	t_shell		*shell;
+	t_prompt	*prompt;
 
 	shell = recover_shell();
 	prompt = shell->prompt;

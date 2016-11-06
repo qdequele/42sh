@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_actions_seek_to_history.c                   :+:      :+:    :+:   */
+/*   seek_to_history.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,23 +12,19 @@
 
 #include <ft_sh.h>
 
-char 	*action_seek_to_history(char *cmds)
+char	*action_seek_to_history(char *cmds)
 {
-	t_shell 	*shell;
-	t_term 		*term;
-	t_list 		*cur;
-	char 		*str;
+	t_shell		*shell;
+	t_list		*cur;
+	char		*str;
+	int			i;
 
 	shell = recover_shell();
-	term = recover_term();
-	str = ft_strsub(cmds, 1 ,ft_strlen(cmds));
 	cur = shell->history;
-	shell->history = ft_lst_reverse(shell->history);
-	if (ft_isdigit(str[0]) == 1 && ft_atoi(str) < ft_lstcount(shell->history) && ft_atoi(str) > 0)
-	{
-		cur = ft_lstget_at(shell->history, ft_atoi(str));
-		str = (char*)cur->content;
-	}
+	str = &cmds[1];
+	i = ft_atoi(str);
+	if (ft_isdigit(str[0]) && i < ft_lstcount(shell->history) && i > 0)
+		str = (char*)ft_lstget_at(shell->history, (i - 1))->content;
 	else if ((cur = ft_lst_seek(shell->history, str)) != NULL)
 		str = (char*)cur->content;
 	else
@@ -36,8 +32,7 @@ char 	*action_seek_to_history(char *cmds)
 		ft_putstr_fd("42sh : no such event: ", 2);
 		ft_putendl_fd(str, 2);
 		return (NULL);
-	}	
-	ft_putendl_fd(str, term->tty);
+	}
 	ft_lstdel(&shell->prompt->line, free_char);
 	string_to_list(str);
 	return (str);

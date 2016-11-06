@@ -16,7 +16,7 @@ void	utils_move_up(void)
 {
 	t_shell		*shell;
 	t_term		*term;
-	int 		i;
+	int			i;
 
 	shell = recover_shell();
 	term = recover_term();
@@ -32,7 +32,7 @@ void	utils_move_down(void)
 {
 	t_shell		*shell;
 	t_term		*term;
-	int 		i;
+	int			i;
 
 	shell = recover_shell();
 	term = recover_term();
@@ -50,7 +50,7 @@ void	utils_move_left(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	if(shell->prompt->i_position > 0)
+	if (shell->prompt->i_position > 0)
 	{
 		shell->prompt->i_position--;
 		tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
@@ -64,7 +64,7 @@ void	utils_move_right(void)
 
 	shell = recover_shell();
 	term = recover_term();
-	if(shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	if (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		shell->prompt->i_position++;
 		if ((shell->prompt->i_position + shell->prompt->p_length)
