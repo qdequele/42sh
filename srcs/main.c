@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 21:29:41 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 22:18:04 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void		process_input(char *input)
 	{
 		job_list = token_list_to_job_list(token_list);
 		exec_job_list(job_list);
+		//WARNING // TODO, prevent from not deleted jobs to be removed
+		free_jobs(&job_list);
 	}
 }
 

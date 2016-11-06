@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 18:49:30 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 22:06:05 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	vars_free_one(void *elem, size_t size)
 	{
 		free(l_elem->value);
 	}
+	free(l_elem);
 }
 
 void		vars_free(t_list **l_vars)
