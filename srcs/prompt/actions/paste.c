@@ -17,12 +17,9 @@ t_status	action_paste(char *buf)
 	t_shell		*shell;
 	t_prompt	*prompt;
 	size_t		i;
-	int 		j;
 
-	
 	shell = recover_shell();
 	prompt = shell->prompt;
-	j = 0;
 	i = 0;
 	if (!ALT_V)
 		return (TRYING);
