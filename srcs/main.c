@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 20:43:28 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/06 21:29:41 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void			shell_start(void)
 			ft_lstadd_at(&shell->history,
 				ft_lstnew(line, sizeof(char) * ft_strlen(line)), shell->history_index);
 			shell->history_index++;
-			free(line);
 			ft_lstdel(&shell->prompt->line, free_char);
 			ignore_major_signals();
 		}
+		free(line);
 	}
 	return ;
 }
