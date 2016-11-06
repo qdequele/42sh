@@ -24,7 +24,6 @@ void		init_shell(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	printf("coucou\n");
 	shell->history = NULL;
 	shell->history_position = -1;
 	shell->history_index = 0;
