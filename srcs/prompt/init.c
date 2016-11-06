@@ -21,7 +21,7 @@ t_prompt	*init_prompt(void)
 	prompt->i_position = 0;
 	prompt->p_length = get_current_folder_length();
 	prompt->i_copy = 0;
-	prompt->str_cpy = ft_strnew(1);
+	prompt->str_cpy = NULL;
 	prompt->cut_len = 0;
 	prompt->quote_type = 0;
 	prompt->quote_number = 0;

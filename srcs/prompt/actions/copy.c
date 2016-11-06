@@ -27,7 +27,7 @@ t_status		action_copy(char *buf)
 	prompt = shell->prompt;
 	if (!ALT_C)
 		return (TRYING);
-	if (prompt->str_cpy[0] == '\0')
+	if (!prompt->str_cpy || prompt->str_cpy[0] == '\0')
 	{
 		prompt->str_cpy =
 			malloc(sizeof(char) * (ft_lstcount(prompt->line) + 1));
