@@ -15,6 +15,7 @@
 t_term		*recover_term(void)
 {
 	static t_term	term;
+
 	return (&term);
 }
 
@@ -23,7 +24,6 @@ int			init_term(void)
 	t_term	*term;
 	char	buff_env[4096];
 
-	
 	term = recover_term();
 	if (tcgetattr(0, &(term->old_term)) == -1)
 		return (0);
@@ -53,7 +53,7 @@ int			reset_term(void)
 	return (1);
 }
 
-int		ft_tputs(int c)
+int			ft_tputs(int c)
 {
 	t_term	*term;
 

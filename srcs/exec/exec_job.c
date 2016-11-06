@@ -16,55 +16,34 @@ void			exec_job_list(t_list *job_list)
 {
 	t_job	*j;
 
-	
 	while (job_list)
 	{
 		j = job_list->content;
 		prepare_job(j);
 		if (j->linker != LINK_TO_BACKGROUND)
-		{
-			
 			launch_job(job_list->content, 1);
-		}
 		else
-		{
-			
 			launch_job(job_list->content, 0);
-		}
 		if (!job_is_completed(j) && job_is_stopped(j) &&
 			j->linker != LINK_TO_BACKGROUND)
-		{
-			
 			put_job_in_background(j, 0);
-		}
 		else if (is_job_success(j) && j->linker == LINK_OR)
 		{
-			
 			while (job_list->next && GET_JOB_LINKER(job_list) == LINK_OR)
-			{
-				
 				job_list = job_list->next;
-			}
 		}
 		else if (!is_job_success(j) && j->linker == LINK_AND)
 		{
-			
 			while (job_list->next && GET_JOB_LINKER(job_list) == LINK_AND)
-			{
-				
 				job_list = job_list->next;
-			}
 		}
-		
 		job_list = job_list->next;
-		
 	}
 }
 
 void			launch_job_process(t_job *job, t_process *process, int *iofile,
 								int foreground)
 {
-	
 	if (builtins_find(*process->argv))
 	{
 		process->stdio[0].fd = iofile[0];
@@ -96,7 +75,6 @@ void			launch_job(t_job *j, int foreground)
 	int			iofile[2];
 	int			pipe_fd[2];
 
-	
 	process_list = j->process_list;
 	iofile[0] = 0;
 	while (process_list)

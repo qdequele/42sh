@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.c                                        :+:      :+:    :+:   */
+/*   shell.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -21,18 +21,17 @@ static void		process_input(char *input)
 	update_job_status();
 	if (check_lexer(token_list) == 0)
 	{
-		
 		job_list = token_list_to_job_list(token_list);
 		exec_job_list(job_list);
 	}
 }
 
-char	*read_input(void)
+char			*read_input(void)
 {
 	t_prompt	*prompt;
 	char		buf[8];
 	t_status	status;
-	t_status 	copy_status;
+	t_status	copy_status;
 	t_shell		*shell;
 
 	shell = recover_shell();
@@ -56,15 +55,15 @@ char	*read_input(void)
 	return (ft_strdup(""));
 }
 
-void	shell_start(void)
+void			shell_start(void)
 {
 	t_shell	*shell;
 	char	*line;
 
 	shell = recover_shell();
+	init_shell();
 	while (1)
 	{
-		init_shell();
 		init_term();
 		print_shell();
 		shell->history_position = -1;
@@ -75,16 +74,18 @@ void	shell_start(void)
 			signal(SIGINT, SIG_IGN);
 			reset_term();
 			process_input(line);
-			ft_lstadd(&shell->history,
-				ft_lstnew(line, sizeof(char*) * ft_strlen(line)));
+			ft_lstadd_at(&shell->history,
+				ft_lstnew(line, sizeof(char*) * ft_strlen(line)), shell->history_index);
+			shell->history_index++;
 			free(line);
+			ft_lstdel(&shell->prompt->line, free_char);
 			ignore_major_signals();
 		}
 	}
 	return ;
 }
 
-int			main(int argc, char **argv, char **environ)
+int				main(int argc, char **argv, char **environ)
 {
 	t_term	*term;
 	t_shell	*shell;

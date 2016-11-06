@@ -40,7 +40,8 @@ void	utils_move_max_top(void)
 
 	shell = recover_shell();
 	term = recover_term();
-	while (shell->prompt->p_length + shell->prompt->i_position > term->wins.ws_col)
+	while (shell->prompt->p_length +
+		shell->prompt->i_position > term->wins.ws_col)
 		utils_move_up();
 }
 
@@ -51,4 +52,3 @@ void	utils_move_max_bottom(void)
 	shell = recover_shell();
 	UNUSED(shell);
 }
-

@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-void			signal_resize_screen(int i)
+void	signal_resize_screen(int i)
 {
 	t_term	*term;
 
@@ -21,7 +21,7 @@ void			signal_resize_screen(int i)
 	ioctl(0, TIOCGWINSZ, &term->wins);
 }
 
-void			signal_reprompt(int i)
+void	signal_reprompt(int i)
 {
 	UNUSED(i);
 }

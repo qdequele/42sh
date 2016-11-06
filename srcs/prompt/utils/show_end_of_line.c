@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-void    print_eol(void)
+void	print_eol(void)
 {
 	t_shell		*shell;
 	int			index;
@@ -23,7 +23,8 @@ void    print_eol(void)
 	shell = recover_shell();
 	index = shell->prompt->i_position;
 	i = 0;
-	string = (char *)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) - index + 1));
+	string = (char *)malloc(sizeof(char) *
+						(ft_lstcount(shell->prompt->line) - index + 1));
 	while (index + i < ft_lstcount(shell->prompt->line))
 	{
 		tmp = ft_lstget_at(shell->prompt->line, index + i)->content;

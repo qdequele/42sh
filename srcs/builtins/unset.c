@@ -15,9 +15,8 @@
 int			builtins_unset(t_list **env, char **cmds)
 {
 	t_list	**l_var;
-	
 	int		i;
-	
+
 	i = 1;
 	(void)env;
 	if (cmds[i] && ft_strcmp(cmds[i], "-g") == 0)

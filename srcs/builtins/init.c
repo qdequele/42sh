@@ -33,10 +33,11 @@ t_builtin	*builtins_init(void)
 		{"fg", builtins_fg},
 		{NULL, NULL}
 	};
+
 	return ((void *)f);
 }
 
-int					builtins_find(char *cmd)
+int			builtins_find(char *cmd)
 {
 	t_builtin	*builtins;
 	int			i;
@@ -52,7 +53,7 @@ int					builtins_find(char *cmd)
 	return (0);
 }
 
-int					builtins_exec(t_list **env, char **cmds)
+int			builtins_exec(t_list **env, char **cmds)
 {
 	t_builtin	*builtins;
 	int			i;

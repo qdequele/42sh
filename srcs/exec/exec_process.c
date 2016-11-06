@@ -76,24 +76,19 @@ int			update_process_status(t_job *j, pid_t pid, int status)
 		{
 			if (WIFEXITED(status))
 			{
-				
 				((t_process *)process->content)->status = status;
 				((t_process *)process->content)->completed = 1;
 			}
 			if (WIFSIGNALED(status))
 			{
-				
 				((t_process *)process->content)->status = status;
 				((t_process *)process->content)->completed = 1;
 			}
 			if (WIFSTOPPED(status))
 				((t_process *)process->content)->stopped = 1;
 			return (0);
-			
 		}
-		
 		process = process->next;
 	}
-	
 	return (0);
 }

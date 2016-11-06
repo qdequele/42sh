@@ -26,7 +26,8 @@ t_status	action_paste(char *buf)
 	while (i < ft_strlen(prompt->str_cpy))
 	{
 		ft_lstadd_at(&prompt->line,
-			ft_lstnew(&prompt->str_cpy[i], sizeof(char*)), prompt->i_position + i);
+			ft_lstnew(&prompt->str_cpy[i],
+				sizeof(char*)), prompt->i_position + i);
 		i++;
 	}
 	i = prompt->i_position;
@@ -34,8 +35,6 @@ t_status	action_paste(char *buf)
 	ft_lstshow_x(prompt->line, 0);
 	prompt->i_position = ft_lstcount(prompt->line);
 	while ((size_t)prompt->i_position > i)
-	{
 		utils_move_left();
-	}
 	return (READING);
 }

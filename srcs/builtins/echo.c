@@ -12,11 +12,11 @@
 
 #include <ft_sh.h>
 
-static	char 	*check_second_quote(char *str)
+static	char	*check_second_quote(char *str)
 {
-	char 	*dst;
-	size_t 	i;
-	int 	j;
+	char	*dst;
+	size_t	i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -31,15 +31,15 @@ static	char 	*check_second_quote(char *str)
 		i++;
 	}
 	return (dst);
-
 }
+
 static	void	put_echo(char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	str = check_second_quote(str);
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		if (str[i] == '\\')
 			i += 2;
@@ -51,10 +51,10 @@ static	void	put_echo(char *str)
 	}
 }
 
-int		builtins_echo(t_list **env, char **cmds)
+int				builtins_echo(t_list **env, char **cmds)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	(void)env;
 	i = ft_count_raw_aoc(cmds);

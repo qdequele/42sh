@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static int	print_erno(char *str, int err)
+static int		print_erno(char *str, int err)
 {
 	if (str[0] == '!')
 		str = list_to_string();
@@ -27,7 +27,7 @@ static int	print_erno(char *str, int err)
 	return (1);
 }
 
-static int	shell_exec_cmd(t_list *env, char **cmds, char *path)
+static int		shell_exec_cmd(t_list *env, char **cmds, char *path)
 {
 	pid_t	pid;
 
@@ -40,7 +40,7 @@ static int	shell_exec_cmd(t_list *env, char **cmds, char *path)
 	return (0);
 }
 
-int			shell_find_cmd(t_list *env, char **cmds)
+int				shell_find_cmd(t_list *env, char **cmds)
 {
 	char		**paths;
 	char		*path;
@@ -68,7 +68,7 @@ int			shell_find_cmd(t_list *env, char **cmds)
 	return (print_erno(cmds[0], 0));
 }
 
-int		shell_core(t_list **env, char **cmds)
+int				shell_core(t_list **env, char **cmds)
 {
 	if (cmds[0] && builtins_find(cmds[0]))
 		return (builtins_exec(env, cmds));

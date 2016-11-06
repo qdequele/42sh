@@ -32,9 +32,9 @@ static	void	display_history(t_list *list)
 	}
 }
 
-int			builtins_history(t_list **env, char **cmds)
+int				builtins_history(t_list **env, char **cmds)
 {
-	t_shell 		*shell;
+	t_shell			*shell;
 
 	(void)env;
 	shell = recover_shell();
@@ -49,11 +49,11 @@ int			builtins_history(t_list **env, char **cmds)
 	return (0);
 }
 
-void		bultins_one_history(char *cmds)
+void			bultins_one_history(char *cmds)
 {
 	t_shell		*shell;
-	char 		*str;
-	int 		i;
+	char		*str;
+	int			i;
 
 	shell = recover_shell();
 	i = ft_atoi(ft_strsub(cmds, 1, ft_strlen(cmds)));

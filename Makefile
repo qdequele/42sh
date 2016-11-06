@@ -80,7 +80,7 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/utils/show_end_of_line.c\
 				prompt/find.c\
 				prompt/init.c\
-				prompt/check_quote.c\
+				prompt/detect_quote.c\
 				shell/init.c\
 				shell/print.c\
 				shell/signal.c\

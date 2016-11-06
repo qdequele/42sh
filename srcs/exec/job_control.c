@@ -52,7 +52,6 @@ void	wait_for_job(t_job *j)
 	int		status;
 	pid_t	pid;
 
-	
 	status = 0;
 	pid = 0;
 	while (!job_is_completed(j) && !job_is_stopped(j))
@@ -70,7 +69,6 @@ int		job_is_completed(t_job *j)
 	t_list		*process;
 	t_process	*p;
 
-	
 	process = j->process_list;
 	while (process)
 	{
@@ -79,7 +77,6 @@ int		job_is_completed(t_job *j)
 			return (0);
 		process = process->next;
 	}
-	
 	return (1);
 }
 

@@ -15,6 +15,7 @@
 t_list	**vars_recover(void)
 {
 	static t_list	*global_vars;
+
 	if (global_vars == NULL)
 	{
 		global_vars = (t_list *)malloc(sizeof(t_list));
@@ -34,7 +35,8 @@ void	vars_show(t_list *l_var)
 		while (elem && elem->content)
 		{
 			var = elem->content;
-			if (var->key != NULL && ft_strlen(var->key) != 0 && var->value != NULL && ft_strlen(var->value) != 0)
+			if (var->key != NULL && ft_strlen(var->key) != 0
+					&& var->value != NULL && ft_strlen(var->value) != 0)
 			{
 				ft_putstr(var->key);
 				ft_putstr("=");
@@ -43,7 +45,6 @@ void	vars_show(t_list *l_var)
 					ft_putstr(" - (readonly)");
 				ft_putstr("\n");
 			}
-			
 			elem = elem->next;
 		}
 	}
