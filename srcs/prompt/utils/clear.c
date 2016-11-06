@@ -53,7 +53,8 @@ void	clean_last_x_char(int i)
 void	free_char(void *content, size_t size)
 {
 	UNUSED(size);
-	free(content);
+	if (content)
+		free(content);
 }
 
 int		sort_by_lexycography(t_list *node)

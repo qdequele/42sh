@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:37:56 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 19:04:09 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int					builtins_set(t_list **env, char **cmds);
 int					builtins_unset(t_list **env, char **cmds);
 int					builtins_export(t_list **env, char **cmds);
 void				bultins_one_history(char *str);
+void				history_free(t_list **l_history);
 int					builtins_echo(t_list **env, char **cmds);
 int					builtins_bg(t_list **env, char **cmds);
 int					builtins_fg(t_list **env, char **cmds);
@@ -86,6 +87,7 @@ char				**env_parse_from_list(t_list *l_env);
 void				env_show(t_list *l_env);
 char				*env_get(t_list *l_env, char *f_key);
 void				env_add_or_modify(t_list **l_env, char *key, char *value);
+void				env_free(t_list **l_env);
 int					shell_core(t_list **env, char **cmds);
 /*
 ** utils - read_cretate_var.c
@@ -102,6 +104,7 @@ void				vars_show_global(t_list *l_var);
 char				*vars_get(t_list *l_var, char *f_key);
 void				vars_add_or_modify(t_list **l_vars, char *key, char *value);
 void				vars_change_readonly(t_list **l_vars, char *key, int rdo);
+void				vars_free(t_list **l_vars);
 int					builtins_readonly(t_list **env, char **cmds);
 int					builtins_unreadonly(t_list **env, char **cmds);
 

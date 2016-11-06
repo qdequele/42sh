@@ -77,6 +77,7 @@ void			shell_start(void)
 			ft_lstadd(&shell->history,
 				ft_lstnew(line, sizeof(char*) * ft_strlen(line)));
 			free(line);
+			ft_lstdel(&shell->prompt->line, free_char);
 			ignore_major_signals();
 		}
 	}
