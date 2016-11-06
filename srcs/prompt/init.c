@@ -35,7 +35,7 @@ char		*get_current_folder(void)
 	prompt = ft_strdup("");
 	if (ft_strrchr_n(env_get(g_env, "PWD"), '/'))
 		prompt = ft_strfjoin(prompt, ft_strrchr_n(env_get(g_env, "PWD"), '/'));
-	prompt = ft_strfjoin(prompt, ft_strdup(" $> "));
+	prompt = ft_strfjoin(prompt, " $> ");
 	return (prompt);
 }
 
@@ -46,5 +46,6 @@ int			get_current_folder_length(void)
 
 	prompt = get_current_folder();
 	prompt_length = ft_strlen(prompt);
+	free(prompt);
 	return (prompt_length);
 }
