@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/03/03 13:19:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 20:43:28 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void			shell_start(void)
 			reset_term();
 			process_input(line);
 			ft_lstadd_at(&shell->history,
-				ft_lstnew(line, sizeof(char*) * ft_strlen(line)), shell->history_index);
+				ft_lstnew(line, sizeof(char) * ft_strlen(line)), shell->history_index);
 			shell->history_index++;
 			free(line);
 			ft_lstdel(&shell->prompt->line, free_char);
