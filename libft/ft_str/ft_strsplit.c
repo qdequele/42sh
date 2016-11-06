@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 11:03:23 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/22 19:54:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 20:27:49 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_strsplit(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	nbword = ft_wordcount((char const *)s, c);
-	tab = (char **)malloc(sizeof(*tab) * nbword + 1);
+	tab = (char **)malloc(sizeof(char *) * (nbword + 1));
 	if (tab == NULL)
 		return (NULL);
 	i = 0;

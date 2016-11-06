@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_job.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nathan <nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 18:48:42 by qdequele          #+#    #+#             */
-/*   Updated: 2016/04/20 14:18:11 by nathan           ###   ########.fr       */
+/*   Updated: 2016/11/06 20:31:05 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void			launch_job_process(t_job *job, t_process *process, int *iofile,
 			process->stdio[1].fd = iofile[1];
 		launch_process(process, job->pgid, foreground);
 	}
+	ft_free_aoc(process->argv);
 	if (!job->pgid)
 		job->pgid = process->pid;
 	setpgid(process->pid, job->pgid);
