@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/27 17:42:43 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:28:29 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void		init_shell(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	shell = (t_shell*)malloc(sizeof(t_shell));
 	shell->history = NULL;
 	shell->history_position = -1;
 	shell->last_exit_code = 0;
