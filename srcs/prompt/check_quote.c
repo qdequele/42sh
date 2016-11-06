@@ -60,12 +60,10 @@ int		check_quote(char *line)
 	t_shell 	*shell;
 	t_prompt 	*prompt;
 	int 		i;
-	int 		j;
 
 	shell = recover_shell();
 	prompt = shell->prompt;
 	i = -1;
-	j = 0;
 	while (line[++i] != '\0')
 	{
 		if ((line[i] == '"' || line[i] == '\'' || line[i] == '(' || line[i] == ')' || line[i] == '`')
