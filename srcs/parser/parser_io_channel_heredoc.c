@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static void 	delete_char(void)
+static void		delete_char(void)
 {
 	tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
 	tputs(DMSTR, 1, ft_tputs);
@@ -29,13 +29,13 @@ static char		*add_to_list(t_list **list, char *ret)
 	return (ret);
 }
 
-static void 	print_on_fd(int *pipe_fd, t_list *list)
+static void		print_on_fd(int *pipe_fd, t_list *list)
 {
-	char	**tab_var;
-	int		i;
+	char		**tab_var;
+	int			i;
 
-	tab_var = list_to_tab(list);
 	i = 0;
+	tab_var = list_to_tab(list);
 	if (ft_lstcount(list) == 0)
 		return ;
 	while (tab_var[i])
@@ -48,11 +48,11 @@ static void 	print_on_fd(int *pipe_fd, t_list *list)
 	free(tab_var);
 }
 
-static 	void	assign_new_fd(t_process *p, int *pipe_fd, int channel)
+static void		assign_new_fd(t_process *p, int *pipe_fd, int channel)
 {
 	p->stdio[channel].fd = pipe_fd[0];
 	p->stdio[channel].to_close = 1;
-	close(pipe_fd[1]);	
+	close(pipe_fd[1]);
 }
 
 int				parse_heredoc_redir(t_process *p, int channel, char *target)

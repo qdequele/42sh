@@ -87,6 +87,7 @@ _SRC		=	builtins/utils/parser.c\
 				shell/print.c\
 				shell/signal.c\
 				shell/term.c\
+				shell/utils.c\
 				main.c
 
 SRC			=	$(addprefix srcs/,$(_SRC))

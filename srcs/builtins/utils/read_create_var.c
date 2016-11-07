@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-char			*check_value(char opt, char *var_value)
+char		*check_value(char opt, char *var_value)
 {
 	int		i;
 	int		j;
@@ -35,7 +35,7 @@ char			*check_value(char opt, char *var_value)
 	return (new_value);
 }
 
-void	create_var(char *var_name, char *var_value, char opt)
+void		create_var(char *var_name, char *var_value, char opt)
 {
 	char	**set_env;
 
@@ -46,7 +46,7 @@ void	create_var(char *var_name, char *var_value, char opt)
 	builtins_set(&g_env, set_env);
 }
 
-void	create_last_var(char *var_name, char **var_value, char opt)
+void		create_last_var(char *var_name, char **var_value, char opt)
 {
 	char	*last_var;
 	int		i;

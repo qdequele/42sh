@@ -41,36 +41,21 @@ char			*read_input(void)
 	ft_bzero(buf, 8);
 	while (read(0, buf, 8))
 	{
-		if (buf[0] != 0)
-		{
-			if (!TAB)
-			{
-				shell->autocomplete_position = 0;
-				ft_lstdel(&(shell->posibilities), free_char);
-			}
-			if ((copy_status = main_action_copy(buf)) == EXIT)
-				status = prompt_find_function(buf);
-			ft_bzero(buf, 8);
-			if (status == FOUND)
-				if (check_quote(list_to_string()) == 1)
-					return (list_to_string());
-		}
+		if (!TAB)
+			reset_autocomplete_possibilities();
+		if ((copy_status = main_action_copy(buf)) == EXIT)
+			status = prompt_find_function(buf);
+		ft_bzero(buf, 8);
+		if (status == FOUND && check_quote(list_to_string()) == 1)
+			return (list_to_string());
 	}
 	return (ft_strdup(""));
 }
 
-void			free_input(void)
-{
-	t_shell		*shell;
-
-	shell = recover_shell();
-	ft_lstdel(&(shell->prompt->line), &free_char);
-}
-
 void			shell_start(void)
 {
-	t_shell	*shell;
-	char	*line;
+	t_shell		*shell;
+	char		*line;
 
 	shell = recover_shell();
 	init_shell();
@@ -79,8 +64,7 @@ void			shell_start(void)
 		init_term();
 		print_shell();
 		shell->history_position = -1;
-		shell->autocomplete_position = 0;
-		ft_lstdel(&(shell->posibilities), free_char);
+		reset_autocomplete_possibilities();
 		line = read_input();
 		free_input();
 		if (line)
@@ -88,16 +72,13 @@ void			shell_start(void)
 			signal(SIGINT, SIG_IGN);
 			reset_term();
 			process_input(line);
-			ft_lstadd_at(&shell->history,
-				ft_lstnew(line, sizeof(char) * ft_strlen(line)), shell->history_index);
-			shell->history_index++;
+			add_history(line)
 			free_input();
 			ignore_major_signals();
 		}
 		free(line);
 		free(shell->prompt);
 	}
-	return ;
 }
 
 int				main(int argc, char **argv, char **environ)
