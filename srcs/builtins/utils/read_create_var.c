@@ -44,6 +44,7 @@ void	create_var(char *var_name, char *var_value, char opt)
 	set_env[0] = ft_strdup("setenv");
 	set_env[1] = ft_strdup(ft_strtrim(var_name));
 	set_env[2] = ft_strdup(check_value(opt, ft_strtrim(var_value)));
+	set_env[3] = "\0";
 	builtins_set(&g_env, set_env);
 }
 
