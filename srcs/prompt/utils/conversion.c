@@ -54,3 +54,21 @@ char	*list_to_string(void)
 	}
 	return (line);
 }
+
+char	**list_to_tab(t_list *list)
+{
+	int 		i;
+	char 		**tab_var;
+
+
+	tab_var = (char**)malloc(sizeof(char*) * ft_lstcount(list));
+	list = ft_lst_reverse(list);
+	i = 0;
+	while (list != NULL)
+	{
+		tab_var[i] = (char*)list->content;
+		list = list->next;
+		i++;
+	}
+	return (tab_var);
+}

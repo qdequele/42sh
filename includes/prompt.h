@@ -217,6 +217,7 @@ int			get_current_folder_length(void);
 void		clean_prompt(void);
 void		string_to_list(char *str);
 char		*list_to_string(void);
+char		**list_to_tab(t_list *list);
 void		free_char(void *content, size_t size);
 void		print_eol(void);
 void		inser_char(char c);
