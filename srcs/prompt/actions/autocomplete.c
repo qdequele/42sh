@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/07 19:00:57 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/07 19:06:36 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	get_cmd_list(t_list **possibilities, char *last_word)
 {
 	char		**paths;
 	char		*tmp;
+	char		*new_last_word;
 	int			i;
 
 	paths = ft_strsplit(env_get(g_env, "PATH"), ':');
@@ -23,7 +24,8 @@ void	get_cmd_list(t_list **possibilities, char *last_word)
 	while (paths && paths[i] && paths[i][0])
 	{
 		tmp = ft_strjoin("/", last_word);
-		get_files_list(possibilities, ft_strjoin(paths[i], tmp));
+		new_last_word = ft_strjoin(paths[i], tmp);
+		get_files_list(possibilities, new_last_word);
 		free(tmp);
 		i++;
 	}
