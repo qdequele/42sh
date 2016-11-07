@@ -38,9 +38,7 @@
 # define HOME ((buf[0] == 27 && buf[1] == 91 && buf[2] == 72))
 # define END ((buf[0] == 27 && buf[1] == 91 && buf[2] == 70))
 # define IGNORE_1 ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49))
-# define QUIT_NORMALE ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
-# define QUIT_COPY ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
-
+# define CTRL_D ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
 
 # define ALT_C (buf[0] == -61 && buf[1] == -89 && buf[2] == 0)
 # define ALT_V (buf[0] == -30 && buf[1] == -120 && buf[2] == -102)
@@ -151,6 +149,7 @@ t_status	action_delete_next_char(char *buf);
 t_status	action_exec_cmd(char *buf);
 t_status	action_ignore_input(char *buf);
 t_status	action_insert_char(char *buf);
+t_status	action_quit(char *buf);
 /*
 ** Prompt_actions_history.c
 */

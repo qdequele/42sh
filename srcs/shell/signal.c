@@ -23,7 +23,12 @@ void	signal_resize_screen(int i)
 
 void	signal_reprompt(int i)
 {
+	t_shell	*shell;
+
 	UNUSED(i);
+	shell = recover_shell();
+	if (ft_lstcount(shell->prompt->line) > 0)
+		clean_last_x_char(ft_lstcount(shell->prompt->line));
 }
 
 void	ignore_major_signals(void)

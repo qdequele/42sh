@@ -27,3 +27,20 @@ t_status	action_ignore_input(char *buf)
 		return (TRYING);
 	return (READING);
 }
+
+t_status	action_quit(char *buf)
+{
+	t_shell	*shell;
+
+	if (!CTRL_D)
+		return (TRYING);
+	shell = recover_shell();
+	if (ft_lstcount(shell->prompt->line) > 0)
+		clean_last_x_char(ft_lstcount(shell->prompt->line));
+	else
+	{
+		free_shell();
+		exit(0);
+	}
+	return (READING);
+}
