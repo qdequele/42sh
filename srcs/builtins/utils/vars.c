@@ -91,10 +91,12 @@ void	vars_add_or_modify(t_list **l_vars, char *key, char *value)
 		elem = elem->next;
 	}
 	var = (t_var *)malloc(sizeof(t_var));
-	var->key = key;
-	var->value = value;
+	var->key = ft_strdup(key);
+	var->value = ft_strdup(value);
 	var->readonly = 0;
 	ft_lstaddend(l_vars, ft_lstnew(var, sizeof(t_var)));
+	if (ft_strcmp(key, "?") == 0)
+		free(value);
 	free(var);
 }
 
