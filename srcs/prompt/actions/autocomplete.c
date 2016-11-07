@@ -12,16 +12,6 @@
 
 #include <ft_sh.h>
 
-// static void show_list(t_list *elem)
-// {
-// 	while (elem->next)
-// 	{
-// 		printf("[%s]\n", (char*)elem->content);
-// 		elem = elem->next;
-// 	}
-// 	printf("[%s]\n", (char*)elem->content);
-// }
-
 /*
 ** public
 ** DESCRIPTION  : Liste les commandes unix qui commencent par le denier mot de la ligne entrée par l'utilisateur
