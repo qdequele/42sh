@@ -20,11 +20,11 @@ char	*get_cmd_env(char *cmd, char *var_raw)
 	int		i;
 	t_shell	*shell;
 
-	
 	env_value = NULL;
 	shell = recover_shell();
 	*var_raw = '\0';
 	i = 1;
+	exit(0);
 	while (ft_isalnum(var_raw[i]) || var_raw[i] == '?' || var_raw[i] == '_')
 		i++;
 	right = var_raw + i;

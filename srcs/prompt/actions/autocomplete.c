@@ -14,7 +14,12 @@
 
 // static void show_list(t_list *elem)
 // {
-// 	ft_console("--- line : %s\n", (char *)(elem->content));
+// 	while (elem->next)
+// 	{
+// 		printf("[%s]\n", (char*)elem->content);
+// 		elem = elem->next;
+// 	}
+// 	printf("[%s]\n", (char*)elem->content);
 // }
 
 /*

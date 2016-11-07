@@ -51,6 +51,7 @@ _SRC		=	builtins/utils/parser.c\
 				lexer/lexer_quotes_controller.c\
 				lexer/main_lexer.c\
 				lexer/token_to_list.c\
+				lexer/utils/remove_quote.c\
 				parser/get_cmd_env.c\
 				parser/main_parser.c\
 				parser/parser_argv.c\

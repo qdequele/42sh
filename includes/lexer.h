@@ -73,5 +73,5 @@ int					is_token_parent_open(char *line);
 int					is_token_parent_close(char *line);
 int					lexer_skip_quotes(char *input);
 int					check_lexer(t_list *token_list);
-
+char 				*ft_remove_quote(char *word);
 #endif
