@@ -14,6 +14,7 @@
 
 static void		delete_char(void)
 {
+	printf("ICICICI\n");
 	tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
 	tputs(DMSTR, 1, ft_tputs);
 	tputs(DCSTR, 1, ft_tputs);
@@ -22,7 +23,8 @@ static void		delete_char(void)
 
 static char		*add_to_list(t_list **list, char *ret)
 {
-	ft_lstadd(list, ft_lstnew(ft_strtrim(ret), ft_strlen(ret)));
+	ret = ft_strtrim(ret);
+	ft_lstadd(list, ft_lstnew(ret, sizeof(char) * (ft_strlen(ret) + 1)));
 	ft_putstr("heredoc> ");
 	free(ret);
 	ret = ft_strnew(1);
