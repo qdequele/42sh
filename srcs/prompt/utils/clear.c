@@ -17,7 +17,8 @@ void	clean_prompt(void)
 	t_shell	*shell;
 
 	shell = recover_shell();
-	while((size_t)shell->prompt->i_position < ft_lstcount(shell->prompt->line) - ft_strlen(shell->prompt->str_cpy))
+	while ((size_t)shell->prompt->i_position <
+		ft_lstcount(shell->prompt->line) - ft_strlen(shell->prompt->str_cpy))
 	{
 		utils_move_right();
 	}
@@ -29,12 +30,12 @@ void	clean_prompt(void)
 	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 }
 
-void 	clean_last_x_char(int i)
+void	clean_last_x_char(int i)
 {
 	t_shell	*shell;
 
 	shell = recover_shell();
-	while(shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
 	}
@@ -52,7 +53,8 @@ void 	clean_last_x_char(int i)
 void	free_char(void *content, size_t size)
 {
 	UNUSED(size);
-	free(content);
+	if (content)
+		free(content);
 }
 
 int		sort_by_lexycography(t_list *node)
@@ -60,7 +62,8 @@ int		sort_by_lexycography(t_list *node)
 	t_list	*n_elem;
 
 	n_elem = node->next;
-	if (n_elem && ft_strlen((char *)(node->content)) > ft_strlen((char *)(n_elem->content)) > 0)
+	if (n_elem && (ft_strlen((char *)(node->content)) >
+		ft_strlen((char *)(n_elem->content))) > 0)
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   autocomplete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/02 11:42:31 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 21:36:04 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void 	get_cmd_list(t_list **possibilities, char *last_word)
 		get_files_list(possibilities, ft_strjoin(paths[i], ft_strjoin("/", last_word)));
 		i++;
 	}
+	ft_free_aoc(paths);
 }
 
 /*
@@ -161,7 +162,10 @@ t_status	action_autocomplete(char *buf)
 	shell = recover_shell();
 	line = list_to_string();
 	if (!TAB || ft_strlen(line) == 0 || line[ft_strlen(line) - 1] == ' ')
+	{
+		free(line);
 		return (TRYING);
+	}
 	if (shell->autocomplete_position == 0)
 	{
 		set_possibilities();

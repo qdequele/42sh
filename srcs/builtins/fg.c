@@ -26,7 +26,7 @@ static int		builtin_fg_default(void)
 	return (0);
 }
 
-int		builtins_fg(t_list **env, char **cmds)
+int				builtins_fg(t_list **env, char **cmds)
 {
 	int		i;
 	t_job	*job;

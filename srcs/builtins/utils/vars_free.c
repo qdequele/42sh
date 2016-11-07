@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_to_list.c                                    :+:      :+:    :+:   */
+/*   vars_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/03/03 13:19:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 22:06:05 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-t_list		*new_token(t_token_type type, void *content)
+static void	vars_free_one(void *elem, size_t size)
 {
-	t_token		new_t;
+	t_var	*l_elem;
 
-	new_t.type = type;
-	new_t.content = content;
-	return (ft_lstnew(&new_t, sizeof(t_token)));
+	UNUSED(size);
+	l_elem = elem;
+	if (l_elem->key)
+	{
+		free(l_elem->key);
+	}
+	if (l_elem->value)
+	{
+		free(l_elem->value);
+	}
+	free(l_elem);
 }
 
-void		del_token(void *token_void, size_t size_content)
+void		vars_free(t_list **l_vars)
 {
-	t_token		*token;
-
-	if (!token_void)
-		return ;
-	if (size_content != sizeof(t_token))
-		return ;
-	token = (t_token *)token_void;
-	if (token->content)
-		free(token->content);
-	free(token);
+	ft_lstdel(l_vars, &vars_free_one);
 }

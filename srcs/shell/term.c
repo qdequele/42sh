@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   term.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 17:58:46 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 21:47:23 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_term		*recover_term(void)
 {
 	static t_term	term;
+
 	return (&term);
 }
 
@@ -23,7 +24,6 @@ int			init_term(void)
 	t_term	*term;
 	char	buff_env[4096];
 
-	
 	term = recover_term();
 	if (tcgetattr(0, &(term->old_term)) == -1)
 		return (0);
@@ -53,7 +53,7 @@ int			reset_term(void)
 	return (1);
 }
 
-int		ft_tputs(int c)
+int			ft_tputs(int c)
 {
 	t_term	*term;
 

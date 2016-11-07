@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
+#    By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/31 18:40:27 by qdequele         ###   ########.fr        #
+#    Updated: 2016/11/06 18:48:27 by bjamin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ _SRC		=	builtins/utils/parser.c\
 				builtins/utils/env_helper.c\
 				builtins/utils/remove_key.c\
 				builtins/utils/vars.c\
+				builtins/utils/vars_free.c\
 				builtins/utils/read_create_var.c\
 				builtins/cd.c\
 				builtins/echo.c\
@@ -80,7 +81,7 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/utils/show_end_of_line.c\
 				prompt/find.c\
 				prompt/init.c\
-				prompt/check_quote.c\
+				prompt/detect_quote.c\
 				shell/init.c\
 				shell/print.c\
 				shell/signal.c\

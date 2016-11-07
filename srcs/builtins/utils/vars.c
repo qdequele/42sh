@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:40:44 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/07 12:37:24 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_list	**vars_recover(void)
 {
 	static t_list	*global_vars;
+
 	if (global_vars == NULL)
 	{
 		global_vars = (t_list *)malloc(sizeof(t_list));
@@ -34,7 +35,8 @@ void	vars_show(t_list *l_var)
 		while (elem && elem->content)
 		{
 			var = elem->content;
-			if (var->key != NULL && ft_strlen(var->key) != 0 && var->value != NULL && ft_strlen(var->value) != 0)
+			if (var->key != NULL && ft_strlen(var->key) != 0
+					&& var->value != NULL && ft_strlen(var->value) != 0)
 			{
 				ft_putstr(var->key);
 				ft_putstr("=");
@@ -43,7 +45,6 @@ void	vars_show(t_list *l_var)
 					ft_putstr(" - (readonly)");
 				ft_putstr("\n");
 			}
-			
 			elem = elem->next;
 		}
 	}
@@ -93,6 +94,7 @@ void	vars_add_or_modify(t_list **l_vars, char *key, char *value)
 	var->value = value;
 	var->readonly = 0;
 	ft_lstaddend(l_vars, ft_lstnew(var, sizeof(t_var)));
+	free(var);
 }
 
 void	vars_change_readonly(t_list **l_vars, char *key, int rdo)

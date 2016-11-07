@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-t_status  action_copy_quit(char *buf)
+t_status		action_copy_quit(char *buf)
 {
 	(void)buf;
 	return (EXIT);
@@ -21,23 +21,23 @@ t_status  action_copy_quit(char *buf)
 t_status		action_copy(char *buf)
 {
 	t_shell		*shell;
-	t_term 		*term;
 	t_prompt	*prompt;
 
 	shell = recover_shell();
-	term = recover_term();
 	prompt = shell->prompt;
 	if (!ALT_C)
 		return (TRYING);
-	if (prompt->str_cpy[0] == '\0')
+	if (!prompt->str_cpy || prompt->str_cpy[0] == '\0')
 	{
-		prompt->str_cpy = malloc(sizeof(char) *(ft_lstcount(prompt->line) + 1));
+		prompt->str_cpy =
+			malloc(sizeof(char) * (ft_lstcount(prompt->line) + 1));
 	}
 	if (prompt->i_position != ft_lstcount(prompt->line))
 	{
-		prompt->str_cpy[prompt->i_copy] = *(char*)(ft_lstget_at(prompt->line, prompt->i_position)->content);
+		prompt->str_cpy[prompt->i_copy] = *(char*)(ft_lstget_at(prompt->line,
+			prompt->i_position)->content);
 		tputs(MRSTR, 0, ft_tputs);
-		ft_putchar_fd(prompt->str_cpy[prompt->i_copy], term->tty);
+		ft_putchar_fd(prompt->str_cpy[prompt->i_copy], recover_term()->tty);
 		tputs(MESTR, 0, ft_tputs);
 		prompt->i_position++;
 		prompt->i_copy++;
@@ -45,8 +45,7 @@ t_status		action_copy(char *buf)
 	return (TRYING);
 }
 
-
-t_status	main_action_copy(char *buf)
+t_status		main_action_copy(char *buf)
 {
 	t_status	(**actions_copy)(char *);
 	t_status	status_copy;

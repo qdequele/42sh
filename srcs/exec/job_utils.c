@@ -16,7 +16,6 @@ t_job		*find_job_by_gpid(t_list *job_list, pid_t pgid)
 {
 	t_job	*j;
 
-	
 	while (job_list)
 	{
 		j = job_list->content;
@@ -33,7 +32,6 @@ t_job		*find_job_by_pid(t_list *job_list, pid_t pid)
 	t_list		*process_list;
 	t_process	*p;
 
-	
 	while (job_list)
 	{
 		j = job_list->content;
@@ -56,7 +54,6 @@ int			find_job_index(pid_t pgid)
 	t_list	*job_list;
 	int		i;
 
-	
 	shell = recover_shell();
 	job_list = shell->jobs;
 	i = 1;
@@ -76,7 +73,6 @@ t_job		*find_job_by_index(int index)
 	t_list	*job_list;
 	int		i;
 
-	
 	shell = recover_shell();
 	job_list = shell->jobs;
 	i = 1;
@@ -95,7 +91,6 @@ void		log_job_exit_signal(t_job *j)
 	int		sig;
 	int		exit_code;
 
-	
 	exit_code = get_job_raw_exit_code(j);
 	if (WIFSIGNALED(exit_code))
 	{

@@ -17,19 +17,17 @@ t_status	action_paste(char *buf)
 	t_shell		*shell;
 	t_prompt	*prompt;
 	size_t		i;
-	int 		j;
 
-	
 	shell = recover_shell();
 	prompt = shell->prompt;
-	j = 0;
 	i = 0;
 	if (!ALT_V)
 		return (TRYING);
 	while (i < ft_strlen(prompt->str_cpy))
 	{
 		ft_lstadd_at(&prompt->line,
-			ft_lstnew(&prompt->str_cpy[i], sizeof(char*)), prompt->i_position + i);
+			ft_lstnew(&prompt->str_cpy[i],
+				sizeof(char*)), prompt->i_position + i);
 		i++;
 	}
 	i = prompt->i_position;
@@ -37,8 +35,6 @@ t_status	action_paste(char *buf)
 	ft_lstshow_x(prompt->line, 0);
 	prompt->i_position = ft_lstcount(prompt->line);
 	while ((size_t)prompt->i_position > i)
-	{
 		utils_move_left();
-	}
 	return (READING);
 }

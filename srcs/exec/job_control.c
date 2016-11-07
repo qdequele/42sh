@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_control.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 11:42:50 by qdequele          #+#    #+#             */
-/*   Updated: 2016/04/29 17:13:34 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 21:54:12 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_job_in_foreground(t_job *j, int cont)
 	}
 	wait_for_job(j);
 	log_job_exit_signal(j);
-	vars_add_or_modify(&g_vars, "?", ft_itoa(get_job_exit_code(j)));
+	vars_add_or_modify(&g_vars, ft_strdup("?"), ft_itoa(get_job_exit_code(j)));
 	tcsetpgrp(0, shell->pgid);
 }
 
@@ -52,7 +52,6 @@ void	wait_for_job(t_job *j)
 	int		status;
 	pid_t	pid;
 
-	
 	status = 0;
 	pid = 0;
 	while (!job_is_completed(j) && !job_is_stopped(j))
@@ -70,7 +69,6 @@ int		job_is_completed(t_job *j)
 	t_list		*process;
 	t_process	*p;
 
-	
 	process = j->process_list;
 	while (process)
 	{
@@ -79,7 +77,6 @@ int		job_is_completed(t_job *j)
 			return (0);
 		process = process->next;
 	}
-	
 	return (1);
 }
 

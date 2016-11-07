@@ -29,7 +29,6 @@ static int		read_token(t_list **token_list, char *str)
 	int		i;
 	int		length;
 
-	
 	i = 0;
 	while (g_token_matcher[i].type != TOKEN_TYPE_END_LIST)
 	{
@@ -50,7 +49,6 @@ static void		cmd_to_token(t_list **token_list, char *str, int length)
 	char	*word;
 	int		i;
 
-	
 	i = 0;
 	if (length <= 0)
 		return ;
@@ -65,7 +63,6 @@ t_list			*input_to_token_list(char *input)
 	int		i;
 	t_list	*token_list;
 
-	
 	i = 0;
 	token_list = NULL;
 	while (*input)

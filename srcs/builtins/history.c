@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_history.c                                 :+:      :+:    :+:   */
+/*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by eebersol          #+#    #+#             */
-/*   Updated: 2016/10/21 15:01:52 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 19:03:43 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static	void	display_history(t_list *list)
 	}
 }
 
-int			builtins_history(t_list **env, char **cmds)
+int				builtins_history(t_list **env, char **cmds)
 {
-	t_shell 		*shell;
+	t_shell			*shell;
 
 	(void)env;
 	shell = recover_shell();
@@ -49,11 +49,11 @@ int			builtins_history(t_list **env, char **cmds)
 	return (0);
 }
 
-void		bultins_one_history(char *cmds)
+void			bultins_one_history(char *cmds)
 {
 	t_shell		*shell;
-	char 		*str;
-	int 		i;
+	char		*str;
+	int			i;
 
 	shell = recover_shell();
 	i = ft_atoi(ft_strsub(cmds, 1, ft_strlen(cmds)));
@@ -75,4 +75,21 @@ void		bultins_one_history(char *cmds)
 		ft_putnbr(i);
 		ft_putchar('\n');
 	}
+}
+
+static void	history_free_one(void *elem, size_t size)
+{
+	char	*str;
+
+	UNUSED(size);
+	str = elem;
+	if (str)
+	{
+		free(str);
+	}
+}
+
+void		history_free(t_list **l_history)
+{
+	ft_lstdel(l_history, &history_free_one);
 }

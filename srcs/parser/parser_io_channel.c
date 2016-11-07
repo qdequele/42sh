@@ -16,7 +16,6 @@ static int	parse_truncate_redir(t_process *p, int channel, char *target)
 {
 	int		fd;
 
-	
 	if ((fd = open(target, O_CREAT | O_WRONLY | O_TRUNC, 0666)) == -1)
 		fd = 1;
 	p->stdio[channel].fd = fd;
@@ -28,7 +27,6 @@ static int	parse_append_redir(t_process *p, int channel, char *target)
 {
 	int		fd;
 
-	
 	if ((fd = open(target, O_CREAT | O_WRONLY | O_APPEND, 0666)) == -1)
 		fd = 1;
 	p->stdio[channel].fd = fd;
@@ -41,7 +39,6 @@ static int	parse_heredoc_redir(t_process *p, int channel, char *target)
 	int		pipe_fd[2];
 	char	*line;
 
-	
 	pipe(pipe_fd);
 	line = "";
 	while (ft_strcmp(line, target))
@@ -66,7 +63,6 @@ static int	parse_input_redir(t_process *p, int channel, char *target)
 {
 	int		fd;
 
-	
 	if ((fd = open(target, O_RDONLY)) == -1)
 	{
 		ft_putstr("42sh: No such file: ");
@@ -80,7 +76,6 @@ static int	parse_input_redir(t_process *p, int channel, char *target)
 
 int			parse_io_channel(t_process *p, char **split)
 {
-	
 	if (is_aggregate_fd(*split))
 		return (aggreagate_fd(p, *split));
 	if (is_token_redir_append_output(*split))

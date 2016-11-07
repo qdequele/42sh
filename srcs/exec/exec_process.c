@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 18:24:02 by qdequele          #+#    #+#             */
-/*   Updated: 2016/04/29 17:38:41 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 20:07:37 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,19 @@ int			update_process_status(t_job *j, pid_t pid, int status)
 		{
 			if (WIFEXITED(status))
 			{
-				
 				((t_process *)process->content)->status = status;
 				((t_process *)process->content)->completed = 1;
 			}
 			if (WIFSIGNALED(status))
 			{
-				
 				((t_process *)process->content)->status = status;
 				((t_process *)process->content)->completed = 1;
 			}
 			if (WIFSTOPPED(status))
 				((t_process *)process->content)->stopped = 1;
 			return (0);
-			
 		}
-		
 		process = process->next;
 	}
-	
 	return (0);
 }

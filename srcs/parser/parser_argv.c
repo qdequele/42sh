@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_argv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 19:21:33 by qdequele          #+#    #+#             */
-/*   Updated: 2016/04/29 15:46:20 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 20:46:41 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 	
 	i = 0;
 	clear_str_space(cmd);
-	if (!(argv = malloc(sizeof(char *) * count_args(cmd) + 1)) ||
+	if (!(argv = malloc(sizeof(char *) * (count_args(cmd) + 1))) ||
 		!(split = ft_strsplit(cmd, ' ')))
 		return (NULL);
 	start_split = split;

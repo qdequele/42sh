@@ -14,7 +14,7 @@
 
 int			builtins_export(t_list **env, char **cmds)
 {
-	int 	i;
+	int		i;
 	char	*value;
 
 	(void)env;
