@@ -15,10 +15,14 @@
 void	clean_prompt(void)
 {
 	t_shell	*shell;
+	int		i;
 
 	shell = recover_shell();
-	while ((size_t)shell->prompt->i_position <
-		ft_lstcount(shell->prompt->line) - ft_strlen(shell->prompt->str_cpy))
+	if (!shell->prompt->str_cpy)
+		i = 0;
+	else
+		i = ft_strlen(shell->prompt->str_cpy);
+	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line) - i)
 	{
 		utils_move_right();
 	}
