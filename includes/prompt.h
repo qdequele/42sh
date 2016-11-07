@@ -15,19 +15,18 @@
 # include <ft_sh.h>
 
 # define UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 65))
-# define SHIFT_UP ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 65))
-# define SHIFT_MAJ_UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 65))
-
+# define S_UP ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 65))
+# define S_M_UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 65))
 # define DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 66))
-# define SHIFT_DOWN ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 66))
-# define SHIFT_MAJ_DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 66))
+# define S_DOWN ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 66))
+# define S_M_DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 66))
 
 # define RIGHT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 67))
-# define SHIFT_RIGHT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 67))
+# define S_RIGHT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 67))
 # define FN_RIGHT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 70))
 
 # define LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 68))
-# define SHIFT_LEFT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 68))
+# define S_LEFT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 68))
 # define FN_LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 72))
 
 # define BACK_SPACE ((buf[0] == 127 && buf[1] == 0 && buf[2] == 0))
@@ -46,38 +45,6 @@
 # define ALT_B (buf[0] == -30 && buf[1] == -120 && buf[2] == -85 && buf[3] == 0)
 
 # define SEEK_HISTORY ((buf[0] == 33 && buf[1] == 0 && buf[2] == 0))
-
-/*
-** CLSTR- Clear the screen
-** MESTR - Turn off all attributes
-** MRSTR - Turn on reverse video mode
-** TESTR - Strings to end programs using cup
-**
-** Cursor show
-** VESTR - Make cursor appear normal
-** VISTR - Make cursor invisible
-** USSTR - Begin underline mode
-** UESTR - Remove underline mode
-**
-** Line Edition
-** ICSTR - Insert one char
-** IMSTR - Insert mode
-** EISTR - Exit insert mode
-** DCSTR - Delete caractere
-** DMSTR - Enter in delete mode
-** EDSTR - Exit delete mode
-**
-** Move
-** LESTR - Move to left horizontal
-** RISTR - Move to right horizontal
-** UPSTR - Move to up vertical
-** DOSTR - Move to up vertical
-** HOSTR - Move to home
-** CRSTR - Move to the begining of the string
-** CMSTR - Move to row #1 columns #2
-** SCSTR - Save current position of the cursor
-** RCSTR - Recover the last save position cursor
-*/
 
 # define CLSTR (tgetstr("cl", NULL))
 # define USSTR (tgetstr("us", NULL))
@@ -126,134 +93,71 @@ typedef struct	s_prompt
 	int			quote_number;
 }				t_prompt;
 
-/*
-** Prompt.c
-*/
-void		get_cmd_list(t_list **possibilities, char *last_word);
-void		get_builtins_list(t_list **possibilities, char *last_word);
-void		get_files_list(t_list **possibilities, char *last_word);
-char		*read_input(void);
-/*
-** Prompt_actions_autocomplete.c
-*/
-t_status	action_autocomplete(char *buf);
-/*
-** Prompt_actions_char.c
-*/
-t_status	action_insert_char(char *buf);
-t_status	action_delete_char(char *buf);
-t_status	action_delete_next_char(char *buf);
-/*
-** Prompt_actions_cmd.c
-*/
-t_status	action_exec_cmd(char *buf);
-t_status	action_ignore_input(char *buf);
-t_status	action_insert_char(char *buf);
-t_status	action_quit(char *buf);
-/*
-** Prompt_actions_history.c
-*/
-t_status	action_history_up(char *buf);
-t_status	action_history_down(char *buf);
-char		*action_seek_to_history(char *buf);
-/*
-** Prompt_actions_move.c
-*/
-t_status	action_move_up(char *buf);
-t_status	action_move_down(char *buf);
-t_status	action_move_left(char *buf);
-t_status	action_move_right(char *buf);
-/*
-** Prompt_actions_move_word.c
-*/
-t_status	action_move_next_word(char *buf);
-t_status	action_move_last_word(char *buf);
-/*
-** Prompt_actions_move_ext.c
-*/
-t_status	action_move_start(char *buf);
-t_status	action_move_end(char *buf);
-t_status	action_move_max_top(char *buf);
-t_status	action_move_max_bottom(char *buf);
-/*
-** Prompt_find.c
-*/
-t_status	prompt_find_function(char *buf);
-/*
-** Prompt_action_list.c
-*/
-void		*get_actions_normal(void);
-void		*get_actions_copy(void);
-void		*get_actions_autocomplete(void);
-void		*get_actions_history(void);
-/*
-** Prompt_actions_copy.c
-*/
-t_status	action_copy_quit(char *buf);
-t_status	main_action_copy(char *buf);
-t_status	action_copy(char *buf);
-/*
-** Prompt_actions_paste.c
-*/
-t_status	action_paste(char *buf);
-t_status	action_copy(char *buf);
-/*
-** Prompt_actions_cut.c
-*/
-t_status	action_cut(char *buf);
-/*
-** Prompt_actions_free_copy.c
-*/
-t_status	action_free(char *buf);
-/*
-** Prompt_init.c
-*/
-t_prompt	*init_prompt(void);
-char		*get_current_folder(void);
-int			get_current_folder_length(void);
-/*
-** utils
-*/
-void		clean_prompt(void);
-void		string_to_list(char *str);
-char		*list_to_string(void);
-void		free_char(void *content, size_t size);
-void		print_eol(void);
-void		inser_char(char c);
-void		erase_one_char(void);
-void 		erase_x_chars(int x);
-void		delete_one_char(void);
-void 		delete_x_chars(int x);
-/*
-** utils_move
-*/
-void		utils_move_up(void);
-void		utils_move_down(void);
-void		utils_move_left(void);
-void		utils_move_right(void);
-/*
-** utils_move_ext
-*/
-void		utils_move_start(void);
-void		utils_move_end(void);
-void		utils_move_max_top(void);
-void		utils_move_max_bottom(void);
-/*
-** prompt_check_quote.c
-*/
-int			check_quote(char *str);
-int			print_error(char flag);
-char 		display_quote_error(char c);
-int			quote_close(char *str, char c);
-/*
-** utils/line_cut.c
-*/
-char		*before_last_word(char *str, int c);
-char		*get_last_word(char *str, int c);
-/*
-** utils/lst_sort.c
-*/
-int			sort_by_lexycography(t_list *node);
-void 		clean_last_x_char(int i);
+void			get_cmd_list(t_list **possibilities, char *last_word);
+void			get_builtins_list(t_list **possibilities, char *last_word);
+void			get_files_list(t_list **possibilities, char *last_word);
+char			*read_input(void);
+t_status		action_autocomplete(char *buf);
+t_status		action_insert_char(char *buf);
+t_status		action_delete_char(char *buf);
+t_status		action_delete_next_char(char *buf);
+t_status		action_exec_cmd(char *buf);
+t_status		action_ignore_input(char *buf);
+t_status		action_insert_char(char *buf);
+t_status		action_quit(char *buf);
+t_status		action_history_up(char *buf);
+t_status		action_history_down(char *buf);
+char			*action_seek_to_history(char *buf);
+t_status		action_move_up(char *buf);
+t_status		action_move_down(char *buf);
+t_status		action_move_left(char *buf);
+t_status		action_move_right(char *buf);
+t_status		action_move_next_word(char *buf);
+t_status		action_move_last_word(char *buf);
+t_status		action_move_start(char *buf);
+t_status		action_move_end(char *buf);
+t_status		action_move_max_top(char *buf);
+t_status		action_move_max_bottom(char *buf);
+t_status		prompt_find_function(char *buf);
+void			*get_actions_normal(void);
+void			*get_actions_copy(void);
+void			*get_actions_autocomplete(void);
+void			*get_actions_history(void);
+t_status		action_copy_quit(char *buf);
+t_status		main_action_copy(char *buf);
+t_status		action_copy(char *buf);
+t_status		action_paste(char *buf);
+t_status		action_copy(char *buf);
+t_status		action_cut(char *buf);
+t_status		action_free(char *buf);
+t_prompt		*init_prompt(void);
+char			*get_current_folder(void);
+int				get_current_folder_length(void);
+void			clean_prompt(void);
+void			string_to_list(char *str);
+char			*list_to_string(void);
+void			free_char(void *content, size_t size);
+void			print_eol(void);
+void			inser_char(char c);
+void			erase_one_char(void);
+void			erase_x_chars(int x);
+void			delete_one_char(void);
+void			delete_x_chars(int x);
+void			utils_move_up(void);
+void			utils_move_down(void);
+void			utils_move_left(void);
+void			utils_move_right(void);
+void			utils_move_start(void);
+void			utils_move_end(void);
+void			utils_move_max_top(void);
+void			utils_move_max_bottom(void);
+int				check_quote(char *str);
+int				print_error(char flag);
+char			display_quote_error(char c);
+int				quote_close(char *str, char c);
+char			*before_last_word(char *str, int c);
+char			*get_last_word(char *str, int c);
+int				sort_by_lexycography(t_list *node);
+void			clean_last_x_char(int i);
 
 #endif

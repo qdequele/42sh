@@ -39,6 +39,7 @@ t_status	action_quit(char *buf)
 		clean_last_x_char(ft_lstcount(shell->prompt->line));
 	else
 	{
+		free_input();
 		free_shell();
 		exit(0);
 	}
