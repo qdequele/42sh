@@ -36,6 +36,8 @@ static void 	print_on_fd(int *pipe_fd, t_list *list)
 
 	tab_var = list_to_tab(list);
 	i = 0;
+	if (ft_lstcount(list) == 0)
+		return ;
 	while (tab_var[i])
 	{
 		write(pipe_fd[1], tab_var[i], ft_strlen(tab_var[i]));
