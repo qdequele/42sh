@@ -15,14 +15,16 @@
 void	utils_move_start(void)
 {
 	t_shell		*shell;
-	t_term		*term;
 
 	shell = recover_shell();
+<<<<<<< HEAD
 	term = recover_term();
 	while (shell->prompt->i_position >= 0)
 	{
+=======
+	while (shell->prompt->i_position >= 0)
+>>>>>>> origin/new_parser
 		utils_move_left();
-	}
 	shell->prompt->i_position--;
 	tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
 }
@@ -30,14 +32,16 @@ void	utils_move_start(void)
 void	utils_move_end(void)
 {
 	t_shell		*shell;
-	t_term		*term;
 
 	shell = recover_shell();
+<<<<<<< HEAD
 	term = recover_term();
 	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
+=======
+	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+>>>>>>> origin/new_parser
 		utils_move_right();
-	}
 	tputs(tgoto(RISTR, 0, 1), 0, ft_tputs);
 }
 
@@ -50,6 +54,7 @@ void	utils_move_max_top(void)
 	term = recover_term();
 	while (shell->prompt->p_length +
 		shell->prompt->i_position > term->wins.ws_col)
+<<<<<<< HEAD
 	{
 		tputs(tgoto(UPSTR, 0, 0), 0, ft_tputs);
 		shell->prompt->i_position -= term->wins.ws_col;
@@ -60,13 +65,15 @@ void	utils_move_max_top(void)
 			tputs(tgoto(RISTR, 0, shell->prompt->p_length), 0, ft_tputs);
 		}
 	}
+=======
+		utils_move_up();
+>>>>>>> origin/new_parser
 }
 
 void	utils_move_max_bottom(void)
 {
 	t_shell		*shell;
-	t_term		*term;
 
 	shell = recover_shell();
-	term = recover_term();
+	UNUSED(shell);
 }

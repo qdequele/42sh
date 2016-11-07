@@ -14,7 +14,6 @@
 # define FT_UTILS_H
 # define BUFF_SIZE 64
 # define __DEBUG__ ft_console_log_line(__FUNCTION__, __LINE__);
-# define __BREAK__ // BREAK //
 
 typedef struct	s_color {
 	double		r;

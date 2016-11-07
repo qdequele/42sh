@@ -17,6 +17,8 @@ static int	ft_gnl_clear(int ret_int, char *str, char *buf, int ret)
 	str = NULL;
 	buf[0] = '\0';
 	ret = 0;
+	(void)ret;
+	(void)str;
 	return (ret_int);
 }
 

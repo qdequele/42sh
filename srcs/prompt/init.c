@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/17 16:36:02 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/07 12:39:02 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_prompt	*init_prompt(void)
 	prompt->i_position = 0;
 	prompt->p_length = get_current_folder_length();
 	prompt->i_copy = 0;
-	prompt->str_cpy = ft_strnew(1);
+	prompt->str_cpy = NULL;
 	prompt->cut_len = 0;
 	prompt->quote_type = 0;
 	prompt->quote_number = 0;
@@ -35,7 +35,7 @@ char		*get_current_folder(void)
 	prompt = ft_strdup("");
 	if (ft_strrchr_n(env_get(g_env, "PWD"), '/'))
 		prompt = ft_strfjoin(prompt, ft_strrchr_n(env_get(g_env, "PWD"), '/'));
-	prompt = ft_strfjoin(prompt, ft_strdup(" $> "));
+	prompt = ft_strfjoin(prompt, " $> ");
 	return (prompt);
 }
 
@@ -46,5 +46,6 @@ int			get_current_folder_length(void)
 
 	prompt = get_current_folder();
 	prompt_length = ft_strlen(prompt);
+	free(prompt);
 	return (prompt_length);
 }
