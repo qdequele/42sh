@@ -15,18 +15,18 @@
 # include <ft_sh.h>
 
 # define UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 65))
-# define S_UP ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 65))
-# define S_M_UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 65))
+# define SHIFT_UP ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 65))
+# define SHIFT_MAJ_UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 65))
 # define DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 66))
-# define S_DOWN ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 66))
-# define S_M_DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 66))
+# define SHIFT_DOWN ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 66))
+# define SHIFT_MAJ_DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 66))
 
 # define RIGHT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 67))
-# define S_RIGHT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 67))
+# define SHIFT_RIGHT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 67))
 # define FN_RIGHT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 70))
 
 # define LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 68))
-# define S_LEFT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 68))
+# define SHIFT_LEFT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 68))
 # define FN_LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 72))
 
 # define BACK_SPACE ((buf[0] == 127 && buf[1] == 0 && buf[2] == 0))
@@ -159,5 +159,6 @@ char			*before_last_word(char *str, int c);
 char			*get_last_word(char *str, int c);
 int				sort_by_lexycography(t_list *node);
 void			clean_last_x_char(int i);
+char			**list_to_tab(t_list *list);
 
 #endif

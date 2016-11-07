@@ -43,7 +43,8 @@ static void			show_possibilities(void)
 	free(line);
 	if (shell->autocomplete_position >= ft_lstcount(shell->posibilities))
 		return ;
-	new_line = ft_strdup((char *)(ft_lstget_at(shell->posibilities, shell->autocomplete_position)->content));
+	new_line = ft_strdup((char *)(ft_lstget_at(shell->posibilities,
+		shell->autocomplete_position)->content));
 	clean_last_x_char(len);
 	i = 0;
 	while (new_line[i])
@@ -52,10 +53,9 @@ static void			show_possibilities(void)
 		i++;
 	}
 	free(new_line);
-	if (shell->autocomplete_position < ft_lstcount(shell->posibilities))
-		shell->autocomplete_position++;
-	else
-		shell->autocomplete_position = 1;
+	shell->autocomplete_position = (shell->autocomplete_position <
+		ft_lstcount(shell->posibilities)) ?
+		shell->autocomplete_position + 1 : 1;
 }
 
 t_status			action_autocomplete(char *buf)

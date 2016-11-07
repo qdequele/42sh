@@ -12,14 +12,6 @@
 
 #include <ft_sh.h>
 
-static void		delete_char(void)
-{
-	tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
-	tputs(DMSTR, 1, ft_tputs);
-	tputs(DCSTR, 1, ft_tputs);
-	tputs(EDSTR, 1, ft_tputs);
-}
-
 static char		*add_to_list(t_list **list, char *ret)
 {
 	ret = ft_strtrim(ret);

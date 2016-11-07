@@ -12,11 +12,11 @@
 
 #include <ft_sh.h>
 
-int			builtins_jobs(t_list **env, char **cmds)
+int				builtins_jobs(t_list **env, char **cmds)
 {
-	t_shell	*shell;
-	t_list	*job_list;
-	int		i;
+	t_shell		*shell;
+	t_list		*job_list;
+	int			i;
 
 	UNUSED(env);
 	UNUSED(cmds);
@@ -33,7 +33,7 @@ int			builtins_jobs(t_list **env, char **cmds)
 	return (0);
 }
 
-static void	free_one_process(void *elem, size_t size)
+static void		free_one_process(void *elem, size_t size)
 {
 	t_process	*l_process;
 
@@ -42,9 +42,9 @@ static void	free_one_process(void *elem, size_t size)
 	free(elem);
 }
 
-static void	free_one_job(void *elem, size_t size)
+static void		free_one_job(void *elem, size_t size)
 {
-	t_job	*l_job;
+	t_job		*l_job;
 
 	UNUSED(size);
 	l_job = elem;
@@ -52,7 +52,7 @@ static void	free_one_job(void *elem, size_t size)
 	free(elem);
 }
 
-void	free_jobs(t_list **jobs)
+void			free_jobs(t_list **jobs)
 {
 	ft_lstdel(jobs, &free_one_job);
 }

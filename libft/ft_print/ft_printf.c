@@ -12,7 +12,7 @@
 
 #include "../libft.h"
 
-t_flag	flag_printf_tab[NB_PRINTF_FLAG] =
+t_flag	g_flag_printf_tab[NB_PRINTF_FLAG] =
 {
 	{'c', &printf_flag_c},
 	{'d', &printf_flag_d},
@@ -48,7 +48,7 @@ int			ft_printf(const char *format, ...)
 
 int			ft_printf_checkflag(char flag, va_list args)
 {
-	int	    i;
+	int		i;
 	char	*st_flag;
 
 	st_flag = ft_strnew(1);
@@ -56,13 +56,13 @@ int			ft_printf_checkflag(char flag, va_list args)
 	i = 0;
 	if (flag == '%')
 	{
-		ft_putchar (flag);
+		ft_putchar(flag);
 		return (1);
 	}
 	while (i < NB_PRINTF_FLAG)
 	{
-		if (ft_strcmp(st_flag, &flag_printf_tab[i].key) == 0)
-			return (flag_printf_tab[i].ptrfunc(args));
+		if (ft_strcmp(st_flag, &g_flag_printf_tab[i].key) == 0)
+			return (g_flag_printf_tab[i].ptrfunc(args));
 		i++;
 	}
 	ft_putstr("Unknown command: %");

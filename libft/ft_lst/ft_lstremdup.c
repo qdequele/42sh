@@ -12,7 +12,8 @@
 
 #include "../libft.h"
 
-void	ft_lstremdup(t_list **list, int (*comp)(void *, void *), void (*del)(void *, size_t))
+void	ft_lstremdup(t_list **list, int (*comp)(void *, void *),
+	void (*del)(void *, size_t))
 {
 	t_list	*prev;
 	t_list	*next;

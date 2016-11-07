@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstreduce.c                                        :+:      :+:    :+:   */
+/*   ft_lstreduce.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,14 +18,12 @@ t_list	*ft_lstreduce(t_list *lst, int (*f)(t_list *elem))
 
 	if (!lst || !f)
 		return (NULL);
-    res = NULL;
+	res = NULL;
 	while (lst)
 	{
 		if (f(lst) && lst != NULL)
-        {
-            ft_lstaddend(&res, lst);
-        }
-        lst = lst->next;
+			ft_lstaddend(&res, lst);
+		lst = lst->next;
 	}
 	return (res);
 }

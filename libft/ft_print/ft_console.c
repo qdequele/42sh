@@ -12,7 +12,7 @@
 
 #include "../libft.h"
 
-t_flag	flag_console_tab[NB_CONSOLE_FLAG] =
+t_flag	g_flag_console_tab[NB_CONSOLE_FLAG] =
 {
 	{'c', &console_flag_c},
 	{'d', &console_flag_d},
@@ -21,9 +21,9 @@ t_flag	flag_console_tab[NB_CONSOLE_FLAG] =
 
 int			ft_console(const char *format, ...)
 {
-	int		    i;
-	va_list		args;
-	int		    comp;
+	int		i;
+	va_list	args;
+	int		comp;
 
 	i = 0;
 	comp = 0;
@@ -48,7 +48,7 @@ int			ft_console(const char *format, ...)
 
 int			ft_console_checkflag(char flag, va_list args)
 {
-	int	    i;
+	int		i;
 	char	*st_flag;
 
 	st_flag = ft_strnew(1);
@@ -61,12 +61,12 @@ int			ft_console_checkflag(char flag, va_list args)
 	}
 	while (i < NB_CONSOLE_FLAG)
 	{
-		if (ft_strcmp(st_flag, &flag_console_tab[i].key) == 0)
-			return (flag_console_tab[i].ptrfunc(args));
+		if (ft_strcmp(st_flag, &g_flag_console_tab[i].key) == 0)
+			return (g_flag_console_tab[i].ptrfunc(args));
 		i++;
 	}
 	ft_console_log("Unknown command: %");
 	ft_console_log(st_flag);
-    ft_console_log("\n");
+	ft_console_log("\n");
 	return (0);
 }

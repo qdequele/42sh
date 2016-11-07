@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstseek.c                                      :+:      :+:    :+:   */
+/*   ft_lstseek.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../libft.h"
 
-t_list 		*ft_lst_seek(t_list *list, char *str)
+t_list		*ft_lst_seek(t_list *list, char *str)
 {
 	while (list)
 	{

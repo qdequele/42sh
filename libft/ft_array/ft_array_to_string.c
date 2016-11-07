@@ -12,12 +12,6 @@
 
 #include "../libft.h"
 
-/*
-** NAME : ft_array_to_string (unnoficial)
-** DESCRIPTION : passe un tableau de chaine de caracteres en une seul ligne
-** PARAM : Le tableau de caractere qu'il faut concatener
-** RETURN : la ligne qui est le produit de la concatenation des lignes du tableau
-*/
 char	*ft_array_to_string(char **tab)
 {
 	int		i;

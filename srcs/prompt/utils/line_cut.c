@@ -26,7 +26,7 @@ char		*before_last_word(char *str, int c)
 		if (dup[i] == c)
 		{
 			dup[i] = '\0';
-			break;
+			break ;
 		}
 		i--;
 	}
