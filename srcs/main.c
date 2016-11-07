@@ -88,7 +88,7 @@ void			shell_start(void)
 			reset_term();
 			process_input(line);
 			ft_lstadd_at(&shell->history,
-				ft_lstnew(line, sizeof(char) * ft_strlen(line)), shell->history_index);
+				ft_lstnew(line, sizeof(char) * ft_strlen(line) + 1), shell->history_index);
 			shell->history_index++;
 			ft_lstdel(&shell->prompt->line, free_char);
 			ignore_major_signals();
