@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 11:42:50 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 21:54:12 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/07 13:15:15 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 void	put_job_in_background(t_job *j, int cont)
 {
 	t_shell	*shell;
+	t_job	new_job;
 
 	shell = recover_shell();
 	if (cont)
 		kill(-j->pgid, SIGCONT);
-	ft_lstaddend(&(shell->jobs), ft_lstnew(j, sizeof(t_job)));
+	ft_memset(&new_job, 0, sizeof(t_job));
+	ft_memcpy(&new_job, j, sizeof(t_job));
+	new_job.process_list = NULL;
+	if (j->process_list)
+		ft_lstcpy(&(new_job.process_list), j->process_list);
+	ft_lstaddend(&(shell->jobs), ft_lstnew(&new_job, sizeof(t_job)));
 	put_job_info(j, find_job_index(j->pgid));
 }
 
