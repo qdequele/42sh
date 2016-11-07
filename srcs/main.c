@@ -72,8 +72,7 @@ void			shell_start(void)
 			signal(SIGINT, SIG_IGN);
 			reset_term();
 			process_input(line);
-			add_history(line)
-			free_input();
+			add_history(line);
 			ignore_major_signals();
 		}
 		free(line);

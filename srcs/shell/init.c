@@ -36,7 +36,7 @@ void		init_shell(void)
 	shell->jobs = NULL;
 }
 
-void		free_shell()
+void		free_shell(void)
 {
 	t_shell		*shell;
 

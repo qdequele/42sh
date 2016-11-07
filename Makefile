@@ -79,6 +79,7 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/utils/move_ext.c\
 				prompt/utils/line_cut.c\
 				prompt/utils/erase.c\
+				prompt/utils/get_possibilities.c\
 				prompt/utils/show_end_of_line.c\
 				prompt/find.c\
 				prompt/init.c\
