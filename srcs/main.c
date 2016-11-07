@@ -43,8 +43,10 @@ char			*read_input(void)
 	{
 		if (buf[0] != 0)
 		{
-			if (!TAB)
+			if (!TAB) {
 				shell->autocomplete_position = 0;
+				ft_lstdel(&(shell->posibilities), free_char);
+			}
 			if ((copy_status = main_action_copy(buf)) == EXIT)
 				status = prompt_find_function(buf);
 			ft_bzero(buf, 8);
@@ -77,6 +79,7 @@ void			shell_start(void)
 		print_shell();
 		shell->history_position = -1;
 		shell->autocomplete_position = 0;
+		ft_lstdel(&(shell->posibilities), free_char);
 		line = read_input();
 		free_input();
 		if (line)
