@@ -21,7 +21,7 @@ t_status	action_paste(char *buf)
 	shell = recover_shell();
 	prompt = shell->prompt;
 	i = 0;
-	if (!ALT_V)
+	if (!ALT_V || !prompt->str_cpy)
 		return (TRYING);
 	while (i < ft_strlen(prompt->str_cpy))
 	{

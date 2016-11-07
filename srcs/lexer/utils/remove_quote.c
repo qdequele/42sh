@@ -12,9 +12,9 @@
 
 #include <ft_sh.h>
 
-char *ft_remove_quote(char *word)
+char	*ft_remove_quote(char *word)
 {
-	int 	i;
+	int	i;
 
 	i = 1;
 	if (word[0] == '\'' || word[0] == '"' || word[0] == '`'

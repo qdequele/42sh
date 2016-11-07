@@ -60,6 +60,7 @@ _SRC		=	builtins/utils/parser.c\
 				parser/parser_cleanup.c\
 				parser/parser_io_channel.c\
 				parser/parser_io_utils.c\
+				parser/parser_io_channel_heredoc.c\
 				prompt/actions/autocomplete.c\
 				prompt/actions/char.c\
 				prompt/actions/cmd.c\
@@ -78,6 +79,7 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/utils/move_ext.c\
 				prompt/utils/line_cut.c\
 				prompt/utils/erase.c\
+				prompt/utils/get_possibilities.c\
 				prompt/utils/show_end_of_line.c\
 				prompt/find.c\
 				prompt/init.c\
@@ -86,6 +88,7 @@ _SRC		=	builtins/utils/parser.c\
 				shell/print.c\
 				shell/signal.c\
 				shell/term.c\
+				shell/utils.c\
 				main.c
 
 SRC			=	$(addprefix srcs/,$(_SRC))

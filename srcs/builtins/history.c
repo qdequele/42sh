@@ -14,8 +14,8 @@
 
 static	void	display_history(t_list *list)
 {
-	t_list	*cur;
-	int		i;
+	t_list		*cur;
+	int			i;
 
 	cur = list;
 	i = 1;
@@ -34,7 +34,7 @@ static	void	display_history(t_list *list)
 
 int				builtins_history(t_list **env, char **cmds)
 {
-	t_shell			*shell;
+	t_shell		*shell;
 
 	(void)env;
 	shell = recover_shell();
@@ -77,9 +77,9 @@ void			bultins_one_history(char *cmds)
 	}
 }
 
-static void	history_free_one(void *elem, size_t size)
+static void		history_free_one(void *elem, size_t size)
 {
-	char	*str;
+	char		*str;
 
 	UNUSED(size);
 	str = elem;
@@ -89,7 +89,7 @@ static void	history_free_one(void *elem, size_t size)
 	}
 }
 
-void		history_free(t_list **l_history)
+void			history_free(t_list **l_history)
 {
 	ft_lstdel(l_history, &history_free_one);
 }

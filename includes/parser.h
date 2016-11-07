@@ -73,4 +73,5 @@ void					del_process(void *raw_process, size_t process_size);
 char					*construct_job_command(t_list *process_list);
 char					*get_cmd_env(char *cmd, char *var_raw);
 
+int						parse_heredoc_redir(t_process *p, int channel, char *target);
 #endif

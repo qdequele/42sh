@@ -61,7 +61,9 @@ void					signal_resize_screen(int i);
 t_term					*recover_term(void);
 int						init_term(void);
 int						reset_term(void);
-void					free_input(void);
 int						ft_tputs(int c);
+void					reset_autocomplete_possibilities(void);
+void					free_input(void);
+void					add_history(char *line);
 
 #endif

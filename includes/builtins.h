@@ -77,7 +77,7 @@ void				create_last_var(char *var_name, char **var_value, char opt);
 void				create_var(char *var_name, char *var_value, char opt);
 void				vars_init(void);
 t_list				**vars_recover(void);
-void				vars_show(t_list *l_var);
+int					vars_show(t_list *l_var);
 void				vars_show_global(t_list *l_var);
 char				*vars_get(t_list *l_var, char *f_key);
 void				vars_add_or_modify(t_list **l_vars, char *key, char *value);

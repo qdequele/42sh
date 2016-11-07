@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-int		builtins_jobs(t_list **env, char **cmds)
+int			builtins_jobs(t_list **env, char **cmds)
 {
 	t_shell	*shell;
 	t_list	*job_list;
@@ -44,7 +44,7 @@ static void	free_one_process(void *elem, size_t size)
 
 static void	free_one_job(void *elem, size_t size)
 {
-	t_job		*l_job;
+	t_job	*l_job;
 
 	UNUSED(size);
 	l_job = elem;
