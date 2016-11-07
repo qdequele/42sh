@@ -32,6 +32,7 @@ void		*get_actions_normal(void)
 		action_move_max_top,
 		action_move_max_bottom,
 		action_ignore_input,
+		action_quit,
 		action_insert_char
 	};
 
