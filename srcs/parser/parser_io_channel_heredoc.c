@@ -14,7 +14,6 @@
 
 static void		delete_char(void)
 {
-	printf("ICICICI\n");
 	tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
 	tputs(DMSTR, 1, ft_tputs);
 	tputs(DCSTR, 1, ft_tputs);
@@ -72,7 +71,6 @@ int				parse_heredoc_redir(t_process *p, int channel, char *target)
 	{
 		ft_putchar(buf[0]);
 		ret = ft_freejoin(ret, buf);
-		DELETE ? delete_char() : NULL ;
 		if (ENTER && ft_strcmp(ft_strtrim(ret), target) != 0)
 			ret = add_to_list(&list, ret);
 		else if (ENTER)

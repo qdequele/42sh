@@ -14,12 +14,10 @@
 # define BUILTINS_H
 # include <ft_sh.h>
 
-
-#define EXPORTS (ft_strcmp(cmds[0], "export") == 0)
-#define READ_OPT_R (ft_strcmp(cmds[1], "-r") == 0)
+# define EXPORTS (ft_strcmp(cmds[0], "export") == 0)
+# define READ_OPT_R (ft_strcmp(cmds[1], "-r") == 0)
 
 typedef int	(*t_func)(t_list **env, char **cmds);
-
 typedef struct stat	t_stat;
 
 typedef struct		s_builtin
@@ -36,18 +34,15 @@ typedef struct		s_env
 
 t_list				*g_env;
 
-typedef struct 		s_var
+typedef struct		s_var
 {
-	char 			*key;
+	char			*key;
 	char			*value;
-	int 			readonly;
+	int				readonly;
 }					t_var;
 
-t_list 				*g_vars;
+t_list				*g_vars;
 
-/*
-**	builtins
-*/
 int					builtins_cd(t_list **env, char **cmds);
 int					builtins_env(t_list **env, char **cmds);
 int					builtins_exit(t_list **env, char **cmds);
@@ -64,41 +59,22 @@ int					builtins_bg(t_list **env, char **cmds);
 int					builtins_fg(t_list **env, char **cmds);
 int					builtins_jobs(t_list **env, char **cmds);
 void				free_jobs(t_list **jobs);
-
-/*
-** read.c
-*/
 int					builtins_read(t_list **env, char **cmds);
 int					count_words(char *s, char c);
 char				*check_value(char opt, char *var_value);
-/*
-**	builtins utils
-*/
 t_builtin			*builtins_init(void);
 int					builtins_find(char *cmd);
 int					builtins_exec(t_list **env, char **cmds);
 void				remove_key(t_list **head, char *key);
-/*
-**	utils - env_parser.c
-*/
 void				env_parse_to_list(t_list **l_env, char **environ);
 char				**env_parse_from_list(t_list *l_env);
-/*
-**	utils - env_utils.c
-*/
 void				env_show(t_list *l_env);
 char				*env_get(t_list *l_env, char *f_key);
 void				env_add_or_modify(t_list **l_env, char *key, char *value);
 void				env_free(t_list **l_env);
 int					shell_core(t_list **env, char **cmds);
-/*
-** utils - read_cretate_var.c
-*/
 void				create_last_var(char *var_name, char **var_value, char opt);
 void				create_var(char *var_name, char *var_value, char opt);
-/*
-**	utils - vars_utils.c
-*/
 void				vars_init(void);
 t_list				**vars_recover(void);
 int					vars_show(t_list *l_var);

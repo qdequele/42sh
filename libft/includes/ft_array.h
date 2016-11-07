@@ -28,6 +28,6 @@ int		**ft_join_aoi(int **last_array, int *to_add);
 void	ft_print_aoc(char **array);
 void	ft_print_aoi(int **array, int width, int height);
 void	ft_print_aos(char ***array);
-char    *ft_array_to_string(char **tab);
+char	*ft_array_to_string(char **tab);
 
 #endif

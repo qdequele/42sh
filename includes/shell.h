@@ -13,7 +13,6 @@
 #ifndef SHELL_H
 # define SHELL_H
 # include <ft_sh.h>
-
 # define UNUSED(x) (void)(x)
 
 typedef enum			e_mode
@@ -28,7 +27,7 @@ typedef struct			s_shell
 	int					history_position;
 	int					history_index;
 	t_list				*posibilities;
-	int 				autocomplete_position;
+	int					autocomplete_position;
 	int					last_exit_code;
 	t_prompt			*prompt;
 	t_mode				mode;

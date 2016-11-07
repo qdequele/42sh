@@ -34,7 +34,8 @@ void				ft_lstiter_plus(t_list *lst, void const *info,
 void				ft_lstiter_if(t_list *lst, void (*f)(t_list *node),
 					int (*c)(t_list *node));
 void				ft_lstiter_if_plus(t_list *lst, void const *info,
-					void (*f)(void const *info, t_list *node), int (*c)(t_list *node));
+					void (*f)(void const *info, t_list *node),
+					int (*c)(t_list *node));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *node));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lst_bubble_sort(t_list *node, int (*c)(t_list *node));
@@ -43,8 +44,8 @@ t_list				*ft_lst_reverse(t_list *root);
 void				ft_lstcpy(t_list **dest, t_list *src);
 void				ft_lstshow_x(t_list *list, int x);
 t_list				*ft_lstget_at(t_list *lst, int at);
-t_list 				*ft_lst_seek(t_list *list, char *str);
-void				ft_lstremdup(t_list **list, int (*comp)(void *, void *), 
+t_list				*ft_lst_seek(t_list *list, char *str);
+void				ft_lstremdup(t_list **list, int (*comp)(void *, void *),
 					void (*del)(void *, size_t));
 int					ft_lstremdup_str(void *prev, void *next);
 

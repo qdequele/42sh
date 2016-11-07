@@ -41,11 +41,11 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_wordcount(char const *s, char c);
 int				ft_wordlen(char const *s, char c);
-void    		ft_console_log(char *str);
-void		    ft_console_log_char(char c);
-void    		ft_console_log_num(int num);
-void    		ft_console_log_line(const char *func, int line);
-void    		ft_console_log_clear(void);
+void			ft_console_log(char *str);
+void			ft_console_log_char(char c);
+void			ft_console_log_num(int num);
+void			ft_console_log_line(const char *func, int line);
+void			ft_console_log_clear(void);
 int				ft_match(char *s1, char *s2);
 int				ft_nmatch(char *s1, char *s2);
 
