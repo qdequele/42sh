@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-void	string_to_list(char *str)
+void			string_to_list(char *str)
 {
 	t_shell		*shell;
 	char		*dst;
@@ -32,7 +32,7 @@ void	string_to_list(char *str)
 	shell->prompt->line = ft_lst_reverse(shell->prompt->line);
 }
 
-char	*list_to_string(void)
+char			*list_to_string(void)
 {
 	char		*line;
 	char		car;
@@ -55,11 +55,10 @@ char	*list_to_string(void)
 	return (line);
 }
 
-char	**list_to_tab(t_list *list)
+char			**list_to_tab(t_list *list)
 {
-	int 		i;
-	char 		**tab_var;
-
+	int			i;
+	char		**tab_var;
 
 	tab_var = (char**)malloc(sizeof(char*) * ft_lstcount(list));
 	list = ft_lst_reverse(list);

@@ -24,7 +24,7 @@ t_list	**vars_recover(void)
 	return (&global_vars);
 }
 
-void	vars_show(t_list *l_var)
+int		vars_show(t_list *l_var)
 {
 	t_list	*elem;
 	t_var	*var;
@@ -48,6 +48,7 @@ void	vars_show(t_list *l_var)
 			elem = elem->next;
 		}
 	}
+	return (0);
 }
 
 char	*vars_get(t_list *l_var, char *f_key)

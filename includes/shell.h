@@ -16,83 +16,55 @@
 
 # define UNUSED(x) (void)(x)
 
-typedef enum	e_mode
+typedef enum			e_mode
 {
 	NORMAL,
 	COPY
-}				t_mode;
+}						t_mode;
 
-typedef struct	s_shell
+typedef struct			s_shell
 {
-	t_list		*history;
-	int			history_position;
-	int			history_index;
-	t_list		*posibilities;
-	int 		autocomplete_position;
-	int			last_exit_code;
-	t_prompt	*prompt;
-	t_mode		mode;
-	int			signals_disabled;
-	pid_t		pgid;
-	t_list		*jobs;
-}				t_shell;
+	t_list				*history;
+	int					history_position;
+	int					history_index;
+	t_list				*posibilities;
+	int 				autocomplete_position;
+	int					last_exit_code;
+	t_prompt			*prompt;
+	t_mode				mode;
+	int					signals_disabled;
+	pid_t				pgid;
+	t_list				*jobs;
+}						t_shell;
 
 typedef struct termios	t_termios;
 typedef struct winsize	t_winsize;
 
-typedef struct	s_term
+typedef struct			s_term
 {
-	t_termios	term;
-	t_termios	old_term;
-	t_winsize	wins;
-	char		*term_name;
-	int			tty;
-}				t_term;
+	t_termios			term;
+	t_termios			old_term;
+	t_winsize			wins;
+	char				*term_name;
+	int					tty;
+}						t_term;
 
-/*
-**	Shell.c
-*/
-int			shell_core(t_list **env, char **cmds);
-int			shell_exec_line(char *line);
-void		shell_start(void);
-int 		shell_parse_or_line(char *cmd);
-int 		shell_parse_and_line(char *cmd);
-int 		shell_parse_semicolon_line(char *line);
-/*
-**	Shell_init.c
-*/
-t_shell		*recover_shell(void);
-void		init_shell(void);
-void		free_shell(void);
-
-/*
-**	Shell_print.c
-*/
-void		print_shell();
-void		print_shell_err(char *s);
-/*
-**	utils.c
-*/
-char		*replace_vars(char *line);
-
-/*
-** Signal.c
-*/
-void	ignore_major_signals(void);
-void	reset_major_signals(void);
-void	signal_reprompt(int i);
-void	signal_reprompt(int i);
-void	signal_resize_screen(int i);
-
-/*
-** Term.c
-*/
-t_term	*recover_term(void);
-int		init_term(void);
-int		reset_term(void);
-/*
-** Term_utils.c
-*/
-int		ft_tputs(int c);
+void					shell_start(void);
+t_shell					*recover_shell(void);
+void					init_shell(void);
+void					free_shell(void);
+void					print_shell();
+void					print_shell_err(char *s);
+void					ignore_major_signals(void);
+void					reset_major_signals(void);
+void					signal_reprompt(int i);
+void					signal_resize_screen(int i);
+t_term					*recover_term(void);
+int						init_term(void);
+int						reset_term(void);
+int						ft_tputs(int c);
+void					reset_autocomplete_possibilities(void);
+void					free_input(void);
+void					add_history(char *line);
 
 #endif
