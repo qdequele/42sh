@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/07 13:21:05 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/07 18:18:01 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ char			*read_input(void)
 	{
 		if (buf[0] != 0)
 		{
-			if (!TAB) {
+			if (!TAB)
+			{
 				shell->autocomplete_position = 0;
 				ft_lstdel(&(shell->posibilities), free_char);
 			}
@@ -90,7 +91,7 @@ void			shell_start(void)
 			ft_lstadd_at(&shell->history,
 				ft_lstnew(line, sizeof(char) * ft_strlen(line)), shell->history_index);
 			shell->history_index++;
-			ft_lstdel(&shell->prompt->line, free_char);
+			free_input();
 			ignore_major_signals();
 		}
 		free(line);
