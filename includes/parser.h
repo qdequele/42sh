@@ -53,25 +53,21 @@ typedef struct			s_job
 t_list					*token_list_to_job_list(t_list *token_list);
 t_list					*parse_job(t_list *token_split);
 t_list					*parse_process(t_token *t);
-
 int						parser_assert_linker(t_token *t);
 int						parser_assert_pipe(t_token *t);
 int						parser_assert_cmd(t_token *t);
-
 char					**parse_cmd_argv(t_process *p, char *cmd);
-
 int						parse_io_channel(t_process *p, char **split);
-
 int						is_aggregate_fd(char *redir);
 int						aggreagate_fd(t_process *p, char *redir);
 int						get_redir_channel(char *redir);
 int						count_target_length(t_process *p, char **sp,
 							char sy, int (*p_fn)(t_process *, int, char *));
-
 void					del_job(void *job_raw, size_t job_size);
 void					del_process(void *raw_process, size_t process_size);
 char					*construct_job_command(t_list *process_list);
 char					*get_cmd_env(char *cmd, char *var_raw);
+int						parse_heredoc_redir(t_process *p, int channel,
+							char *target);
 
-int						parse_heredoc_redir(t_process *p, int channel, char *target);
 #endif
