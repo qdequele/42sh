@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 22:16:21 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/07 12:39:33 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void		free_shell()
 	t_shell		*shell;
 
 	shell = recover_shell();
+	free(shell->prompt);
 	env_free(&g_env);
 	vars_free(&g_vars);
 	free_jobs(&(shell->jobs));

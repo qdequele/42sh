@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 22:18:04 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/07 12:42:37 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void			shell_start(void)
 			ignore_major_signals();
 		}
 		free(line);
+		free(shell->prompt);
 	}
 	return ;
 }
