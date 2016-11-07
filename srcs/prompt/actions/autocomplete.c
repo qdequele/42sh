@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/07 18:40:04 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/07 19:06:36 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 void	get_cmd_list(t_list **possibilities, char *last_word)
 {
 	char		**paths;
+	char		*tmp;
+	char		*new_last_word;
 	int			i;
 
 	paths = ft_strsplit(env_get(g_env, "PATH"), ':');
 	i = 0;
 	while (paths && paths[i] && paths[i][0])
 	{
-		get_files_list(possibilities,
-			ft_strjoin(paths[i], ft_strjoin("/", last_word)));
+		tmp = ft_strjoin("/", last_word);
+		new_last_word = ft_strjoin(paths[i], tmp);
+		get_files_list(possibilities, new_last_word);
+		free(tmp);
 		i++;
 	}
 	ft_free_aoc(paths);
@@ -48,31 +52,47 @@ void	get_builtins_list(t_list **possibilities, char *last_word)
 	}
 }
 
+void 	get_files_list_one(t_list **possibilities, char *path, char *name, char *cmd_start)
+{
+	char *file_to_access;
+	char *tmp;
+
+	tmp = ft_strjoin("/", name);
+
+	file_to_access = ft_strjoin(path, tmp);
+
+	if (ft_strncmp(name, cmd_start, ft_strlen(cmd_start)) == 0
+		&& access(file_to_access, X_OK) == 0)
+	{
+		ft_lstaddend(possibilities, ft_lstnew(name, sizeof(char) * (ft_strlen(name) + 1)));
+	}
+	free(file_to_access);
+	free(name);
+	free(tmp);
+}
+
 void	get_files_list(t_list **possibilities, char *last_word)
 {
 	struct dirent	*pdirent;
 	DIR				*pdir;
 	char			*path;
 	char			*cmd_start;
-	char			*name;
 	struct stat		sb;
 
 	path = before_last_word(last_word, '/');
 	cmd_start = get_last_word(last_word, '/');
 	if (((pdir = opendir(path)) == NULL) || stat(path, &sb) ||
 		!((S_ISREG(sb.st_mode) || S_ISDIR(sb.st_mode))))
-		return ;
-	while (((pdirent = readdir(pdir)) != NULL))
 	{
-		name = ft_strdup(pdirent->d_name);
-		if (ft_strncmp(name, cmd_start, ft_strlen(cmd_start)) == 0
-			&& access(ft_strfjoin(path, ft_strjoin("/", name)), X_OK) == 0)
-			ft_lstaddend(possibilities,
-				ft_lstnew(name, sizeof(char) * ft_strlen(name)));
-		free(name);
+		free(cmd_start);
+		free(path);
+		return ;
 	}
+	while (((pdirent = readdir(pdir)) != NULL))
+		get_files_list_one(possibilities, path, ft_strdup(pdirent->d_name), cmd_start);
 	closedir(pdir);
 	free(cmd_start);
+	free(path);
 }
 
 static void set_possibilities(void)
@@ -104,6 +124,7 @@ static void show_possibilities(void)
 	shell = recover_shell();
 	line = get_last_word(list_to_string(), ' ');
 	len = ft_strlen(line);
+	free(line);
 	if (shell->autocomplete_position >= ft_lstcount(shell->posibilities))
 		return ;
 	new_line = ft_strdup((char *)(ft_lstget_at(shell->posibilities, shell->autocomplete_position)->content));
@@ -138,5 +159,6 @@ t_status	action_autocomplete(char *buf)
 		set_possibilities();
 	}
 	show_possibilities();
+	free(line);
 	return (READING);
 }

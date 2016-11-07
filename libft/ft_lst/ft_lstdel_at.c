@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel_at.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 09:57:54 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/29 15:17:10 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/07 19:19:56 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	ft_lstdel_at(t_list **list, int at, void (*del)(void *, size_t))
 		else
 			*list = tmp->next;
 		del(tmp->content, tmp->content_size);
+		free(tmp);
 	}
 }

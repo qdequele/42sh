@@ -20,7 +20,7 @@ char		*check_value(char opt, char *var_value)
 
 	i = 0;
 	j = 0;
-	new_value = ft_strnew(1);
+	new_value = ft_strnew(ft_strlen(var_value));
 	while (var_value[i] != '\0')
 	{
 		if ((var_value[i] == '\\' && opt == 'r'))
@@ -32,6 +32,7 @@ char		*check_value(char opt, char *var_value)
 			j++;
 		}
 	}
+	new_value[i] = '\0';
 	return (new_value);
 }
 
@@ -39,10 +40,10 @@ void		create_var(char *var_name, char *var_value, char opt)
 {
 	char	**set_env;
 
-	set_env = (char**)malloc(sizeof(char*) * 3);
-	set_env[0] = "setenv";
-	set_env[1] = ft_strtrim(var_name);
-	set_env[2] = check_value(opt, ft_strtrim(var_value));
+	set_env = (char**)malloc(sizeof(char*) * 4);
+	set_env[0] = ft_strdup("setenv");
+	set_env[1] = ft_strdup(ft_strtrim(var_name));
+	set_env[2] = ft_strdup(check_value(opt, ft_strtrim(var_value)));
 	builtins_set(&g_env, set_env);
 }
 
