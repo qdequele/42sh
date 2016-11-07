@@ -22,7 +22,8 @@ static void		delete_char(void)
 
 static char		*add_to_list(t_list **list, char *ret)
 {
-	ft_lstadd(list, ft_lstnew(ft_strtrim(ret), ft_strlen(ret)));
+	ret = ft_strtrim(ret);
+	ft_lstadd(list, ft_lstnew(ret, sizeof(char) * (ft_strlen(ret) + 1)));
 	ft_putstr("heredoc> ");
 	free(ret);
 	ret = ft_strnew(1);
@@ -70,7 +71,6 @@ int				parse_heredoc_redir(t_process *p, int channel, char *target)
 	{
 		ft_putchar(buf[0]);
 		ret = ft_freejoin(ret, buf);
-		DELETE ? delete_char() : NULL ;
 		if (ENTER && ft_strcmp(ft_strtrim(ret), target) != 0)
 			ret = add_to_list(&list, ret);
 		else if (ENTER)
