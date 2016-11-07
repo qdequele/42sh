@@ -22,7 +22,6 @@ char	*get_cmd_env(char *cmd, char *var_raw)
 	env_value = NULL;
 	*var_raw = '\0';
 	i = 1;
-	exit(0);
 	while (ft_isalnum(var_raw[i]) || var_raw[i] == '?' || var_raw[i] == '_')
 		i++;
 	right = var_raw + i;
