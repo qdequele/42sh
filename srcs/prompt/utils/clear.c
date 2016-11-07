@@ -15,10 +15,14 @@
 void	clean_prompt(void)
 {
 	t_shell	*shell;
+	int		i;
 
 	shell = recover_shell();
-	while ((size_t)shell->prompt->i_position <
-		ft_lstcount(shell->prompt->line) - ft_strlen(shell->prompt->str_cpy))
+	if (!shell->prompt->str_cpy)
+		i = 0;
+	else
+		i = ft_strlen(shell->prompt->str_cpy);
+	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line) - i)
 	{
 		utils_move_right();
 	}
@@ -48,4 +52,22 @@ void	clean_last_x_char(int i)
 	}
 	delete_one_char();
 	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
+}
+
+void	free_char(void *content, size_t size)
+{
+	UNUSED(size);
+	if (content)
+		free(content);
+}
+
+int		sort_by_lexycography(t_list *node)
+{
+	t_list	*n_elem;
+
+	n_elem = node->next;
+	if (n_elem && (ft_strlen((char *)(node->content)) >
+		ft_strlen((char *)(n_elem->content))) > 0)
+		return (1);
+	return (0);
 }

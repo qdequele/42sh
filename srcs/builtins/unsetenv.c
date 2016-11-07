@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_sort.c                                         :+:      :+:    :+:   */
+/*   unsetenv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/27 14:43:16 by qdequele         ###   ########.fr       */
+/*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
+/*   Updated: 2016/10/31 11:43:20 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-int		sort_by_lexycography(t_list *node)
+int			builtins_unsetenv(t_list **env, char **cmds)
 {
-	t_list	*n_elem;
+	int		i;
 
-	n_elem = node->next;
-	if (n_elem && ft_strlen((char *)(node->content)) >
-		ft_strlen((char *)(n_elem->content)) > 0)
-		return (1);
+	i = 1;
+	while (cmds[i])
+	{
+		remove_key(env, cmds[i]);
+		i++;
+	}
+	g_env = *env;
 	return (0);
 }

@@ -12,26 +12,36 @@
 
 #include <ft_sh.h>
 
-void	signal_handler(int i)
+void	signal_resize_screen(int i)
 {
-	if (i == SIGINT || i == SIGQUIT || i == SIGKILL || i == SIGSTOP)
-		signal_exit(i);
-	else if (i == SIGTSTP)
-		signal_background(i);
-	else if (i == SIGCONT)
-		signal_foreground(i);
-	else if (i == SIGWINCH)
-		signal_resize_screen(i);
-	i = 0;
+	t_term	*term;
+
+	UNUSED(i);
+	term = recover_term();
+	ioctl(0, TIOCGWINSZ, &term->wins);
 }
 
-void	init_signals(void)
+void	signal_reprompt(int i)
 {
-	signal(SIGINT, signal_handler);
-	signal(SIGTSTP, signal_handler);
-	signal(SIGCONT, signal_handler);
-	signal(SIGQUIT, signal_handler);
-	signal(SIGKILL, signal_handler);
-	signal(SIGSTOP, signal_handler);
-	signal(SIGWINCH, signal_handler);
+	UNUSED(i);
+}
+
+void	ignore_major_signals(void)
+{
+	signal(SIGWINCH, signal_resize_screen);
+	signal(SIGINT, signal_reprompt);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGTSTP, SIG_IGN);
+	signal(SIGTTIN, SIG_IGN);
+	signal(SIGTTOU, SIG_IGN);
+}
+
+void	reset_major_signals(void)
+{
+	signal(SIGWINCH, SIG_DFL);
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+	signal(SIGTSTP, SIG_DFL);
+	signal(SIGTTIN, SIG_DFL);
+	signal(SIGTTOU, SIG_DFL);
 }

@@ -20,12 +20,13 @@ void	erase_one_char(void)
 	if (shell->prompt->i_position <= ft_lstcount(shell->prompt->line)
 		&& shell->prompt->i_position > 0)
 	{
-		tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);// move left
-		tputs(DMSTR, 1, ft_tputs);// enter in delete mode
-		tputs(DCSTR, 1, ft_tputs);// delete char
-		tputs(EDSTR, 1, ft_tputs);// exit delete mode
+		tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
+		tputs(DMSTR, 1, ft_tputs);
+		tputs(DCSTR, 1, ft_tputs);
+		tputs(EDSTR, 1, ft_tputs);
 		shell->prompt->i_position--;
-		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position, free_char);
+		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position,
+															free_char);
 	}
 }
 
@@ -49,11 +50,11 @@ void	delete_one_char(void)
 	if (shell->prompt->i_position < ft_lstcount(shell->prompt->line)
 		&& shell->prompt->i_position >= 0)
 	{
-		tputs(DMSTR, 1, ft_tputs);// enter in delete mode
-		tputs(DCSTR, 1, ft_tputs);// delete char
-		tputs(EDSTR, 1, ft_tputs);// exit delete mode
+		tputs(DMSTR, 1, ft_tputs);
+		tputs(DCSTR, 1, ft_tputs);
+		tputs(EDSTR, 1, ft_tputs);
 		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_position,
-			free_char);
+															free_char);
 	}
 }
 

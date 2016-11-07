@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   detect_quote.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/24 15:56:20 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 21:38:12 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,18 @@ int		check_quote(char *line)
 			|| line[i] == '`')
 		{
 			if (line[i + 1] && quote_close(&line[i + 1], line[i]) == 1)
+			{
+				free(line);
 				return (1);
+			}
 			else
+			{
+				free(&line);
 				return (print_error(display_quote_error(line[i])));
+			}
 		}
 		i++;
 	}
+	free(line);
 	return (1);
 }

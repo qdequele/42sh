@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_word.c                                        :+:      :+:    :+:   */
+/*   prompt_actions_move_word.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,13 +15,11 @@
 t_status	action_move_next_word(char *buf)
 {
 	t_shell		*shell;
-	t_term		*term;
 	int			i;
 
 	if (!SHIFT_RIGHT)
 		return (TRYING);
 	shell = recover_shell();
-	term = recover_term();
 	i = 1;
 	while (shell->prompt->i_position + i + 1 < ft_lstcount(shell->prompt->line)
 		&& !(!ft_isspace(*(char *)(ft_lstget_at(shell->prompt->line,
@@ -42,13 +40,11 @@ t_status	action_move_next_word(char *buf)
 t_status	action_move_last_word(char *buf)
 {
 	t_shell		*shell;
-	t_term		*term;
 	int			i;
 
 	if (!SHIFT_LEFT)
 		return (TRYING);
 	shell = recover_shell();
-	term = recover_term();
 	i = 1;
 	while (shell->prompt->i_position - i - 1 >= 0
 		&& !(!ft_isspace(*(char *)(ft_lstget_at(shell->prompt->line,

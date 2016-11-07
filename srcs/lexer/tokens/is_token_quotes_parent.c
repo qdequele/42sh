@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unreadonly.c                                       :+:      :+:    :+:   */
+/*   is_token_quotes_parent.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:39:32 by qdequele         ###   ########.fr       */
+/*   Created: 2016/04/12 15:43:35 by qdequele          #+#    #+#             */
+/*   Updated: 2016/04/12 17:49:50 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-int			builtins_unreadonly(t_list **env, char **cmds)
+int		is_token_quote_back(char *line)
 {
-	t_list	**l_var;
-	int		i;
+	if (*line == '`')
+		return (1);
+	return (0);
+}
 
-	(void)env;
-	i = 1;
-	if (cmds[i] && ft_strcmp(cmds[i], "-g") == 0)
-	{
-		l_var = vars_recover();
-		i++;
-	}
-	else
-		l_var = &g_vars;
-	while (cmds[i])
-	{
-		vars_change_readonly(l_var, cmds[i], 0);
-		i++;
-	}
+int		is_token_parent_close(char *line)
+{
+	if (*line == ')')
+		return (1);
+	return (0);
+}
+
+int		is_token_parent_open(char *line)
+{
+	if (*line == '(')
+		return (1);
 	return (0);
 }

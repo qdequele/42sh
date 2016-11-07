@@ -3,30 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   autocomplete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/02 11:42:31 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 21:36:04 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-//  static void show_list(t_list *elem)
+// static void show_list(t_list *elem)
 // {
-// 	while (elem->next != NULL)
+// 	while (elem->next)
 // 	{
-//  		printf("--- line : %s\n", (char *)(elem->content));
-//  		elem = elem->next;
+// 		printf("[%s]\n", (char*)elem->content);
+// 		elem = elem->next;
 // 	}
-//  }
+// 	printf("[%s]\n", (char*)elem->content);
+// }
 
 /*
 ** public
 ** DESCRIPTION  : Liste les commandes unix qui commencent par le denier mot de la ligne entrée par l'utilisateur
 ** EXPLICATIONS : Il faut aller chercher les executables qui se trouve dans les chemins contenue dans la variable d'env PATH
 */
-void	get_cmd_list(t_list **possibilities, char *last_word)
+void 	get_cmd_list(t_list **possibilities, char *last_word)
 {
 	char		**paths;
 	int			i;
@@ -38,6 +39,7 @@ void	get_cmd_list(t_list **possibilities, char *last_word)
 		get_files_list(possibilities, ft_strjoin(paths[i], ft_strjoin("/", last_word)));
 		i++;
 	}
+	ft_free_aoc(paths);
 }
 
 /*
@@ -45,7 +47,7 @@ void	get_cmd_list(t_list **possibilities, char *last_word)
 ** DESCRIPTION  : Liste les builtins qui commencent par le denier mot de la ligne entrée par l'utilisateur
 ** EXPLICATIONS : Ici les builtins sont fait maison donc on peut les retrouver grace à la commande builtins_init 
 */
-void	get_builtins_list(t_list **possibilities, char *last_word)
+void 	get_builtins_list(t_list **possibilities, char *last_word)
 {
 	t_list 		*list_new;
 	t_builtin	*builtins;
@@ -70,7 +72,7 @@ void	get_builtins_list(t_list **possibilities, char *last_word)
 ** DESCRIPTION  : Liste les fichier et les dossiers contenue dans le path passé en parametre
 ** EXPLICATIONS : Dans le paramètre last_word, on retrouve le path (ce qui est avant le denier /) et le debut de la commande (ce qui est apprès le dernier /) 
 */
-void	get_files_list(t_list **possibilities, char *last_word)
+void 	get_files_list(t_list **possibilities, char *last_word)
 {
 	struct dirent	*pdirent;
 	DIR				*pdir;
@@ -160,7 +162,10 @@ t_status	action_autocomplete(char *buf)
 	shell = recover_shell();
 	line = list_to_string();
 	if (!TAB || ft_strlen(line) == 0 || line[ft_strlen(line) - 1] == ' ')
+	{
+		free(line);
 		return (TRYING);
+	}
 	if (shell->autocomplete_position == 0)
 	{
 		set_possibilities();

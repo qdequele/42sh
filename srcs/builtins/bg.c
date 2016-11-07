@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fg.c                                               :+:      :+:    :+:   */
+/*   bg.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static int		builtin_fg_default(void)
+static int		builtin_bg_default(void)
 {
 	t_job	*job;
 
@@ -22,11 +22,18 @@ static int		builtin_fg_default(void)
 		ft_putendl_fd("fg: no current job", 2);
 		return (1);
 	}
-	put_job_in_foreground(job, 1);
+	kill(-job->pgid, SIGCONT);
+	put_job_info(job, find_job_index(job->pgid));
 	return (0);
 }
 
-int				builtins_fg(t_list **env, char **cmds)
+static void		builtin_bg_one(t_job *job)
+{
+	kill(-job->pgid, SIGCONT);
+	put_job_info(job, find_job_index(job->pgid));
+}
+
+int				builtins_bg(t_list **env, char **cmds)
 {
 	int		i;
 	t_job	*job;
@@ -37,7 +44,7 @@ int				builtins_fg(t_list **env, char **cmds)
 	{
 		job = find_job_by_index(ft_atoi(cmds[i]));
 		if (job)
-			put_job_in_foreground(job, 1);
+			builtin_bg_one(job);
 		else
 		{
 			ft_putstr_fd("fg: job not found: ", 2);
@@ -47,7 +54,7 @@ int				builtins_fg(t_list **env, char **cmds)
 		i++;
 	}
 	if (cmds[1] == NULL)
-		return (builtin_fg_default());
+		return (builtin_bg_default());
 	else
 		return (0);
 }

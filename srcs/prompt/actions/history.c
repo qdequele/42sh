@@ -56,7 +56,7 @@ t_status		action_history_down(char *buf)
 	shell = recover_shell();
 	if (!DOWN)
 		return (TRYING);
-	if (ft_lstcount(shell->history) >= -1)
+	if (ft_lstcount(shell->history) > 0)
 	{
 		shell->history_position++;
 		move_to_history();

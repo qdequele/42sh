@@ -3,17 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
+#    By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/15 14:57:05 by qdequele          #+#    #+#              #
-#    Updated: 2016/10/31 18:40:27 by qdequele         ###   ########.fr        #
+#    Updated: 2016/11/06 18:48:27 by bjamin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Define the program
 NAME		=	42sh
 LIB			=	./libft/libft.a
-_SRC		=	builtins/cd.c\
+_SRC		=	builtins/utils/parser.c\
+				builtins/utils/env.c\
+				builtins/utils/env_helper.c\
+				builtins/utils/remove_key.c\
+				builtins/utils/vars.c\
+				builtins/utils/vars_free.c\
+				builtins/utils/read_create_var.c\
+				builtins/cd.c\
 				builtins/echo.c\
 				builtins/env.c\
 				builtins/exit.c\
@@ -27,21 +34,32 @@ _SRC		=	builtins/cd.c\
 				builtins/unset.c\
 				builtins/readonly.c\
 				builtins/unreadonly.c\
-				builtins/utils/parser.c\
-				builtins/utils/env.c\
-				builtins/utils/remove_key.c\
-				builtins/utils/vars.c\
-				builtins/utils/read_create_var.c\
-				cmd/cmd.c\
-				lexer/utils/body.c\
-				lexer/utils/fork_close.c\
-				lexer/exec.c\
-				lexer/heredoc.c\
-				lexer/lexer.c\
-				lexer/parse_redirection.c\
-				lexer/pipe.c\
-				lexer/redirect_entry.c\
-				lexer/redirection.c\
+				builtins/jobs.c\
+				builtins/fg.c\
+				builtins/bg.c\
+				exec/exec_job.c\
+				exec/exec_process.c\
+				exec/exec_setup.c\
+				exec/job_control.c\
+				exec/job_info.c\
+				exec/job_notification.c\
+				exec/job_utils.c\
+				lexer/tokens/is_token_generic.c\
+				lexer/tokens/is_token_quotes_parent.c\
+				lexer/tokens/is_token_redir.c\
+				lexer/tokens/is_token_separator.c\
+				lexer/check_lexer.c\
+				lexer/lexer_quotes_controller.c\
+				lexer/main_lexer.c\
+				lexer/token_to_list.c\
+				lexer/utils/remove_quote.c\
+				parser/get_cmd_env.c\
+				parser/main_parser.c\
+				parser/parser_argv.c\
+				parser/parser_asserts.c\
+				parser/parser_cleanup.c\
+				parser/parser_io_channel.c\
+				parser/parser_io_utils.c\
 				prompt/actions/autocomplete.c\
 				prompt/actions/char.c\
 				prompt/actions/cmd.c\
@@ -58,24 +76,16 @@ _SRC		=	builtins/cd.c\
 				prompt/utils/conversion.c\
 				prompt/utils/move.c\
 				prompt/utils/move_ext.c\
-				prompt/utils/free_char.c\
 				prompt/utils/line_cut.c\
-				prompt/utils/lst_sort.c\
 				prompt/utils/erase.c\
 				prompt/utils/show_end_of_line.c\
-				prompt/prompt.c\
-				prompt/actions_list.c\
 				prompt/find.c\
 				prompt/init.c\
 				prompt/detect_quote.c\
-				shell/shell.c\
 				shell/init.c\
 				shell/print.c\
-				shell/utils.c\
-				signals/signal.c\
-				signals/handlers.c\
-				term/term.c\
-				term/utils.c\
+				shell/signal.c\
+				shell/term.c\
 				main.c
 
 SRC			=	$(addprefix srcs/,$(_SRC))

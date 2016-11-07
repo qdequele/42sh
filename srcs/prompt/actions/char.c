@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   prompt_actions_char.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-void			inser_char(char c)
+void		inser_char(char c)
 {
 	t_shell	*shell;
 	t_list	*new;
@@ -32,7 +32,7 @@ void			inser_char(char c)
 	}
 }
 
-t_status		action_insert_char(char *buf)
+t_status	action_insert_char(char *buf)
 {
 	if (TAB)
 	{
@@ -50,7 +50,7 @@ t_status		action_insert_char(char *buf)
 	return (READING);
 }
 
-t_status		action_delete_char(char *buf)
+t_status	action_delete_char(char *buf)
 {
 	if (!BACK_SPACE)
 		return (TRYING);
@@ -58,7 +58,7 @@ t_status		action_delete_char(char *buf)
 	return (READING);
 }
 
-t_status		action_delete_next_char(char *buf)
+t_status	action_delete_next_char(char *buf)
 {
 	if (!DELETE)
 		return (TRYING);

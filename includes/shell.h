@@ -3,25 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/28 12:03:04 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:40:46 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHELL_H
 # define SHELL_H
-# include <libft.h>
-# include <prompt.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <dirent.h>
-# include <errno.h>
-# include <stdio.h>
+# include <ft_sh.h>
 
 # define UNUSED(x) (void)(x)
 
@@ -35,20 +26,35 @@ typedef struct	s_shell
 {
 	t_list		*history;
 	int			history_position;
-	int 		index_history;
+	int			history_index;
 	t_list		*posibilities;
 	int 		autocomplete_position;
 	int			last_exit_code;
 	t_prompt	*prompt;
 	t_mode		mode;
+	int			signals_disabled;
+	pid_t		pgid;
+	t_list		*jobs;
 }				t_shell;
+
+typedef struct termios	t_termios;
+typedef struct winsize	t_winsize;
+
+typedef struct	s_term
+{
+	t_termios	term;
+	t_termios	old_term;
+	t_winsize	wins;
+	char		*term_name;
+	int			tty;
+}				t_term;
 
 /*
 **	Shell.c
 */
 int			shell_core(t_list **env, char **cmds);
 int			shell_exec_line(char *line);
-void		shell_get_lines(void);
+void		shell_start(void);
 int 		shell_parse_or_line(char *cmd);
 int 		shell_parse_and_line(char *cmd);
 int 		shell_parse_semicolon_line(char *line);
@@ -57,6 +63,8 @@ int 		shell_parse_semicolon_line(char *line);
 */
 t_shell		*recover_shell(void);
 void		init_shell(void);
+void		free_shell(void);
+
 /*
 **	Shell_print.c
 */
@@ -65,6 +73,26 @@ void		print_shell_err(char *s);
 /*
 **	utils.c
 */
-char   	 	*replace_vars(char *line);
+char		*replace_vars(char *line);
+
+/*
+** Signal.c
+*/
+void	ignore_major_signals(void);
+void	reset_major_signals(void);
+void	signal_reprompt(int i);
+void	signal_reprompt(int i);
+void	signal_resize_screen(int i);
+
+/*
+** Term.c
+*/
+t_term	*recover_term(void);
+int		init_term(void);
+int		reset_term(void);
+/*
+** Term_utils.c
+*/
+int		ft_tputs(int c);
 
 #endif

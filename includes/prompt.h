@@ -12,8 +12,7 @@
 
 #ifndef PROMPT_H
 # define PROMPT_H
-# include <libft.h>
-# include <termcap.h>
+# include <ft_sh.h>
 
 # define UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 65))
 # define SHIFT_UP ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 && buf[3] == 65))
@@ -135,7 +134,7 @@ typedef struct	s_prompt
 void		get_cmd_list(t_list **possibilities, char *last_word);
 void		get_builtins_list(t_list **possibilities, char *last_word);
 void		get_files_list(t_list **possibilities, char *last_word);
-char		*prompt_create_line(void);
+char		*read_input(void);
 /*
 ** Prompt_actions_autocomplete.c
 */
@@ -241,7 +240,7 @@ void		utils_move_end(void);
 void		utils_move_max_top(void);
 void		utils_move_max_bottom(void);
 /*
-** check_quote.c
+** prompt_check_quote.c
 */
 int			check_quote(char *str);
 int			print_error(char flag);

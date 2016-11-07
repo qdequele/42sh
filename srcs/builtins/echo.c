@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   builtins_echo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -35,7 +35,7 @@ static	char	*check_second_quote(char *str)
 
 static	void	put_echo(char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	str = check_second_quote(str);
@@ -53,8 +53,8 @@ static	void	put_echo(char *str)
 
 int				builtins_echo(t_list **env, char **cmds)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	(void)env;
 	i = ft_count_raw_aoc(cmds);

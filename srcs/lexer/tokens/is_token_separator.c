@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unreadonly.c                                       :+:      :+:    :+:   */
+/*   is_token_separator.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:39:32 by qdequele         ###   ########.fr       */
+/*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
+/*   Updated: 2016/03/03 13:19:51 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-int			builtins_unreadonly(t_list **env, char **cmds)
+int		is_token_and(char *line)
 {
-	t_list	**l_var;
-	int		i;
-
-	(void)env;
-	i = 1;
-	if (cmds[i] && ft_strcmp(cmds[i], "-g") == 0)
-	{
-		l_var = vars_recover();
-		i++;
-	}
-	else
-		l_var = &g_vars;
-	while (cmds[i])
-	{
-		vars_change_readonly(l_var, cmds[i], 0);
-		i++;
-	}
+	if (*line == '&' && *(line + 1) == '&')
+		return (2);
 	return (0);
+}
+
+int		is_token_or(char *line)
+{
+	if (*line == '|' && *(line + 1) == '|')
+		return (2);
+	return (0);
+}
+
+int		is_token_semi_colon(char *line)
+{
+	return (*line == ';');
+}
+
+int		is_token_to_background(char *line)
+{
+	return (*line == '&');
+}
+
+int		is_token_pipe(char *line)
+{
+	return (*line == '|');
 }

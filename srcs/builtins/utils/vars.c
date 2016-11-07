@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:40:44 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/07 12:37:24 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	vars_show(t_list *l_var)
 		{
 			var = elem->content;
 			if (var->key != NULL && ft_strlen(var->key) != 0
-				&& var->value != NULL && ft_strlen(var->value) != 0)
+					&& var->value != NULL && ft_strlen(var->value) != 0)
 			{
 				ft_putstr(var->key);
 				ft_putstr("=");
@@ -94,6 +94,7 @@ void	vars_add_or_modify(t_list **l_vars, char *key, char *value)
 	var->value = value;
 	var->readonly = 0;
 	ft_lstaddend(l_vars, ft_lstnew(var, sizeof(t_var)));
+	free(var);
 }
 
 void	vars_change_readonly(t_list **l_vars, char *key, int rdo)

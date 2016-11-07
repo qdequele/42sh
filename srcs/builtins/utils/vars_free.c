@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_token_generic.c                                 :+:      :+:    :+:   */
+/*   vars_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/03/03 13:19:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 22:06:05 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-int		is_token(char *str)
+static void	vars_free_one(void *elem, size_t size)
 {
-	int		i;
+	t_var	*l_elem;
 
-	i = 0;
-	while (g_token_matcher[i].type != TOKEN_TYPE_END_LIST)
+	UNUSED(size);
+	l_elem = elem;
+	if (l_elem->key)
 	{
-		if (g_token_matcher[i].match_function(str) != 0)
-			return (1);
-		i++;
+		free(l_elem->key);
 	}
-	return (0);
+	if (l_elem->value)
+	{
+		free(l_elem->value);
+	}
+	free(l_elem);
+}
+
+void		vars_free(t_list **l_vars)
+{
+	ft_lstdel(l_vars, &vars_free_one);
 }

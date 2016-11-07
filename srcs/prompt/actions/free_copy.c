@@ -15,11 +15,13 @@
 t_status	action_free(char *buf)
 {
 	t_shell		*shell;
+	t_prompt	*prompt;
 
 	shell = recover_shell();
+	prompt = shell->prompt;
 	if (!ALT_B)
 		return (TRYING);
-	shell->prompt->str_cpy = ft_strnew(1);
-	shell->prompt->i_copy = 0;
+	prompt->str_cpy = ft_strnew(1);
+	prompt->i_copy = 0;
 	return (READING);
 }
