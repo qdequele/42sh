@@ -60,7 +60,7 @@ char			**list_to_tab(t_list *list)
 	int			i;
 	char		**tab_var;
 
-	tab_var = (char**)malloc(sizeof(char*) * ft_lstcount(list));
+	tab_var = (char**)malloc(sizeof(char*) * (ft_lstcount(list) + 2));
 	list = ft_lst_reverse(list);
 	i = 0;
 	while (list != NULL)
@@ -69,5 +69,6 @@ char			**list_to_tab(t_list *list)
 		list = list->next;
 		i++;
 	}
+	tab_var[i] = ft_strdup("\0");
 	return (tab_var);
 }

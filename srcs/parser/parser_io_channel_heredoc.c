@@ -45,7 +45,6 @@ static void		print_on_fd(int *pipe_fd, t_list *list)
 		free(tab_var[i]);
 		i++;
 	}
-	free(tab_var);
 }
 
 static void		assign_new_fd(t_process *p, int *pipe_fd, int channel)
