@@ -44,7 +44,7 @@ char			*list_to_string(void)
 	line = (char*)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) + 1));
 	i = 0;
 	tmp = shell->prompt->line;
-	while (tmp != NULL && i <= ft_lstcount(shell->prompt->line))
+	while (tmp != NULL && i < ft_lstcount(shell->prompt->line))
 	{
 		car = *(char*)tmp->content;
 		line[i] = car;
@@ -52,7 +52,7 @@ char			*list_to_string(void)
 		i++;
 	}
 	line[i] = '\0';
-	return (line);
+	return (ft_strtrim(line));
 }
 
 char			**list_to_tab(t_list *list)

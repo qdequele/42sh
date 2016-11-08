@@ -87,7 +87,6 @@ prototype : - X : blabla (username)
 
 #Liste des bugs :
 
-- Executer une ligne de commande avec des tabs dedans il manque le \0
 - echo toto tata titi" -> pointer being freed was not allocated
 - << -> pointer being freed was not allocated
 - echo `$?` -> segfault //backquote
