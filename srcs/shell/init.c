@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/07 12:39:33 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 20:58:32 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		init_shell(void)
 	shell->history = NULL;
 	shell->history_position = -1;
 	shell->history_index = 0;
-	shell->last_exit_code = 0;
+	shell->last_exit_code = -1;
 	shell->prompt = NULL;
 	shell->mode = NORMAL;
 	shell->posibilities = NULL;
@@ -41,7 +41,6 @@ void		free_shell(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	free(shell->prompt);
 	env_free(&g_env);
 	vars_free(&g_vars);
 	free_jobs(&(shell->jobs));

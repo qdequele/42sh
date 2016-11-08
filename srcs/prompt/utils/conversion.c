@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 20:39:58 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 21:26:29 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 21:20:38 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ char			*list_to_string(void)
 	char		*line;
 	char		car;
 	t_list		*tmp;
+	char		*new_str;
 	int			i;
-	t_shell		*shell;
 
-	shell = recover_shell();
-	line = (char*)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) + 1));
+	line = malloc((ft_lstcount(recover_shell()->prompt->line) + 1));
 	i = 0;
-	tmp = shell->prompt->line;
-	while (tmp != NULL && i < ft_lstcount(shell->prompt->line))
+	tmp = recover_shell()->prompt->line;
+	while (tmp != NULL && i < ft_lstcount(recover_shell()->prompt->line))
 	{
 		car = *(char*)tmp->content;
 		line[i] = car;
@@ -53,7 +52,11 @@ char			*list_to_string(void)
 	}
 	line[i] = '\0';
 	if (ft_strlen(line) > 0)
-		return (ft_strtrim(line));
+	{
+		new_str = ft_strtrim(line);
+		free(line);
+		return (new_str);
+	}
 	else
 		return (line);
 }

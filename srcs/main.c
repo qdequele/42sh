@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/07 19:17:26 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 21:03:47 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,18 @@ char			*read_input(void)
 	return (ft_strdup(""));
 }
 
-void			shell_start(void)
+int			shell_start(void)
 {
 	t_shell		*shell;
 	char		*line;
 
 	shell = recover_shell();
 	init_shell();
-	while (1)
+	while (shell->last_exit_code == -1)
 	{
 		init_term();
 		print_shell();
 		shell->history_position = -1;
-		reset_autocomplete_possibilities();
 		line = read_input();
 		free_input();
 		if (line)
@@ -81,8 +80,11 @@ void			shell_start(void)
 		}
 		free(line);
 		free_input();
+		reset_autocomplete_possibilities();
 		free(shell->prompt);
 	}
+	free_shell();
+	return (shell->last_exit_code);
 }
 
 int				main(int argc, char **argv, char **environ)
@@ -110,6 +112,5 @@ int				main(int argc, char **argv, char **environ)
 		reset_term();
 		return (1);
 	}
-	shell_start();
-	return (0);
+	return (shell_start());
 }
