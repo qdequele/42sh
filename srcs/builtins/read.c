@@ -25,7 +25,8 @@ static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
 		}
 		else
 		{
-			create_var(cmds[i], var_value[i - 1], opt);
+			vars_add_or_modify(&g_vars, ft_strtrim(cmds[i]),
+				check_value(opt, ft_strtrim(var_value[i - 1])));
 		}
 		i++;
 	}

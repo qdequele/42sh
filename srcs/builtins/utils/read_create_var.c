@@ -36,18 +36,6 @@ char		*check_value(char opt, char *var_value)
 	return (new_value);
 }
 
-void		create_var(char *var_name, char *var_value, char opt)
-{
-	char	**set_env;
-
-	set_env = (char**)malloc(sizeof(char*) * 4);
-	set_env[0] = ft_strdup("setenv");
-	set_env[1] = ft_strdup(ft_strtrim(var_name));
-	set_env[2] = ft_strdup(check_value(opt, ft_strtrim(var_value)));
-	set_env[3] = "\0";
-	builtins_set(&g_env, set_env);
-}
-
 void		create_last_var(char *var_name, char **var_value, char opt)
 {
 	char	*last_var;
@@ -70,5 +58,6 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 	if (ft_count_raw_aoc(var_value) > 1)
 		last_var = ft_freejoin(last_var, "'");
 	last_var = check_value(opt, last_var);
-	create_var(var_name, last_var, opt);
+	vars_add_or_modify(&g_vars, ft_strtrim(var_name),
+		check_value(opt, ft_strtrim(last_var)));
 }
