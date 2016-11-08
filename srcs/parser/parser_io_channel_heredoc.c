@@ -26,18 +26,21 @@ static void		print_on_fd(int *pipe_fd, t_list *list)
 {
 	char		**tab_var;
 	int			i;
+	int 		j;
 
 	i = 0;
 	tab_var = list_to_tab(list);
+	j = ft_count_raw_aoc(tab_var);
 	if (ft_lstcount(list) == 0)
 		return ;
-	while (tab_var[i])
+	while (i < j)
 	{
 		write(pipe_fd[1], tab_var[i], ft_strlen(tab_var[i]));
 		write(pipe_fd[1], "\n", 1);
 		free(tab_var[i]);
 		i++;
 	}
+	free(tab_var);
 }
 
 static void		assign_new_fd(t_process *p, int *pipe_fd, int channel)

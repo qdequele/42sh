@@ -63,8 +63,9 @@ int		check_quote(char *line)
 			}
 			else
 			{
-				free(&line);
-				return (print_error(display_quote_error(line[i])));
+				print_error(display_quote_error(line[i]));
+				free(line);
+				return (0);
 			}
 		}
 		i++;
