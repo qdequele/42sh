@@ -52,7 +52,10 @@ char			*list_to_string(void)
 		i++;
 	}
 	line[i] = '\0';
-	return (ft_strtrim(line));
+	if (ft_strlen(line) > 0)
+		return (ft_strtrim(line));
+	else
+		return (line);
 }
 
 char			**list_to_tab(t_list *list)
