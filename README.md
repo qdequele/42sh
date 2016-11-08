@@ -4,6 +4,7 @@ X : Todo
 O : Done
 F : Need Fix
 I : Impossible
+L : Leaks
 
 prototype : - X : blabla (username)
 
@@ -24,8 +25,8 @@ prototype : - X : blabla (username)
 - O : move end fn+right | end (qdequele)
 - O : move up alt+up (qdequele)
 - O : move down alt+down (qdequele)
-- F : quotes " ' ` () (eebersol + qdequele)
-- 0 : Good implementation of tab or spaces (qdequele)
+- O : quotes " ' ` () (eebersol + qdequele)
+- O : Good implementation of tab or spaces (qdequele)
 
 ###Bonus
 
@@ -46,21 +47,21 @@ prototype : - X : blabla (username)
 - O : Catch execution return number $? (qdequele)
 - O : Logic operation || && (qdequele)
 - X : ctrl+c didn't quit the shell (qdequele)
-- X : double ctrl+d quit the shell (qdequele)
+- O : double ctrl+d quit the shell (qdequele)
 
 ###Bonus
 
 - O : heredoc << (eebersol + qdequele)
-- F : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol + qdequele)
-- F : local varaibles unset export $ (qdequele)
-- X : Job controls job / fg / bg / & (qdequele)
+- O : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol + qdequele)
+- O : local varaibles unset export $ (qdequele)
+- L : Job controls job / fg / bg / & (qdequele)
 
 ##Builtins
 
 ###Mandatory
 
 - O : cd (qdequele)
-- F : echo (eebersol)
+- O : echo (eebersol)
 - O : exit (qdequele)
 - O : env (qdequele)
 - O : setenv (qdequele)
@@ -86,6 +87,11 @@ prototype : - X : blabla (username)
 
 #Liste des bugs :
 
-- Executer une ligne de commande avec des tabs dedans puis executer ue ligne de commande quelconque == segfault;
-- home ne vas pas à la bonne destination la premiere fois
-- pb builtin_cd ne marche pas
+- Executer une ligne de commande avec des tabs dedans il manque le \0
+- echo toto tata titi" -> pointer being freed was not allocated
+- << -> pointer being freed was not allocated
+- echo `$?` -> segfault //backquote
+- setenv toto tata -> p=0�k� // on free la key et la value sans la dup
+- !7 -> 42sh: command not found: !7
+- read toto
+Read>titi -> set: Too many arguments.

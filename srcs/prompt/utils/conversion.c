@@ -42,7 +42,6 @@ char			*list_to_string(void)
 
 	shell = recover_shell();
 	line = (char*)malloc(sizeof(char) * (ft_lstcount(shell->prompt->line) + 1));
-	line[ft_lstcount(shell->prompt->line)] = '\0';
 	i = 0;
 	tmp = shell->prompt->line;
 	while (tmp != NULL && i <= ft_lstcount(shell->prompt->line))
@@ -52,6 +51,7 @@ char			*list_to_string(void)
 		tmp = tmp->next;
 		i++;
 	}
+	line[i] = '\0';
 	return (line);
 }
 

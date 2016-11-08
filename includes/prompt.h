@@ -29,11 +29,15 @@ buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 66))
 # define SHIFT_RIGHT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 &&\
 buf[3] == 67))
 # define FN_RIGHT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 70))
+# define SHIFT_MAJ_RIGHT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 &&\
+buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[6] == 67 && buf[7] == 0))
 
 # define LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 68))
 # define SHIFT_LEFT ((buf[0] == 27 && buf[1] == 27 && buf[2] == 91 &&\
 buf[3] == 68))
 # define FN_LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 72))
+# define SHIFT_MAJ_LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 &&\
+buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[6] == 68 && buf[7] == 0))
 
 # define BACK_SPACE ((buf[0] == 127 && buf[1] == 0 && buf[2] == 0))
 # define DELETE ((buf[0] == 27 && buf[1] == 91 && buf[2] == 51) &&\
