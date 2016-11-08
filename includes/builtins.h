@@ -74,7 +74,6 @@ void				env_add_or_modify(t_list **l_env, char *key, char *value);
 void				env_free(t_list **l_env);
 int					shell_core(t_list **env, char **cmds);
 void				create_last_var(char *var_name, char **var_value, char opt);
-void				create_var(char *var_name, char *var_value, char opt);
 void				vars_init(void);
 t_list				**vars_recover(void);
 int					vars_show(t_list *l_var);
