@@ -12,70 +12,70 @@ prototype : - X : blabla (username)
 
 ###Mandatory
 
-- O : Show prompt (qdequele)
-- O : add one char (qdequele)
-- O : del one char (qdequele)
-- O : move to left (qdequele)
-- O : move to right (qdequele)
-- O : History (eebersol)
-- O : Copy/Past/Cut (eebersol)
-- O : move word left alt+left (qdequele)
-- O : move word right alt+right (qdequele)
-- O : move start fn+left | home (qdequele)
-- O : move end fn+right | end (qdequele)
-- O : move up alt+up (qdequele)
-- O : move down alt+down (qdequele)
-- O : quotes " ' ` () (eebersol + qdequele)
-- O : Good implementation of tab or spaces (qdequele)
+- O : Show prompt
+- O : add one char
+- O : del one char
+- O : move to left
+- O : move to right
+- O : History
+- O : Copy/Past/Cut
+- O : move word left alt+left
+- O : move word right alt+right
+- O : move start fn+left | home
+- O : move end fn+right | end
+- O : move up alt+up
+- O : move down alt+down
+- O : quotes " ' ` ()
+- O : Good implementation of tab or spaces
 
 ###Bonus
 
-- O : history search builtins history | ctrl+R (eebersol)
-- O : autocomplete (qdequele)
-- O : Move max top (qdequele)
-- O : Move max bottom (qdequele)
-- O : Operator || and && (qdequele)
+- O : history search builtins history | ctrl+R
+- O : autocomplete
+- O : Move max top
+- O : Move max bottom
+- O : Operator || and &&
 
 ##Command execution
 
 ###Mandatory
 
-- O : Line separator ; (qdequele)
-- O : pipes | (eebersol + qdequele)
-- O : redirect  < >> > (eebersol + qdequele)
-- O : file descriptor agregator 2>&- (eebersol + qdequele)
-- O : Catch execution return number $? (qdequele)
-- O : Logic operation || && (qdequele)
-- X : ctrl+c didn't quit the shell (qdequele)
-- O : double ctrl+d quit the shell (qdequele)
+- O : Line separator ;
+- O : pipes |
+- O : redirect  < >> >
+- O : file descriptor agregator 2>&-
+- O : Catch execution return number $?
+- O : Logic operation || &&
+- X : ctrl+c didn't quit the shell
+- O : double ctrl+d quit the shell
 
 ###Bonus
 
-- O : heredoc << (eebersol + qdequele)
-- O : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash) (eebersol + qdequele)
-- O : local varaibles unset export $ (qdequele)
-- L : Job controls job / fg / bg / & (qdequele)
+- O : heredoc <<
+- O : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash)
+- O : local varaibles unset export $
+- L : Job controls job / fg / bg / &
 
 ##Builtins
 
 ###Mandatory
 
-- O : cd (qdequele)
-- O : echo (eebersol)
-- O : exit (qdequele)
-- O : env (qdequele)
-- O : setenv (qdequele)
-- O : unsetenv (qdequele)
-- O : set (qdequele)
-- O : unset (qdequele)
-- O : export (qdequele)
-- O : readonly (qdequele)
-- O : unreadonly (qdequele)
+- O : cd
+- O : echo
+- O : exit
+- O : env
+- O : setenv
+- O : unsetenv
+- O : set
+- O : unset
+- O : export
+- O : readonly
+- O : unreadonly
 
 ###Bonus
 
-- O : History (eebersol)
-- O : Read (eebersol)
+- O : History
+- O : Read
 
 ##General
 
@@ -91,5 +91,3 @@ prototype : - X : blabla (username)
 - << -> pointer being freed was not allocated
 - echo `$?` -> segfault //backquote
 - !7 -> 42sh: command not found: !7
-- read toto
-Read>titi -> set: Too many arguments.
