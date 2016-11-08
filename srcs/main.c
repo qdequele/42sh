@@ -17,6 +17,10 @@ static void		process_input(char *input)
 	t_list	*token_list;
 	t_list	*job_list;
 
+	if (input[0] == '!')
+	{
+		input = bultins_one_history(input);
+	}
 	token_list = input_to_token_list(input);
 	update_job_status();
 	if (check_lexer(token_list) == 0)

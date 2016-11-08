@@ -60,8 +60,11 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	reset_major_signals();
 	get_new_stdio(p, p->stdio);
 	execve(p->argv[0], p->argv, env);
-	ft_putstr("42sh: command not found: ");
-	ft_putendl(p->argv[0]);
+	if (p->argv[0][0] != '!')
+	{
+		ft_putstr("42sh: command not found: ");
+		ft_putendl(p->argv[0]);
+	}
 	exit(1);
 }
 

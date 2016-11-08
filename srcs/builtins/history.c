@@ -49,32 +49,43 @@ int				builtins_history(t_list **env, char **cmds)
 	return (0);
 }
 
-void			bultins_one_history(char *cmds)
+char			*bultins_one_history(char *cmds)
 {
 	t_shell		*shell;
-	char		*str;
+	t_list 		*list;
+	char 		*str;
 	int			i;
 
 	shell = recover_shell();
-	i = ft_atoi(ft_strsub(cmds, 1, ft_strlen(cmds)));
-	str = ft_strsub(cmds, 1, ft_strlen(cmds));
-	if ((shell->history = ft_lst_seek(shell->history, str)) != NULL)
-		(void)str;
-	else
-	{
-		ft_putstr_fd("42sh : no such event: ", 2);
-		ft_putstr_fd(cmds, 2);
-		ft_putchar('\n');
-		return ;
-	}
+	i = ft_atoi(ft_strsub(cmds, 1, (ft_strlen(cmds) - 1)));
+	str = ft_strsub(cmds, 1, (ft_strlen(cmds) - 1));
+	list = shell->history;
 	if (i < ft_lstcount(shell->history) && i > 0)
-		shell->history = ft_lstget_at(shell->history, i);
+	{
+		shell->history = ft_lstget_at(shell->history, (i - 1));
+		cmds = (char*)shell->history->content;
+		return (cmds);
+	}
 	else
 	{
 		ft_putstr_fd("42sh : no such event: ", 2);
 		ft_putnbr(i);
 		ft_putchar('\n');
+		return (cmds);
 	}
+	if ((list = ft_lst_seek(shell->history, str)) != NULL)
+	{
+		cmds = (char*)list->content;
+		return (cmds);
+	}
+	else
+	{
+		ft_putstr_fd("42sh : no such event: ", 2);
+		ft_putstr_fd(cmds, 2);
+		ft_putchar('\n');
+		return (cmds);
+	}
+	return (cmds);
 }
 
 static void		history_free_one(void *elem, size_t size)
