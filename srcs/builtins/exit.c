@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 18:44:29 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 20:57:19 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ static int	is_formated(char *str)
 
 static void	exit_shell(int status)
 {
-	free_shell();
-	exit(status);
+	recover_shell()->last_exit_code = status;
 }
 
 int			builtins_exit(t_list **env, char **cmds)

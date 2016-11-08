@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   autocomplete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/07 19:06:36 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 21:18:54 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ t_status			action_autocomplete(char *buf)
 		free(line);
 		return (TRYING);
 	}
+	free(line);
 	if (shell->autocomplete_position == 0)
 		set_possibilities();
 	show_possibilities();
-	free(line);
 	return (READING);
 }
