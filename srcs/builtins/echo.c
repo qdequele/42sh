@@ -58,6 +58,8 @@ int				builtins_echo(t_list **env, char **cmds)
 
 	(void)env;
 	i = ft_count_raw_aoc(cmds);
+	if (i <= 1)
+		return (0);
 	j = 1;
 	if (ft_strcmp("-n", cmds[1]) == 0)
 		j++;
