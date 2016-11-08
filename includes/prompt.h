@@ -114,6 +114,7 @@ typedef struct	s_prompt
 	int			i_position;
 	int			p_length;
 	int			i_copy;
+	int 		flag_cut;
 	char		*str_cpy;
 	int			copy_mode;
 	int			cut_len;

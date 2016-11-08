@@ -48,6 +48,7 @@ void		*get_actions_copy(void)
 		action_paste,
 		action_copy,
 		action_cut,
+		action_free,
 		action_copy_quit
 	};
 
