@@ -14,6 +14,7 @@
 
 static int		print_erno(char *str, int err)
 {
+	printf("str\n");
 	if (str[0] == '!')
 		str = list_to_string();
 	print_shell_err("42sh : ");
