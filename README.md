@@ -90,7 +90,6 @@ prototype : - X : blabla (username)
 - echo toto tata titi" -> pointer being freed was not allocated
 - << -> pointer being freed was not allocated
 - echo `$?` -> segfault //backquote
-- setenv toto tata -> p=0�k� // on free la key et la value sans la dup
 - !7 -> 42sh: command not found: !7
 - read toto
 Read>titi -> set: Too many arguments.
