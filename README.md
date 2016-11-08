@@ -87,7 +87,4 @@ prototype : - X : blabla (username)
 
 #Liste des bugs :
 
-- echo toto tata titi" -> pointer being freed was not allocated
-- << -> pointer being freed was not allocated
-- echo `$?` -> segfault //backquote
 - !7 -> 42sh: command not found: !7
