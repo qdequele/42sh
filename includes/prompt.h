@@ -24,7 +24,7 @@
 
 # define DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 66))
 
-# define SHIFT_DOWN ((buf[0] == 27 && buf[1] == 27 && SD2))
+# define SHIFT_DOWN (buf[0] == 27 && buf[1] == 27 && SD2)
 # define SD2 buf[2] == 91 buf[3] == 66
 
 # define SHIFT_MAJ_DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && SMD))
