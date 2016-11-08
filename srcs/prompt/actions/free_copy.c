@@ -23,5 +23,6 @@ t_status	action_free(char *buf)
 		return (TRYING);
 	prompt->str_cpy = ft_strnew(1);
 	prompt->i_copy = 0;
+	prompt->flag_cut = 0;
 	return (READING);
 }

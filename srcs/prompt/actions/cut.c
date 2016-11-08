@@ -16,24 +16,24 @@ t_status	action_cut(char *buf)
 {
 	t_shell		*shell;
 	t_prompt	*prompt;
-	t_list		*cur;
 	int			i;
+	int			position;
 
 	shell = recover_shell();
 	prompt = shell->prompt;
-	if (!ALT_X)
+	if (!ALT_X || prompt->flag_cut == 1)
 		return (TRYING);
+	prompt->flag_cut = 1;
 	i = prompt->i_position - prompt->i_copy;
-	cur = prompt->line;
-	clean_prompt();
+	position = prompt->i_position;
 	while (prompt->i_position-- > i)
 	{
-		cur = prompt->line;
-		ft_lstdel_at(&cur, prompt->i_position, &free_char);
+		ft_lstdel_at(&prompt->line, prompt->i_position, &free_char);
 	}
-	cur = prompt->line;
 	tputs(MESTR, 0, ft_tputs);
-	ft_lstshow_x(cur, 0);
+	prompt->i_position = position;
+	clean_prompt();
+	ft_lstshow_x(prompt->line, 0);
 	prompt->i_position = ft_lstcount(prompt->line);
 	while (prompt->i_position > i)
 		utils_move_left();
