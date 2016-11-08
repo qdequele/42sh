@@ -69,9 +69,10 @@ void		env_add_or_modify(t_list **l_env, char *key, char *value)
 		elem = elem->next;
 	}
 	env = (t_env *)malloc(sizeof(t_env));
-	env->key = key;
-	env->value = value;
+	env->key = ft_strdup(key);
+	env->value = ft_strdup(value);
 	ft_lstaddend(l_env, ft_lstnew(env, sizeof(t_env)));
+	free(env);
 }
 
 static void	env_free_one(void *elem, size_t size)

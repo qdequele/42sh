@@ -17,7 +17,7 @@ static int	is_formated(char *str)
 	int	i;
 
 	i = 0;
-	if (!ft_isalpha(str[i]))
+	if (!ft_isalpha(str[i]) && !ft_isalnum(str[i]))
 		return (-1);
 	i++;
 	while (str[i])
