@@ -89,5 +89,3 @@ prototype : - X : blabla (username)
 
 - !7 -> 42sh: command not found: !7
 - Read is fucking insane
-- Echo has bugs
-- Line 33 in get_cmd_env has an issues with memory overlapping

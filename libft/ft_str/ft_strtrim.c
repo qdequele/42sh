@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 10:44:29 by qdequele          #+#    #+#             */
-/*   Updated: 2015/12/01 15:47:57 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 22:37:17 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strtrim(char const *s)
 	while ((s[start] == ' ' || s[start] == '\t' || s[start] == '\n')
 			&& start <= end)
 		start++;
-	while ((s[end] == ' ' || s[end] == '\t' || s[end] == '\n') && end >= start)
+	while (end >= start && (s[end] == ' ' || s[end] == '\t' || s[end] == '\n'))
 		end--;
 	str = ft_strsub(s, start, end - start + 1);
 	return (str);

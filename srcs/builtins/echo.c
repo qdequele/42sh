@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_echo.c                                    :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/20 17:07:06 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 22:06:25 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static	char	*check_second_quote(char *str)
 
 	i = 0;
 	j = 0;
-	dst = ft_strnew(1);
+	dst = ft_strnew(ft_strlen(str));
 	while (str[i] != '\0')
 	{
 		if (str[i] != '"')
@@ -49,6 +49,7 @@ static	void	put_echo(char *str)
 			i++;
 		}
 	}
+	free(str);
 }
 
 int				builtins_echo(t_list **env, char **cmds)

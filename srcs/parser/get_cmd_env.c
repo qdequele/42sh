@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 15:20:50 by qdequele          #+#    #+#             */
-/*   Updated: 2016/04/29 15:56:22 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 22:00:47 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ char	*get_cmd_env(char *cmd, char *var_raw)
 	char	*var;
 	char	*env_value;
 	int		i;
+	int		len;
 
+	len = ft_strlen(var_raw);
 	env_value = NULL;
 	*var_raw = '\0';
 	i = 1;
 	while (ft_isalnum(var_raw[i]) || var_raw[i] == '?' || var_raw[i] == '_')
 		i++;
-	right = var_raw + i;
+	right = (i < len) ? var_raw + i : NULL;
 	var = ft_strsub(var_raw, 1, i > 0 ? i - 1 : i);
 	env_value = env_get(g_env, var);
 	if (!env_value || (env_value && !*(env_value)))

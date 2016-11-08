@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:15:30 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 20:29:20 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/08 22:15:01 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ void	ft_free_aoc(char **arr)
 	i = 0;
 	while (arr[i])
 	{
-		if (arr[i])
-		{
-			free(arr[i]);
-		}
+		free(arr[i]);
 		i++;
 	}
 	if (arr)
