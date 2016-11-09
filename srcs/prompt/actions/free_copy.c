@@ -21,7 +21,8 @@ t_status	action_free(char *buf)
 	prompt = shell->prompt;
 	if (!ALT_B)
 		return (TRYING);
-	prompt->str_cpy = ft_strnew(1);
+	free(prompt->str_cpy);
+	prompt->str_cpy = NULL;
 	prompt->i_copy = 0;
 	prompt->flag_cut = 0;
 	return (READING);

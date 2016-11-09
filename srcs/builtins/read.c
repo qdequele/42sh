@@ -84,11 +84,10 @@ int				builtins_read(t_list **env, char **cmds)
 	(void)env;
 	i = 1;
 	opt = 0;
-	if (cmds[i] && READ_OPT_R)
-	{
+	if (cmds[i][0] == '-' && cmds[i][1] != 'r')
+		return (0);
+	if (cmds[i++] && READ_OPT_R)
 		opt = 'r';
-		i++;
-	}
 	ret = read_read();
 	var_value = ft_strsplit(ret, ' ');
 	nbr_var = ft_count_raw_aoc(&cmds[i]);

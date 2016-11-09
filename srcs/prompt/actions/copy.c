@@ -30,7 +30,7 @@ t_status		action_copy(char *buf)
 	if (!prompt->str_cpy || prompt->str_cpy[0] == '\0')
 	{
 		prompt->str_cpy =
-			malloc(sizeof(char) * (ft_lstcount(prompt->line) + 1));
+			malloc(sizeof(char) * (ft_lstcount(prompt->line) + 2));
 	}
 	if (prompt->i_position != ft_lstcount(prompt->line))
 	{
