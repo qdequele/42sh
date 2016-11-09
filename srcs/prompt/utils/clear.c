@@ -17,6 +17,7 @@ void	clean_prompt(void)
 	t_shell	*shell;
 	int		i;
 
+	i = 0;
 	shell = recover_shell();
 	if (!shell->prompt->str_cpy)
 		i = 0;

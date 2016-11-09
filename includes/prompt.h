@@ -160,6 +160,7 @@ t_status		action_paste(char *buf);
 t_status		action_copy(char *buf);
 t_status		action_cut(char *buf);
 t_status		action_free(char *buf);
+void			free_copy(void);
 t_prompt		*init_prompt(void);
 char			*get_current_folder(void);
 int				get_current_folder_length(void);
