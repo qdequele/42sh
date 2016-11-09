@@ -25,7 +25,7 @@ t_status		action_copy(char *buf)
 
 	shell = recover_shell();
 	prompt = shell->prompt;
-	if (!ALT_C)
+	if (!ALT_C || prompt->flag_cut == 1)
 		return (TRYING);
 	if (!prompt->str_cpy || prompt->str_cpy[0] == '\0')
 	{
@@ -42,6 +42,7 @@ t_status		action_copy(char *buf)
 		prompt->i_position++;
 		prompt->i_copy++;
 	}
+	prompt->end_cpy = prompt->i_position;
 	return (TRYING);
 }
 

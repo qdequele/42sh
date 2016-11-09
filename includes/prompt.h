@@ -112,10 +112,11 @@ typedef struct	s_prompt
 {
 	t_list		*line;
 	int			i_position;
-	int			p_length;
 	int			i_copy;
-	int 		flag_cut;
+	int			flag_cut;
 	char		*str_cpy;
+	int			end_cpy;
+	int			p_length;
 	int			copy_mode;
 	int			cut_len;
 	char		quote_type;

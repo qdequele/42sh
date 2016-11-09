@@ -22,7 +22,7 @@ void	clean_prompt(void)
 		i = 0;
 	else
 		i = ft_strlen(shell->prompt->str_cpy);
-	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line) - i)
+	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
 	}

@@ -21,18 +21,17 @@ t_status	action_cut(char *buf)
 
 	shell = recover_shell();
 	prompt = shell->prompt;
+	j = 0;
 	if (!ALT_X || prompt->flag_cut == 1)
 		return (TRYING);
 	prompt->flag_cut = 1;
-	i = prompt->i_position - prompt->i_copy;
-	position = prompt->i_position;
-	while (prompt->i_position-- > i)
+	i = prompt->end_cpy - prompt->i_copy;
+	clean_prompt();
+	while (prompt->end_cpy-- > i)
 	{
-		ft_lstdel_at(&prompt->line, prompt->i_position, &free_char);
+		ft_lstdel_at(&prompt->line, prompt->end_cpy, &free_char);
 	}
 	tputs(MESTR, 0, ft_tputs);
-	prompt->i_position = position;
-	clean_prompt();
 	ft_lstshow_x(prompt->line, 0);
 	prompt->i_position = ft_lstcount(prompt->line);
 	while (prompt->i_position > i)
