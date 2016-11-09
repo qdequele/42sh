@@ -17,7 +17,6 @@ t_status	action_cut(char *buf)
 	t_shell		*shell;
 	t_prompt	*prompt;
 	int			i;
-	int			position;
 
 	shell = recover_shell();
 	prompt = shell->prompt;
