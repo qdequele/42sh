@@ -46,6 +46,35 @@ int		quote_close(char *str, char c)
 		return (0);
 }
 
+void	parse_quotes(char quote)
+{
+	char		buf[8];
+	char		*ret;
+	int			i;
+	t_shell		*shell;
+
+	ret = ft_strdup("\n");
+	i = -1;
+	shell = recover_shell();
+	ft_bzero(buf, 8);
+	print_error(display_quote_error(quote));
+	while (read(0, buf, 8))
+	{
+		ret = (ENTER)? ft_freejoin(ret, "\n") : ft_freejoin(ret, buf);
+		ft_putchar(ret[ft_strlen(ret) - 1]);
+		if (ENTER && ft_strchr(ret, quote))
+		{
+			while (ret[++i] != quote)
+				ft_lstaddend(&shell->prompt->line, ft_lstnew(&ret[i], sizeof(char)));
+			ft_lstaddend(&shell->prompt->line, ft_lstnew(&quote, sizeof(char)));
+			free(ret);
+			break ;
+		}
+		if (ENTER)
+			print_error(display_quote_error(quote));
+	}
+}
+
 int		check_quote(char *line)
 {
 	int		i;
@@ -63,9 +92,9 @@ int		check_quote(char *line)
 			}
 			else
 			{
-				print_error(display_quote_error(line[i]));
+				parse_quotes(line[i]);
 				free(line);
-				return (0);
+				return (1);
 			}
 		}
 		i++;

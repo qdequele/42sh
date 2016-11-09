@@ -35,6 +35,12 @@ static char		*clear_str_space(char *s)
 	res = s;
 	while (*s)
 	{
+		if (*s == '\'' || *s == '"' || *s == '`' || *s == '(')
+		{
+			s++;
+			while (*s && *s != '\'' && *s != '"' && *s != '`' && *s != ')')
+				s++;
+		}
 		if (ft_isspace(*s))
 			*s = ' ';
 		s++;
