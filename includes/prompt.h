@@ -182,6 +182,7 @@ void			utils_move_end(void);
 void			utils_move_max_top(void);
 void			utils_move_max_bottom(void);
 int				check_quote(char *str);
+void			parse_quotes(char quote);
 int				print_error(char flag);
 char			display_quote_error(char c);
 int				quote_close(char *str, char c);

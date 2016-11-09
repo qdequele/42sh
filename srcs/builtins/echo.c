@@ -67,7 +67,8 @@ int				builtins_echo(t_list **env, char **cmds)
 	while (j < i)
 	{
 		put_echo(cmds[j]);
-		ft_putchar(' ');
+		if (j < i - 1)
+			ft_putchar(' ');
 		j++;
 	}
 	if (ft_strcmp("-n", cmds[1]) != 0)
