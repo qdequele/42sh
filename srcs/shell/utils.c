@@ -27,6 +27,7 @@ void			free_input(void)
 
 	shell = recover_shell();
 	ft_lstdel(&(shell->prompt->line), &free_char);
+	free_copy();
 }
 
 void			add_history(char *line)
