@@ -34,6 +34,8 @@ void			add_history(char *line)
 	t_shell		*shell;
 
 	shell = recover_shell();
+	if (line[0] == '!')
+		return ;
 	ft_lstadd_at(&shell->history,
 		ft_lstnew(line, sizeof(char) * ft_strlen(line) + 1),
 		shell->history_index);

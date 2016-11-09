@@ -56,19 +56,16 @@ char			*read_input(void)
 	return (ft_strdup(""));
 }
 
-int			shell_start(void)
+int				shell_start(void)
 {
-	t_shell		*shell;
 	char		*line;
 
-	shell = recover_shell();
 	init_shell();
-	while (shell->last_exit_code == -1)
+	while (recover_shell()->last_exit_code == -1)
 	{
-
 		init_term();
 		print_shell();
-		shell->history_position = -1;
+		recover_shell()->history_position = -1;
 		line = read_input();
 		free_input();
 		if (line)
@@ -82,10 +79,10 @@ int			shell_start(void)
 		free(line);
 		free_input();
 		reset_autocomplete_possibilities();
-		free(shell->prompt);
+		free(recover_shell()->prompt);
 	}
 	free_shell();
-	return (shell->last_exit_code);
+	return (recover_shell()->last_exit_code);
 }
 
 int				main(int argc, char **argv, char **environ)
