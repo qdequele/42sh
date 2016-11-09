@@ -44,7 +44,7 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 	int		i;
 
 	i = 0;
-	last_var = ft_count_raw_aoc(var_value) > 1 ? ft_strdup("'") : ft_strnew(1);
+	last_var = ft_strnew(1);
 	while (var_value[i])
 	{
 		if (i > 0)
@@ -54,8 +54,6 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 		last_var = ft_freejoin(last_var, var_value[i]);
 		i++;
 	}
-	if (ft_count_raw_aoc(var_value) > 1)
-		last_var = ft_freejoin(last_var, "'");
 	last_var = check_value(opt, last_var);
 	new_val = check_value(opt, ft_strtrim(last_var));
 	free(last_var);
