@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/08 20:53:00 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/09 14:13:37 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@ t_status	action_quit(char *buf)
 		return (TRYING);
 	shell = recover_shell();
 	if (ft_lstcount(shell->prompt->line) > 0)
-		clean_last_x_char(ft_lstcount(shell->prompt->line));
-	else
 	{
-		free_input();
-		free_shell();
-		shell->last_exit_code = 0;
+		clean_last_x_char(ft_lstcount(shell->prompt->line));
+		return (READING);
 	}
-	return (READING);
+	shell->last_exit_code = ft_atoi(vars_get(g_vars, "?"));
+	return (FOUND);
 }

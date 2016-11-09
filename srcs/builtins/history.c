@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 19:03:43 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/09 13:59:57 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int				builtins_history(t_list **env, char **cmds)
 char			*bultins_one_history(char *cmds)
 {
 	t_shell		*shell;
-	t_list 		*list;
-	char 		*str;
+	t_list		*list;
+	char		*str;
 	int			i;
 
 	shell = recover_shell();

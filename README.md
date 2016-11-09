@@ -87,3 +87,6 @@ prototype : - X : blabla (username)
 
 #Liste des bugs :
 
+* Cannot redirect builtins
+* Space after echo
+* Copy / Paste is totally dafuq and not working well

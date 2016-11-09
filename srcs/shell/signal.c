@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/14 16:54:06 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/09 14:07:22 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	signal_reprompt(int i)
 	shell = recover_shell();
 	if (ft_lstcount(shell->prompt->line) > 0)
 		clean_last_x_char(ft_lstcount(shell->prompt->line));
+	else
+	{
+		ft_putendl("");
+		print_shell();
+	}
 }
 
 void	ignore_major_signals(void)

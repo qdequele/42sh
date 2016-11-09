@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/08 21:03:47 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/09 14:12:23 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int			shell_start(void)
 	init_shell();
 	while (shell->last_exit_code == -1)
 	{
+
 		init_term();
 		print_shell();
 		shell->history_position = -1;
