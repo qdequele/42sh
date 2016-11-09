@@ -84,5 +84,6 @@ void				vars_change_readonly(t_list **l_vars, char *key, int rdo);
 void				vars_free(t_list **l_vars);
 int					builtins_readonly(t_list **env, char **cmds);
 int					builtins_unreadonly(t_list **env, char **cmds);
+void				print_error_history(int i, char *cmds);
 
 #endif
