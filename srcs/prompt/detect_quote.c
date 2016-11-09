@@ -60,12 +60,13 @@ void	parse_quotes(char quote)
 	print_error(display_quote_error(quote));
 	while (read(0, buf, 8))
 	{
-		ret = (ENTER)? ft_freejoin(ret, "\n") : ft_freejoin(ret, buf);
+		ret = (ENTER) ? ft_freejoin(ret, "\n") : ft_freejoin(ret, buf);
 		ft_putchar(ret[ft_strlen(ret) - 1]);
 		if (ENTER && ft_strchr(ret, quote))
 		{
 			while (ret[++i] != quote)
-				ft_lstaddend(&shell->prompt->line, ft_lstnew(&ret[i], sizeof(char)));
+				ft_lstaddend(&shell->prompt->line,
+							ft_lstnew(&ret[i], sizeof(char)));
 			ft_lstaddend(&shell->prompt->line, ft_lstnew(&quote, sizeof(char)));
 			free(ret);
 			break ;
