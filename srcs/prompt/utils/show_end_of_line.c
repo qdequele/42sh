@@ -32,11 +32,9 @@ void	print_eol(void)
 		i++;
 	}
 	string[i] = '\0';
-	write(recover_term()->tty, ft_strdup(string), i);
+	write(recover_term()->tty, string, i);
 	shell->prompt->i_position += i;
-	while (i > 0)
-	{
+	free(string);
+	while (--i >= 0)
 		utils_move_left();
-		i--;
-	}
 }

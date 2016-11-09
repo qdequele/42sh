@@ -26,7 +26,7 @@ static void		print_on_fd(int *pipe_fd, t_list *list)
 {
 	char		**tab_var;
 	int			i;
-	int 		j;
+	int			j;
 
 	i = 0;
 	tab_var = list_to_tab(list);
