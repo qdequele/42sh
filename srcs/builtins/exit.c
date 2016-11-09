@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/08 20:57:19 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/09 13:57:05 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			builtins_exit(t_list **env, char **cmds)
 {
 	(void)env;
 	if (!cmds[1])
-		exit_shell(0);
+		exit_shell(ft_atoi(vars_get(g_vars, "?")));
 	else if (cmds[2])
 		ft_putstr_c(RED, "exit: too many arguments\n");
 	else if (!is_formated(cmds[1]))
