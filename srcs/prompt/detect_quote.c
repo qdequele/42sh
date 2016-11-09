@@ -65,8 +65,7 @@ void	parse_quotes(char quote)
 		if (ENTER && ft_strchr(ret, quote))
 		{
 			while (ret[++i] != quote)
-				ft_lstaddend(&shell->prompt->line,
-							ft_lstnew(&ret[i], sizeof(char)));
+				ft_lstaddend(&shell->prompt->line, ft_lstnew(&ret[i], sizeof(char)));
 			ft_lstaddend(&shell->prompt->line, ft_lstnew(&quote, sizeof(char)));
 			free(ret);
 			break ;

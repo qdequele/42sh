@@ -22,8 +22,10 @@ static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
 		if (i == nbr_var)
 			create_last_var(cmds[i], &var_value[i - 1], opt);
 		else
+		{
 			vars_add_or_modify(&g_vars, ft_strtrim(cmds[i]),
 				check_value(opt, ft_strtrim(var_value[i - 1])));
+		}
 		i++;
 	}
 }
@@ -84,10 +86,11 @@ int				builtins_read(t_list **env, char **cmds)
 	(void)env;
 	i = 1;
 	opt = 0;
-	if (cmds[i][0] == '-' && cmds[i][1] != 'r')
-		return (0);
-	if (cmds[i++] && READ_OPT_R)
+	if (cmds[i] && READ_OPT_R)
+	{
 		opt = 'r';
+		i++;
+	}
 	ret = read_read();
 	var_value = ft_strsplit(ret, ' ');
 	nbr_var = ft_count_raw_aoc(&cmds[i]);
