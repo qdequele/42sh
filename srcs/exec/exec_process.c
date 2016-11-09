@@ -14,18 +14,29 @@
 
 static void	get_new_stdio(t_process *p, t_io_channel *s)
 {
-	if (s[0].fd != 0)
-		dup2(p->stdio[0].fd, 0);
-	if (s[1].fd != 1)
-		dup2(p->stdio[1].fd, 1);
-	if (s[2].fd != 2)
-		dup2(p->stdio[2].fd, 2);
-	if (s[0].dead_end)
-		close(0);
-	if (s[1].dead_end)
-		close(1);
-	if (s[2].dead_end)
-		close(2);
+	int	i;
+
+	i = -1;
+	while (++i < 3)
+	{
+		if (s[i].fd == -1 && s[i].open_mode == O_RDONLY &&
+			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
+		{
+			ft_putstr("42sh: No such file: ");
+			ft_putendl(s[i].target);
+			exit(1);
+		}
+		else if ((s[i].fd = open(s[i].target, s[i].open_mode, 0666)) == -1)
+			s[i].fd = 1;
+	}
+	i = -1;
+	while (++i < 3)
+		if (s[i].fd != i)
+			dup2(p->stdio[i].fd, i);
+	i = -1;
+	while (++i < 3)
+		if (s[i].dead_end)
+			close(i);
 }
 
 void		launch_process_builtin(t_process *p)

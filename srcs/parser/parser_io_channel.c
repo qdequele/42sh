@@ -14,38 +14,28 @@
 
 static int	parse_truncate_redir(t_process *p, int channel, char *target)
 {
-	int		fd;
-
-	if ((fd = open(target, O_CREAT | O_WRONLY | O_TRUNC, 0666)) == -1)
-		fd = 1;
-	p->stdio[channel].fd = fd;
+	p->stdio[channel].fd = -1;
+	p->stdio[channel].open_mode = O_CREAT | O_WRONLY | O_TRUNC;
 	p->stdio[channel].to_close = 1;
+	p->stdio[channel].target = ft_strdup(target);
 	return (0);
 }
 
 static int	parse_append_redir(t_process *p, int channel, char *target)
 {
-	int		fd;
-
-	if ((fd = open(target, O_CREAT | O_WRONLY | O_APPEND, 0666)) == -1)
-		fd = 1;
-	p->stdio[channel].fd = fd;
+	p->stdio[channel].fd = -1;
+	p->stdio[channel].open_mode = O_CREAT | O_WRONLY | O_APPEND;
 	p->stdio[channel].to_close = 1;
+	p->stdio[channel].target = ft_strdup(target);
 	return (0);
 }
 
 static int	parse_input_redir(t_process *p, int channel, char *target)
 {
-	int		fd;
-
-	if ((fd = open(target, O_RDONLY)) == -1)
-	{
-		ft_putstr("42sh: No such file: ");
-		ft_putendl(target);
-		return (0);
-	}
-	p->stdio[channel].fd = fd;
+	p->stdio[channel].open_mode = O_RDONLY;
+	p->stdio[channel].fd = -1;
 	p->stdio[channel].to_close = 1;
+	p->stdio[channel].target = ft_strdup(target);
 	return (0);
 }
 

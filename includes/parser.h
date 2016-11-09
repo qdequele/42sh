@@ -29,6 +29,8 @@ typedef struct			s_io_channel
 	char				to_close;
 	char				aggr;
 	char				dead_end;
+	int					open_mode;
+	char				*target;
 }						t_io_channel;
 
 typedef struct			s_process
