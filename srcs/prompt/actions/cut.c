@@ -21,7 +21,6 @@ t_status	action_cut(char *buf)
 
 	shell = recover_shell();
 	prompt = shell->prompt;
-	j = 0;
 	if (!ALT_X || prompt->flag_cut == 1)
 		return (TRYING);
 	prompt->flag_cut = 1;
