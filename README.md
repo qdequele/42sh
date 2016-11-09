@@ -87,5 +87,3 @@ prototype : - X : blabla (username)
 
 #Liste des bugs :
 
-- !7 -> 42sh: command not found: !7
-- Read is fucking insane
