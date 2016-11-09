@@ -90,3 +90,4 @@ prototype : - X : blabla (username)
 * Cannot redirect builtins
 * Space after echo
 * Copy / Paste is totally dafuq and not working well
+* ls qweeq 2> toto; pwd >> toto | cat -e > lol | pwd n'est pas dans toto

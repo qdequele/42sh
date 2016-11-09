@@ -17,21 +17,25 @@ t_status	action_paste(char *buf)
 	t_shell		*shell;
 	t_prompt	*prompt;
 	size_t		i;
+	int 		j;
 
 	shell = recover_shell();
 	prompt = shell->prompt;
 	i = 0;
 	if (!ALT_V || !prompt->str_cpy)
 		return (TRYING);
+	j = prompt->i_position;
+	clean_prompt();
 	while (i < ft_strlen(prompt->str_cpy))
 	{
 		ft_lstadd_at(&prompt->line,
 			ft_lstnew(&prompt->str_cpy[i],
-				sizeof(char*)), prompt->i_position + i);
+				sizeof(char*)), j + i);
 		i++;
 	}
-	i = prompt->i_position;
-	clean_prompt();
+	i = j;
+	ft_lstshow_x(prompt->line, 0);
+	prompt->i_position = ft_lstcount(prompt->line);
 	while ((size_t)prompt->i_position > i)
 		utils_move_left();
 	return (READING);
