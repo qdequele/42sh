@@ -12,6 +12,60 @@
 
 #include <ft_sh.h>
 
+
+char	*ft_str_replace_var(char *src, char *var, int *i)
+{
+	char *begin = ft_strdup(src);
+	begin[*i - 1] = '\0';
+
+	char *end = ft_strdup(src + *i + ft_strlen(var));
+
+	char *new_str = ft_strfjoin(ft_strfjoin(begin, env_get(g_env, var)) , end);
+
+	*i = *i + ft_strlen(env_get(g_env, var));
+
+
+ 	return new_str;
+}
+
+int 	ft_is_var(char c)
+{
+	return (ft_isalnum(c) || c == '_');
+}
+
+
+char *replace_vars(char *str)
+{
+  int i;
+  int end_dollar; //fin du dollar
+  int should_replace;
+
+  i = 0;
+  should_replace = 1;
+  end_dollar = i;
+  while(str[i])
+  {
+    //On replace un quote sur deux
+    if (should_replace && str[i] == '\'')
+    {
+      should_replace = 0;
+    } else if (str[i] == '\''){
+      should_replace = 1;
+    }
+
+    //Si on trouve un dollar, on va chercher
+    if (should_replace && str[i] == '$') {
+      i++;
+      end_dollar = i;
+      while (ft_is_var(str[end_dollar]))
+        end_dollar++;
+      str = ft_str_replace_var(str, ft_strsub(str, i, end_dollar - i), &i);
+    }
+    i++;
+  }
+  return str;
+}
+
 static size_t	count_args(const char *s)
 {
 	size_t	words;
@@ -21,7 +75,7 @@ static size_t	count_args(const char *s)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if ((i == 0 || ft_isspace(s[i - 1])) && !ft_isspace(s[i]))
+		if ((i == 0 || s[i - 1] == 1) && !(s[i] == 1))
 			words++;
 		i++;
 	}
@@ -31,7 +85,6 @@ static size_t	count_args(const char *s)
 static char		*clear_str_space(char *s)
 {
 	char	*res;
-
 	res = s;
 	while (*s)
 	{
@@ -40,9 +93,10 @@ static char		*clear_str_space(char *s)
 			s++;
 			while (*s && *s != '\'' && *s != '"' && *s != '`' && *s != ')')
 				s++;
+
 		}
 		if (ft_isspace(*s))
-			*s = ' ';
+			*s = 1;
 		s++;
 	}
 	return (res);
@@ -58,8 +112,7 @@ static char		*get_new_arg(char *arg)
 	if (!arg)
 		return (ft_strdup(""));
 	res = ft_strdup(arg);
-	while ((env_var = ft_strchr(res, '$')) && env_var[1] &&
-		!ft_strchr(res, '\''))
+	while ((env_var = ft_strchr(res, '$')) && env_var[1] && !ft_strchr(arg, '\''))
 		res = get_cmd_env(res, env_var);
 	return (res);
 }
@@ -95,9 +148,10 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 	int		i;
 
 	i = 0;
+	cmd = replace_vars(cmd);
 	clear_str_space(cmd);
 	if (!(argv = malloc(sizeof(char *) * (count_args(cmd) + 1))) ||
-		!(split = ft_strsplit(cmd, ' ')))
+		!(split = ft_strsplit(cmd, 1)))
 		return (NULL);
 	start_split = split;
 	while (*split)
@@ -105,10 +159,7 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 		if (is_token_redir(*split))
 			split += parse_io_channel(p, split);
 		else
-		{
-			argv[i++] = get_new_arg(*split);
-			split++;
-		}
+			argv[i++] = get_new_arg(*split++);
 	}
 	argv[i] = NULL;
 	ft_free_aoc(start_split);
