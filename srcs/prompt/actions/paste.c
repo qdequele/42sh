@@ -24,7 +24,6 @@ t_status	action_paste(char *buf)
 	i = 0;
 	if (!ALT_V || !prompt->str_cpy)
 		return (TRYING);
-	ft_console("[%d] - [%d]\n", ft_strlen(prompt->str_cpy), ft_lstcount(prompt->line));
 	j = prompt->i_position;
 	clean_prompt();
 	while (i < ft_strlen(prompt->str_cpy))
