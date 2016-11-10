@@ -33,6 +33,7 @@ static int		check_key(char *str)
 static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
 {
 	int		i;
+	char 	*tmp;
 
 	i = 1;
 	while (i <= nbr_var)
@@ -44,8 +45,11 @@ static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
 			else if (i == nbr_var)
 				create_last_var(cmds[i], &var_value[i - 1], opt);
 			else
-				vars_add_or_modify(&g_vars, ft_strtrim(cmds[i]),
-						check_value(opt, ft_strtrim(var_value[i - 1])));
+			{
+				tmp = check_value(opt, var_value[i - 1]);
+				vars_add_or_modify(&g_vars, cmds[i], tmp);
+				free(tmp);
+			}
 		}
 		i++;
 	}
@@ -61,7 +65,7 @@ static	char	*read_read(void)
 	ft_putstr_c(GREEN, "Read>");
 	while (read(0, buf, 9))
 	{
-		if (BACK_SPACE)
+		if (BACK_SPACE && ret && ft_strlen(ret) > 0)
 		{
 			tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
 			tputs(DMSTR, 1, ft_tputs);
@@ -113,10 +117,14 @@ int				builtins_read(t_list **env, char **cmds)
 		i++;
 	}
 	ret = read_read();
+	if (ft_strlen(ret) == 0)
+		return (1);
 	var_value = ft_strsplit(ret, ' ');
 	nbr_var = ft_count_raw_aoc(&cmds[i]);
 	if ((nbr_var) == 1 && check_key(cmds[i]) == 1)
+	{
 		create_last_var(cmds[i], var_value, opt);
+	}
 	else
 		read_bis(cmds, var_value, opt, nbr_var);
 	ft_free_aoc(var_value);
