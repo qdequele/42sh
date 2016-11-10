@@ -36,7 +36,7 @@ int		vars_show(t_list *l_var)
 		{
 			var = elem->content;
 			if (var->key != NULL && ft_strlen(var->key) != 0
-					&& var->value != NULL && ft_strlen(var->value) != 0)
+					&& var->value != NULL /*&& ft_strlen(var->value) != 0*/)
 			{
 				ft_putstr(var->key);
 				ft_putstr("=");

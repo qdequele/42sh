@@ -12,6 +12,24 @@
 
 #include <ft_sh.h>
 
+static int		check_key(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!ft_isalnum(str[i]))
+		{
+			ft_putstr_fd("42sh : not an identifier : ", 2);
+			ft_putendl_fd(str, 2);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
 {
 	int		i;
@@ -19,12 +37,15 @@ static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
 	i = 1;
 	while (i <= nbr_var)
 	{
-		if (i == nbr_var)
-			create_last_var(cmds[i], &var_value[i - 1], opt);
-		else
+		if (check_key(cmds[i]) == 1)
 		{
-			vars_add_or_modify(&g_vars, ft_strtrim(cmds[i]),
-				check_value(opt, ft_strtrim(var_value[i - 1])));
+			if (!var_value[i - 1] && i == nbr_var)
+				create_last_var(cmds[i], NULL, opt);
+			else if (i == nbr_var)
+				create_last_var(cmds[i], &var_value[i - 1], opt);
+			else
+				vars_add_or_modify(&g_vars, ft_strtrim(cmds[i]),
+						check_value(opt, ft_strtrim(var_value[i - 1])));
 		}
 		i++;
 	}
@@ -94,9 +115,9 @@ int				builtins_read(t_list **env, char **cmds)
 	ret = read_read();
 	var_value = ft_strsplit(ret, ' ');
 	nbr_var = ft_count_raw_aoc(&cmds[i]);
-	if ((nbr_var) == 1)
+	if ((nbr_var) == 1 && check_key(cmds[i]) == 1)
 		create_last_var(cmds[i], var_value, opt);
-	else if (nbr_var <= count_words(ret, ' '))
+	else
 		read_bis(cmds, var_value, opt, nbr_var);
 	ft_free_aoc(var_value);
 	free(ret);

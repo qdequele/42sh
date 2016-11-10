@@ -20,6 +20,8 @@ char		*check_value(char opt, char *var_value)
 
 	i = 0;
 	j = 0;
+	if (!var_value)
+		return (" ");
 	new_value = ft_strnew(ft_strlen(var_value));
 	while (var_value[i] != '\0')
 	{
@@ -45,6 +47,11 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 
 	i = 0;
 	last_var = ft_strnew(1);
+	if (!var_value)
+	{
+		vars_add_or_modify(&g_vars, var_name, "");
+		return ;
+	}
 	while (var_value[i])
 	{
 		if (i > 0)
