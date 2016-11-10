@@ -39,21 +39,23 @@ bg [pid] 					- put in background an job execute in foreground
 
 # Separators
 
-; 		-
-|| 		-
-&& 		-
-\ 		-
-'' 		-
-"" 		-
-`` 		-
-| 		-
+; 		- separate command
+|| 		- execute the next command only if the previous failed
+&& 		- execute the next command only if the previous success
+\ 		- ignore the next char
+'' 		- quote - ignore all specific chars
+"" 		- dquote - considere all chars into quotes as one param
+`` 		- bquote - get all the standar input an transform it to params (not implemented)
+() 		- subsh - subshell (not implemented)
+| 		- pipe
 
 # Redirection
 
-> 		-
-< 		-
->> 		-
-<< 		-
->&- 	-
+> 		- output redirection to fd
+< 		- input redirection from fd
+>> 		- Aoutput redirection who append the fd
+<< 		- redirect input into an interactive shell script or program
+>& 		- agregate an fd to an other
+>&- 	- mute an fd 
 
 Get fun !
