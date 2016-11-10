@@ -45,26 +45,23 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 	char	*new_val;
 	int		i;
 
-	i = 0;
+	i = -1;
 	last_var = ft_strnew(1);
 	if (!var_value)
 	{
 		vars_add_or_modify(&g_vars, var_name, "");
 		return ;
 	}
-	while (var_value[i])
+	while (var_value[++i])
 	{
 		if (i > 0)
 			last_var = ft_freejoin(last_var, " ");
 		if (!var_value[i + 1] && ft_strlen(var_value[i]) > 0)
 			var_value[i][ft_strlen(var_value[i]) - 1] = '\0';
 		last_var = ft_freejoin(last_var, var_value[i]);
-		i++;
 	}
-	last_var = check_value(opt, last_var);
-	new_val = check_value(opt, ft_strtrim(last_var));
-	free(last_var);
-	last_var = ft_strtrim(var_name);
+	last_var = ft_strtrim(check_value(opt, last_var));
+	new_val = check_value(opt, last_var);
 	vars_add_or_modify(&g_vars, last_var, new_val);
 	free(last_var);
 	free(new_val);
