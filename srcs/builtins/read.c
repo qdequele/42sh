@@ -33,7 +33,7 @@ static int		check_key(char *str)
 static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
 {
 	int		i;
-	char 	*tmp;
+	char	*tmp;
 
 	i = 1;
 	while (i <= nbr_var)
@@ -109,22 +109,15 @@ int				builtins_read(t_list **env, char **cmds)
 	int		i;
 
 	(void)env;
-	i = 1;
-	opt = 0;
-	if (cmds[i] && READ_OPT_R)
-	{
-		opt = 'r';
-		i++;
-	}
+	i = (cmds[1] && READ_OPT_R) ? 2 : 1;
+	opt = (cmds[1] && READ_OPT_R) ? 'r' : 0;
 	ret = read_read();
 	if (ft_strlen(ret) == 0)
 		return (1);
 	var_value = ft_strsplit(ret, ' ');
 	nbr_var = ft_count_raw_aoc(&cmds[i]);
 	if ((nbr_var) == 1 && check_key(cmds[i]) == 1)
-	{
 		create_last_var(cmds[i], var_value, opt);
-	}
 	else
 		read_bis(cmds, var_value, opt, nbr_var);
 	ft_free_aoc(var_value);
