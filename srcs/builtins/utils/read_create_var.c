@@ -20,8 +20,8 @@ char		*check_value(char opt, char *var_value)
 
 	i = 0;
 	j = 0;
-	if (!var_value)
-		return (" ");
+	if (ft_strlen(var_value) == 0)
+		return (ft_strdup(""));
 	new_value = ft_strnew(ft_strlen(var_value));
 	while (var_value[i] != '\0')
 	{
@@ -35,7 +35,6 @@ char		*check_value(char opt, char *var_value)
 		}
 	}
 	new_value[i] = '\0';
-	free(var_value);
 	return (new_value);
 }
 
@@ -43,24 +42,25 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 {
 	char	*last_var;
 	char	*new_val;
+	char 	*tmp;
 	int		i;
 
 	i = -1;
-	last_var = ft_strnew(1);
 	if (!var_value)
-	{
-		vars_add_or_modify(&g_vars, var_name, "");
-		return ;
-	}
+		return (vars_add_or_modify(&g_vars, var_name, ""));
+	last_var = (char*)malloc(sizeof(char));
 	while (var_value[++i])
 	{
 		if (i > 0)
-			last_var = ft_freejoin(last_var, " ");
+			last_var = ft_strfjoin(last_var, " ");
 		if (!var_value[i + 1] && ft_strlen(var_value[i]) > 0)
 			var_value[i][ft_strlen(var_value[i]) - 1] = '\0';
-		last_var = ft_freejoin(last_var, var_value[i]);
+		last_var = ft_strfjoin(last_var, var_value[i]);
 	}
-	last_var = ft_strtrim(check_value(opt, last_var));
+	tmp = check_value(opt, last_var);
+	free(last_var);
+	last_var = ft_strtrim(tmp);
+	free(tmp);
 	new_val = check_value(opt, last_var);
 	vars_add_or_modify(&g_vars, last_var, new_val);
 	free(last_var);
