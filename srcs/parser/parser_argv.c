@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 19:21:33 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/10 22:11:47 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/10 22:34:25 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,25 @@ char			*construct_job_command(t_list *process_list)
 	return (cmd);
 }
 
+char			*skip_token(char *arg)
+{
+	char *tmp;
+	char *new_arg;
+
+	new_arg = ft_strdup(arg);
+	if (new_arg && (*new_arg == '\'' || *new_arg == '"'))
+	{
+		tmp = new_arg;
+		new_arg++;
+		new_arg = ft_strdup(new_arg);
+		free(tmp);
+	}
+	if (new_arg[ft_strlen(new_arg) - 1] == '\'' || new_arg[ft_strlen(new_arg) - 1] == '"')
+		new_arg[ft_strlen(new_arg) - 1] = '\0';
+	free(arg);
+	return (new_arg);
+}
+
 char			**parse_cmd_argv(t_process *p, char *cmd)
 {
 	char	**argv;
@@ -142,7 +161,7 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 		if (is_token_redir(*split))
 			split += parse_io_channel(p, split);
 		else
-			argv[i++] = ft_strdup(*split++);
+			argv[i++] = skip_token(ft_strdup(*split++));
 	}
 	argv[i] = NULL;
 	free(cmd);
