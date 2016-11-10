@@ -42,7 +42,7 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 {
 	char	*last_var;
 	char	*new_val;
-	char 	*tmp;
+	char	*tmp;
 	int		i;
 
 	i = -1;
