@@ -46,6 +46,7 @@ int				builtins_env(t_list **env, char **cmds)
 	t_list		*tmp_env;
 	t_option	*options;
 	int			i;
+	char		*key;
 
 	options = builtins_env_options();
 	option_init(&options, 1);
@@ -57,14 +58,12 @@ int				builtins_env(t_list **env, char **cmds)
 		i++;
 	while (cmds[i] && ft_strchr(cmds[i], '='))
 	{
-		env_add_or_modify(&tmp_env, ft_strsub(cmds[i], 0,
-			ft_wordlen(cmds[i], '=')), ft_strchr_n(cmds[i], '='));
+		key = ft_strsub(cmds[i], 0, ft_wordlen(cmds[i], '='));
+		env_add_or_modify(&tmp_env, key, ft_strchr_n(cmds[i], '='));
+		free(key);
 		i++;
 	}
-	if (cmds[i])
-		shell_core(&tmp_env, &cmds[i]);
-	else
-		env_show(tmp_env);
+	(cmds[i]) ? shell_core(&tmp_env, &cmds[i]) : env_show(tmp_env);
 	env_free(&tmp_env);
 	return (0);
 }
