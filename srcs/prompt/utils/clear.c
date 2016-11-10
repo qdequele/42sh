@@ -19,11 +19,14 @@ void	clean_prompt(void)
 
 	i = 0;
 	shell = recover_shell();
-	if (!shell->prompt->str_cpy)
-		i = 0;
+	if (shell->prompt->str_cpy && shell->prompt->flag_cut == 0)
+	{
+		i = ft_lstcount(shell->prompt->line) -
+					ft_strlen(shell->prompt->str_cpy);
+	}
 	else
-		i = ft_strlen(shell->prompt->str_cpy);
-	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+		i = ft_lstcount(shell->prompt->line);
+	while (shell->prompt->i_position < i)
 	{
 		utils_move_right();
 	}

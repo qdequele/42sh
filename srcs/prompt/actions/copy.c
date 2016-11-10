@@ -30,7 +30,7 @@ t_status		action_copy(char *buf)
 		return (TRYING);
 	if (!prompt->str_cpy || prompt->str_cpy[0] == '\0')
 		prompt->str_cpy = (char*)malloc(sizeof(char*) + 1);
-	if (prompt->i_position != ft_lstcount(prompt->line))
+	if (prompt->i_position < ft_lstcount(prompt->line))
 	{
 		tmp = ft_strsub(((char*)ft_lstget_at(
 			prompt->line, prompt->i_position)->content), 0, 1);
