@@ -65,5 +65,6 @@ int				builtins_env(t_list **env, char **cmds)
 		shell_core(&tmp_env, &cmds[i]);
 	else
 		env_show(tmp_env);
+	env_free(&tmp_env);
 	return (0);
 }

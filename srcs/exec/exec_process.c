@@ -26,7 +26,7 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 			ft_putendl(s[i].target);
 			exit(1);
 		}
-		else if (s[i].fd == -1 && (s[i].fd =
+		else if (s[i].target && (s[i].fd =
 			open(s[i].target, s[i].open_mode, 0666)) == -1)
 			s[i].fd = 1;
 	}
