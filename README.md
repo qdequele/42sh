@@ -46,7 +46,7 @@ prototype : - X : blabla (username)
 - O : file descriptor agregator 2>&-
 - O : Catch execution return number $?
 - O : Logic operation || &&
-- X : ctrl+c didn't quit the shell
+- O : ctrl+c didn't quit the shell
 - O : double ctrl+d quit the shell
 
 ###Bonus
@@ -80,14 +80,13 @@ prototype : - X : blabla (username)
 ##General
 
 - X : Leaks
-- X : Norme
+- O : Norme
 - X : Segfaut
-- X : Signals
+- O : Signals
 - X : Builtins Posix
 
 #Liste des bugs :
 
 * Cannot redirect builtins
-* Space after echo
 * Copy / Paste is totally dafuq and not working well
 * ls qweeq 2> toto; pwd >> toto | cat -e > lol | pwd n'est pas dans toto

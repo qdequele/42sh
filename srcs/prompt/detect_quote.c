@@ -51,11 +51,11 @@ void	parse_quotes(char quote)
 	char		buf[8];
 	char		*ret;
 	int			i;
-	t_shell		*shell;
+	t_prompt	*prompt;
 
 	ret = ft_strdup("\n");
 	i = -1;
-	shell = recover_shell();
+	prompt = recover_shell()->prompt;
 	ft_bzero(buf, 8);
 	print_error(display_quote_error(quote));
 	while (read(0, buf, 8))
@@ -65,9 +65,8 @@ void	parse_quotes(char quote)
 		if (ENTER && ft_strchr(ret, quote))
 		{
 			while (ret[++i] != quote)
-				ft_lstaddend(&shell->prompt->line,
-							ft_lstnew(&ret[i], sizeof(char)));
-			ft_lstaddend(&shell->prompt->line, ft_lstnew(&quote, sizeof(char)));
+				ft_lstaddend(&prompt->line, ft_lstnew(&ret[i], sizeof(char)));
+			ft_lstaddend(&prompt->line, ft_lstnew(&quote, sizeof(char)));
 			free(ret);
 			break ;
 		}
