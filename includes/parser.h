@@ -71,5 +71,8 @@ char					*construct_job_command(t_list *process_list);
 char					*get_cmd_env(char *cmd, char *var_raw);
 int						parse_heredoc_redir(t_process *p, int channel,
 							char *target);
+char					*ft_str_replace_var(char *src, char *var, int *i);
+int						ft_is_var(char c);
+char					*replace_vars(char *str);
 
 #endif

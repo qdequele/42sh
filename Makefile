@@ -62,6 +62,7 @@ _SRC		=	builtins/utils/parser.c\
 				parser/parser_io_channel.c\
 				parser/parser_io_utils.c\
 				parser/parser_io_channel_heredoc.c\
+				parser/parser_replace_vars.c\
 				prompt/actions/autocomplete.c\
 				prompt/actions/char.c\
 				prompt/actions/cmd.c\

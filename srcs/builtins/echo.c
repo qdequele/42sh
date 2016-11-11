@@ -27,7 +27,6 @@ static	void	put_echo(char *str)
 			i++;
 		}
 	}
-	// free(str);
 }
 
 int				builtins_echo(t_list **env, char **cmds)

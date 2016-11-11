@@ -82,10 +82,6 @@ t_list					*parse_process(t_token *t)
 	if (!t || (t && t->type != CMD))
 		return (NULL);
 	ft_memset(&p, 0, sizeof(t_process));
-	/*ft_memset(&p.stdio[0], 0, sizeof(t_io_channel));
-	ft_memset(&p.stdio[1], 0, sizeof(t_io_channel));
-	ft_memset(&p.stdio[2], 0, sizeof(t_io_channel));*/
-
 	p.stdio[1].fd = 1;
 	p.stdio[2].fd = 2;
 	p.argv = parse_cmd_argv(&p, t->content);
