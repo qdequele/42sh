@@ -17,11 +17,17 @@ char			*ft_str_replace_var(char *src, char *var, int *i)
 	char		*begin;
 	char		*end;
 	char		*new_str;
+	char		*new_var;
 
 	begin = ft_strdup(src);
 	begin[*i - 1] = '\0';
 	end = ft_strdup(src + *i + ft_strlen(var));
-	new_str = ft_strfjoin(ft_strfjoin(begin, env_get(g_env, var)), end);
+	new_var = env_get(g_env, var);
+	if (!new_var)
+		new_var = vars_get(g_vars, var);
+	if (!new_var)
+		new_var = ft_strdup("");
+	new_str = ft_strfjoin(ft_strfjoin(begin, new_var), end);
 	*i += ft_strlen(new_str) - ft_strlen(src);
 	free(src);
 	free(end);
