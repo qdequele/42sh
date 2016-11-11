@@ -12,9 +12,9 @@
 
 #include <ft_sh.h>
 
-static int		check_key(char *str)
+static int		ck(char *str)
 {
-	int i;
+	int			i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -28,31 +28,6 @@ static int		check_key(char *str)
 		i++;
 	}
 	return (1);
-}
-
-static	void	read_bis(char **cmds, char **var_value, char opt, int nbr_var)
-{
-	int		i;
-	char	*tmp;
-
-	i = 1;
-	while (i <= nbr_var)
-	{
-		if (check_key(cmds[i]) == 1)
-		{
-			if (!var_value[i - 1] && i == nbr_var)
-				create_last_var(cmds[i], NULL, opt);
-			else if (i == nbr_var)
-				create_last_var(cmds[i], &var_value[i - 1], opt);
-			else
-			{
-				tmp = check_value(opt, var_value[i - 1]);
-				vars_add_or_modify(&g_vars, cmds[i], tmp);
-				free(tmp);
-			}
-		}
-		i++;
-	}
 }
 
 static	char	*read_read(void)
@@ -84,43 +59,32 @@ static	char	*read_read(void)
 	return (ret);
 }
 
-int				count_words(char *s, char c)
-{
-	int		words;
-	int		i;
-
-	words = 0;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if ((i == 0 || s[i - 1] == c) && s[i] != c)
-			words++;
-		i++;
-	}
-	return (words);
-}
-
 int				builtins_read(t_list **env, char **cmds)
 {
-	char	**var_value;
-	int		nbr_var;
-	char	opt;
-	char	*ret;
+	char	**v;
+	char	*last;
+	int		o;
 	int		i;
 
-	(void)env;
-	i = (cmds[1] && READ_OPT_R) ? 2 : 1;
-	opt = (cmds[1] && READ_OPT_R) ? 'r' : 0;
-	ret = read_read();
-	if (ft_strlen(ret) == 0)
-		return (1);
-	var_value = ft_strsplit(ret, ' ');
-	nbr_var = ft_count_raw_aoc(&cmds[i]);
-	if ((nbr_var) == 1 && check_key(cmds[i]) == 1)
-		create_last_var(cmds[i], var_value, opt);
-	else
-		read_bis(cmds, var_value, opt, nbr_var);
-	ft_free_aoc(var_value);
-	free(ret);
+	o = (*env && cmds[1] && READ_OPT_R) ? 2 : 1;
+	i = (o == 2) ? 0 : -1;
+	v = ft_strsplit(read_read(), ' ');
+	while (cmds[++i + o] && ft_strlen(cmds[i + o]) > 0 && ck(cmds[i + o]))
+	{
+		v[i] = (o == 1 && v[i]) ? ft_skip_char(v[i], '\\') : v[i];
+		if (v[i])
+			vars_add_or_modify(&g_vars, cmds[i + o], ft_strdup(v[i]));
+		else
+			vars_add_or_modify(&g_vars, cmds[i + o], ft_strdup(" "));
+	}
+	if (v[i])
+	{
+		last = (o == 1) ? ft_skip_char(ft_array_to_string(&v[i - 1]), '\\')
+		: ft_array_to_string(&v[i - 1]);
+		last[ft_strlen(last) - 1] = '\0';
+		vars_add_or_modify(&g_vars, cmds[i + o - 1], last);
+	}
+	if (v)
+		ft_free_aoc(v);
 	return (0);
 }

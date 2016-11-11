@@ -69,7 +69,8 @@ _FT_STR_SRC			=	ft_striter.c ft_striteri.c ft_strdel.c ft_strclr.c\
 						ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcmp.c\
 						ft_strncmp.c ft_strchr.c ft_strrchr.c ft_strstr.c\
 						ft_strlen.c ft_strrev.c ft_strnstr.c ft_strfjoin.c\
-						ft_strcut.c ft_str_to_tab.c ft_freejoin.c
+						ft_strcut.c ft_str_to_tab.c ft_freejoin.c\
+						ft_skip_char.c
 
 FT_STR_SRC			=	$(addprefix ft_str/,$(_FT_STR_SRC))
 

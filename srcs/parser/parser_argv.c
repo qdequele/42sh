@@ -71,28 +71,6 @@ char			*construct_job_command(t_list *process_list)
 	return (cmd);
 }
 
-char			*skip_token(char *arg)
-{
-	char		*new_arg;
-	int			i;
-	int			nb_quotes;
-
-	i = 0;
-	nb_quotes = 0;
-	new_arg = ft_strnew(ft_strlen(arg));
-	while (arg[i + nb_quotes])
-	{
-		if (arg[i + nb_quotes] == '\'' || arg[i + nb_quotes] == '"')
-			nb_quotes++;
-		if (arg[i + nb_quotes])
-			new_arg[i] = arg[i + nb_quotes];
-		i++;
-	}
-	new_arg[i] = '\0';
-	free(arg);
-	return (new_arg);
-}
-
 char			**parse_cmd_argv(t_process *p, char *cmd)
 {
 	char		**argv;
@@ -112,7 +90,8 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 		if (is_token_redir(*split))
 			split += parse_io_channel(p, split);
 		else
-			argv[i++] = skip_token(ft_strdup(*split++));
+			argv[i++] = ft_skip_char(ft_skip_char(
+				ft_strdup(*split++), '\''), '"');
 	}
 	argv[i] = NULL;
 	free(cmd);
