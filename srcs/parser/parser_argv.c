@@ -58,8 +58,8 @@ static char		*get_new_arg(char *arg)
 	if (!arg)
 		return (ft_strdup(""));
 	res = ft_strdup(arg);
-	while ((env_var = ft_strchr(res, '$')) && env_var[1])
-		res = get_cmd_env(res, env_var);
+	// while ((env_var = ft_strchr(res, '$')) && env_var[1])
+	// 	res = res;
 	return (res);
 }
 
