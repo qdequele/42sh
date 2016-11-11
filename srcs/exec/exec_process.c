@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 18:24:02 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 20:07:37 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/10 21:51:35 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 	i = -1;
 	while (++i < 3)
 	{
-		if (s[i].fd == -1 && s[i].open_mode == O_RDONLY &&
+		if (s[i].target && s[i].open_mode == O_RDONLY &&
 			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
 		{
 			ft_putstr("42sh: No such file: ");
 			ft_putendl(s[i].target);
-			recover_shell()->last_exit_code = 1;
+			exit(1);
 		}
 		else if (s[i].target && (s[i].fd =
 			open(s[i].target, s[i].open_mode, 0666)) == -1)
@@ -61,7 +61,7 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	pid_t	pid;
 
 	if (!p)
-		recover_shell()->last_exit_code = 1;
+		exit(1);
 	pid = getpid();
 	if (pgid == 0)
 		pgid = pid;
@@ -77,8 +77,7 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 		ft_putstr("42sh: command not found: ");
 		ft_putendl(p->argv[0]);
 	}
-	free_shell();
-	recover_shell()->last_exit_code = 1;
+	exit(1);
 }
 
 int			update_process_status(t_job *j, pid_t pid, int status)

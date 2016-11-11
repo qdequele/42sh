@@ -12,33 +12,11 @@
 
 #include <ft_sh.h>
 
-static	char	*check_second_quote(char *str)
-{
-	char	*dst;
-	size_t	i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	dst = ft_strnew(ft_strlen(str));
-	while (str[i] != '\0')
-	{
-		if (str[i] != '"')
-		{
-			dst[j] = str[i];
-			j++;
-		}
-		i++;
-	}
-	return (dst);
-}
-
 static	void	put_echo(char *str)
 {
 	int		i;
 
 	i = 0;
-	str = check_second_quote(str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == '\\')
@@ -49,7 +27,7 @@ static	void	put_echo(char *str)
 			i++;
 		}
 	}
-	free(str);
+	// free(str);
 }
 
 int				builtins_echo(t_list **env, char **cmds)

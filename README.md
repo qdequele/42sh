@@ -86,7 +86,3 @@ prototype : - X : blabla (username)
 - X : Builtins Posix
 
 #Liste des bugs :
-
-* Cannot redirect builtins
-* Copy / Paste is totally dafuq and not working well
-* ls qweeq 2> toto; pwd >> toto | cat -e > lol | pwd n'est pas dans toto
