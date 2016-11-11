@@ -38,7 +38,7 @@ static	char	*read_read(void)
 	ft_bzero(buf, 9);
 	ret = NULL;
 	ft_putstr_c(GREEN, "Read>");
-	while (read(0, buf, 9))
+	while (read(0, buf, 9) && !ENTER)
 	{
 		if (BACK_SPACE && ret && ft_strlen(ret) > 0)
 		{
@@ -53,9 +53,8 @@ static	char	*read_read(void)
 			ft_putchar(buf[0]);
 			ret = ft_freejoin(ret, buf);
 		}
-		if (ENTER)
-			return (ret);
 	}
+	ft_putchar('\n');
 	return (ret);
 }
 
@@ -81,7 +80,6 @@ int				builtins_read(t_list **env, char **cmds)
 	{
 		last = (o == 1) ? ft_skip_char(ft_array_to_string(&v[i - 1]), '\\')
 		: ft_array_to_string(&v[i - 1]);
-		last[ft_strlen(last) - 1] = '\0';
 		vars_add_or_modify(&g_vars, cmds[i + o - 1], last);
 	}
 	if (v)
