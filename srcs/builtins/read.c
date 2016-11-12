@@ -68,7 +68,7 @@ int				builtins_read(t_list **env, char **cmds)
 	o = (*env && cmds[1] && READ_OPT_R) ? 2 : 1;
 	i = (o == 2) ? 0 : -1;
 	v = ft_strsplit(read_read(), ' ');
-	while (cmds[++i + o] && ft_strlen(cmds[i + o]) > 0 && ck(cmds[i + o]) && v[i])
+	while (cmds[++i + o] && ft_strlen(cmds[i + o]) > 0 && ck(cmds[i + o]))
 	{
 		v[i] = (o == 1 && v[i]) ? ft_skip_char(v[i], '\\') : v[i];
 		if (v[i])
