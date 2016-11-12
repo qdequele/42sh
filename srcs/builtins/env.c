@@ -41,6 +41,17 @@ static t_list	*env_cpy(t_list *src)
 	return (dest);
 }
 
+int				shell_core(t_list **env, char **cmds)
+{
+	t_list		*backup;
+
+	backup = g_env;
+	g_env = *env;
+	process_input(ft_array_to_string(cmds));
+	g_env = backup;
+	return (1);
+}
+
 int				builtins_env(t_list **env, char **cmds)
 {
 	t_list		*tmp_env;

@@ -21,7 +21,7 @@ static int		ck(char *str)
 	{
 		if (!ft_isalnum(str[i]))
 		{
-			ft_putstr_fd("42sh : not an identifier : ", 2);
+			ft_putstr_fd("21sh : not an identifier : ", 2);
 			ft_putendl_fd(str, 2);
 			return (0);
 		}
@@ -36,7 +36,7 @@ static	char	*read_read(void)
 	char *ret;
 
 	ft_bzero(buf, 9);
-	ret = NULL;
+	ret = ft_strdup("");
 	ft_putstr_c(GREEN, "Read>");
 	while (read(0, buf, 9) && !ENTER)
 	{
@@ -68,7 +68,7 @@ int				builtins_read(t_list **env, char **cmds)
 	o = (*env && cmds[1] && READ_OPT_R) ? 2 : 1;
 	i = (o == 2) ? 0 : -1;
 	v = ft_strsplit(read_read(), ' ');
-	while (cmds[++i + o] && ft_strlen(cmds[i + o]) > 0 && ck(cmds[i + o]))
+	while (cmds[++i + o] && ft_strlen(cmds[i + o]) > 0 && ck(cmds[i + o]) && v[i])
 	{
 		v[i] = (o == 1 && v[i]) ? ft_skip_char(v[i], '\\') : v[i];
 		if (v[i])

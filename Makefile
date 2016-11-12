@@ -11,11 +11,10 @@
 # **************************************************************************** #
 
 #Define the program
-NAME		=	42sh
+NAME		=	21sh
 LIB			=	./libft/libft.a
 _SRC		=	builtins/utils/parser.c\
 				builtins/utils/env.c\
-				builtins/utils/env_helper.c\
 				builtins/utils/remove_key.c\
 				builtins/utils/vars.c\
 				builtins/utils/vars_free.c\

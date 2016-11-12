@@ -29,7 +29,7 @@ char	*action_seek_to_history(char *cmds)
 		str = (char*)cur->content;
 	else
 	{
-		ft_putstr_fd("42sh : no such event: ", 2);
+		ft_putstr_fd("21sh : no such event: ", 2);
 		ft_putendl_fd(str, 2);
 		return (NULL);
 	}

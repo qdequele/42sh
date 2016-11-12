@@ -23,7 +23,7 @@ char			*ft_skip_char(char *str, char c)
 	new_str = ft_strnew(ft_strlen(str));
 	while (str[i + nb_quotes])
 	{
-		if (str[i + nb_quotes] == c)
+		while (str[i + nb_quotes] == c)
 			nb_quotes++;
 		if (str[i + nb_quotes])
 			new_str[i] = str[i + nb_quotes];

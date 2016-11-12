@@ -40,6 +40,7 @@ t_status		action_history_up(char *buf)
 	shell = recover_shell();
 	if (!UP)
 		return (TRYING);
+	clean_prompt();
 	if (ft_lstcount(shell->history) > 0)
 	{
 		shell->history_position--;
@@ -55,6 +56,7 @@ t_status		action_history_down(char *buf)
 	shell = recover_shell();
 	if (!DOWN)
 		return (TRYING);
+	clean_prompt();
 	if (ft_lstcount(shell->history) > 0)
 	{
 		shell->history_position++;
