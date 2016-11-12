@@ -111,4 +111,5 @@ prototype : - X : blabla (username)
 - env -i PATH= ./21sh
 - env -i TERM=xterm-256color ./21sh
 - env -i PATH=/usr/bin ./21sh
+- env -i PATH= TERM=xterm-256color ./21sh
 

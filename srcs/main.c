@@ -100,7 +100,6 @@ int				main(int argc, char **argv, char **environ)
 	shell = recover_shell();
 	term->tty = open("/dev/tty", O_RDWR);
 	shell->pgid = getpgrp();
-	env_parse_to_list(&g_env, environ);
 	ignore_major_signals();
 	if (init_term() == -1)
 	{
@@ -108,5 +107,6 @@ int				main(int argc, char **argv, char **environ)
 		reset_term();
 		return (1);
 	}
+	env_parse_to_list(&g_env, environ);
 	return (shell_start());
 }

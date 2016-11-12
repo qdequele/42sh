@@ -24,7 +24,7 @@ char	*ft_array_to_string(char **tab)
 		if (i == 0)
 			str = tab[i];
 		else
-			str = ft_strjoin(str, ft_strjoin(ft_strdup(" "), tab[i]));
+			str = ft_strfjoin(str, ft_strfjoin(ft_strdup(" "), tab[i]));
 		i++;
 	}
 	return (ft_strdup(str));
