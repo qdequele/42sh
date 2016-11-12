@@ -21,11 +21,10 @@ char	*ft_array_to_string(char **tab)
 	str = ft_strnew(1);
 	while (tab[i])
 	{
-		if (i == 0)
-			str = tab[i];
-		else
-			str = ft_strjoin(str, ft_strjoin(ft_strdup(" "), tab[i]));
+		if (i > 0)
+			str = ft_strfjoin(str, " ");
+		str = ft_strfjoin(str, tab[i]);
 		i++;
 	}
-	return (ft_strdup(str));
+	return (str);
 }

@@ -51,7 +51,7 @@ static	char	*read_read(void)
 		else
 		{
 			ft_putchar(buf[0]);
-			ret = ft_freejoin(ret, buf);
+			ret = ft_strfjoin(ret, buf);
 		}
 	}
 	ft_putchar('\n');
@@ -64,19 +64,22 @@ int				builtins_read(t_list **env, char **cmds)
 	char	*last;
 	int		o;
 	int		i;
+	char 	*read;
 
 	o = (*env && cmds[1] && READ_OPT_R) ? 2 : 1;
 	i = (o == 2) ? 0 : -1;
-	v = ft_strsplit(read_read(), ' ');
+	read = read_read();
+	v = ft_strsplit(read, ' ');
+	free(read);
 	while (cmds[++i + o] && ft_strlen(cmds[i + o]) > 0 && ck(cmds[i + o]))
 	{
 		v[i] = (o == 1 && v[i]) ? ft_skip_char(v[i], '\\') : v[i];
 		if (v[i])
-			vars_add_or_modify(&g_vars, cmds[i + o], ft_strdup(v[i]));
+			vars_add_or_modify(&g_vars, cmds[i + o], v[i]);
 		else
-			vars_add_or_modify(&g_vars, cmds[i + o], ft_strdup(" "));
+			vars_add_or_modify(&g_vars, cmds[i + o], " ");
 	}
-	if (v[i])
+	if (i <= ft_count_raw_aoc(v) && v[i])
 	{
 		last = (o == 1) ? ft_skip_char(ft_array_to_string(&v[i - 1]), '\\')
 		: ft_array_to_string(&v[i - 1]);
