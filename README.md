@@ -86,3 +86,11 @@ prototype : - X : blabla (username)
 - X : Builtins Posix
 
 #Liste des bugs :
+
+- cd + tab -> segfault
+- env PATH= ./21sh
+- cd (nothing)
+- head doesn't have \0
+- ctrl + d was considered has EOF
+- 2>&1 | cat -e keep last \n
+- do not delete line when ctrl + d
