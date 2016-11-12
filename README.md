@@ -90,7 +90,6 @@ prototype : - X : blabla (username)
 - cd + tab -> segfault
 - head doesn't have \0
 - ctrl + d was considered has EOF
-- do not delete line when ctrl + d
 - Leaks on unsetenv
 
 
@@ -110,3 +109,12 @@ prototype : - X : blabla (username)
 - env -i PATH=/usr/bin ./21sh
 - env -i PATH= TERM=xterm-256color ./21sh
 
+## ctrl + d
+
+- kjfjdfkas (ctrl + d) -> nothing happen
+- (ctrl + d) -> shell quit
+
+## ctrl + c
+
+- cat (ctrl + c) -> quit cat
+- (ctrl + c) -> nothing happen
