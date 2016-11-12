@@ -23,11 +23,15 @@ void	env_parse_to_list(t_list **l_env, char **environ)
 	{
 		env = (t_env *)malloc(sizeof(t_env));
 		array = ft_strsplit(environ[i], '=');
-		env->key = ft_strdup(array[0]);
+		env->key = (array[0]) ? ft_strdup(array[0]) : ft_strdup("");
 		if (ft_strcmp(env->key, "SHLVL") == 0)
+		{
 			env->value = ft_itoa(ft_atoi(array[1]) + 1);
+		}
 		else
-			env->value = ft_strdup(array[1]);
+		{
+			env->value = (array[1]) ? ft_strdup(array[1]) : ft_strdup("");
+		}
 		ft_lstaddend(l_env, ft_lstnew(env, sizeof(t_env)));
 		free(env);
 		ft_free_aoc(array);
@@ -41,6 +45,8 @@ char	**env_parse_from_list(t_list *l_env)
 	char	**environ;
 	t_list	*elem;
 	t_env	*env;
+	char	*value;
+	char	*key;
 
 	environ = (char **)malloc(sizeof(char *) * (ft_lstcount(l_env) + 1));
 	i = 0;
@@ -48,7 +54,9 @@ char	**env_parse_from_list(t_list *l_env)
 	while (elem)
 	{
 		env = (t_env *)elem->content;
-		environ[i] = ft_strfjoin(ft_strfjoin(env->key, "="), env->value);
+		value = (env->value) ? env->value : ft_strdup("");
+		key = (env->key) ? env->key : ft_strdup("");
+		environ[i] = ft_strfjoin(ft_strfjoin(key, "="), value);
 		elem = elem->next;
 		i++;
 	}

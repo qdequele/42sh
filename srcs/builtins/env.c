@@ -44,10 +44,12 @@ static t_list	*env_cpy(t_list *src)
 int				shell_core(t_list **env, char **cmds)
 {
 	t_list		*backup;
+	char 		*test;
 
 	backup = g_env;
 	g_env = *env;
-	process_input(ft_array_to_string(cmds));
+	test = ft_array_to_string(cmds);
+	process_input(test);
 	g_env = backup;
 	return (1);
 }

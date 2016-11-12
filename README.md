@@ -88,9 +88,33 @@ prototype : - X : blabla (username)
 #Liste des bugs :
 
 - cd + tab -> segfault
-- env PATH= ./21sh
-- cd (nothing)
 - head doesn't have \0
 - ctrl + d was considered has EOF
-- 2>&1 | cat -e keep last \n
-- do not delete line when ctrl + d
+- Leaks on unsetenv
+
+
+# Unit test
+
+##env
+
+- env key=value
+- env -i
+- env -i env
+- env -i key=value key2=value2 env
+- env -i key=value
+- env ./21sh
+- env -i ./21sh
+- env -i PATH= ./21sh
+- env -i TERM=xterm-256color ./21sh
+- env -i PATH=/usr/bin ./21sh
+- env -i PATH= TERM=xterm-256color ./21sh
+
+## ctrl + d
+
+- kjfjdfkas (ctrl + d) -> nothing happen
+- (ctrl + d) -> shell quit
+
+## ctrl + c
+
+- cat (ctrl + c) -> quit cat
+- (ctrl + c) -> nothing happen
