@@ -59,10 +59,9 @@ char			*bultins_one_history(char *cmds)
 	long double			i;
 
 	shell = recover_shell();
-	i = ft_atoi(ft_strsub(cmds, 1, (ft_strlen(cmds) - 1)));
+	i = ft_atoi(&cmds[1]);
 	list = shell->history;
-	if ((list = ft_lst_seek(list, ft_strsub(cmds, 1,
-							(ft_strlen(cmds) - 1)))) != NULL)
+	if ((list = ft_lst_seek(list, &cmds[1])) != NULL)
 		cmds = (char*)list->content;
 	else if (i == 0)
 		print_error_history(i, cmds);

@@ -127,6 +127,19 @@ prototype : - X : blabla (username)
 ##history
 
  -history
+
+## !
+
+ -!
+ -![good index]
+ -![wrong index]
+ -![good cmd]
+ -![wrong cmd]
+
+-![index]
+-
+
+
 ## ctrl + d
 
 - kjfjdfkas (ctrl + d) -> nothing happen
