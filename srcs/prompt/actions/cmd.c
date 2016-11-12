@@ -35,11 +35,10 @@ t_status	action_quit(char *buf)
 	if (!CTRL_D)
 		return (TRYING);
 	shell = recover_shell();
-	if (ft_lstcount(shell->prompt->line) > 0)
+	if (ft_lstcount(shell->prompt->line) == 0)
 	{
-		clean_last_x_char(ft_lstcount(shell->prompt->line));
-		return (READING);
+		shell->last_exit_code = ft_atoi(vars_get(g_vars, "?"));
+		return (FOUND);
 	}
-	shell->last_exit_code = ft_atoi(vars_get(g_vars, "?"));
-	return (FOUND);
+	return (READING);
 }
