@@ -15,6 +15,7 @@
 static	void	display_history(t_list *list)
 {
 	t_list		*cur;
+	char 		*tmp;
 	int			i;
 
 	i = 1;
@@ -24,7 +25,10 @@ static	void	display_history(t_list *list)
 		ft_putnbr(i);
 		ft_putstr("     ");
 		if (cur->content_size != 0)
-			ft_putstr_c(RED, ft_strjoin(cur->content, "\n"));
+		{
+			tmp = ft_strdup((char*)cur->content);
+			ft_putstr_c(RED, ft_strfjoin(tmp, "\n"));
+		}
 		else
 			ft_putendl_fd(cur->content, 1);
 		cur = cur->next;
