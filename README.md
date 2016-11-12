@@ -123,7 +123,10 @@ prototype : - X : blabla (username)
  -cd .
  -cd ~
  -cd <dir>
- 	
+
+##history
+
+ -history
 ## ctrl + d
 
 - kjfjdfkas (ctrl + d) -> nothing happen
