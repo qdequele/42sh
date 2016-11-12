@@ -94,3 +94,21 @@ prototype : - X : blabla (username)
 - ctrl + d was considered has EOF
 - 2>&1 | cat -e keep last \n
 - do not delete line when ctrl + d
+- Leaks on unsetenv
+
+
+# Unit test
+
+##env
+
+- env key=value
+- env -i
+- env -i env
+- env -i key=value key2=value2 env
+- env -i key=value
+- env ./21sh
+- env -i ./21sh
+- env -i PATH= ./21sh
+- env -i TERM=xterm-256color ./21sh
+- env -i PATH=/usr/bin ./21sh
+
