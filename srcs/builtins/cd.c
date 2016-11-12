@@ -32,7 +32,7 @@ static int	move_to(char *path)
 		print_err("cd: Not a directory: ", path);
 		return (0);
 	}
-	else if (chdir(ft_strdup(path)) != 0)
+	else if (chdir(path) != 0)
 	{
 		print_err("cd: Permission denied: ", path);
 		return (0);
@@ -61,7 +61,7 @@ int			builtins_cd(t_list **env, char **cmds)
 			return (1);
 	}
 	getcwd(new_path, 1024);
-	env_add_or_modify(env, ft_strdup("PWD"), ft_strdup(new_path));
-	env_add_or_modify(env, ft_strdup("OLDPWD"), ft_strdup(old_path));
+	env_add_or_modify(env, "PWD", ft_strdup(new_path));
+	env_add_or_modify(env, "OLDPWD", ft_strdup(old_path));
 	return (0);
 }
