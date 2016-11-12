@@ -117,6 +117,12 @@ prototype : - X : blabla (username)
  	Read> test3
  - read test1 
  	Read> test2 test3 
+##cd
+
+ -cd ..
+ -cd .
+ -cd ~
+ -cd <dir>
  	
 ## ctrl + d
 
