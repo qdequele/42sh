@@ -109,6 +109,15 @@ prototype : - X : blabla (username)
 - env -i PATH=/usr/bin ./21sh
 - env -i PATH= TERM=xterm-256color ./21sh
 
+##read
+
+ - read test1
+ 	Read> test2
+ - read test1 test2
+ 	Read> test3
+ - read test1 
+ 	Read> test2 test3 
+ 	
 ## ctrl + d
 
 - kjfjdfkas (ctrl + d) -> nothing happen
