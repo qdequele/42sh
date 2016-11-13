@@ -19,7 +19,6 @@ typedef enum			e_mode
 {
 	NORMAL,
 	COPY,
-	HEREDOC,
 	QUOTE
 }						t_mode;
 

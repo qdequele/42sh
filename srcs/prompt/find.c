@@ -59,22 +59,6 @@ void		*get_actions_copy(void)
 	return ((void *)f);
 }
 
-void		*get_actions_heredoc(void)
-{
-	static t_status (*f[])(char *) = {
-		action_move_right,
-		action_move_left,
-		action_move_next_word,
-		action_move_last_word,
-		action_move_start,
-		action_move_end,
-		action_move_up,
-		action_move_down
-	};
-
-	return ((void *)f);
-}
-
 void		*get_actions_quote(void)
 {
 	static t_status (*f[])(char *) = {
@@ -104,8 +88,6 @@ t_status	prompt_find_function(char *b)
 	shell = recover_shell();
 	if (shell->mode == QUOTE)
 		actions = get_actions_quote();
-	if (shell->mode == HEREDOC)
-		actions = get_actions_heredoc();
 	if (shell->mode == COPY)
 		actions = get_actions_copy();
 	else

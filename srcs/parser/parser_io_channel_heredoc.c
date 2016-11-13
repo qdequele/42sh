@@ -66,12 +66,20 @@ int				parse_heredoc_redir(t_process *p, int channel, char *target)
 	{
 		ft_putchar(b[0]);
 		ret = ft_freejoin(ret, b);
-		if (ENTER && ft_strcmp(ft_strtrim(ret), target) != 0)
-			ret = add_to_list(&list, ret);
-		else if (ENTER)
+		if (ft_strcmp(target, "EOF") == 0 && CTRL_D)
 		{
+			ft_putchar('\n');
 			print_on_fd(pipe_fd, list);
 			break ;
+		}
+		if (ENTER)
+		{
+			if (ft_strcmp(ft_strtrim(ret), target) == 0)
+			{
+				print_on_fd(pipe_fd, list);
+				break ;
+			}
+			ret = add_to_list(&list, ret);
 		}
 		ft_bzero(b, 4);
 	}
