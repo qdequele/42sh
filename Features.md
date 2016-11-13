@@ -111,6 +111,7 @@ prototype : - X : blabla (username)
 
 ##read
 
+```
 - read test1
  	Read> test2
 - read test1 test2
@@ -123,6 +124,7 @@ prototype : - X : blabla (username)
 	Read>
 - read
 	Read> test
+```
 
 ##cd
 
@@ -130,9 +132,9 @@ prototype : - X : blabla (username)
 - cd .
 - cd ~
 - cd -
-- cd <dir>
-- cd /<dir>
-- cd ~/<dir>
+- cd (dir)
+- cd /(dir)
+- cd ~/(dir)
 
 ##history
 
