@@ -12,6 +12,20 @@
 
 #include <ft_sh.h>
 
+static void	put_specific_char(char c, int fd)
+{
+	if (c == '|' || c == '&' || c == ';')
+		ft_putchar_fd_c(YELLOW, c, fd);
+	else if (c == '"')
+		ft_putchar_fd_c(RED, c, fd);
+	else if (c == '\'')
+		ft_putchar_fd_c(LIGHT_RED, c, fd);
+	else if (c == '$')
+		ft_putchar_fd_c(LIGHT_BLUE, c, fd);
+	else
+		ft_putchar_fd(c, fd);
+}
+
 void		add_char(char c)
 {
 	t_shell	*shell;
@@ -35,7 +49,7 @@ void		inser_char(char c)
 	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_pos);
 	shell->prompt->i_pos++;
 	tputs(IMSTR, 0, ft_tputs);
-	ft_putchar_fd(c, term->tty);
+	put_specific_char(c, term->tty);
 	tputs(EISTR, 0, ft_tputs);
 	if (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 	{
