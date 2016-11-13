@@ -62,19 +62,22 @@ _SRC		=	builtins/utils/parser.c\
 				parser/parser_io_utils.c\
 				parser/parser_io_channel_heredoc.c\
 				parser/parser_replace_vars.c\
-				prompt/actions/autocomplete.c\
-				prompt/actions/char.c\
-				prompt/actions/cmd.c\
-				prompt/actions/history.c\
-				prompt/actions/move.c\
-				prompt/actions/move_word.c\
-				prompt/actions/move_ext.c\
-				prompt/actions/copy.c\
-				prompt/actions/paste.c\
-				prompt/actions/free_copy.c\
-				prompt/actions/seek_to_history.c\
-				prompt/actions/cut.c\
-				prompt/utils/clear.c\
+				prompt/actions/common/char.c\
+				prompt/actions/common/move.c\
+				prompt/actions/common/move_ext.c\
+				prompt/actions/common/cmd.c\
+				prompt/actions/copy/copy.c\
+				prompt/actions/copy/cut.c\
+				prompt/actions/copy/free_copy.c\
+				prompt/actions/copy/paste.c\
+				prompt/actions/normal/autocomplete.c\
+				prompt/actions/normal/history.c\
+				prompt/actions/normal/prompt_length.c\
+				prompt/actions/normal/read.c\
+				prompt/actions/normal/seek_to_history.c\
+				prompt/actions/quote/prompt_length.c\
+				prompt/actions/quote/read.c\
+				prompt/utils/clean.c\
 				prompt/utils/conversion.c\
 				prompt/utils/move.c\
 				prompt/utils/move_ext.c\
@@ -84,12 +87,10 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/utils/show_end_of_line.c\
 				prompt/find.c\
 				prompt/init.c\
-				prompt/detect_quote.c\
 				shell/init.c\
 				shell/print.c\
 				shell/signal.c\
 				shell/term.c\
-				shell/utils.c\
 				main.c
 
 SRC			=	$(addprefix srcs/,$(_SRC))

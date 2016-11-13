@@ -29,31 +29,6 @@ void			process_input(char *input)
 	}
 }
 
-char			*read_input(void)
-{
-	t_prompt	*prompt;
-	char		buf[8];
-	t_status	status;
-	t_status	copy_status;
-	t_shell		*shell;
-
-	shell = recover_shell();
-	prompt = init_prompt();
-	shell->prompt = prompt;
-	ft_bzero(buf, 8);
-	while (read(0, buf, 8))
-	{
-		if (!TAB)
-			reset_autocomplete_possibilities();
-		if ((copy_status = main_action_copy(buf)) == EXIT)
-			status = prompt_find_function(buf);
-		ft_bzero(buf, 8);
-		if (status == FOUND && check_quote(list_to_string()) == 1)
-			return (list_to_string());
-	}
-	return (ft_strdup(""));
-}
-
 int				shell_start(void)
 {
 	char		*line;
@@ -64,7 +39,7 @@ int				shell_start(void)
 		init_term();
 		print_shell();
 		recover_shell()->history_position = -1;
-		line = read_input();
+		line = read_normal_input();
 		free_input();
 		if (line)
 		{

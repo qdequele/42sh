@@ -123,74 +123,96 @@ typedef struct	s_prompt
 	int			quote_number;
 }				t_prompt;
 
-void			get_cmd_list(t_list **possibilities, char *last_word);
-void			get_builtins_list(t_list **possibilities, char *last_word);
-void			get_files_list(t_list **possibilities, char *last_word);
-char			*read_input(void);
-t_status		action_autocomplete(char *buf);
-t_status		action_insert_char(char *buf);
-t_status		action_delete_char(char *buf);
-t_status		action_delete_next_char(char *buf);
-t_status		action_exec_cmd(char *buf);
-t_status		action_ignore_input(char *buf);
-t_status		action_insert_char(char *buf);
-t_status		action_quit(char *buf);
-t_status		action_history_up(char *buf);
-t_status		action_history_down(char *buf);
-char			*action_seek_to_history(char *buf);
-t_status		action_move_up(char *buf);
-t_status		action_move_down(char *buf);
-t_status		action_move_left(char *buf);
-t_status		action_move_right(char *buf);
-t_status		action_move_next_word(char *buf);
-t_status		action_move_last_word(char *buf);
-t_status		action_move_start(char *buf);
-t_status		action_move_end(char *buf);
-t_status		action_move_max_top(char *buf);
-t_status		action_move_max_bottom(char *buf);
-t_status		prompt_find_function(char *buf);
-void			*get_actions_normal(void);
-void			*get_actions_copy(void);
-void			*get_actions_autocomplete(void);
-void			*get_actions_history(void);
-t_status		action_copy_quit(char *buf);
-t_status		main_action_copy(char *buf);
-t_status		action_copy(char *buf);
-t_status		action_paste(char *buf);
-t_status		action_copy(char *buf);
-t_status		action_cut(char *buf);
-t_status		action_free(char *buf);
-void			free_copy(void);
-t_prompt		*init_prompt(void);
-char			*get_current_folder(void);
-int				get_current_folder_length(void);
-void			clean_prompt(void);
-void			string_to_list(char *str);
-char			*list_to_string(void);
-void			free_char(void *content, size_t size);
-void			print_eol(void);
-void			inser_char(char c);
-void			erase_one_char(void);
-void			erase_x_chars(int x);
-void			delete_one_char(void);
-void			delete_x_chars(int x);
-void			utils_move_up(void);
-void			utils_move_down(void);
-void			utils_move_left(void);
-void			utils_move_right(void);
-void			utils_move_start(void);
-void			utils_move_end(void);
-void			utils_move_max_top(void);
-void			utils_move_max_bottom(void);
-int				check_quote(char *str);
-void			parse_quotes(char quote);
-int				print_error(char flag);
-char			display_quote_error(char c);
-int				quote_close(char *str, char c);
-char			*before_last_word(char *str, int c);
-char			*get_last_word(char *str, int c);
-int				sort_by_lexycography(t_list *node);
-void			clean_last_x_char(int i);
-char			**list_to_tab(t_list *list);
+
+void		*get_actions_normal(void);
+void		*get_actions_copy(void);
+void		*get_actions_heredoc(void);
+void		*get_actions_quote(void);
+t_status	prompt_find_function(char *buf);
+t_prompt	*init_prompt(void);
+void		add_history(char *line);
+/*
+** Action - Common
+*/
+void		add_char(char c);
+void		inser_char(char c);
+t_status	action_insert_char(char *buf);
+t_status	action_delete_char(char *buf);
+t_status	action_delete_next_char(char *buf);
+t_status	action_move_up(char *buf);
+t_status	action_move_down(char *buf);
+t_status	action_move_left(char *buf);
+t_status	action_move_right(char *buf);
+t_status	action_move_start(char *buf);
+t_status	action_move_end(char *buf);
+t_status	action_move_next_word(char *buf);
+t_status	action_move_last_word(char *buf);
+t_status	action_exec_cmd(char *buf);
+t_status	action_ignore_input(char *buf);
+t_status	action_quit(char *buf);
+/*
+** Action - Copy
+*/
+void		free_copy(void);
+t_status	action_copy_quit(char *buf);
+t_status	action_copy(char *buf);
+t_status	main_action_copy(char *buf);
+t_status	action_cut(char *buf);
+t_status	action_free(char *buf);
+t_status	action_paste(char *buf);
+/*
+** Action - Heredoc
+*/
+
+/*
+** Action - Normal
+*/
+int			get_normal_prompt_length(void);
+char		*read_normal_input(void);
+char		*action_seek_to_history(char *cmds);
+t_status	action_autocomplete(char *buf);
+t_status	action_history_up(char *buf);
+t_status	action_history_down(char *buf);
+/*
+** Action - Quote
+*/
+char		display_quote_error(char c);
+int			print_error(char flag);
+int			quote_close(char *str, char c);
+void		read_quote_input(char quote);
+int			check_quote(char *line);
+int			get_quote_prompt_length(char c);
+t_status	action_exec_cmd(char *buf);
+/*
+** Utils
+*/
+void		clean_prompt(void);
+void		clean_last_x_char(int i);
+void		free_char(void *content, size_t size);
+void		free_input(void);
+int			sort_by_lexycography(t_list *node);
+void		string_to_list(char *str);
+char		*list_to_string(void);
+char		**list_to_tab(t_list *list);
+void		erase_one_char(void);
+void		erase_x_chars(int x);
+void		delete_one_char(void);
+void		delete_x_chars(int x);
+void		get_cmd_list(t_list **possibilities, char *last_word);
+void		get_builtins_list(t_list **possibilities, char *last_word);
+void		get_files_list_one(t_list **possibilities, char *path, char *name, char *cmd_start);
+void		get_files_list(t_list **possibilities, char *last_word);
+void		reset_autocomplete_possibilities(void);
+char		*before_last_word(char *str, int c);
+char		*get_last_word(char *str, int c);
+void		utils_move_up(void);
+void		utils_move_down(void);
+void		utils_move_left(void);
+void		utils_move_right(void);
+void		utils_move_start(void);
+void		utils_move_end(void);
+void		utils_move_max_top(void);
+void		utils_move_max_bottom(void);
+void		print_eol(void);
 
 #endif

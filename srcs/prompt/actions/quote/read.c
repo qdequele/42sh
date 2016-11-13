@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   detect_quote.c                                     :+:      :+:    :+:   */
+/*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 21:38:12 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:52:25 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,16 @@ char	display_quote_error(char c)
 	else if (c == '"')
 		return (flag = 'd');
 	else if (c == '(')
-		return (flag = 1);
+		return (flag = 'p');
 	else
 		return (flag = 0);
 }
 
 int		print_error(char flag)
 {
-	if (flag == '(')
-		ft_putstr_fd(">", 2);
-	else if (flag)
+	if (flag)
 		ft_putchar_fd(flag, 2);
-	ft_putstr_fd("quote>", 2);
+	ft_putstr_fd("quote> ", 2);
 	return (0);
 }
 
@@ -46,32 +44,38 @@ int		quote_close(char *str, char c)
 		return (0);
 }
 
-void	parse_quotes(char quote)
+void			read_quote_input(char quote)
 {
-	char		buf[8];
-	char		*ret;
-	int			i;
 	t_prompt	*prompt;
+	t_shell		*shell;
+	char		buf[8];
+	t_status	status;
+	t_status	nb_quote;
 
-	ret = ft_strdup("\n");
-	i = -1;
-	prompt = recover_shell()->prompt;
+	shell = recover_shell();
+	prompt = shell->prompt;
+	shell->mode = QUOTE;
+	prompt->p_length = get_quote_prompt_length(quote);
+	add_char('\n');
+	nb_quote = 0;
 	ft_bzero(buf, 8);
 	print_error(display_quote_error(quote));
 	while (read(0, buf, 8))
 	{
-		ret = (ENTER) ? ft_freejoin(ret, "\n") : ft_freejoin(ret, buf);
-		ft_putchar(ret[ft_strlen(ret) - 1]);
-		if (ENTER && ft_strchr(ret, quote))
+		if (buf[0] == quote)
+			nb_quote++;
+		status = prompt_find_function(buf);
+		if (status == FOUND && nb_quote % 2 != 0)
 		{
-			while (ret[++i] != quote)
-				ft_lstaddend(&prompt->line, ft_lstnew(&ret[i], sizeof(char)));
-			ft_lstaddend(&prompt->line, ft_lstnew(&quote, sizeof(char)));
-			free(ret);
+			add_char('\n');
+			shell->mode = NORMAL;
 			break ;
 		}
 		if (ENTER)
+		{
+			add_char('\n');
 			print_error(display_quote_error(quote));
+		}
 	}
 }
 
@@ -92,7 +96,7 @@ int		check_quote(char *line)
 			}
 			else
 			{
-				parse_quotes(line[i]);
+				read_quote_input(line[i]);
 				free(line);
 				return (1);
 			}

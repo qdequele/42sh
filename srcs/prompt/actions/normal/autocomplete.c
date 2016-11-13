@@ -25,8 +25,12 @@ static void			set_possibilities(void)
 	get_cmd_list(&(shell->posibilities), line);
 	get_builtins_list(&(shell->posibilities), line);
 	get_files_list(&(shell->posibilities), line);
-	ft_lst_bubble_sort(shell->posibilities, sort_by_lexycography);
-	ft_lstremdup(&shell->posibilities, ft_lstremdup_str, free_char);
+	if (shell->posibilities->content)
+	{
+		ft_lst_bubble_sort(shell->posibilities, sort_by_lexycography);
+		// TODO
+		ft_lstremdup(&shell->posibilities, ft_lstremdup_str, free_char);
+	}
 }
 
 static void			show_possibilities(void)

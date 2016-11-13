@@ -93,3 +93,13 @@ void				get_files_list(t_list **possibilities, char *last_word)
 	free(cmd_start);
 	free(path);
 }
+
+void				reset_autocomplete_possibilities(void)
+{
+	t_shell			*shell;
+
+	shell = recover_shell();
+	shell->autocomplete_position = 0;
+	ft_lstdel(&(shell->posibilities), free_char);
+}
+

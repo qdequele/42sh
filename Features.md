@@ -88,7 +88,6 @@ prototype : - X : blabla (username)
 #Liste des bugs :
 
 - cd + tab -> segfault
-- head doesn't have \0
 - ctrl + d was considered has EOF
 - Leaks on unsetenv
 

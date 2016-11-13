@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/07 19:17:05 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:52:25 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-t_prompt	*init_prompt(void)
+char			*read_normal_input(void)
 {
-	t_prompt		*prompt;
-
-	prompt = (t_prompt*)malloc(sizeof(t_prompt));
-	prompt->line = NULL;
-	prompt->i_position = 0;
-	prompt->p_length = 0;
-	prompt->i_copy = 0;
-	prompt->flag_cut = 0;
-	prompt->end_cpy = 0;
-	prompt->str_cpy = NULL;
-	prompt->cut_len = 0;
-	prompt->quote_type = 0;
-	prompt->quote_number = 0;
-	return (prompt);
-}
-
-void		add_history(char *line)
-{
-	t_shell	*shell;
+	t_prompt	*prompt;
+	char		buf[8];
+	t_status	status;
+	t_status	copy_status;
+	t_shell		*shell;
 
 	shell = recover_shell();
-	if (line[0] == '!')
-		return ;
-	ft_lstadd_at(&shell->history,
-		ft_lstnew(line, sizeof(char) * ft_strlen(line) + 1),
-		shell->history_index);
-	shell->history_index++;
+	prompt = init_prompt();
+	shell->prompt = prompt;
+	prompt->p_length = get_normal_prompt_length();
+	ft_bzero(buf, 8);
+	while (read(0, buf, 8))
+	{
+		if (!TAB)
+			reset_autocomplete_possibilities();
+		if ((copy_status = main_action_copy(buf)) == EXIT)
+			status = prompt_find_function(buf);
+		ft_bzero(buf, 8);
+		if (status == FOUND && check_quote(list_to_string()) == 1)
+			return (list_to_string());
+	}
+	return (ft_strdup(""));
 }

@@ -12,6 +12,19 @@
 
 #include <ft_sh.h>
 
+void		add_char(char c)
+{
+	t_shell	*shell;
+	t_list	*new;
+	t_term	*term;
+
+	shell = recover_shell();
+	term = recover_term();
+	new = ft_lstnew(&c, sizeof(char));
+	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_position);
+	shell->prompt->i_position++;
+}
+
 void		inser_char(char c)
 {
 	t_shell	*shell;

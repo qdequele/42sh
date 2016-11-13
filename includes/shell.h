@@ -18,7 +18,9 @@
 typedef enum			e_mode
 {
 	NORMAL,
-	COPY
+	COPY,
+	HEREDOC,
+	QUOTE
 }						t_mode;
 
 typedef struct			s_shell

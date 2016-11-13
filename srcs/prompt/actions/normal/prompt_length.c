@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   prompt_length.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/07 19:17:05 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:52:25 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-t_prompt	*init_prompt(void)
+static char	*get_current_folder(void)
 {
-	t_prompt		*prompt;
+	char	*prompt;
 
-	prompt = (t_prompt*)malloc(sizeof(t_prompt));
-	prompt->line = NULL;
-	prompt->i_position = 0;
-	prompt->p_length = 0;
-	prompt->i_copy = 0;
-	prompt->flag_cut = 0;
-	prompt->end_cpy = 0;
-	prompt->str_cpy = NULL;
-	prompt->cut_len = 0;
-	prompt->quote_type = 0;
-	prompt->quote_number = 0;
+	prompt = ft_strdup("");
+	if (ft_strrchr_n(env_get(g_env, "PWD"), '/'))
+		prompt = ft_strfjoin(prompt, ft_strrchr_n(env_get(g_env, "PWD"), '/'));
+	prompt = ft_strfjoin(prompt, " $> ");
 	return (prompt);
 }
 
-void		add_history(char *line)
+int			get_normal_prompt_length(void)
 {
-	t_shell	*shell;
+	char	*prompt;
+	int		prompt_length;
 
-	shell = recover_shell();
-	if (line[0] == '!')
-		return ;
-	ft_lstadd_at(&shell->history,
-		ft_lstnew(line, sizeof(char) * ft_strlen(line) + 1),
-		shell->history_index);
-	shell->history_index++;
+	prompt = get_current_folder();
+	prompt_length = ft_strlen(prompt);
+	free(prompt);
+	return (prompt_length);
 }

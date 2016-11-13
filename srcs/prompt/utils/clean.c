@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-void	clean_prompt(void)
+void		clean_prompt(void)
 {
 	t_shell	*shell;
 	int		i;
@@ -38,7 +38,7 @@ void	clean_prompt(void)
 	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 }
 
-void	clean_last_x_char(int i)
+void		clean_last_x_char(int i)
 {
 	t_shell	*shell;
 
@@ -58,14 +58,24 @@ void	clean_last_x_char(int i)
 	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 }
 
-void	free_char(void *content, size_t size)
+void		free_char(void *content, size_t size)
 {
 	UNUSED(size);
 	if (content)
 		free(content);
 }
 
-int		sort_by_lexycography(t_list *node)
+void		free_input(void)
+{
+	t_shell	*shell;
+
+	shell = recover_shell();
+	ft_lstdel(&(shell->prompt->line), &free_char);
+	free_copy();
+}
+
+
+int			sort_by_lexycography(t_list *node)
 {
 	t_list	*n_elem;
 
