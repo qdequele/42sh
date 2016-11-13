@@ -39,6 +39,8 @@ void	ft_lstremdup(t_list **list, int (*comp)(void *, void *),
 
 int		ft_lstremdup_str(void *prev, void *next)
 {
+	if (!prev || !next)
+		return (0);
 	if (ft_strcmp((char *)prev, (char *)next) == 0)
 		return (1);
 	else

@@ -25,10 +25,9 @@ static void			set_possibilities(void)
 	get_cmd_list(&(shell->posibilities), line);
 	get_builtins_list(&(shell->posibilities), line);
 	get_files_list(&(shell->posibilities), line);
-	if (shell->posibilities->content)
+	if (shell->posibilities && ft_lstcount(shell->posibilities) > 2)
 	{
 		ft_lst_bubble_sort(shell->posibilities, sort_by_lexycography);
-		// TODO
 		ft_lstremdup(&shell->posibilities, ft_lstremdup_str, free_char);
 	}
 }
@@ -45,7 +44,7 @@ static void			show_possibilities(void)
 	line = get_last_word(list_to_string(), ' ');
 	len = ft_strlen(line);
 	free(line);
-	if (shell->autocomplete_position >= ft_lstcount(shell->posibilities))
+	if (shell->autocomplete_position >= ft_lstcount(shell->posibilities) - 1)
 		return ;
 	new_line = ft_strdup((char *)(ft_lstget_at(shell->posibilities,
 		shell->autocomplete_position)->content));

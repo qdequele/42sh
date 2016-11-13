@@ -87,7 +87,6 @@ prototype : - X : blabla (username)
 
 #Liste des bugs :
 
-- cd + tab -> segfault
 - ctrl + d was considered has EOF
 - Leaks on unsetenv
 
