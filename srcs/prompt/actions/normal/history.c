@@ -15,11 +15,9 @@
 static void		move_to_history(void)
 {
 	t_shell		*shell;
-	t_prompt	*prompt;
 	int			pos;
 
 	shell = recover_shell();
-	prompt = shell->prompt;
 	pos = ft_lstcount(shell->history) - 1 - shell->history_position;
 	if (shell->history_position >= 0 &&
 		shell->history_position <= (ft_lstcount(shell->history) - 1))
