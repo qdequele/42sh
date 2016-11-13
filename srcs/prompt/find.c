@@ -95,7 +95,7 @@ void		*get_actions_quote(void)
 	return ((void *)f);
 }
 
-t_status	prompt_find_function(char *buf)
+t_status	prompt_find_function(char *b)
 {
 	t_status	(**actions)(char *);
 	t_status	status;
@@ -113,7 +113,7 @@ t_status	prompt_find_function(char *buf)
 	status = TRYING;
 	while (*actions && status == TRYING)
 	{
-		status = (*actions)(buf);
+		status = (*actions)(b);
 		actions++;
 	}
 	return (status);

@@ -136,6 +136,7 @@ prototype : - X : blabla (username)
 - cd (dir)
 - cd /(dir)
 - cd ~/(dir)
+- cd (tab)
 ```
 
 ##history

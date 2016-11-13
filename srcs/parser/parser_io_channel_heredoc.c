@@ -53,19 +53,19 @@ static void		assign_new_fd(t_process *p, int *pipe_fd, int channel)
 int				parse_heredoc_redir(t_process *p, int channel, char *target)
 {
 	t_list		*list;
-	char		buf[8];
+	char		b[4];
 	char		*ret;
 	int			pipe_fd[2];
 
 	ret = NULL;
 	list = NULL;
-	ft_bzero(buf, 8);
+	ft_bzero(b, 4);
 	pipe(pipe_fd);
 	ft_putstr("heredoc> ");
-	while (read(0, buf, 8))
+	while (read(0, b, 4))
 	{
-		ft_putchar(buf[0]);
-		ret = ft_freejoin(ret, buf);
+		ft_putchar(b[0]);
+		ret = ft_freejoin(ret, b);
 		if (ENTER && ft_strcmp(ft_strtrim(ret), target) != 0)
 			ret = add_to_list(&list, ret);
 		else if (ENTER)
@@ -73,6 +73,7 @@ int				parse_heredoc_redir(t_process *p, int channel, char *target)
 			print_on_fd(pipe_fd, list);
 			break ;
 		}
+		ft_bzero(b, 4);
 	}
 	assign_new_fd(p, pipe_fd, channel);
 	return (0);

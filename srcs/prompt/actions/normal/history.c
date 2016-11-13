@@ -33,7 +33,7 @@ static void		move_to_history(void)
 	}
 }
 
-t_status		action_history_up(char *buf)
+t_status		action_history_up(char *b)
 {
 	t_shell		*shell;
 
@@ -49,7 +49,7 @@ t_status		action_history_up(char *buf)
 	return (READING);
 }
 
-t_status		action_history_down(char *buf)
+t_status		action_history_down(char *b)
 {
 	t_shell *shell;
 

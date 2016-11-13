@@ -61,7 +61,7 @@ static void			show_possibilities(void)
 		shell->autocomplete_position + 1 : 1;
 }
 
-t_status			action_autocomplete(char *buf)
+t_status			action_autocomplete(char *b)
 {
 	t_shell			*shell;
 	char			*line;

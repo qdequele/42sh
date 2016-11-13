@@ -52,7 +52,7 @@ void			read_quote_input(char quote)
 {
 	t_prompt	*prompt;
 	t_shell		*shell;
-	char		buf[8];
+	char		b[4];
 	t_status	status;
 	t_status	nb_quote;
 
@@ -62,13 +62,13 @@ void			read_quote_input(char quote)
 	prompt->p_length = get_quote_prompt_length(quote);
 	add_char('\n');
 	nb_quote = 0;
-	ft_bzero(buf, 8);
+	ft_bzero(b, 4);
 	print_error(display_quote_error(quote));
-	while (read(0, buf, 8))
+	while (read(0, b, 4))
 	{
-		if (buf[0] == quote)
+		if (b[0] == quote)
 			nb_quote++;
-		status = prompt_find_function(buf);
+		status = prompt_find_function(b);
 		if (status == FOUND && nb_quote % 2 != 0)
 		{
 			add_char('\n');
@@ -80,7 +80,7 @@ void			read_quote_input(char quote)
 			add_char('\n');
 			print_error(display_quote_error(quote));
 		}
-		ft_bzero(buf, 8);
+		ft_bzero(b, 4);
 	}
 }
 

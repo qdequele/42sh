@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-t_status	action_exec_cmd(char *buf)
+t_status	action_exec_cmd(char *b)
 {
 	if (!ENTER)
 		return (TRYING);
@@ -21,14 +21,14 @@ t_status	action_exec_cmd(char *buf)
 	return (FOUND);
 }
 
-t_status	action_ignore_input(char *buf)
+t_status	action_ignore_input(char *b)
 {
 	if (!IGNORE_1)
 		return (TRYING);
 	return (READING);
 }
 
-t_status	action_quit(char *buf)
+t_status	action_quit(char *b)
 {
 	t_shell	*shell;
 

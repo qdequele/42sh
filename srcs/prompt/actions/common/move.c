@@ -12,23 +12,23 @@
 
 #include <ft_sh.h>
 
-t_status	action_move_up(char *buf)
+t_status	action_move_up(char *b)
 {
-	if (!SHIFT_UP)
+	if (!S_UP)
 		return (TRYING);
 	utils_move_up();
 	return (READING);
 }
 
-t_status	action_move_down(char *buf)
+t_status	action_move_down(char *b)
 {
-	if (!SHIFT_DOWN)
+	if (!S_DOWN)
 		return (TRYING);
 	utils_move_down();
 	return (READING);
 }
 
-t_status	action_move_left(char *buf)
+t_status	action_move_left(char *b)
 {
 	if (!LEFT)
 		return (TRYING);
@@ -36,7 +36,7 @@ t_status	action_move_left(char *buf)
 	return (READING);
 }
 
-t_status	action_move_right(char *buf)
+t_status	action_move_right(char *b)
 {
 	if (!RIGHT)
 		return (TRYING);

@@ -32,13 +32,13 @@ static int		ck(char *str)
 
 static	char	*read_read(void)
 {
-	char buf[9];
+	char b[9];
 	char *ret;
 
-	ft_bzero(buf, 9);
+	ft_bzero(b, 9);
 	ret = ft_strdup("");
 	ft_putstr_c(GREEN, "Read>");
-	while (read(0, buf, 9) && !ENTER)
+	while (read(0, b, 9) && !ENTER)
 	{
 		if (BACK_SPACE && ret && ft_strlen(ret) > 0)
 		{
@@ -50,8 +50,8 @@ static	char	*read_read(void)
 		}
 		else
 		{
-			ft_putchar(buf[0]);
-			ret = ft_strfjoin(ret, buf);
+			ft_putchar(b[0]);
+			ret = ft_strfjoin(ret, b);
 		}
 	}
 	ft_putchar('\n');

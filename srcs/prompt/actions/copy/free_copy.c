@@ -25,7 +25,7 @@ void		free_copy(void)
 	prompt->flag_cut = 0;
 }
 
-t_status	action_free(char *buf)
+t_status	action_free(char *b)
 {
 	if (!ALT_B)
 		return (TRYING);

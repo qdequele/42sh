@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-t_status	action_paste(char *buf)
+t_status	action_paste(char *b)
 {
 	t_shell		*shell;
 	t_prompt	*prompt;

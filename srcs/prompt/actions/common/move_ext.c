@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-t_status	action_move_start(char *buf)
+t_status	action_move_start(char *b)
 {
 	if (!HOME || !FN_LEFT)
 		return (TRYING);
@@ -20,7 +20,7 @@ t_status	action_move_start(char *buf)
 	return (READING);
 }
 
-t_status	action_move_end(char *buf)
+t_status	action_move_end(char *b)
 {
 	if (!END || !FN_RIGHT)
 		return (TRYING);
@@ -28,12 +28,12 @@ t_status	action_move_end(char *buf)
 	return (READING);
 }
 
-t_status	action_move_next_word(char *buf)
+t_status	action_move_next_word(char *b)
 {
 	t_shell		*shell;
 	int			i;
 
-	if (!SHIFT_RIGHT)
+	if (!S_RIGHT)
 		return (TRYING);
 	shell = recover_shell();
 	i = 1;
@@ -53,12 +53,12 @@ t_status	action_move_next_word(char *buf)
 	return (READING);
 }
 
-t_status	action_move_last_word(char *buf)
+t_status	action_move_last_word(char *b)
 {
 	t_shell		*shell;
 	int			i;
 
-	if (!SHIFT_LEFT)
+	if (!S_LEFT)
 		return (TRYING);
 	shell = recover_shell();
 	i = 1;

@@ -23,7 +23,7 @@ typedef struct	s_color {
 
 typedef struct	s_gnl
 {
-	char		buf[BUFF_SIZE + 1];
+	char		b[BUFF_SIZE + 1];
 	char		*str;
 	int			ret;
 }				t_gnl;

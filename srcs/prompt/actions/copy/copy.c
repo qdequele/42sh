@@ -12,13 +12,13 @@
 
 #include <ft_sh.h>
 
-t_status		action_copy_quit(char *buf)
+t_status		action_copy_quit(char *b)
 {
-	(void)buf;
+	(void)b;
 	return (EXIT);
 }
 
-t_status		action_copy(char *buf)
+t_status		action_copy(char *b)
 {
 	t_shell		*shell;
 	t_prompt	*prompt;
@@ -46,7 +46,7 @@ t_status		action_copy(char *buf)
 	return (TRYING);
 }
 
-t_status		main_action_copy(char *buf)
+t_status		main_action_copy(char *b)
 {
 	t_status	(**actions_copy)(char *);
 	t_status	status_copy;
@@ -57,7 +57,7 @@ t_status		main_action_copy(char *buf)
 	status_copy = TRYING;
 	while ((*actions_copy && status_copy == TRYING) || status_copy != EXIT)
 	{
-		status_copy = (*actions_copy)(buf);
+		status_copy = (*actions_copy)(b);
 		actions_copy++;
 	}
 	return (READING);

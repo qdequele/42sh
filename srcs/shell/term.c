@@ -22,14 +22,14 @@ t_term		*recover_term(void)
 int			init_term(void)
 {
 	t_term	*term;
-	char	buff_env[4096];
+	char	bf_env[4096];
 
 	term = recover_term();
 	if (tcgetattr(0, &(term->old_term)) == -1)
 		return (0);
 	if ((term->term_name = getenv("TERM")) == NULL)
 		return (-1);
-	if (tgetent(buff_env, term->term_name) != 1)
+	if (tgetent(bf_env, term->term_name) != 1)
 		return (-1);
 	if (tcgetattr(0, &(term->term)) == -1)
 		return (0);

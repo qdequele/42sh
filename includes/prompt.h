@@ -14,65 +14,31 @@
 # define PROMPT_H
 # include <ft_sh.h>
 
-# define UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 65))
-
-# define SHIFT_UP ((buf[0] == 27 && buf[1] == 27 && SUP2))
-# define SUP2 buf[2] == 91 && buf[3] == 65
-
-# define SHIFT_MAJ_UP ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && SMUP2))
-# define SMUP2 buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 65
-
-# define DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 66))
-
-# define SHIFT_DOWN ((buf[0] == 27 && buf[1] == 27 && SD2))
-# define SD2 buf[2] == 91 && buf[3] == 66
-
-# define SHIFT_MAJ_DOWN ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49 && SMD))
-# define SMD buf[3] == 59 && buf[4] == 49 && buf[5] == 48 && buf[7] == 66
-
-# define RIGHT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 67))
-
-# define SHIFT_RIGHT ((buf[0] == 27 && buf[1] == 27 && SR))
-# define SR buf[2] == 91 && buf[3] == 67
-
-# define FN_RIGHT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 70))
-
-# define SHIFT_MAJ_RIGHT ((buf[0] == 27 && buf[1] == 91 && SFR && SFR2))
-# define SFR buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48
-# define SFR2 buf[6] == 67 && buf[7] == 0
-
-# define LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 68))
-
-# define SHIFT_LEFT ((buf[0] == 27 && buf[1] == 27 && SL))
-# define SL buf[2] == 91 && buf[3] == 68
-
-# define FN_LEFT ((buf[0] == 27 && buf[1] == 91 && buf[2] == 72))
-
-# define SHIFT_MAJ_LEFT ((buf[0] == 27 && buf[1] == 91 && SML && SML2))
-# define SML buf[2] == 49 && buf[3] == 59 && buf[4] == 49 && buf[5] == 48
-# define SML2 buf[6] == 68 && buf[7] == 0
-
-# define BACK_SPACE ((buf[0] == 127 && buf[1] == 0 && buf[2] == 0))
-
-# define DELETE ((buf[0] == 27 && buf[1] == 91 && DELETE2))
-# define DELETE2 buf[2] == 51 && buf[3] == 126
-
-# define ENTER ((buf[0] == 10 && buf[1] == 0 && buf[2] == 0))
-# define TAB ((buf[0] == 9 && buf[1] == 0 && buf[2] == 0))
-
-# define HOME ((buf[0] == 27 && buf[1] == 91 && buf[2] == 72))
-# define END ((buf[0] == 27 && buf[1] == 91 && buf[2] == 70))
-# define IGNORE_1 ((buf[0] == 27 && buf[1] == 91 && buf[2] == 49))
-# define CTRL_D ((buf[0] == 4 && buf[1] == 0 && buf[2] == 0))
-
-# define ALT_C (buf[0] == -61 && buf[1] == -89 && buf[2] == 0)
-# define ALT_V (buf[0] == -30 && buf[1] == -120 && buf[2] == -102)
-# define ALT_X (buf[0] == -30 && buf[1] == -119 && ALT_X2)
-# define ALT_X2 buf[2] == -120 && buf[3] == 0
-# define ALT_B (buf[0] == -30 && buf[1] == -120 && ALT_B2)
-# define ALT_B2 buf[2] == -85 && buf[3] == 0
-
-# define SEEK_HISTORY ((buf[0] == 33 && buf[1] == 0 && buf[2] == 0))
+# define UP ((b[0] == 27 && b[1] == 91 && b[2] == 65))
+# define S_UP ((b[0] == 27 && b[1] == 27 && b[2] == 91 && b[3] == 65))
+# define DOWN ((b[0] == 27 && b[1] == 91 && b[2] == 66))
+# define S_DOWN ((b[0] == 27 && b[1] == 27 && b[2] == 91 && b[3] == 66))
+# define RIGHT ((b[0] == 27 && b[1] == 91 && b[2] == 67))
+# define S_RIGHT ((b[0] == 27 && b[1] == 27 && b[2] == 91 && b[3] == 67))
+# define FN_RIGHT ((b[0] == 27 && b[1] == 91 && b[2] == 70))
+# define LEFT ((b[0] == 27 && b[1] == 91 && b[2] == 68))
+# define S_LEFT ((b[0] == 27 && b[1] == 27 && b[2] == 91 && b[3] == 68))
+# define FN_LEFT ((b[0] == 27 && b[1] == 91 && b[2] == 72))
+# define BACK_SPACE ((b[0] == 127 && b[1] == 0 && b[2] == 0))
+# define DEL ((b[0] == 27 && b[1] == 91 && b[2] == 51 && b[3] == 126))
+# define ENTER ((b[0] == 10 && b[1] == 0 && b[2] == 0))
+# define TAB ((b[0] == 9 && b[1] == 0 && b[2] == 0))
+# define HOME ((b[0] == 27 && b[1] == 91 && b[2] == 72))
+# define END ((b[0] == 27 && b[1] == 91 && b[2] == 70))
+# define IGNORE_1 ((b[0] == 27 && b[1] == 91 && b[2] == 49))
+# define CTRL_D ((b[0] == 4 && b[1] == 0 && b[2] == 0))
+# define ALT_C (b[0] == -61 && b[1] == -89 && b[2] == 0)
+# define ALT_V (b[0] == -30 && b[1] == -120 && b[2] == -102)
+# define ALT_X (b[0] == -30 && b[1] == -119 && ALT_X2)
+# define ALT_X2 b[2] == -120 && b[3] == 0
+# define ALT_B (b[0] == -30 && b[1] == -120 && ALT_B2)
+# define ALT_B2 b[2] == -85 && b[3] == 0
+# define SEEK_HISTORY ((b[0] == 33 && b[1] == 0 && b[2] == 0))
 
 # define CLSTR (tgetstr("cl", NULL))
 # define USSTR (tgetstr("us", NULL))
@@ -129,7 +95,7 @@ void		*get_actions_normal(void);
 void		*get_actions_copy(void);
 void		*get_actions_heredoc(void);
 void		*get_actions_quote(void);
-t_status	prompt_find_function(char *buf);
+t_status	prompt_find_function(char *b);
 t_prompt	*init_prompt(void);
 void		add_history(char *line);
 /*
@@ -137,30 +103,30 @@ void		add_history(char *line);
 */
 void		add_char(char c);
 void		inser_char(char c);
-t_status	action_insert_char(char *buf);
-t_status	action_delete_char(char *buf);
-t_status	action_delete_next_char(char *buf);
-t_status	action_move_up(char *buf);
-t_status	action_move_down(char *buf);
-t_status	action_move_left(char *buf);
-t_status	action_move_right(char *buf);
-t_status	action_move_start(char *buf);
-t_status	action_move_end(char *buf);
-t_status	action_move_next_word(char *buf);
-t_status	action_move_last_word(char *buf);
-t_status	action_exec_cmd(char *buf);
-t_status	action_ignore_input(char *buf);
-t_status	action_quit(char *buf);
+t_status	action_insert_char(char *b);
+t_status	action_delete_char(char *b);
+t_status	action_delete_next_char(char *b);
+t_status	action_move_up(char *b);
+t_status	action_move_down(char *b);
+t_status	action_move_left(char *b);
+t_status	action_move_right(char *b);
+t_status	action_move_start(char *b);
+t_status	action_move_end(char *b);
+t_status	action_move_next_word(char *b);
+t_status	action_move_last_word(char *b);
+t_status	action_exec_cmd(char *b);
+t_status	action_ignore_input(char *b);
+t_status	action_quit(char *b);
 /*
 ** Action - Copy
 */
 void		free_copy(void);
-t_status	action_copy_quit(char *buf);
-t_status	action_copy(char *buf);
-t_status	main_action_copy(char *buf);
-t_status	action_cut(char *buf);
-t_status	action_free(char *buf);
-t_status	action_paste(char *buf);
+t_status	action_copy_quit(char *b);
+t_status	action_copy(char *b);
+t_status	main_action_copy(char *b);
+t_status	action_cut(char *b);
+t_status	action_free(char *b);
+t_status	action_paste(char *b);
 /*
 ** Action - Heredoc
 */
@@ -171,9 +137,9 @@ t_status	action_paste(char *buf);
 int			get_normal_prompt_length(void);
 char		*read_normal_input(void);
 char		*action_seek_to_history(char *cmds);
-t_status	action_autocomplete(char *buf);
-t_status	action_history_up(char *buf);
-t_status	action_history_down(char *buf);
+t_status	action_autocomplete(char *b);
+t_status	action_history_up(char *b);
+t_status	action_history_down(char *b);
 /*
 ** Action - Quote
 */
@@ -183,7 +149,7 @@ int			quote_close(char *str, char c);
 void		read_quote_input(char quote);
 int			check_quote(char *line);
 int			get_quote_prompt_length(char c);
-t_status	action_exec_cmd(char *buf);
+t_status	action_exec_cmd(char *b);
 /*
 ** Utils
 */

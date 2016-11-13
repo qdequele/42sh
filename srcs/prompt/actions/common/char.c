@@ -43,7 +43,7 @@ void		inser_char(char c)
 	}
 }
 
-t_status	action_insert_char(char *buf)
+t_status	action_insert_char(char *b)
 {
 	if (TAB)
 	{
@@ -52,16 +52,21 @@ t_status	action_insert_char(char *buf)
 		inser_char(' ');
 		inser_char(' ');
 	}
-	else if (buf[0])
-		inser_char(buf[0]);
-	else if (buf[1])
-		inser_char(buf[1]);
-	else
-		inser_char(buf[2]);
+	else 
+	{
+		if (b[0])
+			inser_char(b[0]);
+		if (b[1])
+			inser_char(b[1]);
+		if (b[2])
+			inser_char(b[2]);
+		if (b[3])
+			inser_char(b[3]);
+	}
 	return (READING);
 }
 
-t_status	action_delete_char(char *buf)
+t_status	action_delete_char(char *b)
 {
 	if (!BACK_SPACE)
 		return (TRYING);
@@ -69,9 +74,9 @@ t_status	action_delete_char(char *buf)
 	return (READING);
 }
 
-t_status	action_delete_next_char(char *buf)
+t_status	action_delete_next_char(char *b)
 {
-	if (!DELETE)
+	if (!DEL)
 		return (TRYING);
 	delete_one_char();
 	return (READING);
