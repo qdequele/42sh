@@ -87,9 +87,7 @@ prototype : - X : blabla (username)
 
 #Liste des bugs :
 
-- ctrl + d was considered has EOF
 - Leaks on unsetenv
-
 
 # Unit test
 
