@@ -16,7 +16,7 @@ static char		*add_to_list(t_list **list, char *ret)
 {
 	ret = ft_strtrim(ret);
 	ft_lstadd(list, ft_lstnew(ret, sizeof(char) * (ft_strlen(ret) + 1)));
-	ft_putstr("heredoc> ");
+	ft_putstr_c(GREEN, "heredoc> ");
 	free(ret);
 	ret = ft_strnew(1);
 	return (ret);
@@ -61,7 +61,7 @@ int				parse_heredoc_redir(t_process *p, int channel, char *target)
 	list = NULL;
 	ft_bzero(b, 4);
 	pipe(pipe_fd);
-	ft_putstr("heredoc> ");
+	ft_putstr_c(GREEN, "heredoc> ");
 	while (read(0, b, 4))
 	{
 		ft_putchar(b[0]);
