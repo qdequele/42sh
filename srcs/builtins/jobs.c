@@ -35,9 +35,6 @@ int				builtins_jobs(t_list **env, char **cmds)
 
 static void		free_one_process(void *elem, size_t size)
 {
-	t_process	*l_process;
-
-	l_process = elem;
 	UNUSED(size);
 	free(elem);
 }
