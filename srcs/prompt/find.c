@@ -88,6 +88,7 @@ void		*get_actions_quote(void)
 		action_move_down,
 		action_delete_char,
 		action_delete_next_char,
+		action_exec_cmd,
 		action_insert_char
 	};
 

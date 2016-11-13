@@ -28,7 +28,7 @@ static void		move_to_history(void)
 		clean_prompt();
 		ft_putstr_fd((char*)ft_lstget_at(shell->history,
 			pos)->content, recover_term()->tty);
-		shell->prompt->i_position = ft_strlen((char*)ft_lstget_at(
+		shell->prompt->i_pos = ft_strlen((char*)ft_lstget_at(
 			shell->history, pos)->content);
 		string_to_list((char*)ft_lstget_at(shell->history,
 			pos)->content);

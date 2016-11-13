@@ -21,8 +21,8 @@ void		add_char(char c)
 	shell = recover_shell();
 	term = recover_term();
 	new = ft_lstnew(&c, sizeof(char));
-	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_position);
-	shell->prompt->i_position++;
+	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_pos);
+	shell->prompt->i_pos++;
 }
 
 void		inser_char(char c)
@@ -34,12 +34,12 @@ void		inser_char(char c)
 	shell = recover_shell();
 	term = recover_term();
 	new = ft_lstnew(&c, sizeof(char));
-	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_position);
-	shell->prompt->i_position++;
+	ft_lstadd_at(&shell->prompt->line, new, shell->prompt->i_pos);
+	shell->prompt->i_pos++;
 	tputs(IMSTR, 0, ft_tputs);
 	ft_putchar_fd(c, term->tty);
 	tputs(EISTR, 0, ft_tputs);
-	if (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	if (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 	{
 		print_eol();
 	}

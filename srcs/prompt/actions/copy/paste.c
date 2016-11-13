@@ -24,7 +24,7 @@ t_status	action_paste(char *buf)
 	i = 0;
 	if (!ALT_V || !prompt->str_cpy)
 		return (TRYING);
-	j = prompt->i_position;
+	j = prompt->i_pos;
 	clean_prompt();
 	while (i < ft_strlen(prompt->str_cpy))
 	{
@@ -34,8 +34,8 @@ t_status	action_paste(char *buf)
 	}
 	i = j;
 	ft_lstshow_x(prompt->line, 0);
-	prompt->i_position = ft_lstcount(prompt->line);
-	while ((size_t)prompt->i_position > i)
+	prompt->i_pos = ft_lstcount(prompt->line);
+	while ((size_t)prompt->i_pos > i)
 		utils_move_left();
 	return (READING);
 }

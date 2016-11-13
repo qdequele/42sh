@@ -15,7 +15,7 @@
 int			get_quote_prompt_length(char c)
 {
 	if (c == '`' || c == '"' || c == '(')
-		return (7);
+		return (8);
 	else
-		return (6);
+		return (7);
 }

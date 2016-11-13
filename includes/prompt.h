@@ -111,7 +111,8 @@ typedef enum	e_status
 typedef struct	s_prompt
 {
 	t_list		*line;
-	int			i_position;
+	int			i_pos;
+	int			p_pos;
 	int			i_copy;
 	int			flag_cut;
 	char		*str_cpy;

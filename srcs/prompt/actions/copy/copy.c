@@ -30,19 +30,19 @@ t_status		action_copy(char *buf)
 		return (TRYING);
 	if (!prompt->str_cpy || prompt->str_cpy[0] == '\0')
 		prompt->str_cpy = (char*)malloc(sizeof(char*) + 1);
-	if (prompt->i_position < ft_lstcount(prompt->line))
+	if (prompt->i_pos < ft_lstcount(prompt->line))
 	{
 		tmp = ft_strsub(((char*)ft_lstget_at(
-			prompt->line, prompt->i_position)->content), 0, 1);
+			prompt->line, prompt->i_pos)->content), 0, 1);
 		prompt->str_cpy = ft_strfjoin(prompt->str_cpy, tmp);
 		tputs(MRSTR, 0, ft_tputs);
 		ft_putchar_fd(prompt->str_cpy[prompt->i_copy], recover_term()->tty);
 		tputs(MESTR, 0, ft_tputs);
-		prompt->i_position++;
+		prompt->i_pos++;
 		prompt->i_copy++;
 		free(tmp);
 	}
-	prompt->end_cpy = prompt->i_position;
+	prompt->end_cpy = prompt->i_pos;
 	return (TRYING);
 }
 

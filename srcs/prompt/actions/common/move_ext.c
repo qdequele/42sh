@@ -37,11 +37,11 @@ t_status	action_move_next_word(char *buf)
 		return (TRYING);
 	shell = recover_shell();
 	i = 1;
-	while (shell->prompt->i_position + i + 1 < ft_lstcount(shell->prompt->line)
+	while (shell->prompt->i_pos + i + 1 < ft_lstcount(shell->prompt->line)
 		&& !(!ft_isspace(*(char *)(ft_lstget_at(shell->prompt->line,
-			shell->prompt->i_position + i)->content))
+			shell->prompt->i_pos + i)->content))
 		&& ft_isspace(*(char *)(ft_lstget_at(shell->prompt->line,
-			shell->prompt->i_position + i + 1)->content))))
+			shell->prompt->i_pos + i + 1)->content))))
 	{
 		i++;
 	}
@@ -62,11 +62,11 @@ t_status	action_move_last_word(char *buf)
 		return (TRYING);
 	shell = recover_shell();
 	i = 1;
-	while (shell->prompt->i_position - i - 1 >= 0
+	while (shell->prompt->i_pos - i - 1 >= 0
 		&& !(!ft_isspace(*(char *)(ft_lstget_at(shell->prompt->line,
-			shell->prompt->i_position - i)->content))
+			shell->prompt->i_pos - i)->content))
 		&& ft_isspace(*(char *)(ft_lstget_at(shell->prompt->line,
-			shell->prompt->i_position - i - 1)->content))))
+			shell->prompt->i_pos - i - 1)->content))))
 	{
 		i++;
 	}

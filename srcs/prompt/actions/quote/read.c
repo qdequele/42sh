@@ -28,9 +28,13 @@ char	display_quote_error(char c)
 
 int		print_error(char flag)
 {
+	t_prompt	*prompt;
+
+	prompt = recover_shell()->prompt;
 	if (flag)
-		ft_putchar_fd(flag, 2);
-	ft_putstr_fd("quote> ", 2);
+		ft_putchar_c(GREEN, flag);
+	ft_putstr_c(GREEN, "quote> ");
+	prompt->p_pos = prompt->i_pos;
 	return (0);
 }
 
@@ -76,6 +80,7 @@ void			read_quote_input(char quote)
 			add_char('\n');
 			print_error(display_quote_error(quote));
 		}
+		ft_bzero(buf, 8);
 	}
 }
 

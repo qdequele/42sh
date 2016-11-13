@@ -26,11 +26,11 @@ void		clean_prompt(void)
 	}
 	else
 		i = ft_lstcount(shell->prompt->line);
-	while (shell->prompt->i_position < i)
+	while (shell->prompt->i_pos < i)
 	{
 		utils_move_right();
 	}
-	while (shell->prompt->i_position > 0)
+	while (shell->prompt->i_pos > 0)
 	{
 		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 		utils_move_left();
@@ -43,11 +43,11 @@ void		clean_last_x_char(int i)
 	t_shell	*shell;
 
 	shell = recover_shell();
-	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	while (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
 	}
-	while (shell->prompt->i_position > 0 && i > 0)
+	while (shell->prompt->i_pos > 0 && i > 0)
 	{
 		delete_one_char();
 		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);

@@ -17,12 +17,15 @@ void	utils_move_up(void)
 	t_shell		*shell;
 	t_term		*term;
 	int			i;
+	int			pos;
 
 	shell = recover_shell();
 	term = recover_term();
 	i = 0;
-	while (i < term->wins.ws_col && shell->prompt->i_position >= 0)
+	pos = shell->prompt->i_pos - shell->prompt->p_pos;
+	while (i < term->wins.ws_col && pos >= 0)
 	{
+		pos = shell->prompt->i_pos - shell->prompt->p_pos;
 		utils_move_left();
 		i++;
 	}
@@ -38,7 +41,7 @@ void	utils_move_down(void)
 	term = recover_term();
 	i = 0;
 	while (i < term->wins.ws_col
-	&& shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	&& shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
 		i++;
@@ -48,11 +51,13 @@ void	utils_move_down(void)
 void	utils_move_left(void)
 {
 	t_shell		*shell;
+	int			pos;
 
 	shell = recover_shell();
-	if (shell->prompt->i_position > 0)
+	pos = shell->prompt->i_pos - shell->prompt->p_pos;
+	if (pos > 0)
 	{
-		shell->prompt->i_position--;
+		shell->prompt->i_pos--;
 		tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
 	}
 }
@@ -61,13 +66,15 @@ void	utils_move_right(void)
 {
 	t_shell		*shell;
 	t_term		*term;
+	int			pos;
 
 	shell = recover_shell();
 	term = recover_term();
-	if (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	pos = shell->prompt->i_pos - shell->prompt->p_pos;
+	if (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 	{
-		shell->prompt->i_position++;
-		if ((shell->prompt->i_position + shell->prompt->p_length)
+		shell->prompt->i_pos++;
+		if ((pos + shell->prompt->p_length)
 			% term->wins.ws_col == 0)
 		{
 			tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);

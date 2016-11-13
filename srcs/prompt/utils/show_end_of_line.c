@@ -21,7 +21,7 @@ void	print_eol(void)
 	char		*string;
 
 	shell = recover_shell();
-	index = shell->prompt->i_position;
+	index = shell->prompt->i_pos;
 	i = 0;
 	string = (char *)malloc(sizeof(char) *
 						(ft_lstcount(shell->prompt->line) - index + 1));
@@ -33,7 +33,7 @@ void	print_eol(void)
 	}
 	string[i] = '\0';
 	write(recover_term()->tty, string, i);
-	shell->prompt->i_position += i;
+	shell->prompt->i_pos += i;
 	free(string);
 	while (--i >= 0)
 		utils_move_left();

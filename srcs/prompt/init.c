@@ -18,7 +18,8 @@ t_prompt	*init_prompt(void)
 
 	prompt = (t_prompt*)malloc(sizeof(t_prompt));
 	prompt->line = NULL;
-	prompt->i_position = 0;
+	prompt->i_pos = 0;
+	prompt->p_pos = 0;
 	prompt->p_length = 0;
 	prompt->i_copy = 0;
 	prompt->flag_cut = 0;

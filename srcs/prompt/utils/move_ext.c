@@ -15,10 +15,15 @@
 void	utils_move_start(void)
 {
 	t_shell		*shell;
+	int			pos;
 
 	shell = recover_shell();
-	while (shell->prompt->i_position > 0)
+	pos = shell->prompt->i_pos - shell->prompt->p_pos;
+	while (pos > 0)
+	{
+		pos = shell->prompt->i_pos - shell->prompt->p_pos;
 		utils_move_left();
+	}
 }
 
 void	utils_move_end(void)
@@ -26,7 +31,8 @@ void	utils_move_end(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	while (shell->prompt->i_position < ft_lstcount(shell->prompt->line))
+	// printf("utils_move_end : %d - %d\n", shell->prompt->i_pos, ft_lstcount(shell->prompt->line));
+	while (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 		utils_move_right();
 }
 
@@ -34,12 +40,17 @@ void	utils_move_max_top(void)
 {
 	t_shell		*shell;
 	t_term		*term;
+	int			pos;
 
 	shell = recover_shell();
 	term = recover_term();
-	while (shell->prompt->p_length + shell->prompt->i_position >
+	pos = shell->prompt->i_pos - shell->prompt->p_pos;
+	while (shell->prompt->p_length + pos >
 		term->wins.ws_col)
+	{
+		pos = shell->prompt->i_pos - shell->prompt->p_pos;
 		utils_move_up();
+	}
 }
 
 void	utils_move_max_bottom(void)
@@ -49,7 +60,7 @@ void	utils_move_max_bottom(void)
 
 	shell = recover_shell();
 	term = recover_term();
-	while (shell->prompt->p_length + shell->prompt->i_position <
+	while (shell->prompt->p_length + shell->prompt->i_pos <
 		ft_lstcount(shell->prompt->line) - term->wins.ws_col)
 		utils_move_down();
 }
