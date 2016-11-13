@@ -14,9 +14,6 @@
 
 char	*ft_remove_quote(char *word)
 {
-	int	i;
-
-	i = 1;
 	if (word[0] == '\'' || word[0] == '"' || word[0] == '`'
 		|| word[0] == '(')
 		return (ft_strsub(word, 1, ft_strlen(word) - 2));
