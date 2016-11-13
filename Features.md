@@ -97,6 +97,7 @@ prototype : - X : blabla (username)
 
 ##env
 
+```
 - env key=value
 - env -i
 - env -i env
@@ -108,6 +109,7 @@ prototype : - X : blabla (username)
 - env -i TERM=xterm-256color ./21sh
 - env -i PATH=/usr/bin ./21sh
 - env -i PATH= TERM=xterm-256color ./21sh
+```
 
 ##read
 
@@ -128,6 +130,7 @@ prototype : - X : blabla (username)
 
 ##cd
 
+```
 - cd ..
 - cd .
 - cd ~
@@ -135,27 +138,36 @@ prototype : - X : blabla (username)
 - cd (dir)
 - cd /(dir)
 - cd ~/(dir)
+```
 
 ##history
 
+```
 - history (when no command has been exec)
 - history (when some commands has been exec)
+```
 
 ## !
 
+```
 - !
 - ![good index]
 - ![wrong index]
 - ![good cmd]
 - ![wrong cmd]
 - ![index]
+```
 
 ## ctrl + d
 
+```
 - kjfjdfkas (ctrl + d) -> nothing happen
 - (ctrl + d) -> shell quit
+```
 
 ## ctrl + c
 
+```
 - cat (ctrl + c) -> quit cat
 - (ctrl + c) -> nothing happen
+```
