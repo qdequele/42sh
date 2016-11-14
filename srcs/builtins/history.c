@@ -27,7 +27,7 @@ static	void	display_history(t_list *list)
 		if (cur->content_size != 0)
 		{
 			tmp = ft_strdup((char*)cur->content);
-			ft_putstr_c(RED, ft_strfjoin(tmp, "\n"));
+			ft_putstr_c(RED, ft_strfjoin(tmp, ft_sstrdup("\n")));
 		}
 		else
 			ft_putendl_fd(cur->content, 1);
