@@ -52,9 +52,7 @@ static	char	*read_read(void)
 		if (BACK_SPACE && ret && ft_strlen(ret) > 0)
 		{
 			tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
-			tputs(DMSTR, 1, ft_tputs);
 			tputs(DCSTR, 1, ft_tputs);
-			tputs(EDSTR, 1, ft_tputs);
 			ret = ft_strsub(ret, 0, ft_strlen(ret) - 1);
 		}
 		else
