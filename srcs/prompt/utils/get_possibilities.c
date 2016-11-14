@@ -102,4 +102,3 @@ void				reset_autocomplete_possibilities(void)
 	shell->autocomplete_position = 0;
 	ft_lstdel(&(shell->posibilities), free_char);
 }
-

@@ -74,7 +74,6 @@ void		free_input(void)
 	free_copy();
 }
 
-
 int			sort_by_lexycography(t_list *node)
 {
 	t_list	*n_elem;

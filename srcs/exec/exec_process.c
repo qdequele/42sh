@@ -89,24 +89,18 @@ int			update_process_status(t_job *j, pid_t pid, int status)
 	{
 		if (((t_process *)process->content)->pid == pid)
 		{
-			if (WIFEXITED(status))
+			if (WIFEXITED(status) || WIFSIGNALED(status) || WIFSTOPPED(status))
 			{
-				((t_process *)process->content)->status = status;
-				((t_process *)process->content)->completed = 1;
+				if (!WIFSTOPPED(status))
+				{
+					((t_process *)process->content)->status = status;
+					((t_process *)process->content)->completed = 1;
+				}
+				else
+					((t_process *)process->content)->stopped = 1;
 				if (process->next == NULL)
 					kill(j->pgid, SIGTERM);
 			}
-			if (WIFSIGNALED(status))
-			{
-				((t_process *)process->content)->status = status;
-				((t_process *)process->content)->completed = 1;
-				if (process->next == NULL)
-					kill(j->pgid, SIGTERM);
-			}
-			if (WIFSTOPPED(status))
-				((t_process *)process->content)->stopped = 1;
-				if (process->next == NULL)
-					kill(j->pgid, SIGTERM);
 			return (0);
 		}
 		process = process->next;

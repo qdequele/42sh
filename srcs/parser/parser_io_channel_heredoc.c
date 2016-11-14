@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static char		*add_to_list(t_list **list, char *ret)
+static	char		*add_to_list(t_list **list, char *ret)
 {
 	ret = ft_strtrim(ret);
 	ft_lstadd(list, ft_lstnew(ret, sizeof(char) * (ft_strlen(ret) + 1)));
@@ -22,7 +22,7 @@ static char		*add_to_list(t_list **list, char *ret)
 	return (ret);
 }
 
-static void		print_on_fd(int *pipe_fd, t_list *list)
+static	void		print_on_fd(int *pipe_fd, t_list *list)
 {
 	char		**tab_var;
 	int			i;
@@ -31,6 +31,7 @@ static void		print_on_fd(int *pipe_fd, t_list *list)
 	i = 0;
 	tab_var = list_to_tab(list);
 	j = ft_count_raw_aoc(tab_var);
+	ft_putchar('\n');
 	if (ft_lstcount(list) == 0)
 		return ;
 	while (i < j)
@@ -43,46 +44,49 @@ static void		print_on_fd(int *pipe_fd, t_list *list)
 	free(tab_var);
 }
 
-static void		assign_new_fd(t_process *p, int *pipe_fd, int channel)
+static	void		read_heredoc(char *b, char *target, int *pipe_fd)
+{
+	t_list *list;
+	char	*ret;
+
+	ret = ft_strnew(1);
+	list = NULL;
+	while (read(0, b, 4))
+	{
+		ft_putchar(b[0]);
+		if (b[0] != '\n')
+			ret = ft_freejoin(ret, b);
+		if ((ft_strcmp(target, "EOF") == 0 && CTRL_D)
+			|| (ft_strcmp(ret, target) == 0 && ENTER))
+		{
+			print_on_fd(pipe_fd, list);
+			break ;
+		}
+		if (ENTER)
+			ret = add_to_list(&list, ret);
+		ft_bzero(b, 4);
+	}
+	return ;
+}
+
+static	void		assign_new_fd(t_process *p, int *pipe_fd, int channel)
 {
 	p->stdio[channel].fd = pipe_fd[0];
 	p->stdio[channel].to_close = 1;
 	close(pipe_fd[1]);
 }
 
-int				parse_heredoc_redir(t_process *p, int channel, char *target)
+int					parse_heredoc_redir(t_process *p, int channel, char *target)
 {
 	t_list		*list;
 	char		b[4];
-	char		*ret;
 	int			pipe_fd[2];
 
-	ret = NULL;
 	list = NULL;
 	ft_bzero(b, 4);
 	pipe(pipe_fd);
 	ft_putstr_c(GREEN, "heredoc> ");
-	while (read(0, b, 4))
-	{
-		ft_putchar(b[0]);
-		ret = ft_freejoin(ret, b);
-		if (ft_strcmp(target, "EOF") == 0 && CTRL_D)
-		{
-			ft_putchar('\n');
-			print_on_fd(pipe_fd, list);
-			break ;
-		}
-		if (ENTER)
-		{
-			if (ft_strcmp(ft_strtrim(ret), target) == 0)
-			{
-				print_on_fd(pipe_fd, list);
-				break ;
-			}
-			ret = add_to_list(&list, ret);
-		}
-		ft_bzero(b, 4);
-	}
+	read_heredoc(b, target, pipe_fd);
 	assign_new_fd(p, pipe_fd, channel);
 	return (0);
 }

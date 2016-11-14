@@ -168,3 +168,23 @@ prototype : - X : blabla (username)
 - cat (ctrl + c) -> quit cat
 - (ctrl + c) -> nothing happen
 ```
+
+
+
+Redirection : pwd >> test2 && ls eeweweq 2>&1 | cat -e
+
+- Met deux fois pwd dans test2
+
+unsetenv soething -> leaks
+setenv dsd sdsdsd + env -> leaks
+
+
+
+echo to                    to 'to                         to' "to                            to" 
+
+result -> ti ti to to to to
+expected ti ti to    to to    to
+
+
+
+42sh $> toto || ls || titi -> leaks (surement parcequ'il test titi);

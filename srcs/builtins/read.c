@@ -12,7 +12,16 @@
 
 #include <ft_sh.h>
 
-static int		ck(char *str)
+static	void	more_key_than_value(char **v, char **cmds, int i, int o)
+{
+	char	*last;
+
+	last = (o == 1) ? ft_skip_char(ft_array_to_string(&v[i - 1]), '\\')
+		: ft_array_to_string(&v[i - 1]);
+	vars_add_or_modify(&g_vars, cmds[i + o - 1], last);
+}
+
+static	int		ck(char *str)
 {
 	int			i;
 
@@ -61,7 +70,6 @@ static	char	*read_read(void)
 int				builtins_read(t_list **env, char **cmds)
 {
 	char	**v;
-	char	*last;
 	int		o;
 	int		i;
 	char 	*read;
@@ -80,11 +88,7 @@ int				builtins_read(t_list **env, char **cmds)
 			vars_add_or_modify(&g_vars, cmds[i + o], " ");
 	}
 	if (i <= ft_count_raw_aoc(v) && v[i])
-	{
-		last = (o == 1) ? ft_skip_char(ft_array_to_string(&v[i - 1]), '\\')
-		: ft_array_to_string(&v[i - 1]);
-		vars_add_or_modify(&g_vars, cmds[i + o - 1], last);
-	}
+		more_key_than_value(v, cmds, i, o);
 	if (v)
 		ft_free_aoc(v);
 	return (0);

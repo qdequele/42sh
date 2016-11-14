@@ -26,19 +26,7 @@ char	display_quote_error(char c)
 		return (flag = 0);
 }
 
-int		print_error(char flag)
-{
-	t_prompt	*prompt;
-
-	prompt = recover_shell()->prompt;
-	if (flag)
-		ft_putchar_c(GREEN, flag);
-	ft_putstr_c(GREEN, "quote> ");
-	prompt->p_pos = prompt->i_pos;
-	return (0);
-}
-
-int		quote_close(char *str, char c)
+int				quote_close(char *str, char c)
 {
 	if (c == '(')
 		c = ')';
@@ -48,22 +36,12 @@ int		quote_close(char *str, char c)
 		return (0);
 }
 
-void			read_quote_input(char quote)
+static	void	read_quote(char *b, char quote)
 {
-	t_prompt	*prompt;
-	t_shell		*shell;
-	char		b[4];
-	t_status	status;
-	t_status	nb_quote;
+	t_status status;
+	t_status nb_quote;
 
-	shell = recover_shell();
-	prompt = shell->prompt;
-	shell->mode = QUOTE;
-	prompt->p_length = get_quote_prompt_length(quote);
-	add_char('\n');
 	nb_quote = 0;
-	ft_bzero(b, 4);
-	print_error(display_quote_error(quote));
 	while (read(0, b, 4))
 	{
 		if (b[0] == quote)
@@ -72,7 +50,7 @@ void			read_quote_input(char quote)
 		if (status == FOUND && nb_quote % 2 != 0)
 		{
 			add_char('\n');
-			shell->mode = NORMAL;
+			recover_shell()->mode = NORMAL;
 			break ;
 		}
 		if (ENTER)
@@ -82,6 +60,20 @@ void			read_quote_input(char quote)
 		}
 		ft_bzero(b, 4);
 	}
+}
+
+void			read_quote_input(char quote)
+{
+	t_prompt	*prompt;
+	char		b[4];
+
+	prompt = recover_shell()->prompt;
+	recover_shell()->mode = QUOTE;
+	prompt->p_length = get_quote_prompt_length(quote);
+	add_char('\n');
+	print_error(display_quote_error(quote));
+	ft_bzero(b, 4);
+	read_quote(b, quote);
 }
 
 int		check_quote(char *line)

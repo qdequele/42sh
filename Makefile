@@ -77,10 +77,12 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/actions/normal/seek_to_history.c\
 				prompt/actions/quote/prompt_length.c\
 				prompt/actions/quote/read.c\
+				prompt/utils/char.c\
 				prompt/utils/clean.c\
 				prompt/utils/conversion.c\
 				prompt/utils/move.c\
 				prompt/utils/move_ext.c\
+				prompt/utils/print_error_quote.c\
 				prompt/utils/line_cut.c\
 				prompt/utils/erase.c\
 				prompt/utils/get_possibilities.c\

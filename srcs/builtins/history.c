@@ -15,7 +15,7 @@
 static	void	display_history(t_list *list)
 {
 	t_list		*cur;
-	char 		*tmp;
+	char		*tmp;
 	int			i;
 
 	i = 1;

@@ -36,6 +36,7 @@ static t_list	*env_cpy(t_list *src)
 		env->value = ft_strdup(((t_env *)tmp->content)->value);
 		ft_lstadd(&dest, ft_lstnew(env, sizeof(t_env)));
 		tmp = tmp->next;
+		free(env); // add to solve leks prob
 	}
 	dest = ft_lst_reverse(dest);
 	return (dest);
@@ -44,7 +45,7 @@ static t_list	*env_cpy(t_list *src)
 int				shell_core(t_list **env, char **cmds)
 {
 	t_list		*backup;
-	char 		*test;
+	char		*test;
 
 	backup = g_env;
 	g_env = *env;
