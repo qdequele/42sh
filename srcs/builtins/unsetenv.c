@@ -19,7 +19,7 @@ int			builtins_unsetenv(t_list **env, char **cmds)
 	i = 1;
 	while (cmds[i])
 	{
-		remove_key(env, cmds[i]);
+		remove_key(env, cmds[i], &env_free_one);
 		i++;
 	}
 	g_env = *env;

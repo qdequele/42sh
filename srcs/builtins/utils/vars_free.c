@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static void	vars_free_one(void *elem, size_t size)
+void	vars_free_one(void *elem, size_t size)
 {
 	t_var	*l_elem;
 

@@ -28,7 +28,7 @@ int			builtins_unset(t_list **env, char **cmds)
 		l_var = &g_vars;
 	while (cmds[i])
 	{
-		remove_key(l_var, cmds[i]);
+		remove_key(l_var, cmds[i], &vars_free_one);
 		i++;
 	}
 	return (0);

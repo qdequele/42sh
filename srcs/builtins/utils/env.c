@@ -75,7 +75,7 @@ void		env_add_or_modify(t_list **l_env, char *key, char *value)
 	free(env);
 }
 
-static void	env_free_one(void *elem, size_t size)
+void	env_free_one(void *elem, size_t size)
 {
 	t_env	*l_elem;
 
@@ -89,7 +89,7 @@ static void	env_free_one(void *elem, size_t size)
 	{
 		free(l_elem->value);
 	}
-	free(elem);
+	free(l_elem);
 }
 
 void		env_free(t_list **l_env)
