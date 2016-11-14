@@ -85,9 +85,31 @@ prototype : - X : blabla (username)
 - O : Signals
 - X : Builtins Posix
 
-#Liste des bugs :
 
-- Leaks on unsetenv
+
+
+
+
+
+#Liste des Leaks :
+
+- Leaks on command not found
+- Leaks on set (vars.c:42)
+- Leaks on read [key1]-[val1 val2 val3] -> invalid free (vars.87) var add or modify
+- Leaks on read [ ]-[val1] -> invalid read (read.19) more_key_than_value
+- Leaks on setenv PWD [val] -> (env.46) env_get + (prompt_length.c:21) get_current_folder
+- Leaks when PATH incorect and execute ls
+
+
+
+
+
+
+
+
+
+
+
 
 # Unit test
 
@@ -105,6 +127,29 @@ prototype : - X : blabla (username)
 - env -i TERM=xterm-256color ./21sh
 - env -i PATH=/usr/bin ./21sh
 - env -i PATH= TERM=xterm-256color ./21sh
+```
+
+##setenv
+
+```
+- setenv key val
+- setenv _key val
+- setenv key_ val
+- setenv key1 val
+- setenv key val value
+- setenv PATH
+- setenv PATH /
+- setenv PATH /usr/bin
+- setenv PWD /
+- setenv PWD blabla
+```
+
+##unsetenv
+
+```
+- unsetenv key
+- unsetenv key key_
+
 ```
 
 ##read
