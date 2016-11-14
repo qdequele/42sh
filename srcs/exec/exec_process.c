@@ -74,7 +74,7 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	execve(p->argv[0], p->argv, env);
 	if (p->argv[0][0] != '!')
 	{
-		ft_putstr("21sh: command not found: ");
+		ft_putstr("42sh: command not found: ");
 		ft_putendl(p->argv[0]);
 	}
 	exit(1);
