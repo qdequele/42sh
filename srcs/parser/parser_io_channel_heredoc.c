@@ -12,13 +12,18 @@
 
 #include <ft_sh.h>
 
-static	char		*add_to_list(t_list **list, char *ret)
+static	char	*add_to_list(t_list **list, char *ret)
 {
-	ret = ft_strtrim(ret);
-	ft_lstadd(list, ft_lstnew(ret, sizeof(char) * (ft_strlen(ret) + 1)));
-	ft_putstr_c(GREEN, "heredoc> ");
+	char *tmp;
+
+	if (!ret)
+		ret = ft_strdup(" ");
+	tmp = ft_strtrim(ret);
+	ft_lstadd(list, ft_lstnew(tmp, sizeof(char) * (ft_strlen(tmp) + 1)));
+	free(tmp);
 	free(ret);
-	ret = ft_strnew(1);
+	ret = NULL;
+	ft_putstr_c(GREEN, "heredoc> ");
 	return (ret);
 }
 
@@ -49,16 +54,17 @@ static	void		read_heredoc(char *b, char *target, int *pipe_fd)
 	t_list *list;
 	char	*ret;
 
-	ret = ft_strnew(1);
+	ret = NULL;
 	list = NULL;
 	while (read(0, b, 4))
 	{
 		ft_putchar(b[0]);
 		if (b[0] != '\n')
 			ret = ft_freejoin(ret, b);
-		if ((ft_strcmp(target, "EOF") == 0 && CTRL_D)
-			|| (ft_strcmp(ret, target) == 0 && ENTER))
+		if (ret && ((ft_strcmp(target, "EOF") == 0 && CTRL_D)
+					|| (ft_strcmp(ret, target) == 0 && ENTER)))
 		{
+			free(ret);
 			print_on_fd(pipe_fd, list);
 			break ;
 		}
