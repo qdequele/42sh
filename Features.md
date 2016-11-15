@@ -54,7 +54,7 @@ prototype : - X : blabla (username)
 - O : heredoc <<
 - O : inhibiteurs """ (double quote), "’" (simple quote) et "\" (backslash)
 - O : local varaibles unset export $
-- L : Job controls job / fg / bg / &
+- O : Job controls job / fg / bg / &
 
 ##Builtins
 
@@ -69,13 +69,13 @@ prototype : - X : blabla (username)
 - O : set
 - O : unset
 - O : export
-- O : readonly
-- O : unreadonly
 
 ###Bonus
 
 - O : History
 - O : Read
+- O : readonly
+- O : unreadonly
 
 ##General
 
