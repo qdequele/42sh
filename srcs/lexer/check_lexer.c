@@ -14,7 +14,7 @@
 
 static void		check_lexer_error(char *token)
 {
-	ft_putstr("21sh: syntax error near unexpected token `");
+	ft_putstr("42sh: syntax error near unexpected token `");
 	ft_putstr(token);
 	ft_putendl("`");
 }

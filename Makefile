@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 #Define the program
-NAME		=	21sh
+NAME		=	42sh
 LIB			=	./libft/libft.a
 _SRC		=	builtins/utils/parser.c\
 				builtins/utils/env.c\

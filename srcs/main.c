@@ -68,7 +68,7 @@ int				main(int argc, char **argv, char **environ)
 	g_vars = NULL;
 	if (argc > 1)
 	{
-		ft_putendl_fd("21sh cannot have arguments", 2);
+		ft_putendl_fd("42sh cannot have arguments", 2);
 		return (0);
 	}
 	term = recover_term();
@@ -78,7 +78,7 @@ int				main(int argc, char **argv, char **environ)
 	ignore_major_signals();
 	if (init_term() == -1)
 	{
-		ft_putendl_fd("21sh cannot be launch without termcaps", 2);
+		ft_putendl_fd("42sh cannot be launch without termcaps", 2);
 		reset_term();
 		return (1);
 	}

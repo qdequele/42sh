@@ -22,7 +22,7 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 		if (s[i].target && s[i].open_mode == O_RDONLY &&
 			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
 		{
-			ft_putstr("21sh: No such file: ");
+			ft_putstr("42sh: No such file: ");
 			ft_putendl(s[i].target);
 			exit(1);
 		}

@@ -30,7 +30,7 @@ static	int		ck(char *str)
 	{
 		if (!ft_isalnum(str[i]))
 		{
-			ft_putstr_fd("21sh : not an identifier : ", 2);
+			ft_putstr_fd("42sh : not an identifier : ", 2);
 			ft_putendl_fd(str, 2);
 			return (0);
 		}
