@@ -21,7 +21,7 @@ char			*ft_skip_char(char *str, char c)
 	i = 0;
 	nb_quotes = 0;
 	new_str = ft_strnew(ft_strlen(str));
-	while (str[i + nb_quotes])
+	while (str[i])
 	{
 		if ((size_t)(i + nb_quotes) > (ft_strlen(str)))
 			break ; // fix leak invalid read size 1;
