@@ -1,4 +1,5 @@
 42sh.dSYM
+21sh.dSYM
 **/*.o
 projet.log
 ./t*
