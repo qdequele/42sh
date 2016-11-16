@@ -41,6 +41,7 @@ void		free_shell(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
+	save_history();
 	env_free(&g_env);
 	vars_free(&g_vars);
 	free_jobs(&(shell->jobs));

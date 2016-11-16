@@ -34,6 +34,7 @@ int				shell_start(void)
 	char		*line;
 
 	init_shell();
+	load_history();
 	while (recover_shell()->last_exit_code == -1)
 	{
 		init_term();

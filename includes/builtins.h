@@ -52,6 +52,7 @@ int					builtins_unsetenv(t_list **env, char **cmds);
 int					builtins_set(t_list **env, char **cmds);
 int					builtins_unset(t_list **env, char **cmds);
 int					builtins_export(t_list **env, char **cmds);
+int					builtins_help(t_list **env, char **cmds);
 char				*bultins_one_history(char *str);
 void				history_free(t_list **l_history);
 int					builtins_echo(t_list **env, char **cmds);

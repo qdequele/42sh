@@ -138,6 +138,9 @@ char		*action_seek_to_history(char *cmds);
 t_status	action_autocomplete(char *b);
 t_status	action_history_up(char *b);
 t_status	action_history_down(char *b);
+void		save_history(void);
+void		load_history(void);
+void		reset_history(void);
 /*
 ** Action - Quote
 */

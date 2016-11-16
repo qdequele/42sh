@@ -16,7 +16,7 @@ void	ft_console_log(char *str)
 {
 	int new_file;
 
-	new_file = open("./projet.log", O_RDWR | O_CREAT | O_APPEND);
+	new_file = open("./ressources/projet.log", O_RDWR | O_CREAT | O_APPEND);
 	ft_putstr_fd(str, new_file);
 	close(new_file);
 }
@@ -25,7 +25,7 @@ void	ft_console_log_char(char c)
 {
 	int new_file;
 
-	new_file = open("./projet.log", O_RDWR | O_CREAT | O_APPEND);
+	new_file = open("./ressources/projet.log", O_RDWR | O_CREAT | O_APPEND);
 	ft_putchar_fd(c, new_file);
 	close(new_file);
 }
@@ -34,7 +34,7 @@ void	ft_console_log_num(int num)
 {
 	int new_file;
 
-	new_file = open("./projet.log", O_RDWR | O_CREAT | O_APPEND);
+	new_file = open("./ressources/projet.log", O_RDWR | O_CREAT | O_APPEND);
 	ft_putnbr_fd(num, new_file);
 	close(new_file);
 }
@@ -49,7 +49,7 @@ void	ft_console_log_clear(void)
 {
 	int new_file;
 
-	new_file = open("./projet.log", O_RDWR | O_CREAT | O_TRUNC);
+	new_file = open("./ressources/projet.log", O_RDWR | O_CREAT | O_TRUNC);
 	ft_putstr_fd("", new_file);
 	close(new_file);
 }

@@ -24,6 +24,7 @@ _SRC		=	builtins/utils/parser.c\
 				builtins/echo.c\
 				builtins/env.c\
 				builtins/exit.c\
+				builtins/help.c\
 				builtins/history.c\
 				builtins/init.c\
 				builtins/read.c\
@@ -75,6 +76,7 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/actions/normal/prompt_length.c\
 				prompt/actions/normal/read.c\
 				prompt/actions/normal/seek_to_history.c\
+				prompt/actions/normal/sync_history.c\
 				prompt/actions/quote/prompt_length.c\
 				prompt/actions/quote/read.c\
 				prompt/utils/char.c\

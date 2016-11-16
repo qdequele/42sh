@@ -1,4 +1,6 @@
-#List of Leaks :
+#List of bugs :
+
+##LEAKS
 
 - Leaks on command not found
 - Leaks on set (vars.c:42)
@@ -6,22 +8,29 @@
 - Leaks on read [ ]-[val1] -> invalid read (read.19) more_key_than_value
 - Leaks on setenv PWD [val] -> (env.46) env_get + (prompt_length.c:21) get_current_folder
 - Leaks when PATH incorect and execute ls
+- Leaks on (test1 || ls || test2)
+- Leaks on $test when test is unset
+- Leaks on (set key val ; export key)
 
-# List of bugs
-Redirection : pwd >> test2 && ls eeweweq 2>&1 | cat -e
+##SIGABORT
 
-- Met deux fois pwd dans test2
+- SIGABRT on unsetenv
+- SIGABRT on unsetenv PWD value
+- SIGABRT on reset value with read
 
-unsetenv soething -> leaks
-setenv dsd sdsdsd + env -> leaks
+##SIGSEGV
 
+- SEGSEGV read
+			Read> test
 
+##BUGS
 
-echo to                    to 'to                         to' "to                            to" 
+- FIX space between quotes will not disapear
+- FIX read test1 test2
+		Read>test3 test3 -> not have good values
+- FIX read make insane job
 
-result -> ti ti to to to to
-expected ti ti to    to to    to
+##INPROVEMENT
 
-
-
-42sh $> toto || ls || titi -> leaks (surement parcequ'il test titi);
+- set key -> wrong message
+- better message for wrong command

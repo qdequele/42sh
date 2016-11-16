@@ -31,6 +31,7 @@ t_builtin	*builtins_init(void)
 		{"jobs", builtins_jobs},
 		{"bg", builtins_bg},
 		{"fg", builtins_fg},
+		{"help", builtins_help},
 		{NULL, NULL}
 	};
 
