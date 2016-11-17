@@ -14,7 +14,6 @@
 
 - SIGABRT on unsetenv
 - SIGABRT on unsetenv PWD value
-- SIGABRT on reset value with read
 
 ##SIGSEGV
 
