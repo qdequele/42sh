@@ -87,7 +87,6 @@ int				builtins_read(t_list **env, char **cmds)
 	free(read);
 	while (cmds[++i + o] && ft_strlen(cmds[i + o]) > 0 && ck(cmds[i + o]))
 	{
-		printf("cmds[i+o] = [%s]\n", cmds[i+o]);
 		v[i] = (o == 1 && v[i]) ? ft_skip_char(v[i], '\\') : v[i];
 		if (v[i])
 			vars_add_or_modify(&g_vars, cmds[i + o], v[i]);
