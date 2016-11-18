@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_env.c                                     :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/20 17:07:37 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 20:24:55 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_list	*env_cpy(t_list *src)
 		env->value = ft_strdup(((t_env *)tmp->content)->value);
 		ft_lstadd(&dest, ft_lstnew(env, sizeof(t_env)));
 		tmp = tmp->next;
-		free(env); // add to solve leks prob
+		free(env);
 	}
 	dest = ft_lst_reverse(dest);
 	return (dest);
@@ -51,6 +51,7 @@ int				shell_core(t_list **env, char **cmds)
 	g_env = *env;
 	test = ft_array_to_string(cmds);
 	process_input(test);
+	free(test);
 	g_env = backup;
 	return (1);
 }
