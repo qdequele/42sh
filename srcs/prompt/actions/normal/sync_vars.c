@@ -23,7 +23,7 @@ void	save_vars(void)
 	reset_vars();
 	elem = *vars_recover();
 	fd = open("./ressources/vars", O_RDWR | O_CREAT | O_APPEND, 0666);
-	if (fd)
+	if (fd > 0)
 	{
 		while (elem && elem->content)
 		{
@@ -51,7 +51,7 @@ void	load_vars(void)
 
 	vars = vars_recover();
 	fd = open("./ressources/vars", O_RDWR, 0666);
-	if (fd)
+	if (fd > 0)
 	{
 		while (ft_get_next_line(fd, &line) > 0)
 		{
@@ -69,7 +69,7 @@ void	reset_vars(void)
 	int		fd;
 
 	fd = open("./ressources/vars", O_RDWR | O_CREAT | O_TRUNC, 0666);
-	if (fd)
+	if (fd > 0)
 	{
 		ft_putstr_fd("", fd);
 		close(fd);

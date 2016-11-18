@@ -22,7 +22,7 @@ void	save_history(void)
 	shell = recover_shell();
 	reset_history();
 	fd = open("./ressources/history", O_RDWR | O_CREAT | O_APPEND, 0666);
-	if (fd)
+	if (fd > 0)
 	{
 		while (++index < ft_lstcount(shell->history) - 1)
 		{
@@ -41,7 +41,7 @@ void	load_history(void)
 
 	term = recover_term();
 	fd = open("./ressources/history", O_RDWR, 0666);
-	if (fd)
+	if (fd > 0)
 	{
 		while (ft_get_next_line(fd, &line) > 0)
 		{
@@ -57,7 +57,7 @@ void	reset_history(void)
 	int		fd;
 
 	fd = open("./ressources/history", O_RDWR | O_CREAT | O_TRUNC, 0666);
-	if (fd)
+	if (fd > 0)
 	{
 		ft_putstr_fd("", fd);
 		close(fd);
