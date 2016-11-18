@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_io_channel_heredoc.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 04:10:04 by qdequele          #+#    #+#             */
-/*   Updated: 2016/04/19 20:24:55 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 15:57:44 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-static	char	*add_to_list(t_list **list, char *ret)
+static	char		*add_to_list(t_list **list, char *ret)
 {
 	char *tmp;
 
@@ -51,7 +51,7 @@ static	void		print_on_fd(int *pipe_fd, t_list *list)
 
 static	void		read_heredoc(char *b, char *target, int *pipe_fd)
 {
-	t_list *list;
+	t_list	*list;
 	char	*ret;
 
 	ret = NULL;
