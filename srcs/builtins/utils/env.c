@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 21:40:36 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 18:54:55 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		env_add_or_modify(t_list **l_env, char *key, char *value)
 		if (ft_strcmp(((t_env *)elem->content)->key, key) == 0)
 		{
 			free(((t_env *)elem->content)->value);
-			((t_env *)elem->content)->value = value;
+			((t_env *)elem->content)->value = ft_strdup(value);
 			return ;
 		}
 		elem = elem->next;
