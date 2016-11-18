@@ -125,4 +125,12 @@ fclean: clean
 
 re: fclean all
 
+test:
+	valgrind --leak-check=full --suppressions=./valgrind.supp ./42sh
+
+run:
+	./42sh
+
+start: run
+
 .PHONY: all, clean, fclean, re
