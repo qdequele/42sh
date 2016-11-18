@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 19:21:33 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/18 15:56:54 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/18 22:21:13 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,11 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 			if (parse_io_channel(p, s) == -1)
 			{
 				free(cmd);
+				if (argv)
+				{
+					argv[i] = NULL;
+					ft_free_aoc(argv);
+				}
 				ft_free_aoc(start_split);
 				return (NULL);
 			}

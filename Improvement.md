@@ -24,6 +24,49 @@
 ==15266==    by 0x10000B934: main (main.c:88)
 ==15266==
 
+## Read
+
+42sh $> git add s==26460== Invalid read of size 1
+==26460==    at 0x10000E698: ft_strlen (ft_strlen.c:20)
+==26460==    by 0x10000ACAE: sort_by_lexycography (clean.c:83)
+==26460==    by 0x10000D0B5: ft_lst_bubble_sort (ft_lstsort.c:29)
+==26460==    by 0x10000995A: set_possibilities (autocomplete.c:30)
+==26460==    by 0x100009871: action_autocomplete (autocomplete.c:78)
+==26460==    by 0x10000BF33: prompt_find_function (find.c:98)
+==26460==    by 0x100009E77: read_normal_input (read.c:33)
+==26460==    by 0x10000C765: shell_start (main.c:44)
+==26460==    by 0x10000C8D4: main (main.c:88)
+==26460==  Address 0x100b86666 is 0 bytes after a block of size 6 alloc'd
+==26460==    at 0x10002E671: malloc (in /Users/bjamin/.brew/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==26460==    by 0x10000CE19: ft_lstnew (ft_lstnew.c:28)
+==26460==    by 0x10000BBDF: get_builtins_list (get_possibilities.c:47)
+==26460==    by 0x10000990D: set_possibilities (autocomplete.c:26)
+==26460==    by 0x100009871: action_autocomplete (autocomplete.c:78)
+==26460==    by 0x10000BF33: prompt_find_function (find.c:98)
+==26460==    by 0x100009E77: read_normal_input (read.c:33)
+==26460==    by 0x10000C765: shell_start (main.c:44)
+==26460==    by 0x10000C8D4: main (main.c:88)
+==26460==
+==26460== Invalid read of size 1
+==26460==    at 0x10000E698: ft_strlen (ft_strlen.c:20)
+==26460==    by 0x10000AC9E: sort_by_lexycography (clean.c:82)
+==26460==    by 0x10000D0B5: ft_lst_bubble_sort (ft_lstsort.c:29)
+==26460==    by 0x10000995A: set_possibilities (autocomplete.c:30)
+==26460==    by 0x100009871: action_autocomplete (autocomplete.c:78)
+==26460==    by 0x10000BF33: prompt_find_function (find.c:98)
+==26460==    by 0x100009E77: read_normal_input (read.c:33)
+==26460==    by 0x10000C765: shell_start (main.c:44)
+==26460==    by 0x10000C8D4: main (main.c:88)
+==26460==  Address 0x100b86666 is 0 bytes after a block of size 6 alloc'd
+==26460==    at 0x10002E671: malloc (in /Users/bjamin/.brew/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==26460==    by 0x10000CE19: ft_lstnew (ft_lstnew.c:28)
+==26460==    by 0x10000BBDF: get_builtins_list (get_possibilities.c:47)
+==26460==    by 0x10000990D: set_possibilities (autocomplete.c:26)
+==26460==    by 0x100009871: action_autocomplete (autocomplete.c:78)
+==26460==    by 0x10000BF33: prompt_find_function (find.c:98)
+==26460==    by 0x100009E77: read_normal_input (read.c:33)
+==26460==    by 0x10000C765: shell_start (main.c:44)
+==26460==    by 0x10000C8D4: main (main.c:88)
 
 ##SIGABORT
 
