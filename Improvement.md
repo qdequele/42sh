@@ -32,14 +32,15 @@
 
 ##BUGS
 
-- pwd ||
-- || ls
-- pwd &&
-- && ls
 - mkdir test ; ls > test
 - echo test2 >>
 - cat <<
+
 ##INPROVEMENT
 
 - set key -> wrong message
 - better message for wrong command
+- - pwd ||
+- || ls
+- pwd &&
+- && ls

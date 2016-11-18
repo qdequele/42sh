@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   exec_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 18:24:02 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/10 21:51:35 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 21:28:52 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
+
+static void	assert_file(char *target)
+{
+	struct stat		sb;
+
+	if (!target)
+		return ;
+	if (stat(target, &sb) == 0 && S_ISDIR(sb.st_mode))
+	{
+		ft_putstr("42sh: Is a directory: ");
+		ft_putendl(target);
+		exit(1);
+	}
+	if (stat(target, &sb) == 0 && access(target, X_OK) != 0)
+	{
+		ft_putstr("42sh: Permission denied: ");
+		ft_putendl(target);
+		exit(1);
+	}
+}
 
 static void	get_new_stdio(t_process *p, t_io_channel *s)
 {
@@ -19,6 +39,7 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 	i = -1;
 	while (++i < 3)
 	{
+		assert_file(s[i].target);
 		if (s[i].target && s[i].open_mode == O_RDONLY &&
 			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
 		{
