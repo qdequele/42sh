@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_argv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 19:21:33 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/10 22:34:25 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 15:45:25 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,25 @@ char			*construct_job_command(t_list *process_list)
 char			**parse_cmd_argv(t_process *p, char *cmd)
 {
 	char		**argv;
-	char		**split;
+	char		**s;
 	char		**start_split;
 	int			i;
 
 	i = 0;
-	cmd = replace_vars(ft_strdup(cmd));
-	clear_str_space(cmd);
+	cmd = clear_str_space(replace_vars(ft_strdup(cmd)));
 	if (!(argv = malloc(sizeof(char *) * (count_args(cmd) + 1))) ||
-		!(split = ft_strsplit(cmd, ' ')))
-		return (NULL);
-	start_split = split;
-	while (*split)
+		!(s = ft_strsplit(cmd, ' ')))
 	{
-		if (is_token_redir(*split))
-			split += parse_io_channel(p, split);
+		free(cmd);
+		return (NULL);
+	}
+	start_split = s;
+	while (*s)
+	{
+		if (is_token_redir(*s))
+			s += parse_io_channel(p, s);
 		else
-			argv[i++] = ft_skip_char(ft_skip_char(
-				ft_strdup(*split++), '\''), '"');
+			argv[i++] = ft_skip_char(ft_skip_char(ft_strdup(*s++), '\''), '"');
 	}
 	argv[i] = NULL;
 	free(cmd);
