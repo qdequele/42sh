@@ -80,7 +80,7 @@ void	vars_add_or_modify(t_list **l_vars, char *key, char *value)
 			if (((t_var *)elem->content)->readonly == 1)
 				return ;
 			free(((t_var *)elem->content)->value);
-			((t_var *)elem->content)->value = value;
+			((t_var *)elem->content)->value = ft_strdup(value);
 			return ;
 		}
 		elem = elem->next;
@@ -90,8 +90,6 @@ void	vars_add_or_modify(t_list **l_vars, char *key, char *value)
 	var->value = ft_strdup(value);
 	var->readonly = 0;
 	ft_lstaddend(l_vars, ft_lstnew(var, sizeof(t_var)));
-	if (ft_strcmp(key, "?") == 0)
-		free(value);
 	free(var);
 }
 
