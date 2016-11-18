@@ -199,6 +199,8 @@
 - ![good cmd]
 - ![wrong cmd]
 - ![index]
+- ![cmd]
+- ![wromg cmd]
 ```
 ## command
 

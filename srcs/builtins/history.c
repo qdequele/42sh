@@ -49,20 +49,18 @@ char			*bultins_one_history(char *cmds)
 {
 	t_shell				*shell;
 	t_list				*list;
-	long double			i;
+	int					i;
 
 	shell = recover_shell();
-	i = ft_atoi(&cmds[1]);
+	i = (int)ft_atoi(&cmds[1]);
+	printf("i : %d\n", i);
 	list = shell->history;
 	if ((list = ft_lst_seek(list, &cmds[1])) != NULL)
 		cmds = (char*)list->content;
 	else if (i == 0)
 		print_error_history(i, cmds);
-	else if (i < ft_lstcount(shell->history) && i > 0)
-	{
-		shell->history = ft_lstget_at(shell->history, (i - 1));
-		cmds = (char*)shell->history->content;
-	}
+	else if (i <= ft_lstcount(shell->history) && i > 0)
+		cmds = (char*)ft_lstget_at(shell->history, (i - 1))->content;
 	else
 		print_error_history(i, cmds);
 	return (cmds);
