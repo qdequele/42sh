@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 19:21:33 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/18 15:45:25 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/18 15:56:54 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,24 @@ char			*construct_job_command(t_list *process_list)
 	return (cmd);
 }
 
+char			**assert_argv(char *cmd, char ***argv)
+{
+	char		**s;
+
+	if (!(*argv = malloc(sizeof(char *) * (count_args(cmd) + 1))))
+	{
+		free(cmd);
+		return (NULL);
+	}
+	if (!(s = ft_strsplit(cmd, ' ')))
+	{
+		free(cmd);
+		free(*argv);
+		return (NULL);
+	}
+	return (s);
+}
+
 char			**parse_cmd_argv(t_process *p, char *cmd)
 {
 	char		**argv;
@@ -80,12 +98,8 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 
 	i = 0;
 	cmd = clear_str_space(replace_vars(ft_strdup(cmd)));
-	if (!(argv = malloc(sizeof(char *) * (count_args(cmd) + 1))) ||
-		!(s = ft_strsplit(cmd, ' ')))
-	{
-		free(cmd);
+	if (!(s = assert_argv(cmd, &argv)))
 		return (NULL);
-	}
 	start_split = s;
 	while (*s)
 	{
