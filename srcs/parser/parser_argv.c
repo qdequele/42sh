@@ -21,7 +21,7 @@ static size_t	count_args(const char *s)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if ((i == 0 || s[i - 1] == ' ') && !(s[i] == ' '))
+		if ((i == 0 || s[i - 1] == 1) && !(s[i] == 1))
 			words++;
 		i++;
 	}
@@ -42,7 +42,7 @@ static char		*clear_str_space(char *s)
 				s++;
 		}
 		if (ft_isspace(*s))
-			*s = ' ';
+			*s = 1;
 		s++;
 	}
 	return (res);
@@ -80,7 +80,7 @@ char			**assert_argv(char *cmd, char ***argv)
 		free(cmd);
 		return (NULL);
 	}
-	if (!(s = ft_strsplit(cmd, ' ')))
+	if (!(s = ft_strsplit(cmd, 1)))
 	{
 		free(cmd);
 		free(*argv);

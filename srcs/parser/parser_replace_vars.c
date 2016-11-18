@@ -30,11 +30,8 @@ char			*ft_str_replace_var(char *src, char *var, int *i)
 	if (ft_strlen(new_var) > 0)
 		new_str = ft_strfjoin(ft_strfjoin(begin, new_var), end);
 	else
-	{
-		new_str = ft_strdup(" ");
-		free(begin);
-	}
-	*i += ft_strlen(new_str) - ft_strlen(src);
+		new_str = ft_strfjoin(begin, end);
+	*i += (int)ft_strlen(new_str) - (int)ft_strlen(src);
 	free(src);
 	free(end);
 	free(var);
@@ -55,7 +52,7 @@ char			*replace_vars(char *str)
 	i = 0;
 	should_replace = 1;
 	end_dollar = i;
-	while (str[i])
+	while ((size_t)i < ft_strlen(str) && str[i])
 	{
 		if (should_replace && str[i] == '\'')
 			should_replace = 0;
