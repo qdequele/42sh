@@ -9,7 +9,6 @@ impossible to reproduce: - Leaks when PATH incorect and execute ls
 
 - Read on $test when test is unset
 - Read on setenv PWD [val] -> (env.46) env_get + (prompt_length.c:21) get_current_folder
-- Read on (set key val ; export key)
 - Read on set (vars.c:42)
 
 ##SIGABORT

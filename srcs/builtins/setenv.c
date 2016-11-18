@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setenv.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 14:33:00 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 18:58:18 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	int	is_formated(char *str)
 
 static	int	is_error(char **cmds)
 {
-	if (cmds[3])
+	if (cmds[2] && cmds[2] && cmds[3])
 	{
 		ft_putstr_c(RED, "setenv: Too many arguments.\n");
 		return (1);
@@ -62,7 +62,7 @@ int			builtins_setenv(t_list **env, char **cmds)
 	else
 	{
 		if (!cmds[2])
-			cmds[2] = ft_strdup(" ");
+			cmds[2] = " ";
 		env_add_or_modify(env, cmds[1], cmds[2]);
 		return (0);
 	}

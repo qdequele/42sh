@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_argv.c                                      :+:      :+:    :+:   */
+/*   parser_replace_vars.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 19:21:33 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/10 22:34:25 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 19:34:07 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char			*ft_str_replace_var(char *src, char *var, int *i)
 	if (!new_var || ft_strlen(new_var) == 0)
 		new_var = vars_get(g_vars, var);
 	if (!new_var || ft_strlen(new_var) == 0)
-		new_var = "";
+		new_var = ft_strdup("");
 	if (ft_strlen(new_var) > 0)
 		new_str = ft_strfjoin(ft_strfjoin(begin, new_var), end);
 	else

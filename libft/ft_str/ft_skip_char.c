@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freejoin.c                                      :+:      :+:    :+:   */
+/*   ft_skip_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 19:49:34 by qdequele          #+#    #+#             */
-/*   Updated: 2016/02/28 19:40:03 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 19:33:30 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char			*ft_skip_char(char *str, char c)
 	while (str[i])
 	{
 		if ((size_t)(i + nb_quotes) > (ft_strlen(str)))
-			break ; // fix leak invalid read size 1;
+			break ;
 		while (str[i + nb_quotes] == c)
 			nb_quotes++;
 		if (str[i + nb_quotes])
