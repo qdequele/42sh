@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/18 18:58:18 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/18 20:02:50 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ int			builtins_setenv(t_list **env, char **cmds)
 	else
 	{
 		if (!cmds[2])
-			cmds[2] = " ";
-		env_add_or_modify(env, cmds[1], cmds[2]);
+			env_add_or_modify(env, cmds[1], "");
+		else
+			env_add_or_modify(env, cmds[1], cmds[2]);
 		return (0);
 	}
 }

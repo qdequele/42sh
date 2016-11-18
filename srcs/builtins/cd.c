@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/20 17:06:34 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 20:00:57 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			builtins_cd(t_list **env, char **cmds)
 			return (1);
 	}
 	getcwd(new_path, 1024);
-	env_add_or_modify(env, "PWD", ft_strdup(new_path));
-	env_add_or_modify(env, "OLDPWD", ft_strdup(old_path));
+	env_add_or_modify(env, "PWD", new_path);
+	env_add_or_modify(env, "OLDPWD", old_path);
 	return (0);
 }
