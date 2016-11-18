@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear.c                                            :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 17:23:19 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/30 13:50:35 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 22:25:23 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int			sort_by_lexycography(t_list *node)
 	t_list	*n_elem;
 
 	n_elem = node->next;
-	if (n_elem && (ft_strlen((char *)(node->content)) >
+	if (n_elem && node->content &&
+		(ft_strlen((char *)(node->content)) >
 		ft_strlen((char *)(n_elem->content))) > 0)
 		return (1);
 	return (0);
