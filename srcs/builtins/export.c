@@ -34,7 +34,10 @@ int			builtins_export(t_list **env, char **cmds)
 			ft_putstr_c(RED, "\n");
 		}
 		else
+		{
+			vars_add_or_modify(&g_env, cmds[i], value);
 			vars_add_or_modify(vars_recover(), cmds[i], value);
+		}
 		i++;
 	}
 	return (0);

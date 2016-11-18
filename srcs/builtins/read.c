@@ -89,9 +89,9 @@ int				builtins_read(t_list **env, char **cmds)
 	{
 		v[i] = (o == 1 && v[i]) ? ft_skip_char(v[i], '\\') : v[i];
 		if (v[i])
-			vars_add_or_modify(&g_vars, cmds[i + o], ft_strdup(v[i]));
+			vars_add_or_modify(&g_vars, cmds[i + o], v[i]);
 		else
-			vars_add_or_modify(&g_vars, cmds[i + o], ft_strdup(" "));
+			vars_add_or_modify(&g_vars, cmds[i + o], " ");
 	}
 	if (cmds[o] && i <= ft_count_raw_aoc(v) && v[i])
 		more_key_than_value(v, cmds, i, o);

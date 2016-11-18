@@ -16,11 +16,6 @@ t_list	**vars_recover(void)
 {
 	static t_list	*global_vars;
 
-	if (global_vars == NULL)
-	{
-		global_vars = (t_list *)malloc(sizeof(t_list));
-		global_vars = ft_lstnew(NULL, 0);
-	}
 	return (&global_vars);
 }
 
