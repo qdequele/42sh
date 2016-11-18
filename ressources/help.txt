@@ -26,9 +26,9 @@ pwd                         - show the current path
 env [-i][key]=[value][exec] - create a temporate env. You can add values, remove all values or execute a cmd with this new env
 setenv [key] [value]        - set an new env key
 unsetenv [key]              - unset an existing env key
-set [key] [value]           - set a new shell var
-unset [key]                 - unset an existing shell var
-export [key]                - add to env an existing shell var
+set [-g] [key] [value]      - set a new shell var
+unset [-g] [key]            - unset an existing shell var
+export [key]                - add to env and global vars an existing shell var
 history                     - show history
 read [-n][keys]             - attribute to vars somes values
 readonly [key]              - setup readonly an existing vars
