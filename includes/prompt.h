@@ -141,6 +141,9 @@ t_status	action_history_down(char *b);
 void		save_history(void);
 void		load_history(void);
 void		reset_history(void);
+void		save_vars(void);
+void		load_vars(void);
+void		reset_vars(void);
 /*
 ** Action - Quote
 */

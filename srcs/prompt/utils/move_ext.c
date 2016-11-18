@@ -31,8 +31,6 @@ void	utils_move_end(void)
 	t_shell		*shell;
 
 	shell = recover_shell();
-	/* printf("utils_move_end : %d - %d\n",
-				 shell->prompt->i_pos, ft_lstcount(shell->prompt->line)); */
 	while (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 		utils_move_right();
 }

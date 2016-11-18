@@ -42,6 +42,7 @@ void		free_shell(void)
 
 	shell = recover_shell();
 	save_history();
+	save_vars();
 	env_free(&g_env);
 	vars_free(&g_vars);
 	free_jobs(&(shell->jobs));

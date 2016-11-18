@@ -1,7 +1,11 @@
 42sh.dSYM
 ressources/history
+ressources/vars
 **/*.o
 projet.log
 ./t*
 .vscode
 42sh
+.DS_Store
+srcs/.DS_Store
+test*

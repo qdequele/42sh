@@ -77,6 +77,7 @@ _SRC		=	builtins/utils/parser.c\
 				prompt/actions/normal/read.c\
 				prompt/actions/normal/seek_to_history.c\
 				prompt/actions/normal/sync_history.c\
+				prompt/actions/normal/sync_vars.c\
 				prompt/actions/quote/prompt_length.c\
 				prompt/actions/quote/read.c\
 				prompt/utils/char.c\
