@@ -28,7 +28,7 @@ setenv [key] [value]        - set an new env key
 unsetenv [key]              - unset an existing env key
 set [-g] [key] [value]      - set a new shell var
 unset [-g] [key]            - unset an existing shell var
-export [key]                - add to env and global vars an existing shell var
+export [keys]               - add to env and global vars an existing shell var
 history                     - show history
 read [-n][keys]             - attribute to vars somes values
 readonly [key]              - setup readonly an existing vars
