@@ -32,8 +32,6 @@
 
 ##BUGS
 
-- cd ~/Desktop
-- History
 - pwd ||
 - || ls
 - pwd &&
