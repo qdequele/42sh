@@ -24,6 +24,7 @@ static	void	more_key_than_value(char **v, char **cmds, int i, int o)
 	double_quoted = ft_strfjoin(simple_quoted, "'");
 	vars_add_or_modify(&g_vars, cmds[i + o - 1], double_quoted);
 	free(without_quote);
+	free(double_quoted);
 }
 
 static	int		ck(char *str)
