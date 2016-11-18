@@ -27,6 +27,7 @@ void	ft_strdel(char **as);
 char	*ft_strdup(const char *s1);
 int		ft_strequ(char const *s1, char const *s2);
 char	*ft_strfjoin(char *s1, char *s2);
+char	*ft_strffjoin(char *s1, char *s2);
 void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f) (unsigned int, char *s));
 char	*ft_strjoin(char const *s1, char const *s2);

@@ -26,8 +26,24 @@ char	*ft_strfjoin(char *s1, char *s2)
 {
 	char *new_str;
 
+	if (!s1 || !s2)
+		return (NULL);
 	new_str = ft_strjoin(s1, s2);
-	if (s1)
+	if (s1 && ft_strlen(s1) > 0)
 		free(s1);
+	return (new_str);
+}
+
+char	*ft_strffjoin(char *s1, char *s2)
+{
+	char *new_str;
+
+	if (!s1 || !s2)
+		return (NULL);
+	new_str = ft_strjoin(s1, s2);
+	if (s1 && ft_strlen(s1) > 0)
+		free(s1);
+	if (s2 && ft_strlen(s2) > 0)
+		free(s2);
 	return (new_str);
 }
