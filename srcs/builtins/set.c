@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:04:02 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 20:07:47 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	is_formated(char *str)
 
 static int	check_variable(char **cmds, int i)
 {
-	if (cmds[i + 2])
+	if (cmds[i] && cmds[i + 1] && cmds[i + 2])
 	{
 		ft_putstr_c(RED, "set: Too many arguments.\n");
 		return (1);
@@ -72,8 +72,9 @@ int			builtins_set(t_list **env, char **cmds)
 	else
 	{
 		if (!cmds[i + 1])
-			cmds[i + 1] = ft_strdup(" ");
-		vars_add_or_modify(l_var, cmds[i], cmds[i + 1]);
+			vars_add_or_modify(l_var, cmds[i], "");
+		else
+			vars_add_or_modify(l_var, cmds[i], cmds[i + 1]);
 		return (0);
 	}
 }
