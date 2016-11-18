@@ -116,7 +116,7 @@
  	Read> test2
 - read test1 test2
  	Read> test3
-- read test1 
+- read
  	Read> test2 test3 
 - read
 	Read>
