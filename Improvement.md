@@ -29,12 +29,7 @@
 
 ##SIGSEGV
 
-
 ##BUGS
-
-- mkdir test ; ls > test
-- echo test2 >>
-- cat <<
 
 ##INPROVEMENT
 
