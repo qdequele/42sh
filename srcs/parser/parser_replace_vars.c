@@ -27,7 +27,13 @@ char			*ft_str_replace_var(char *src, char *var, int *i)
 		new_var = vars_get(g_vars, var);
 	if (!new_var || ft_strlen(new_var) == 0)
 		new_var = "";
-	new_str = ft_strfjoin(ft_strfjoin(begin, new_var), end);
+	if (ft_strlen(new_var) > 0)
+		new_str = ft_strfjoin(ft_strfjoin(begin, new_var), end);
+	else
+	{
+		new_str = ft_strdup(" ");
+		free(begin);
+	}
 	*i += ft_strlen(new_str) - ft_strlen(src);
 	free(src);
 	free(end);
