@@ -45,6 +45,9 @@
 - echo $HOME'
 	$HOME
 	'
+- echo -n $HOME'
+	$HOME
+	'
 ```
 
 ###env
