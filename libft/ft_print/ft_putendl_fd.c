@@ -21,3 +21,11 @@ void	ft_putendl_fd(char const *s, int fd)
 	}
 	ft_putchar_fd('\n', fd);
 }
+
+void	ft_putendl_fd_c(char *color, char const *s, int fd)
+{
+	ft_putstr_fd(color, fd);
+	ft_putstr_fd(s, fd);
+	ft_putstr_fd("\e[0m", fd);
+	ft_putchar_fd('\n', fd);
+}

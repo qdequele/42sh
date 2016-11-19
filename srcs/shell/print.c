@@ -20,10 +20,3 @@ void	print_shell(void)
 	}
 	ft_putstr_c(CYAN, " $> ");
 }
-
-void	print_shell_err(char *s)
-{
-	ft_putstr_fd(RED, 2);
-	ft_putstr_fd(s, 2);
-	ft_putstr_fd("\e[0m", 2);
-}

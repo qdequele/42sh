@@ -16,14 +16,14 @@ void	print_error_history(int i, char *cmds)
 {
 	if (i == 0)
 	{
-		ft_putstr_fd_c(RED, "42sh : no such event: ", 2);
-		ft_putstr_fd_c(RED, cmds, 2);
-		ft_putstr_fd_c(RED, "\n", 2);
+		ft_putstr_fd("42sh : no such event: ", 2);
+		ft_putstr_fd(cmds, 2);
+		ft_putstr_fd("\n", 2);
 	}
 	else
 	{
-		ft_putstr_fd_c(RED, "42sh : no such event: ", 2);
-		ft_putnbr(i);
+		ft_putstr_fd("42sh : no such event: ", 2);
+		ft_putnbr_fd(i, 2);
 		ft_putstr_fd("\n", 2);
 	}
 }

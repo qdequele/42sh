@@ -2,8 +2,6 @@
 
 ##LEAKS
 
-<<<<<<< HEAD
-
 -ls > test1 > test2  | cat -e > test3
 
 		==99953==    by 0x10000E17C: ft_strdup (ft_strdup.c:28)
