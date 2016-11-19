@@ -20,6 +20,9 @@
 - cd (dir)
 - cd /(dir)
 - cd ~/(dir)
+- cd (wrong dir)
+- cd /(wrong dir)
+- cd ~/(wrong dir)
 - cd (tab)
 ```
 

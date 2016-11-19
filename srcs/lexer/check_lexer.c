@@ -40,10 +40,19 @@ int				check_lexer(t_list *token_list)
 {
 	t_token	*t;
 	t_token	*t_next;
+	t_list *token_list_tmp;
 
 	t = NULL;
+	token_list_tmp = token_list;
 	if (!token_list || check_lexer_single_bg(token_list))
 		return (1);
+	t = token_list->content;
+	if (!t || (t && (t->type == PIPE || t->type == OR || t->type == AND)))
+	{
+		check_lexer_error("\\n");
+		ft_lstdel(&token_list_tmp, &del_token);
+		return (1);
+	}
 	while (token_list->next)
 	{
 		t = token_list->content;
@@ -59,6 +68,7 @@ int				check_lexer(t_list *token_list)
 	if (!t || (t && (t->type == PIPE || t->type == OR || t->type == AND)))
 	{
 		check_lexer_error("\\n");
+		ft_lstdel(&token_list_tmp, &del_token);
 		return (1);
 	}
 	return (0);

@@ -53,7 +53,6 @@ char			*bultins_one_history(char *cmds)
 
 	shell = recover_shell();
 	i = (int)ft_atoi(&cmds[1]);
-	printf("i : %d\n", i);
 	list = shell->history;
 	if ((list = ft_lst_seek(list, &cmds[1])) != NULL)
 		cmds = (char*)list->content;
