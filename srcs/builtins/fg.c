@@ -19,7 +19,7 @@ static int		builtin_fg_default(void)
 	job = find_job_by_index(1);
 	if (!job)
 	{
-		ft_putendl_fd("fg: no current job", 2);
+		ft_putstr_fd_c(RED, "fg: no current job.\n", 2);
 		return (1);
 	}
 	put_job_in_foreground(job, 1);
@@ -40,8 +40,9 @@ int				builtins_fg(t_list **env, char **cmds)
 			put_job_in_foreground(job, 1);
 		else
 		{
-			ft_putstr_fd("fg: job not found: ", 2);
-			ft_putendl_fd(cmds[i], 2);
+			ft_putstr_fd_c(RED, "fg: job not found: ", 2);
+			ft_putstr_fd_c(RED, cmds[i], 2);
+			ft_putstr_fd("\n", 2);
 			return (1);
 		}
 		i++;

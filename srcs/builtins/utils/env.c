@@ -23,9 +23,9 @@ void			env_show(t_list *l_env)
 		while (elem)
 		{
 			env = elem->content;
-			ft_putstr(env->key);
-			ft_putstr("=");
-			ft_putendl(env->value);
+			ft_putstr_fd(env->key, 1);
+			ft_putstr_fd("=", 1);
+			ft_putendl_fd(env->value, 1);
 			elem = elem->next;
 		}
 	}

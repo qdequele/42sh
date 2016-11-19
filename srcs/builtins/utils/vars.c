@@ -33,12 +33,12 @@ int		vars_show(t_list *l_var)
 			if (var->key != NULL && ft_strlen(var->key) != 0
 					&& var->value != NULL)
 			{
-				ft_putstr(var->key);
-				ft_putstr("=");
-				ft_putstr(var->value);
+				ft_putstr_fd(var->key, 2);
+				ft_putstr_fd("=", 2);
+				ft_putstr_fd(var->value, 2);
 				if (var->readonly == 1)
-					ft_putstr(" - (readonly)");
-				ft_putstr("\n");
+					ft_putstr_fd(" - (readonly)", 2);
+				ft_putstr_fd("\n", 2);
 			}
 			elem = elem->next;
 		}

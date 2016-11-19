@@ -20,14 +20,15 @@ static void	assert_file(char *target)
 		return ;
 	if (stat(target, &sb) == 0 && S_ISDIR(sb.st_mode))
 	{
-		ft_putstr("42sh: Is a directory: ");
+		ft_putstr_fd_c(RED, "42sh: Is a directory: ", 2);
 		ft_putendl(target);
 		exit(1);
 	}
 	if (stat(target, &sb) == 0 && access(target, X_OK) != 0)
 	{
-		ft_putstr("42sh: Permission denied: ");
-		ft_putendl(target);
+		ft_putstr_fd("42sh: Permission denied: ", 2);
+		ft_putstr_fd_c(RED, target, 2);
+		ft_putstr_fd("\n", 2);
 		exit(1);
 	}
 }
@@ -43,7 +44,7 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 		if (s[i].target && s[i].open_mode == O_RDONLY &&
 			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
 		{
-			ft_putstr("42sh: No such file: ");
+			ft_putstr_fd_c(RED, "42sh: No such file: ", 2);
 			ft_putendl(s[i].target);
 			exit(1);
 		}
@@ -95,8 +96,9 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	execve(p->argv[0], p->argv, env);
 	if (p->argv[0][0] && p->argv[0][0] != '!')
 	{
-		ft_putstr("42sh: command not found: ");
-		ft_putendl(p->argv[0]);
+		ft_putstr_fd_c(RED, "42sh: command not found: ", 2);
+		ft_putstr_fd_c(RED, p->argv[0], 2);
+		ft_putstr_fd("\n", 2);
 	}
 	exit(1);
 }
