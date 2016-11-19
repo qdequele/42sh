@@ -23,23 +23,21 @@ void	save_vars(void)
 	reset_vars();
 	elem = *vars_recover();
 	fd = open("./ressources/vars", O_RDWR | O_CREAT | O_APPEND, 0666);
-	if (fd > 0)
+	if (fd <= 0)
+		return ;
+	while (elem && elem->content)
 	{
-		while (elem && elem->content)
+		var = elem->content;
+		if (var->key != NULL && ft_strlen(var->key) != 0
+				&& var->value != NULL)
 		{
-			var = elem->content;
-			if (var->key != NULL && ft_strlen(var->key) != 0
-					&& var->value != NULL)
-			{
-				ft_putstr_fd(var->key, fd);
-				ft_putstr_fd("=", fd);
-				ft_putstr_fd(var->value, fd);
-				ft_putstr_fd("\n", fd);
-			}
-			elem = elem->next;
+			ft_putstr_fd(var->key, fd);
+			ft_putstr_fd("=", fd);
+			ft_putendl_fd(var->value, fd);
 		}
-		close(fd);
+		elem = elem->next;
 	}
+	close(fd);
 }
 
 void	load_vars(void)

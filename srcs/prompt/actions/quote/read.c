@@ -12,9 +12,9 @@
 
 #include <ft_sh.h>
 
-char	display_quote_error(char c)
+char			display_quote_error(char c)
 {
-	char flag;
+	char		flag;
 
 	if (c == '`')
 		return (flag = 'b');
@@ -36,8 +36,8 @@ int				quote_close(char *str, char c)
 
 static	void	read_quote(char *b, char quote)
 {
-	t_status status;
-	t_status nb_quote;
+	t_status	status;
+	t_status	nb_quote;
 
 	nb_quote = 0;
 	if (quote == '(')
@@ -76,9 +76,9 @@ void			read_quote_input(char quote)
 	read_quote(b, quote);
 }
 
-int		check_quote(char *line)
+int				check_quote(char *line)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (line[i])

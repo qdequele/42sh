@@ -29,13 +29,18 @@ void			process_input(char *input)
 	}
 }
 
+static void		load_shell(void)
+{
+	init_shell();
+	load_history();
+	load_vars();
+}
+
 int				shell_start(void)
 {
 	char		*line;
 
-	init_shell();
-	load_history();
-	load_vars();
+	load_shell();
 	while (recover_shell()->last_exit_code == -1)
 	{
 		init_term();

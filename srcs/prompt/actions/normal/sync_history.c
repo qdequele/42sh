@@ -26,7 +26,8 @@ void	save_history(void)
 	{
 		while (++index < ft_lstcount(shell->history) - 1)
 		{
-			ft_putstr_fd((char*)ft_lstget_at(shell->history, index)->content, fd);
+			ft_putstr_fd((char*)ft_lstget_at(shell->history,
+				index)->content, fd);
 			ft_putstr_fd("\n", fd);
 		}
 		close(fd);

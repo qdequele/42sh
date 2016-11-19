@@ -35,8 +35,8 @@ int				builtins_jobs(t_list **env, char **cmds)
 
 static void		free_one_process(void *elem, size_t size)
 {
-	t_process		*l_process;
-	int				i;
+	t_process	*l_process;
+	int			i;
 
 	i = -1;
 	l_process = elem;
@@ -45,7 +45,7 @@ static void		free_one_process(void *elem, size_t size)
 		ft_free_aoc(l_process->argv);
 	while (++i < 3)
 	{
-		if (l_process->stdio[i].target) 
+		if (l_process->stdio[i].target)
 		{
 			free(l_process->stdio[i].target);
 			l_process->stdio[i].target = NULL;
@@ -54,7 +54,7 @@ static void		free_one_process(void *elem, size_t size)
 	free(elem);
 }
 
-void		free_one_job(void *elem, size_t size)
+void			free_one_job(void *elem, size_t size)
 {
 	t_job		*l_job;
 
