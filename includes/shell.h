@@ -55,7 +55,7 @@ t_shell					*recover_shell(void);
 void					init_shell(void);
 void					free_shell(void);
 void					print_shell();
-void					print_shell_err(char *s);
+void					print_err(char *str, char *path);
 void					ignore_major_signals(void);
 void					reset_major_signals(void);
 void					signal_reprompt(int i);
