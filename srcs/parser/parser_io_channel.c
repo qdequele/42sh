@@ -17,8 +17,9 @@ static int	parse_truncate_redir(t_process *p, int channel, char *target)
 	p->stdio[channel].fd = -1;
 	p->stdio[channel].open_mode = O_CREAT | O_WRONLY | O_TRUNC;
 	p->stdio[channel].to_close = 1;
+	if (p->stdio[channel].target)
+		free(p->stdio[channel].target);
 	p->stdio[channel].target = ft_strdup(target);
-	printf("target : |%s| - %p\n", p->stdio[channel].target, p->stdio[channel].target);
 	return (0);
 }
 
@@ -27,6 +28,8 @@ static int	parse_append_redir(t_process *p, int channel, char *target)
 	p->stdio[channel].fd = -1;
 	p->stdio[channel].open_mode = O_CREAT | O_WRONLY | O_APPEND;
 	p->stdio[channel].to_close = 1;
+	if (p->stdio[channel].target)
+		free(p->stdio[channel].target);
 	p->stdio[channel].target = ft_strdup(target);
 	return (0);
 }
@@ -36,6 +39,8 @@ static int	parse_input_redir(t_process *p, int channel, char *target)
 	p->stdio[channel].open_mode = O_RDONLY;
 	p->stdio[channel].fd = -1;
 	p->stdio[channel].to_close = 1;
+	if (p->stdio[channel].target)
+		free(p->stdio[channel].target);
 	p->stdio[channel].target = ft_strdup(target);
 	return (0);
 }

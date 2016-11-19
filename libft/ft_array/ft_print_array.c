@@ -22,19 +22,11 @@
 void	ft_print_aoc(char **array)
 {
 	int		i;
-	int		j;
 
 	i = 0;
 	while (array[i])
 	{
-		j = 0;
-		while (array[i][j])
-		{
-			ft_putchar(array[i][j]);
-			ft_putchar('\t');
-			j++;
-		}
-		ft_putchar('\n');
+		ft_putendl(array[i]);
 		i++;
 	}
 }
