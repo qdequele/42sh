@@ -44,8 +44,7 @@ int		count_target_length(t_process *p, char **split, char symbol,
 		parse_fn(p, channel, *(split + 1));
 		return (2);
 	}
-	ft_putstr_fd("42sh : parse error near \\n\n", 2);
-	return (-1);
+	return (1);
 }
 
 int		is_aggregate_fd(char *redir)
