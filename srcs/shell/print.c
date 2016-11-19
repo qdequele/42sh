@@ -20,3 +20,9 @@ void	print_shell(void)
 	}
 	ft_putstr_c(CYAN, " $> ");
 }
+
+void	print_err(char *str, char *path)
+{
+	ft_putstr_fd(str, 2);
+	ft_putendl_fd(path, 2);
+}

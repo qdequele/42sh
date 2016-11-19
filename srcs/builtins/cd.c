@@ -12,12 +12,6 @@
 
 #include <ft_sh.h>
 
-static void	print_err(char *str, char *path)
-{
-	ft_putstr_fd(str, 2);
-	ft_putendl_fd(path, 2);
-}
-
 static int	move_to(char *path)
 {
 	t_stat	path_stat;
@@ -38,6 +32,16 @@ static int	move_to(char *path)
 		return (0);
 	}
 	return (1);
+}
+
+static int	nb_args(char *str)
+{
+	if (str)
+	{
+		print_err("cd: too many arguments", "");
+		return (1);
+	}
+	return (0);
 }
 
 static void	update_env_pwd(t_list **env, char *new_path, char *old_path)
@@ -69,27 +73,27 @@ int			builtins_cd(t_list **env, char **cmds)
 {
 	char		old_path[1024];
 	char		new_path[1024];
-	int			i;
 
-	i = 1;
+	if (nb_args(cmds[2]))
+		return (1);
 	getcwd(old_path, 1024);
-	if (!cmds[i] || ft_strcmp(cmds[i], "~") == 0)
+	if (!cmds[1] || ft_strcmp(cmds[1], "~") == 0)
 		chdir(env_get(*env, "HOME"));
-	else if (ft_strncmp(cmds[i], "~/", 2) == 0)
+	else if (ft_strncmp(cmds[1], "~/", 2) == 0)
 	{
-		if (cd_home_path(env, cmds[i]))
+		if (cd_home_path(env, cmds[1]))
 			return (1);
 	}
-	else if (ft_strcmp(cmds[i], "..") == 0)
-		chdir(cmds[i]);
-	else if (ft_strcmp(cmds[i], "-") == 0)
+	else if (ft_strcmp(cmds[1], "..") == 0)
+		chdir(cmds[1]);
+	else if (ft_strcmp(cmds[1], "-") == 0)
 		chdir(env_get(*env, "OLDPWD"));
 	else
 	{
-		if (move_to(cmds[i]) == 0)
+		if (move_to(cmds[1]) == 0)
 			return (1);
 	}
 	getcwd(new_path, 1024);
-	update_env_pwd(env, old_path, new_path);
+	update_env_pwd(env, new_path, old_path);
 	return (0);
 }
