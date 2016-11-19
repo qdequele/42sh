@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 22:15:01 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 22:56:26 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int					builtins_bg(t_list **env, char **cmds);
 int					builtins_fg(t_list **env, char **cmds);
 int					builtins_jobs(t_list **env, char **cmds);
 void				free_jobs(t_list **jobs);
+void				free_one_job(void *elem, size_t size);
 int					builtins_read(t_list **env, char **cmds);
 int					count_words(char *s, char c);
 char				*check_value(char opt, char *var_value);

@@ -33,18 +33,18 @@ static int	check_variable(char **cmds, int i)
 {
 	if (cmds[i] && cmds[i + 1] && cmds[i + 2])
 	{
-		ft_putstr_c(RED, "set: Too many arguments.\n");
+		ft_putstr_fd_c(RED, "set: Too many arguments.\n", 2);
 		return (1);
 	}
 	else if (is_formated(cmds[i]) == -1 && !EXPORTS)
 	{
-		ft_putstr_c(RED, "set: Variable name must begin with a letter.\n");
+		ft_putstr_fd_c(RED, "set: Variable name must begin with a letter.\n", 2);
 		return (1);
 	}
 	else if (is_formated(cmds[i]) == 0 && !EXPORTS)
 	{
-		ft_putstr_c(RED, "set: Variable name must contain ");
-		ft_putstr_c(RED, "alphanumeric characters.\n");
+		ft_putstr_fd_c(RED, "set: Variable name must contain", 2);
+		ft_putstr_fd_c(RED, "alphanumeric characters.\n", 2);
 		return (1);
 	}
 	else

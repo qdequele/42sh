@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jobs.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/06 22:17:29 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/18 23:02:59 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		free_one_process(void *elem, size_t size)
 	free(elem);
 }
 
-static void		free_one_job(void *elem, size_t size)
+void		free_one_job(void *elem, size_t size)
 {
 	t_job		*l_job;
 

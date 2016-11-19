@@ -104,20 +104,7 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 	while (*s)
 	{
 		if (is_token_redir(*s))
-		{
-			if (parse_io_channel(p, s) == -1)
-			{
-				free(cmd);
-				if (argv)
-				{
-					argv[i] = NULL;
-					ft_free_aoc(argv);
-				}
-				ft_free_aoc(start_split);
-				return (NULL);
-			}
 			s += parse_io_channel(p, s);
-		}
 		else
 			argv[i++] = ft_skip_char(ft_skip_char(ft_strdup(*s++), '\''), '"');
 	}

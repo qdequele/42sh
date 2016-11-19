@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_io_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/14 18:14:42 by qdequele          #+#    #+#             */
-/*   Updated: 2016/04/20 16:56:32 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/19 16:05:58 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ int		count_target_length(t_process *p, char **split, char symbol,
 		parse_fn(p, channel, *(split + 1));
 		return (2);
 	}
-	ft_putstr_fd("42sh : parse error near \\n\n", 2);
-	return (-1);
+	return (1);
 }
 
 int		is_aggregate_fd(char *redir)
