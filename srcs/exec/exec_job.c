@@ -44,6 +44,10 @@ void			exec_job_list(t_list *job_list)
 void			launch_job_process(t_job *job, t_process *process, int *iofile,
 								int foreground)
 {
+	int				i;
+
+	i = -1;
+
 	if (builtins_find(*process->argv))
 	{
 		process->stdio[0].fd = iofile[0];
@@ -60,6 +64,14 @@ void			launch_job_process(t_job *job, t_process *process, int *iofile,
 	}
 	ft_free_aoc(process->argv);
 	process->argv = NULL;
+	while (++i < 3)
+	{
+		if (process->stdio[i].target) 
+		{
+			free(process->stdio[i].target);
+			process->stdio[i].target = NULL;
+		}
+	}
 	if (!job->pgid)
 		job->pgid = process->pid;
 	setpgid(process->pid, job->pgid);

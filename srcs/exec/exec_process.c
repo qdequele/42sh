@@ -12,17 +12,7 @@
 
 #include <ft_sh.h>
 
-static void	free_target(t_io_channel *s)
-{
-	int	i;
-
-	i = -1;
-	while (++i < 3)
-		if (s[i].target)
-			free(s[i].target);
-}
-
-static void	assert_file(t_io_channel *s, char *target, int mode)
+static void	assert_file(char *target, int mode)
 {
 	struct stat		sb;
 	int				flag;
@@ -33,7 +23,6 @@ static void	assert_file(t_io_channel *s, char *target, int mode)
 	{
 		ft_putstr_fd("42sh: Is a directory: ", 2);
 		ft_putendl(target);
-		free_target(s);
 		exit(1);
 	}
 	flag = (mode == O_RDONLY) ? R_OK : W_OK;
@@ -53,20 +42,18 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 	i = -1;
 	while (++i < 3)
 	{
-		assert_file(s, s[i].target, s[i].open_mode);
+		assert_file(s[i].target, s[i].open_mode);
 		if (s[i].target && s[i].open_mode == O_RDONLY &&
 			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
 		{
 			ft_putstr_fd("42sh: No such file: ", 2);
 			ft_putendl(s[i].target);
-			free_target(s);
 			exit(1);
 		}
 		else if (s[i].target && (s[i].fd =
 			open(s[i].target, s[i].open_mode, 0666)) == -1)
 			s[i].fd = 1;
 	}
-	free_target(s);
 	i = -1;
 	while (++i < 3)
 		if (s[i].fd != i)
