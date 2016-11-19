@@ -40,31 +40,39 @@ static int	move_to(char *path)
 	return (1);
 }
 
+static int	cd_home_path(t_list **env, char *str)
+{
+	char		*tmp;
+	char		*sub;
+
+	sub = ft_strsub(str, 1, ft_strlen(str) - 1);
+	tmp = ft_strjoin(env_get(*env, "HOME"), sub);
+	if (move_to(tmp) == 0)
+	{
+		free(tmp);
+		free(sub);
+		return (1);
+	}
+	chdir(tmp);
+	free(tmp);
+	free(sub);
+	return (0);
+}
+
 int			builtins_cd(t_list **env, char **cmds)
 {
 	char		old_path[1024];
 	char		new_path[1024];
 	int			i;
-	char		*tmp;
-	char		*sub;
-
+	
 	i = 1;
 	getcwd(old_path, 1024);
 	if (!cmds[i] || ft_strcmp(cmds[i], "~") == 0)
 		chdir(env_get(*env, "HOME"));
 	else if (ft_strncmp(cmds[i], "~/", 2) == 0)
 	{
-		sub = ft_strsub(cmds[i], 1, ft_strlen(cmds[1]) - 1);
-		tmp = ft_strjoin(env_get(*env, "HOME"), sub);
-		if (move_to(tmp) == 0)
-		{
-			free(tmp);
-			free(sub);
+		if (cd_home_path(env, cmds[i]))
 			return (1);
-		}
-		chdir(tmp);
-		free(tmp);
-		free(sub);
 	}
 	else if (ft_strcmp(cmds[i], "..") == 0)
 		chdir(cmds[i]);
