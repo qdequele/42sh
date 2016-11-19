@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 04:10:04 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/18 15:57:44 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/19 22:03:41 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,26 @@ static	char		*add_to_list(t_list **list, char *ret)
 	return (ret);
 }
 
-static	void		print_on_fd(int *pipe_fd, t_list *list)
+static	void		print_on_fd(int *pipe_fd, t_list **list)
 {
-	char		**tab_var;
-	int			i;
-	int			j;
+	t_list		*cur;
+	t_list		*tmp;
+	char		*str;
 
-	i = 0;
-	tab_var = list_to_tab(list);
-	j = ft_count_raw_aoc(tab_var);
 	ft_putchar('\n');
-	if (ft_lstcount(list) == 0)
+	if (ft_lstcount(*list) == 0)
 		return ;
-	while (i < j)
+	cur = *list;
+	while (cur)
 	{
-		write(pipe_fd[1], tab_var[i], ft_strlen(tab_var[i]));
+		str = cur->content;
+		write(pipe_fd[1], str, ft_strlen(str));
 		write(pipe_fd[1], "\n", 1);
-		free(tab_var[i]);
-		i++;
+		free(str);
+		tmp = cur;
+		cur = cur->next;
+		free(tmp);
 	}
-	free(tab_var);
 }
 
 static	void		read_heredoc(char *b, char *target, int *pipe_fd)
@@ -65,7 +65,7 @@ static	void		read_heredoc(char *b, char *target, int *pipe_fd)
 					|| (ft_strcmp(ret, target) == 0 && ENTER)))
 		{
 			free(ret);
-			print_on_fd(pipe_fd, list);
+			print_on_fd(pipe_fd, &list);
 			break ;
 		}
 		if (ENTER)
