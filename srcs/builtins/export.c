@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static void	export_err(char	*str)
+static void	export_err(char *str)
 {
 	ft_putstr_c(RED, "export: Impossible to find ");
 	ft_putstr_c(RED, str);

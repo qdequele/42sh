@@ -79,7 +79,7 @@ int				builtins_read(t_list **env, char **cmds)
 	char	**v;
 	int		o;
 	int		i;
-	char 	*read;
+	char	*read;
 
 	o = (*env && cmds[1] && READ_OPT_R) ? 2 : 1;
 	i = (o == 2) ? 0 : -1;

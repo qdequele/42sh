@@ -44,7 +44,6 @@ char	**env_parse_from_list(t_list *l_env)
 	int		i;
 	char	**environ;
 	t_list	*elem;
-	t_env	*env;
 	char	*value;
 	char	*key;
 
@@ -53,9 +52,10 @@ char	**env_parse_from_list(t_list *l_env)
 	elem = l_env;
 	while (elem)
 	{
-		env = (t_env *)elem->content;
-		value = (env->value) ? env->value : ft_strdup("");
-		key = (env->key) ? env->key : ft_strdup("");
+		value = (((t_env *)elem->content)->value) ?
+			((t_env *)elem->content)->value : ft_strdup("");
+		key = (((t_env *)elem->content)->key) ?
+			((t_env *)elem->content)->key : ft_strdup("");
 		environ[i] = ft_strfjoin(ft_strfjoin(key, "="), value);
 		elem = elem->next;
 		i++;

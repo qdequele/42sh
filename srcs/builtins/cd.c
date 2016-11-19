@@ -40,6 +40,12 @@ static int	move_to(char *path)
 	return (1);
 }
 
+static void	update_env_pwd(t_list **env, char *new_path, char *old_path)
+{
+	env_add_or_modify(env, "PWD", new_path);
+	env_add_or_modify(env, "OLDPWD", old_path);
+}
+
 static int	cd_home_path(t_list **env, char *str)
 {
 	char		*tmp;
@@ -64,7 +70,7 @@ int			builtins_cd(t_list **env, char **cmds)
 	char		old_path[1024];
 	char		new_path[1024];
 	int			i;
-	
+
 	i = 1;
 	getcwd(old_path, 1024);
 	if (!cmds[i] || ft_strcmp(cmds[i], "~") == 0)
@@ -84,7 +90,6 @@ int			builtins_cd(t_list **env, char **cmds)
 			return (1);
 	}
 	getcwd(new_path, 1024);
-	env_add_or_modify(env, "PWD", new_path);
-	env_add_or_modify(env, "OLDPWD", old_path);
+	update_env_pwd(env, old_path, new_path);
 	return (0);
 }
