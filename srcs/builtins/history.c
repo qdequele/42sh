@@ -37,8 +37,8 @@ int				builtins_history(t_list **env, char **cmds)
 	shell = recover_shell();
 	if (cmds[1])
 	{
-		ft_putstr_fd("42sh : no such event: ", 2);
-		ft_putstr_fd(cmds[1], 2);
+		ft_putstr_fd_c(RED, "42sh : no such event: ", 2);
+		ft_putstr_fd_c(RED, cmds[1], 2);
 		return (1);
 	}
 	display_history(shell->history);

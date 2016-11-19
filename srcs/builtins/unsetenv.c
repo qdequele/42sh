@@ -14,12 +14,21 @@
 
 int			builtins_unsetenv(t_list **env, char **cmds)
 {
+	t_list 	*tmp_env;
 	int		i;
 
+	tmp_env = *env;
 	i = 1;
 	while (cmds[i])
 	{
-		remove_key(env, cmds[i], &env_free_one);
+		tmp_env = *env;
+		if (ft_lst_seek(tmp_env, cmds[i]) == NULL)
+		{
+			ft_putstr_fd_c(RED, cmds[i], 2);
+			ft_putstr_fd_c(RED, ": Wrong key.\n", 2);
+		}
+		else
+			remove_key(env, cmds[i], &env_free_one);
 		i++;
 	}
 	g_env = *env;
