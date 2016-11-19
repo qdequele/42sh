@@ -12,6 +12,13 @@
 
 #include <ft_sh.h>
 
+static void	export_err(char	*str)
+{
+	ft_putstr_c(RED, "export: Impossible to find ");
+	ft_putstr_c(RED, str);
+	ft_putstr_c(RED, "\n");
+}
+
 int			builtins_export(t_list **env, char **cmds)
 {
 	int		i;
@@ -28,11 +35,7 @@ int			builtins_export(t_list **env, char **cmds)
 	{
 		value = vars_get(g_vars, cmds[i]);
 		if (ft_strlen(value) == 0)
-		{
-			ft_putstr_c(RED, "export: Impossible to find ");
-			ft_putstr_c(RED, cmds[i]);
-			ft_putstr_c(RED, "\n");
-		}
+			export_err(cmds[i]);
 		else
 		{
 			vars_add_or_modify(&g_env, cmds[i], value);

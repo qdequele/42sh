@@ -88,7 +88,6 @@ typedef struct	s_prompt
 	int			quote_number;
 }				t_prompt;
 
-
 void			*get_actions_normal(void);
 void			*get_actions_copy(void);
 void			*get_actions_heredoc(void);
@@ -167,7 +166,8 @@ void			delete_one_char(void);
 void			delete_x_chars(int x);
 void			get_cmd_list(t_list **possibilities, char *last_word);
 void			get_builtins_list(t_list **possibilities, char *last_word);
-void			get_files_list_one(t_list **possibilities, char *path, char *name, char *cmd_start);
+void			get_files_list_one(t_list **possibilities, char *path,
+	char *name, char *cmd_start);
 void			get_files_list(t_list **possibilities, char *last_word);
 void			reset_autocomplete_possibilities(void);
 char			*before_last_word(char *str, int c);
