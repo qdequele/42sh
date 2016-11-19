@@ -44,10 +44,9 @@ void			exec_job_list(t_list *job_list)
 void			launch_job_process(t_job *job, t_process *process, int *iofile,
 								int foreground)
 {
-	int				i;
+	int			i;
 
 	i = -1;
-
 	if (builtins_find(*process->argv))
 	{
 		process->stdio[0].fd = iofile[0];
