@@ -6,15 +6,26 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 18:24:02 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/18 21:28:52 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/19 17:25:51 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-static void	assert_file(char *target)
+static void	free_target(t_io_channel *s)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 3)
+		if (s[i].target)
+			free(s[i].target);
+}
+
+static void	assert_file(t_io_channel *s, char *target, int mode)
 {
 	struct stat		sb;
+	int				flag;
 
 	if (!target)
 		return ;
@@ -22,12 +33,15 @@ static void	assert_file(char *target)
 	{
 		ft_putstr("42sh: Is a directory: ");
 		ft_putendl(target);
+		free_target(s);
 		exit(1);
 	}
-	if (stat(target, &sb) == 0 && access(target, X_OK) != 0)
+	flag = (mode == O_RDONLY) ? R_OK : W_OK;
+	if (stat(target, &sb) == 0 && access(target, flag) != 0)
 	{
 		ft_putstr("42sh: Permission denied: ");
 		ft_putendl(target);
+		free_target(s);
 		exit(1);
 	}
 }
@@ -39,18 +53,20 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 	i = -1;
 	while (++i < 3)
 	{
-		assert_file(s[i].target);
+		assert_file(s, s[i].target, s[i].open_mode);
 		if (s[i].target && s[i].open_mode == O_RDONLY &&
 			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
 		{
 			ft_putstr("42sh: No such file: ");
 			ft_putendl(s[i].target);
+			free_target(s);
 			exit(1);
 		}
 		else if (s[i].target && (s[i].fd =
 			open(s[i].target, s[i].open_mode, 0666)) == -1)
 			s[i].fd = 1;
 	}
+	free_target(s);
 	i = -1;
 	while (++i < 3)
 		if (s[i].fd != i)
