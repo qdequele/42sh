@@ -24,8 +24,8 @@ int			builtins_unsetenv(t_list **env, char **cmds)
 		tmp_env = *env;
 		if (ft_lst_seek(tmp_env, cmds[i]) == NULL)
 		{
-			ft_putstr_fd_c(RED, cmds[i], 2);
-			ft_putstr_fd_c(RED, ": Wrong key.\n", 2);
+			ft_putstr_fd(cmds[i], 2);
+			ft_putstr_fd(": Wrong key.\n", 2);
 		}
 		else
 			remove_key(env, cmds[i], &env_free_one);

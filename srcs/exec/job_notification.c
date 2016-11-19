@@ -28,7 +28,7 @@ void		put_job_info(t_job *j, int index)
 		ft_putendl(j->command);
 	else
 	{
-		ft_putstr_fd_c(RED, "(unknown command)", 2);
+		ft_putstr_fd("(unknown command)", 2);
 		ft_putstr_fd("\n", 2);
 	}
 }

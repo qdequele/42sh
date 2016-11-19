@@ -14,9 +14,9 @@
 
 static void	export_err(char *str)
 {
-	ft_putstr_c(RED, "export: Impossible to find ");
-	ft_putstr_c(RED, str);
-	ft_putstr_c(RED, "\n");
+	ft_putstr_fd("export: Impossible to find ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 }
 
 int			builtins_export(t_list **env, char **cmds)
@@ -28,7 +28,7 @@ int			builtins_export(t_list **env, char **cmds)
 	i = 1;
 	if (!cmds[i])
 	{
-		ft_putstr_c(RED, "export: Need an argument.\n");
+		ft_putstr_fd("export: Need an argument.\n", 2);
 		return (1);
 	}
 	while (cmds[i])
