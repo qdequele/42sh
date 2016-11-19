@@ -12,10 +12,10 @@
 
 #include <ft_sh.h>
 
-void		env_show(t_list *l_env)
+void			env_show(t_list *l_env)
 {
-	t_list	*elem;
-	t_env	*env;
+	t_list		*elem;
+	t_env		*env;
 
 	elem = l_env;
 	if (elem && elem->content)
@@ -31,10 +31,10 @@ void		env_show(t_list *l_env)
 	}
 }
 
-char		*env_get(t_list *l_env, char *f_key)
+char			*env_get(t_list *l_env, char *f_key)
 {
-	t_list	*elem;
-	t_env	*env;
+	t_list		*elem;
+	t_env		*env;
 
 	elem = l_env;
 	if (elem)
@@ -52,10 +52,10 @@ char		*env_get(t_list *l_env, char *f_key)
 	return ("");
 }
 
-void		env_add_or_modify(t_list **l_env, char *key, char *value)
+void			env_add_or_modify(t_list **l_env, char *key, char *value)
 {
-	t_list	*elem;
-	t_env	*env;
+	t_list		*elem;
+	t_env		*env;
 
 	elem = *l_env;
 	while (elem)
@@ -75,9 +75,9 @@ void		env_add_or_modify(t_list **l_env, char *key, char *value)
 	free(env);
 }
 
-void	env_free_one(void *elem, size_t size)
+void			env_free_one(void *elem, size_t size)
 {
-	t_env	*l_elem;
+	t_env		*l_elem;
 
 	UNUSED(size);
 	l_elem = elem;
@@ -92,7 +92,7 @@ void	env_free_one(void *elem, size_t size)
 	free(l_elem);
 }
 
-void		env_free(t_list **l_env)
+void			env_free(t_list **l_env)
 {
 	ft_lstdel(l_env, &env_free_one);
 }

@@ -23,9 +23,9 @@ static t_option	*builtins_env_options(void)
 
 static t_list	*env_cpy(t_list *src)
 {
-	t_env	*env;
-	t_list	*tmp;
-	t_list	*dest;
+	t_env		*env;
+	t_list		*tmp;
+	t_list		*dest;
 
 	tmp = src;
 	dest = NULL;

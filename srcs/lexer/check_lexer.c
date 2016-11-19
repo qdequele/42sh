@@ -36,23 +36,28 @@ static int		check_lexer_single_bg(t_list *token_list)
 	return (0);
 }
 
-int				check_lexer(t_list *token_list)
+static int		token_error(t_list *token, t_token *t)
 {
-	t_token	*t;
-	t_token	*t_next;
-	t_list *token_list_tmp;
-
-	t = NULL;
-	token_list_tmp = token_list;
-	if (!token_list || check_lexer_single_bg(token_list))
-		return (1);
-	t = token_list->content;
 	if (!t || (t && (t->type == PIPE || t->type == OR || t->type == AND)))
 	{
 		check_lexer_error("\\n");
-		ft_lstdel(&token_list_tmp, &del_token);
+		ft_lstdel(&token, &del_token);
 		return (1);
 	}
+	return (0);
+}
+
+int				check_lexer(t_list *token_list)
+{
+	t_token		*t;
+	t_token		*t_next;
+	t_list		*token_list_tmp;
+
+	t = NULL;
+	token_list_tmp = token_list;
+	if (!token_list || check_lexer_single_bg(token_list)
+		|| token_error(token_list_tmp, token_list->content))
+		return (1);
 	while (token_list->next)
 	{
 		t = token_list->content;
@@ -64,12 +69,7 @@ int				check_lexer(t_list *token_list)
 		}
 		token_list = token_list->next;
 	}
-	t = token_list->content;
-	if (!t || (t && (t->type == PIPE || t->type == OR || t->type == AND)))
-	{
-		check_lexer_error("\\n");
-		ft_lstdel(&token_list_tmp, &del_token);
+	if (token_error(token_list_tmp, token_list->content))
 		return (1);
-	}
 	return (0);
 }
