@@ -28,8 +28,6 @@ char	display_quote_error(char c)
 
 int				quote_close(char *str, char c)
 {
-	if (c == '(')
-		c = ')';
 	if (ft_strchr(str, c))
 		return (1);
 	else
@@ -42,6 +40,8 @@ static	void	read_quote(char *b, char quote)
 	t_status nb_quote;
 
 	nb_quote = 0;
+	if (quote == '(')
+		quote = ')';
 	while (read(0, b, 4))
 	{
 		if (b[0] == quote)
