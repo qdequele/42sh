@@ -59,6 +59,7 @@ void			launch_job_process(t_job *job, t_process *process, int *iofile,
 		launch_process(process, job->pgid, foreground);
 	}
 	ft_free_aoc(process->argv);
+	process->argv = NULL;
 	if (!job->pgid)
 		job->pgid = process->pid;
 	setpgid(process->pid, job->pgid);
