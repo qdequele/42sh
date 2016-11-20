@@ -8,7 +8,6 @@
 
 ##BUGS
 
-- Issue with cat >> toto
 - Maybe issues with null var in export
 
 ##INPROVEMENT

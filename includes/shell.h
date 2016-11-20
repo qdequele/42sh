@@ -49,7 +49,7 @@ typedef struct			s_term
 	int					tty;
 }						t_term;
 
-int						shell_start(void);
+int						shell_start(int init_termcaps);
 void					process_input(char *input);
 t_shell					*recover_shell(void);
 void					init_shell(void);

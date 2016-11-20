@@ -36,14 +36,13 @@ static void		load_shell(void)
 	load_vars();
 }
 
-int				shell_start(void)
+int				shell_start(int init_termcaps)
 {
 	char		*line;
 
-	load_shell();
 	while (recover_shell()->last_exit_code == -1)
 	{
-		init_term();
+		init_termcaps = (init_termcaps) ? init_term() : 0;
 		print_shell();
 		recover_shell()->history_position = -1;
 		line = read_normal_input();
@@ -56,6 +55,7 @@ int				shell_start(void)
 			add_history(line);
 			ignore_major_signals();
 		}
+		init_termcaps = 1;
 		free(line);
 		free_input();
 		reset_autocomplete_possibilities();
@@ -90,5 +90,6 @@ int				main(int argc, char **argv, char **environ)
 		return (1);
 	}
 	env_parse_to_list(&g_env, environ);
-	return (shell_start());
+	load_shell();
+	return (shell_start(0));
 }
