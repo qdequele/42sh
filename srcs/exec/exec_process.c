@@ -114,11 +114,13 @@ int			update_process_status(t_job *j, pid_t pid, int status)
 				{
 					((t_process *)process->content)->status = status;
 					((t_process *)process->content)->completed = 1;
+					if (process->next == NULL)
+						kill(j->pgid, SIGTERM);
 				}
 				else
+				{
 					((t_process *)process->content)->stopped = 1;
-				if (process->next == NULL)
-					kill(j->pgid, SIGTERM);
+				}
 			}
 			return (0);
 		}
