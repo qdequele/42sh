@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/20 18:24:47 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/20 20:27:11 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int			init_term(int save)
 	char	bf_env[4096];
 
 	term = recover_term();
+	if (!isatty(term->tty))
+		return (0);
 	if (save && tcgetattr(0, &(term->old_term)) == -1)
 		return (0);
 	if ((term->term_name = getenv("TERM")) == NULL)
@@ -47,6 +49,8 @@ int			reset_term(void)
 	t_term	*term;
 
 	term = recover_term();
+	if (!isatty(term->tty))
+		return (0);
 	tputs(tgetstr("ve", NULL), 1, ft_tputs);
 	if (tcsetattr(0, 0, &(term->old_term)) == -1)
 		return (-1);

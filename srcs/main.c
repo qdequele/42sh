@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/20 18:27:51 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/20 21:20:27 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,35 @@ int				shell_start(void)
 	return (recover_shell()->last_exit_code);
 }
 
+int				shell_file(char **argv)
+{
+	char		*line;
+	int			fd;
+	int			res;
+
+	if (!isatty(0)) 
+		fd = 0;
+	else
+		fd = open(argv[1], O_RDWR);
+	while (ft_get_next_line(fd, &line) && recover_shell()->last_exit_code == -1)
+	{
+		if (line)
+		{
+			signal(SIGINT, SIG_IGN);
+			process_input(line);
+			ignore_major_signals();
+		}
+		free(line);
+		free(recover_shell()->prompt);
+	}
+	if (recover_shell()->last_exit_code == -1)
+		res = ft_atoi(vars_get(g_vars, "?"));
+	else
+		res = recover_shell()->last_exit_code;
+	free_shell();
+	return (res);
+}
+
 int				main(int argc, char **argv, char **environ)
 {
 	t_term	*term;
@@ -72,11 +101,6 @@ int				main(int argc, char **argv, char **environ)
 	UNUSED(argv);
 	g_env = NULL;
 	g_vars = NULL;
-	if (argc > 1)
-	{
-		ft_putendl_fd("42sh cannot have arguments", 2);
-		return (0);
-	}
 	term = recover_term();
 	shell = recover_shell();
 	term->tty = open("/dev/tty", O_RDWR);
@@ -90,5 +114,7 @@ int				main(int argc, char **argv, char **environ)
 	}
 	env_parse_to_list(&g_env, environ);
 	load_shell();
+	if (argc > 1 || !isatty(0))
+		return (shell_file(argv));
 	return (shell_start());
 }

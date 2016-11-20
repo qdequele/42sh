@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/20 18:25:06 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/20 19:23:45 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SHELL_H
 # include <ft_sh.h>
 # define UNUSED(x) (void)(x)
+
+# define TEST_MODE 1
 
 typedef enum			e_mode
 {

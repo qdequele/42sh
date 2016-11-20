@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/09 13:57:05 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/20 21:46:09 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ int			builtins_exit(t_list **env, char **cmds)
 	else if (cmds[2])
 		print_err("exit: too many arguments", "");
 	else if (!is_formated(cmds[1]))
-	{
-		print_err("exit: Variable name must contain ", "numeric characters.");
-	}
-	else
-		exit_shell(ft_atoi(cmds[1]));
+		print_err("exit: numeric argument required", "");
+	exit_shell(ft_atoi(cmds[1]));
 	return (1);
 }
