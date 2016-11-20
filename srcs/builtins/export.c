@@ -31,7 +31,7 @@ int			builtins_export(t_list **env, char **cmds)
 			print_err("export: Impossible to find ", cmds[i]);
 		else
 		{
-			vars_add_or_modify(&g_env, cmds[i], value);
+			env_add_or_modify(&g_env, cmds[i], value);
 			vars_add_or_modify(vars_recover(), cmds[i], value);
 		}
 		i++;

@@ -8,9 +8,11 @@
 
 ##BUGS
 
-- Maybe issues with null var in export
+- echo "'" should print '
+- echo '"'' should print "
+- cat << -> 42sh: syntax error near unexpected token `newline'
 
 ##INPROVEMENT
 
-- set key -> wrong message
-- better message for wrong command
+- readonly/unreadonly/unset/unsetenv - better message for not found
+- \ should avoid next char or write on multi line
