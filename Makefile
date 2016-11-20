@@ -111,7 +111,7 @@ $(NAME): $(OBJ)
 	@echo $(NAME) " - compiled"
 
 test		:	re
-	@cd $(DIRTST) && bash 42ShellTester.sh $$PWD/../$(NAME) --reference "bash"
+	@cd test && bash 42ShellTester.sh $$PWD/../$(NAME) --reference "bash"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
@@ -128,7 +128,7 @@ fclean: clean
 
 re: fclean all
 
-test:
+leaks:
 	valgrind --leak-check=full --suppressions=./valgrind.supp ./42sh
 
 run:
