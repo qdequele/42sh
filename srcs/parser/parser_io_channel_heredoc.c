@@ -12,18 +12,19 @@
 
 #include <ft_sh.h>
 
-static	char		*add_to_list(t_list **list, char *ret)
+static	char		*add_to_list(t_list **list, char *ret, int mode)
 {
 	char *tmp;
 
 	if (!ret)
 		ret = ft_strdup(" ");
 	tmp = ft_strtrim(ret);
-	ft_lstadd(list, ft_lstnew(tmp, sizeof(char) * (ft_strlen(tmp) + 1)));
+	ft_lstaddend(list, ft_lstnew(tmp, sizeof(char) * (ft_strlen(tmp) + 1)));
 	free(tmp);
 	free(ret);
 	ret = NULL;
-	ft_putstr_c(GREEN, "heredoc> ");
+	if (mode)
+		ft_putstr_c(GREEN, "heredoc> ");
 	return (ret);
 }
 
@@ -64,12 +65,13 @@ static	void		read_heredoc(char *b, char *target, int *pipe_fd)
 		if (ret && ((ft_strcmp(target, "EOF") == 0 && CTRL_D)
 					|| (ft_strcmp(ret, target) == 0 && ENTER)))
 		{
+			ret = add_to_list(&list, ret, 0);
 			free(ret);
 			print_on_fd(pipe_fd, &list);
 			break ;
 		}
 		if (ENTER)
-			ret = add_to_list(&list, ret);
+			ret = add_to_list(&list, ret, 1);
 		ft_bzero(b, 4);
 	}
 	return ;

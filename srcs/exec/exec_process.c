@@ -116,9 +116,7 @@ int			update_process_status(t_job *j, pid_t pid, int status)
 						kill(j->pgid, SIGTERM);
 				}
 				else
-				{
 					((t_process *)process->content)->stopped = 1;
-				}
 			}
 			return (0);
 		}
