@@ -96,7 +96,7 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	{
 		print_err("42sh: command not found: ", p->argv[0]);
 	}
-	exit(1);
+	exit(127);
 }
 
 int			update_process_status(t_job *j, pid_t pid, int status)
