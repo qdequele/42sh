@@ -94,7 +94,7 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	execve(p->argv[0], p->argv, env);
 	if (p->argv[0][0] && p->argv[0][0] != '!')
 		print_err("42sh: command not found: ", p->argv[0]);
-	exit(1);
+	exit(127);
 }
 
 int			update_process_status(t_job *j, pid_t pid, int status)
@@ -112,11 +112,13 @@ int			update_process_status(t_job *j, pid_t pid, int status)
 				{
 					((t_process *)process->content)->status = status;
 					((t_process *)process->content)->completed = 1;
+					if (process->next == NULL)
+						kill(j->pgid, SIGTERM);
 				}
 				else
+				{
 					((t_process *)process->content)->stopped = 1;
-				if (process->next == NULL)
-					kill(j->pgid, SIGTERM);
+				}
 			}
 			return (0);
 		}
