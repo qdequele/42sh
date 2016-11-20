@@ -8,8 +8,6 @@
 
 ##BUGS
 
-- Maybe issues with null var in export
-
 ##INPROVEMENT
 
 - set key -> wrong message
