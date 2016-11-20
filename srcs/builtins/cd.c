@@ -74,7 +74,7 @@ int			builtins_cd(t_list **env, char **cmds)
 	char		old_path[1024];
 	char		new_path[1024];
 
-	if (nb_args(cmds[2]))
+	if (cmds[1] && nb_args(cmds[2]))
 		return (1);
 	getcwd(old_path, 1024);
 	if (!cmds[1] || ft_strcmp(cmds[1], "~") == 0)

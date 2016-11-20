@@ -23,7 +23,7 @@ static	void	put_echo(char *str)
 			i += 2;
 		else
 		{
-			ft_tputs(str[i]);
+			ft_putchar(str[i]);
 			i++;
 		}
 	}
@@ -38,7 +38,7 @@ int				builtins_echo(t_list **env, char **cmds)
 	i = ft_count_raw_aoc(cmds);
 	if (i <= 1)
 	{
-		ft_tputs('\n');
+		ft_putchar('\n');
 		return (0);
 	}
 	j = 1;
@@ -48,11 +48,11 @@ int				builtins_echo(t_list **env, char **cmds)
 	{
 		put_echo(cmds[j]);
 		if (j < i - 1)
-			ft_tputs(' ');
+			ft_putchar(' ');
 		j++;
 	}
 	if (ft_strcmp("-n", cmds[1]) != 0)
-		ft_tputs('\n');
+		ft_putchar('\n');
 	else
 		ft_putchar_fd('\n', 2);
 	return (0);

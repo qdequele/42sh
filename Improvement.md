@@ -8,7 +8,8 @@
 
 ##BUGS
 
-- Issue with cd not showing the right path in prompt: cd /bin or cd ~/Desktop
+- Issue with cat >> toto
+- Maybe issues with null var in export
 
 ##INPROVEMENT
 
