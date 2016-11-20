@@ -110,6 +110,9 @@ $(NAME): $(OBJ)
 	@gcc $(CFLAGS) -L /usr/lib -ltermcap $(OBJ) $(LIB) $(INCLUDES) -o $(NAME)
 	@echo $(NAME) " - compiled"
 
+test		:	re
+	@cd $(DIRTST) && bash 42ShellTester.sh $$PWD/../$(NAME) --reference "bash"
+
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
