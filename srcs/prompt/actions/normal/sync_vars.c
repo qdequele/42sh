@@ -44,7 +44,7 @@ void	load_vars(void)
 {
 	int			fd;
 	char		*line;
-	char		**split;
+	char		*split[2];
 	t_list		**vars;
 
 	vars = vars_recover();
@@ -53,13 +53,19 @@ void	load_vars(void)
 	{
 		while (ft_get_next_line(fd, &line) > 0)
 		{
-			split = ft_strsplit(line, '=');
+			split[0] = ft_strsub(line, 0, ft_strlen(line) - ft_strlen(ft_strchr(line, '=')));
+			split[1] = (ft_strrchr(line, '=')) ? 
+				ft_strsub(line, 
+					ft_strlen(line) - ft_strlen(ft_strrchr(line, '=') + 1), 
+					ft_strlen(line) - ft_strlen(split[0])) : ft_strdup("");
 			vars_add_or_modify(vars_recover(), split[0], split[1]);
 			free(line);
-			ft_free_aoc(split);
+			free(split[0]);
+			free(split[1]);
 		}
 		close(fd);
 	}
+	vars_add_or_modify(&g_vars, "?", "0");
 }
 
 void	reset_vars(void)
