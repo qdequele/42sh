@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/08 22:26:40 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/20 18:30:55 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static	char	*read_read(void)
 	char	*ret;
 	char	*tmp;
 
+	init_term(0);
 	ft_bzero(b, 9);
 	ret = ft_strdup("");
 	ft_putstr_c(GREEN, "Read> ");
@@ -82,7 +83,9 @@ int				builtins_read(t_list **env, char **cmds)
 
 	o = (*env && cmds[1] && READ_OPT_R) ? 2 : 1;
 	i = (o == 2) ? 0 : -1;
+	init_term(0);
 	read = read_read();
+	reset_term();
 	v = ft_strsplit(read, ' ');
 	free(read);
 	while (cmds[++i + o] && ft_strlen(cmds[i + o]) > 0 && ck(cmds[i + o]))
