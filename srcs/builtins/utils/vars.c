@@ -57,14 +57,19 @@ char	*vars_get(t_list *l_var, char *f_key)
 		while (elem)
 		{
 			var = elem->content;
-			if (var && var->key && var->value
-				&& ft_strlen(var->key) > 0 && ft_strlen(var->value) > 0
+			if (var && var->key && ft_strlen(var->key) > 0
 				&& ft_strcmp(var->key, f_key) == 0)
-				return (var->value);
+			{
+				if (var->value && ft_strlen(var->value) > 0)
+					return (var->value);
+				else
+					return ("");
+			}
+				
 			elem = elem->next;
 		}
 	}
-	return ("");
+	return (NULL);
 }
 
 void	vars_add_or_modify(t_list **l_vars, char *key, char *value)

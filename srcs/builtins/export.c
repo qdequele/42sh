@@ -27,7 +27,7 @@ int			builtins_export(t_list **env, char **cmds)
 	while (cmds[i])
 	{
 		value = vars_get(g_vars, cmds[i]);
-		if (ft_strlen(value) == 0)
+		if (!value)
 			print_err("export: Impossible to find ", cmds[i]);
 		else
 		{
