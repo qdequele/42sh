@@ -23,10 +23,18 @@ static	void	put_echo(char *str)
 			i += 2;
 		else
 		{
-			ft_putchar(str[i]);
+			ft_tputs(str[i]);
 			i++;
 		}
 	}
+}
+
+static void		put_no_eol(void)
+{
+	tputs(MRSTR, 0, ft_tputs);
+	ft_tputs('%');
+	tputs(MESTR, 0, ft_tputs);
+	ft_putchar_fd('\n', 2);
 }
 
 int				builtins_echo(t_list **env, char **cmds)
@@ -38,7 +46,7 @@ int				builtins_echo(t_list **env, char **cmds)
 	i = ft_count_raw_aoc(cmds);
 	if (i <= 1)
 	{
-		ft_putchar('\n');
+		ft_tputs('\n');
 		return (0);
 	}
 	j = 1;
@@ -48,10 +56,12 @@ int				builtins_echo(t_list **env, char **cmds)
 	{
 		put_echo(cmds[j]);
 		if (j < i - 1)
-			ft_putchar(' ');
+			ft_tputs(' ');
 		j++;
 	}
 	if (ft_strcmp("-n", cmds[1]) != 0)
 		ft_putchar('\n');
+	else
+		put_no_eol();
 	return (0);
 }

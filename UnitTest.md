@@ -24,6 +24,7 @@
 - cd /(wrong dir)
 - cd ~/(wrong dir)
 - cd (tab)
+- cd - test
 ```
 
 ### echo
