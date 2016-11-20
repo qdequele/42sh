@@ -29,14 +29,6 @@ static	void	put_echo(char *str)
 	}
 }
 
-static void		put_no_eol(void)
-{
-	tputs(MRSTR, 0, ft_tputs);
-	ft_tputs('%');
-	tputs(MESTR, 0, ft_tputs);
-	ft_putchar_fd('\n', 2);
-}
-
 int				builtins_echo(t_list **env, char **cmds)
 {
 	int			i;
@@ -60,8 +52,8 @@ int				builtins_echo(t_list **env, char **cmds)
 		j++;
 	}
 	if (ft_strcmp("-n", cmds[1]) != 0)
-		ft_putchar('\n');
+		ft_tputs('\n');
 	else
-		put_no_eol();
+		ft_putchar_fd('\n', 2);
 	return (0);
 }

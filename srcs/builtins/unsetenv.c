@@ -20,10 +20,7 @@ int			builtins_unsetenv(t_list **env, char **cmds)
 	while (cmds[i])
 	{
 		if (env_get(*env, cmds[i]) == NULL)
-		{
-			ft_putstr_fd(cmds[i], 2);
-			ft_putstr_fd(": Wrong key.\n", 2);
-		}
+			print_err(cmds[i], ": Wrong key.");
 		else
 			remove_key(env, cmds[i], &env_free_one);
 		i++;

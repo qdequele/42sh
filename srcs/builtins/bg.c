@@ -19,7 +19,7 @@ static int		builtin_bg_default(void)
 	job = find_job_by_index(1);
 	if (!job)
 	{
-		ft_putendl_fd("fg: no current job", 2);
+		print_err("fg: no current job", "");
 		return (1);
 	}
 	kill(-job->pgid, SIGCONT);
@@ -47,8 +47,7 @@ int				builtins_bg(t_list **env, char **cmds)
 			builtin_bg_one(job);
 		else
 		{
-			ft_putstr_fd("fg: job not found: ", 2);
-			ft_putendl_fd(cmds[i], 2);
+			print_err("fg: job not found: ", cmds[i]);
 			return (1);
 		}
 		i++;

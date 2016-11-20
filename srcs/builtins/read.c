@@ -36,8 +36,7 @@ static	int		ck(char *str)
 	{
 		if (!ft_isalnum(str[i]))
 		{
-			ft_putstr_fd("42sh : not an identifier : ", 2);
-			ft_putendl_fd(str, 2);
+			print_err("42sh : not an identifier : ", str);
 			return (0);
 		}
 		i++;

@@ -27,10 +27,7 @@ void		put_job_info(t_job *j, int index)
 	if (j->command)
 		ft_putendl(j->command);
 	else
-	{
-		ft_putstr_fd("(unknown command)", 2);
-		ft_putstr_fd("\n", 2);
-	}
+		print_err("(unknown command)", "");
 }
 
 int			update_process_status_by_pid(t_list *process_list,

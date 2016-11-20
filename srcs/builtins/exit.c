@@ -37,11 +37,10 @@ int			builtins_exit(t_list **env, char **cmds)
 	if (!cmds[1])
 		exit_shell(ft_atoi(vars_get(g_vars, "?")));
 	else if (cmds[2])
-		ft_putstr_fd("exit: too many arguments\n", 2);
+		print_err("exit: too many arguments", "");
 	else if (!is_formated(cmds[1]))
 	{
-		ft_putstr_fd("exit: Variable name must contain ", 2);
-		ft_putstr_fd("numeric characters.\n", 2);
+		print_err("exit: Variable name must contain ", "numeric characters.");
 	}
 	else
 		exit_shell(ft_atoi(cmds[1]));

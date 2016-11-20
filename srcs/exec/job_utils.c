@@ -98,14 +98,12 @@ void		log_job_exit_signal(t_job *j)
 		if (sig == 10)
 		{
 			ft_putnbr(j->pgid);
-			ft_putstr("\tbus error\t");
-			ft_putendl(j->command);
+			print_err("\tbus error\t", j->command);
 		}
 		if (sig == 11)
 		{
 			ft_putnbr(j->pgid);
-			ft_putstr("\tsegmentation fault\t");
-			ft_putendl(j->command);
+			print_err("\tsegmentation fault\t", j->command);
 		}
 	}
 }

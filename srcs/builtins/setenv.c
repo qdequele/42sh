@@ -33,18 +33,18 @@ static	int	is_error(char **cmds)
 {
 	if (cmds[2] && cmds[2] && cmds[3])
 	{
-		ft_putstr_fd("setenv: Too many arguments.\n", 2);
+		print_err("setenv: Too many arguments.", "");
 		return (1);
 	}
 	else if (is_formated(cmds[1]) == -1 && !EXPORTS)
 	{
-		ft_putstr_fd("setenv: Variable name must begin with a letter.\n", 2);
+		print_err("setenv: Variable name must begin with a letter.", "");
 		return (1);
 	}
 	else if (is_formated(cmds[1]) == 0 && !EXPORTS)
 	{
-		ft_putstr_fd("setenv: Variable name must contain ", 2);
-		ft_putstr_fd("alphanumeric characters.\n", 2);
+		print_err("setenv: Variable name must contain ",
+			"alphanumeric characters.");
 		return (1);
 	}
 	return (0);

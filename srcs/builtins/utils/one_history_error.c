@@ -15,11 +15,7 @@
 void	print_error_history(int i, char *cmds)
 {
 	if (i == 0)
-	{
-		ft_putstr_fd("42sh : no such event: ", 2);
-		ft_putstr_fd(cmds, 2);
-		ft_putstr_fd("\n", 2);
-	}
+		print_err("42sh : no such event: ", cmds);
 	else
 	{
 		ft_putstr_fd("42sh : no such event: ", 2);

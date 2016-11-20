@@ -52,12 +52,3 @@ int			reset_term(void)
 		return (-1);
 	return (1);
 }
-
-int			ft_tputs(int c)
-{
-	t_term	*term;
-
-	term = recover_term();
-	write(term->tty, &c, 1);
-	return (1);
-}
