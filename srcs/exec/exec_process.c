@@ -93,9 +93,7 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	get_new_stdio(p, p->stdio);
 	execve(p->argv[0], p->argv, env);
 	if (p->argv[0][0] && p->argv[0][0] != '!')
-	{
 		print_err("42sh: command not found: ", p->argv[0]);
-	}
 	exit(1);
 }
 

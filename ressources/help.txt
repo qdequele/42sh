@@ -16,6 +16,7 @@ alt+up              - go to the previous line
 alt+down            - go to the next line
 ctrl+c              - clear the current line
 ctrl+d              - clear the current line or if line is empty quit the shell
+ctrl+l              - clear the shell if nothing is write into the line
 tab                 - autocomplete the current word
 
 # Builtins

@@ -32,6 +32,7 @@
 # define END (b[0] == 27 && b[1] == 91 && b[2] == 70)
 # define IGNORE_1 (b[0] == 27 && b[1] == 91 && b[2] == 49)
 # define CTRL_D (b[0] == 4 && b[1] == 0 && b[2] == 0)
+# define CTRL_L (b[0] == 12 && b[1] == 0 && b[2] == 0)
 # define ALT_C (b[0] == -61 && b[1] == -89 && b[2] == 0)
 # define ALT_V (b[0] == -30 && b[1] == -120 && b[2] == -102)
 # define ALT_X (b[0] == -30 && b[1] == -119 && b[2] == -120 && b[3] == 0)
@@ -114,6 +115,7 @@ t_status		action_move_last_word(char *b);
 t_status		action_exec_cmd(char *b);
 t_status		action_ignore_input(char *b);
 t_status		action_quit(char *b);
+t_status		action_clear(char *b);
 /*
 ** Action - Copy
 */

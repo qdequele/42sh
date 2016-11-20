@@ -42,3 +42,18 @@ t_status	action_quit(char *b)
 	}
 	return (READING);
 }
+
+t_status	action_clear(char *b)
+{
+	t_shell	*shell;
+
+	if (!CTRL_L)
+		return (TRYING);
+	shell = recover_shell();
+	if (ft_lstcount(shell->prompt->line) == 0)
+	{
+		tputs(CLSTR, 0, ft_tputs);
+		return (FOUND);
+	}
+	return (READING);
+}

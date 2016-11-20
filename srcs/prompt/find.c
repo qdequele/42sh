@@ -31,6 +31,7 @@ void		*get_actions_normal(void)
 		action_history_down,
 		action_ignore_input,
 		action_quit,
+		action_clear,
 		action_insert_char
 	};
 
