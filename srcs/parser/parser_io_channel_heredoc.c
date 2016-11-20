@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 04:10:04 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/20 17:54:58 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/20 18:06:21 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static	void		read_heredoc(char *b, char *target, int *pipe_fd)
 
 	ret = NULL;
 	list = NULL;
-	init_term();
 	while (read(0, b, 4))
 	{
 		ft_putchar(b[0]);
@@ -74,7 +73,6 @@ static	void		read_heredoc(char *b, char *target, int *pipe_fd)
 			ret = add_to_list(&list, ret, 1);
 		ft_bzero(b, 4);
 	}
-	reset_term();
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/19 21:58:23 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/20 18:27:51 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ static void		load_shell(void)
 	load_vars();
 }
 
-int				shell_start(int init_termcaps)
+int				shell_start(void)
 {
 	char		*line;
 
 	while (recover_shell()->last_exit_code == -1)
 	{
-		init_termcaps = (init_termcaps) ? init_term() : 0;
+		init_term(0);
 		print_shell();
 		recover_shell()->history_position = -1;
 		line = read_normal_input();
@@ -55,7 +55,6 @@ int				shell_start(int init_termcaps)
 			add_history(line);
 			ignore_major_signals();
 		}
-		init_termcaps = 1;
 		free(line);
 		free_input();
 		reset_autocomplete_possibilities();
@@ -83,7 +82,7 @@ int				main(int argc, char **argv, char **environ)
 	term->tty = open("/dev/tty", O_RDWR);
 	shell->pgid = getpgrp();
 	ignore_major_signals();
-	if (init_term() == -1)
+	if (init_term(1) == -1)
 	{
 		ft_putendl_fd("42sh cannot be launch without termcaps", 2);
 		reset_term();
@@ -91,5 +90,5 @@ int				main(int argc, char **argv, char **environ)
 	}
 	env_parse_to_list(&g_env, environ);
 	load_shell();
-	return (shell_start(0));
+	return (shell_start());
 }

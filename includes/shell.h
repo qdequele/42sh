@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/08 20:53:14 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/20 18:25:06 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct			s_term
 	int					tty;
 }						t_term;
 
-int						shell_start(int init_termcaps);
+int						shell_start(void);
 void					process_input(char *input);
 t_shell					*recover_shell(void);
 void					init_shell(void);
@@ -63,7 +63,7 @@ void					reset_major_signals(void);
 void					signal_reprompt(int i);
 void					signal_resize_screen(int i);
 t_term					*recover_term(void);
-int						init_term(void);
+int						init_term(int save);
 int						reset_term(void);
 int						ft_tputs(int c);
 void					reset_autocomplete_possibilities(void);
