@@ -3,6 +3,8 @@
 while [ 1 ]
 do
 	clear
-	leaks 42sh
+	if [ $(leaks 42sh | wc -l) != " "]; then
+    	say leaks
+	fi
 	sleep 5
 done
