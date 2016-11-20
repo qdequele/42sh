@@ -14,7 +14,7 @@
 
 static	void	put_echo(char *str)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -39,8 +39,8 @@ static void		put_no_eol(void)
 
 int				builtins_echo(t_list **env, char **cmds)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	(void)env;
 	i = ft_count_raw_aoc(cmds);
