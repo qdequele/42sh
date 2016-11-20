@@ -4,9 +4,13 @@
 
 ## Install
 
-clone the directory. 
+clone the directory.
 
 `$ make`
+
+## Test
+
+`$ make test`
 
 move the executable on your path
 
