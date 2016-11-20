@@ -11,6 +11,8 @@
 - echo "'" should print '
 - echo '"'' should print "
 - cat << -> 42sh: syntax error near unexpected token `newline'
+-  cat ||| test should be an error
+-  cat &&& test should be an error
 
 ##INPROVEMENT
 

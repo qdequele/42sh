@@ -77,8 +77,9 @@ void		launch_process_builtin(t_process *p)
 
 void		launch_process(t_process *p, pid_t pgid, int foreground)
 {
-	char	**env;
-	pid_t	pid;
+	char					**env;
+	pid_t					pid;
+	struct stat		sb;
 
 	if (!p)
 		exit(1);
@@ -92,7 +93,9 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	reset_major_signals();
 	get_new_stdio(p, p->stdio);
 	execve(p->argv[0], p->argv, env);
-	if (p->argv[0][0] && p->argv[0][0] != '!')
+	if (stat(p->argv[0], &sb) == 0 && access(p->argv[0], X_OK) != 0)
+		print_err("42sh: Permission denied: ", p->argv[0]);
+	else
 		print_err("42sh: command not found: ", p->argv[0]);
 	exit(127);
 }

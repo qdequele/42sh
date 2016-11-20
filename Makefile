@@ -111,6 +111,11 @@ $(NAME): $(OBJ)
 	@echo $(NAME) " - compiled"
 
 test		:	re
+	@rm -r -f test/spec/42sh/subshell
+	@rm -r -f test/spec/42sh/quoting/simple-quotes/mixed/escaping
+	@rm -r -f test/spec/42sh/quoting/double-quotes/mixed/escaping
+	@rm -r -f test/spec/bonuses/tilde-expansion
+	@rm -r -f test/spec/42sh/globbing
 	@cd test && bash 42ShellTester.sh $$PWD/../$(NAME) --reference "bash"
 
 %.o: %.c

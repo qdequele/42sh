@@ -37,9 +37,19 @@ int			builtins_exit(t_list **env, char **cmds)
 	if (!cmds[1])
 		exit_shell(ft_atoi(vars_get(g_vars, "?")));
 	else if (cmds[2])
+	{
+		vars_add_or_modify(&g_vars, "?", "1");
 		print_err("exit: too many arguments", "");
+	}
 	else if (!is_formated(cmds[1]))
+	{
+		vars_add_or_modify(&g_vars, "?", "1");
 		print_err("exit: numeric argument required", "");
-	exit_shell(ft_atoi(cmds[1]));
+		exit_shell(1);
+	}
+	else
+	{
+		exit_shell(ft_atoi(cmds[1]));
+	}
 	return (1);
 }
