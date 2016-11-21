@@ -78,6 +78,16 @@ int				check_lexer(t_list *token_list)
 			check_lexer_error("&");
 			return (1);
 		}
+		if ((t->type == SEMI_COLON && t_next->type == SEMI_COLON))
+		{
+			check_lexer_error(";");
+			return (1);
+		}
+		if ((t->type == SEMI_COLON && t_next->type != CMD))
+		{
+			check_lexer_error(";");
+			return (1);
+		}
 		token_list = token_list->next;
 	}
 	if (token_error(token_list_tmp, token_list->content))
