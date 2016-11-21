@@ -32,6 +32,7 @@ _SRC		=	builtins/utils/parser.c\
 				builtins/unsetenv.c\
 				builtins/export.c\
 				builtins/set.c\
+				builtins/set_equal.c\
 				builtins/unset.c\
 				builtins/readonly.c\
 				builtins/unreadonly.c\

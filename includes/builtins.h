@@ -89,6 +89,7 @@ void				vars_free_one(void *elem, size_t size);
 void				vars_free(t_list **l_vars);
 int					builtins_readonly(t_list **env, char **cmds);
 int					builtins_unreadonly(t_list **env, char **cmds);
+int					builtins_set_equal(t_list **env, char **cmds);
 void				print_error_history(int i, char *cmds);
 
 #endif

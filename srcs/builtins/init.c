@@ -45,6 +45,8 @@ int			builtins_find(char *cmd)
 
 	i = 0;
 	builtins = builtins_init();
+	if (ft_match(cmd, "*=*") == 1)
+		return (1);
 	while (builtins[i].name)
 	{
 		if (ft_strcmp(builtins[i].name, cmd) == 0)
@@ -61,6 +63,8 @@ int			builtins_exec(t_list **env, char **cmds)
 
 	i = 0;
 	builtins = builtins_init();
+	if (ft_match(cmds[i], "*=*") == 1)
+		return (builtins_set_equal(env, cmds));
 	while (builtins[i].name)
 	{
 		if (ft_strcmp(builtins[i].name, cmds[0]) == 0)
