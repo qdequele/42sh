@@ -22,7 +22,7 @@ static	void	more_key_than_value(char **v, char **cmds, int i, int o)
 		'\\') : ft_array_to_string(&v[i - 1]);
 	simple_quoted = ft_strjoin("'", without_quote);
 	double_quoted = ft_strfjoin(simple_quoted, "'");
-	vars_add_or_modify(&g_vars, cmds[i + o - 1], double_quoted);
+	vars_add_or_modify(&g_l_vars, cmds[i + o - 1], double_quoted);
 	free(without_quote);
 	free(double_quoted);
 }
@@ -92,9 +92,9 @@ int				builtins_read(t_list **env, char **cmds)
 	{
 		v[i] = (o == 1 && v[i]) ? ft_skip_char(v[i], '\\') : v[i];
 		if (v[i])
-			vars_add_or_modify(&g_vars, cmds[i + o], v[i]);
+			vars_add_or_modify(&g_l_vars, cmds[i + o], v[i]);
 		else
-			vars_add_or_modify(&g_vars, cmds[i + o], " ");
+			vars_add_or_modify(&g_l_vars, cmds[i + o], " ");
 	}
 	if (cmds[o] && i <= ft_count_raw_aoc(v) && v[i])
 		more_key_than_value(v, cmds, i, o);

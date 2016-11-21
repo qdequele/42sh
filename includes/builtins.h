@@ -33,8 +33,6 @@ typedef struct		s_env
 	char			*value;
 }					t_env;
 
-t_list				*g_env;
-
 typedef struct		s_var
 {
 	char			*key;
@@ -51,7 +49,9 @@ typedef struct		s_options
 	int				options_counter;
 }					t_options;
 
-t_list				*g_vars;
+t_list				*g_env;
+t_list				*g_l_vars;
+t_list 				*g_export;
 
 int					builtins_cd(t_list **env, char **cmds);
 int					builtins_env(t_list **env, char **cmds);

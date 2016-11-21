@@ -64,7 +64,7 @@ int			builtins_set(t_list **env, char **cmds)
 		i++;
 	}
 	else
-		l_var = &g_vars;
+		l_var = &g_l_vars;
 	if (!cmds[i])
 		return (vars_show(*l_var));
 	else if (check_variable(cmds, i) != 0)

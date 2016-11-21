@@ -35,15 +35,15 @@ int			builtins_exit(t_list **env, char **cmds)
 {
 	(void)env;
 	if (!cmds[1])
-		exit_shell(ft_atoi(vars_get(g_vars, "?")));
+		exit_shell(ft_atoi(vars_get(g_l_vars, "?")));
 	else if (cmds[2])
 	{
-		vars_add_or_modify(&g_vars, "?", "1");
+		vars_add_or_modify(&g_l_vars, "?", "1");
 		print_err("exit: too many arguments", "");
 	}
 	else if (!is_formated(cmds[1]))
 	{
-		vars_add_or_modify(&g_vars, "?", "1");
+		vars_add_or_modify(&g_l_vars, "?", "1");
 		print_err("exit: numeric argument required", "");
 		exit_shell(1);
 	}

@@ -26,7 +26,7 @@
 // 	}
 // 	while (cmds[i])
 // 	{
-// 		value = vars_get(g_vars, cmds[i]);
+// 		value = vars_get(g_l_vars, cmds[i]);
 // 		if (!value)
 // 			print_err("export: Impossible to find ", cmds[i]);
 // 		else
@@ -66,7 +66,7 @@ int 	builtins_export(t_list **env, char **cmds)
 	(void)env;
 	if ( !cmds[i] || (!cmds[i + 1] && ft_strcmp(cmds[i], "-p") == 0))
 	{
-		display_export_list(g_env);
+		display_export_list(g_export);
 		return (1);
 	}
 	while (cmds[i])
@@ -79,10 +79,14 @@ int 	builtins_export(t_list **env, char **cmds)
 			vars_add_or_modify(&g_env, p_key, p_value);
 			free(p_key);
 		}
-		else if ((value = vars_get(g_vars, cmds[i])) != NULL)
+		else if ((value = vars_get(g_l_vars, cmds[i])) != NULL)
 		{
 			env_add_or_modify(&g_env, cmds[i], value);
 			vars_add_or_modify(vars_recover(), cmds[i], value);
+		}
+		else if (!value)
+		{
+			vars_add_or_modify(&g_export, cmds[i], "");
 		}
 		i++;
 	}

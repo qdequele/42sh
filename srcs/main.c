@@ -86,7 +86,7 @@ int				shell_file(char **argv)
 		free(recover_shell()->prompt);
 	}
 	if (recover_shell()->last_exit_code == -1)
-		res = ft_atoi(vars_get(g_vars, "?"));
+		res = ft_atoi(vars_get(g_l_vars, "?"));
 	else
 		res = recover_shell()->last_exit_code;
 	free_shell();
@@ -100,7 +100,7 @@ int				main(int argc, char **argv, char **environ)
 
 	UNUSED(argv);
 	g_env = NULL;
-	g_vars = NULL;
+	g_l_vars = NULL;
 	term = recover_term();
 	shell = recover_shell();
 	term->tty = open("/dev/tty", O_RDWR);
@@ -113,6 +113,7 @@ int				main(int argc, char **argv, char **environ)
 		return (1);
 	}
 	env_parse_to_list(&g_env, environ);
+	env_parse_to_list(&g_export, environ);
 	load_shell();
 	if (argc > 1 || !isatty(0))
 		return (shell_file(argv));

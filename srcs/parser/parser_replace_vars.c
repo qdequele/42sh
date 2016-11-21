@@ -24,7 +24,7 @@ char			*ft_str_replace_var(char *src, char *var, int *i)
 	end = ft_strdup(src + *i + ft_strlen(var));
 	new_var = env_get(g_env, var);
 	if (!new_var || ft_strlen(new_var) == 0)
-		new_var = vars_get(g_vars, var);
+		new_var = vars_get(g_l_vars, var);
 	if (!new_var || ft_strlen(new_var) == 0)
 		new_var = "";
 	if (ft_strlen(new_var) > 0)

@@ -65,7 +65,7 @@ void	load_vars(void)
 		}
 		close(fd);
 	}
-	vars_add_or_modify(&g_vars, "?", "0");
+	vars_add_or_modify(&g_l_vars, "?", "0");
 }
 
 void	reset_vars(void)

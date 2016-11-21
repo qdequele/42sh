@@ -47,7 +47,7 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 
 	i = -1;
 	if (!var_value)
-		return (vars_add_or_modify(&g_vars, var_name, ""));
+		return (vars_add_or_modify(&g_l_vars, var_name, ""));
 	last_var = (char*)malloc(sizeof(char));
 	while (var_value[++i])
 	{
@@ -62,7 +62,7 @@ void		create_last_var(char *var_name, char **var_value, char opt)
 	last_var = ft_strtrim(tmp);
 	free(tmp);
 	new_val = check_value(opt, last_var);
-	vars_add_or_modify(&g_vars, last_var, new_val);
+	vars_add_or_modify(&g_l_vars, last_var, new_val);
 	free(last_var);
 	free(new_val);
 }

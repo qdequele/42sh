@@ -37,7 +37,7 @@ t_status	action_quit(char *b)
 	shell = recover_shell();
 	if (ft_lstcount(shell->prompt->line) == 0)
 	{
-		shell->last_exit_code = ft_atoi(vars_get(g_vars, "?"));
+		shell->last_exit_code = ft_atoi(vars_get(g_l_vars, "?"));
 		return (FOUND);
 	}
 	return (READING);
