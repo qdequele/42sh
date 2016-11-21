@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/21 21:44:05 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/21 22:25:06 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,9 @@ int				shell_file(char **argv)
 	int			fd;
 	int			res;
 
-	if (!isatty(0))
-		fd = 0;
-	else
-		fd = open(argv[1], O_RDWR);
-	while (ft_get_next_line(fd, &line) && recover_shell()->last_exit_code == -1)
+	fd = (!isatty(0)) ? 0 : open(argv[1], O_RDWR);
+	while (fd > 0 && ft_get_next_line(fd, &line) &&
+		recover_shell()->last_exit_code == -1)
 	{
 		if (line)
 		{

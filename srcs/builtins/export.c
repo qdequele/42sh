@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/31 18:32:40 by qdequele         ###   ########.fr       */
+/*   Updated: 2016/11/21 22:24:51 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ int			builtins_export(t_list **env, char **cmds)
 		display_export_list(g_export);
 		return (1);
 	}
-	else if (cmds[1] && cmds[1][0] == '-' && cmds[1][1] != 'p' && cmds[1][2] != '\0')
+	else if (cmds[1] && cmds[1][0] == '-' && cmds[1][1] != 'p' &&
+		cmds[1][2] != '\0')
 	{
 		ft_putstr_fd("42sh: export: ", 2);
 		ft_putstr_fd(cmds[i], 2);
