@@ -44,6 +44,7 @@ int		count_target_length(t_process *p, char **split, char symbol,
 		parse_fn(p, channel, *(split + 1));
 		return (2);
 	}
+	parse_fn(p, channel, "");
 	return (1);
 }
 
