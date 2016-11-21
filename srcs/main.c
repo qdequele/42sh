@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:13 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/20 21:20:27 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/21 21:44:05 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int				main(int argc, char **argv, char **environ)
 	env_parse_to_list(&g_env, environ);
 	env_parse_to_list(&g_export, environ);
 	load_shell();
+	UNUSED(argc);
 	if (argc > 1 || !isatty(0))
 		return (shell_file(argv));
 	return (shell_start());

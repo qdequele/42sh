@@ -6,7 +6,7 @@
 /*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/18 20:00:57 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/21 21:39:46 by bjamin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ int		cd_change_directory(char *curpath, int is_physical)
 		return (cd_error(5, curpath));
 	getcwd(new_path, 256);
 	if (is_physical && stat(curpath, &stat_) == 0 && !S_ISLNK(stat_.st_mode))
-		cd_update_path(ft_strdup(old_path), curpath);
+		cd_update_path(old_path, curpath);
 	else
-		cd_update_path(ft_strdup(old_path), ft_strdup(new_path));
+		cd_update_path(old_path, new_path);
 	return (0);
 }
