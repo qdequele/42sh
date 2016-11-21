@@ -54,7 +54,7 @@ static void		cmd_to_token(t_list **token_list, char *str, int length)
 		return ;
 	while (ft_isspace(str[i]))
 		i++;
-	word = ft_remove_quote(ft_strsub(str, i, length));
+	word = ft_strsub(str, i, length);
 	ft_lstaddend(token_list, new_token(CMD, word));
 }
 

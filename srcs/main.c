@@ -70,7 +70,7 @@ int				shell_file(char **argv)
 	int			fd;
 	int			res;
 
-	if (!isatty(0)) 
+	if (!isatty(0))
 		fd = 0;
 	else
 		fd = open(argv[1], O_RDWR);
