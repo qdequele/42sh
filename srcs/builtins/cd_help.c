@@ -101,7 +101,7 @@ int		cd_change_directory(char *curpath, int is_physical)
 	if (chdir(curpath) != 0)
 		return (cd_error(5, curpath));
 	getcwd(new_path, 256);
-	if (is_physical)
+	if (is_physical && stat(curpath, &stat_) == 0 && !S_ISLNK(stat_.st_mode))
 		cd_update_path(ft_strdup(old_path), curpath);
 	else
 		cd_update_path(ft_strdup(old_path), ft_strdup(new_path));
