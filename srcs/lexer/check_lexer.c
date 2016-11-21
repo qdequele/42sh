@@ -34,6 +34,11 @@ static int		check_lexer_single_bg(t_list *token_list)
 		check_lexer_error("&");
 		return (1);
 	}
+	if (t->type == SEMI_COLON)
+	{
+		check_lexer_error(";");
+		return (1);
+	}
 	return (0);
 }
 
