@@ -12,8 +12,6 @@
 
 #include <ft_sh.h>
 
-<<<<<<< HEAD
-=======
 static 	void lets_export(char **cmds, int i)
 {
 	char 	*value;
@@ -26,14 +24,14 @@ static 	void lets_export(char **cmds, int i)
 		{
 			p_key = ft_strsub(cmds[i], 0, ft_strlen(cmds[i]) - (ft_strlen(p_value)));
 			p_value++;
-			vars_add_or_modify(vars_recover(), p_key, p_value);
+			vars_add_or_modify(&g_g_vars, p_key, p_value);
 			vars_add_or_modify(&g_env, p_key, p_value);
 			free(p_key);
 		}
 		else if ((value = vars_get(g_l_vars, cmds[i])) != NULL)
 		{
 			env_add_or_modify(&g_env, cmds[i], value);
-			vars_add_or_modify(vars_recover(), cmds[i], value);
+			vars_add_or_modify(&g_g_vars, cmds[i], value);
 		}
 		else if (!value)
 			vars_add_or_modify(&g_export, cmds[i], "");
@@ -41,7 +39,6 @@ static 	void lets_export(char **cmds, int i)
 	}
 }
 
->>>>>>> 4e50400700bfc125ae47c645d592678d85ea3409
 static 	void display_export_list(t_list *env)
 {
 	t_list *cur;
@@ -68,31 +65,7 @@ int 	builtins_export(t_list **env, char **cmds)
 		display_export_list(g_export);
 		return (1);
 	}
-<<<<<<< HEAD
-	while (cmds[i])
-	{
-		if ((p_value = ft_strchr(cmds[i], '=')) != NULL)
-		{
-			p_key = ft_strsub(cmds[i], 0, ft_strlen(cmds[i]) - (ft_strlen(p_value)));
-			p_value++;
-			vars_add_or_modify(&g_g_vars, p_key, p_value);
-			vars_add_or_modify(&g_env, p_key, p_value);
-			free(p_key);
-		}
-		else if ((value = vars_get(g_l_vars, cmds[i])) != NULL)
-		{
-			env_add_or_modify(&g_env, cmds[i], value);
-			vars_add_or_modify(&g_g_vars, cmds[i], value);
-		}
-		else if (!value)
-		{
-			vars_add_or_modify(&g_export, cmds[i], "");
-		}
-		i++;
-	}
-=======
 	lets_export(cmds, i);
->>>>>>> 4e50400700bfc125ae47c645d592678d85ea3409
 	return (1);
 
 }
