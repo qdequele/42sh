@@ -17,7 +17,7 @@ static char		**default_command(void)
 	char	**av;
 
 	av = malloc(sizeof(char *) * 2);
-	av[0] = ft_strdup("");
+	av[0] = ft_strdup("cat");
 	av[1] = NULL;
 	return (av);
 }
