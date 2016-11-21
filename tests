@@ -1,0 +1,110 @@
+set WORK_DIR $PWD
+
+rm -r -f path_tests && mkdir path_tests
+echo $PWD > path_tests/old_path
+
+echo "#Simple command suite"
+rm -r -f tmp_tests && mkdir tmp_tests && cd tmp_tests
+touch test && ls -l | grep "test" | wc -l | sed -e 's/1/YES/g' -e 's/0/NO/g' | xargs
+
+echo "# cd -"
+cd -
+echo $PWD > path_tests/new_path
+diff path_tests/new_path path_tests/old_path
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# cd ."
+echo $PWD > path_tests/old_path
+cd .
+echo $PWD > path_tests/new_path
+diff path_tests/new_path path_tests/old_path
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# cd ~"
+echo $HOME > path_tests/old_path
+cd ~
+echo $PWD > $WORK_DIR/path_tests/new_path
+cd -
+diff path_tests/new_path path_tests/old_path
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# cd $WORK_DIR/libft"
+echo $WORK_DIR/libft > path_tests/old_path
+cd $WORK_DIR/libft
+echo $PWD > $WORK_DIR/path_tests/new_path
+cd ..
+diff path_tests/new_path path_tests/old_path
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# cd fuck"
+echo "cd: No such file or directory: $WORK_DIR/fuck" > path_tests/cd_not_found_reference
+cd $WORK_DIR/fuck 2>&1 | cat > path_tests/cd_not_found
+diff path_tests/cd_not_found_reference path_tests/cd_not_found
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# true || ls"
+echo "true || ls" > tmp_tests/42sh_cmd
+./42sh < tmp_tests/42sh_cmd | cat > tmp_tests/42sh_output_1
+echo "true || ls" > tmp_tests/bash_cmd
+bash < tmp_tests/42sh_cmd | cat > tmp_tests/bash_output_1
+diff tmp_tests/42sh_output_1 tmp_tests/bash_output_1
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# false || ls"
+echo "false || ls" > tmp_tests/42sh_cmd
+./42sh < tmp_tests/42sh_cmd | cat > tmp_tests/42sh_output_2
+echo "false || ls" > tmp_tests/bash_cmd
+bash < tmp_tests/42sh_cmd | cat > tmp_tests/bash_output_2
+diff tmp_tests/42sh_output_2 tmp_tests/bash_output_2
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# pwd ||"
+pwd ||
+echo $? | sed -e 's/1/YES/g' -e 's/0/NO/g'
+
+echo "# || pwd"
+|| pwd
+echo $? | sed -e 's/1/YES/g' -e 's/0/NO/g'
+
+echo "# true && ls"
+echo "true && ls" > tmp_tests/42sh_cmd
+./42sh < tmp_tests/42sh_cmd | cat > tmp_tests/42sh_output_1
+echo "true && ls" > tmp_tests/bash_cmd
+bash < tmp_tests/42sh_cmd | cat > tmp_tests/bash_output_1
+diff tmp_tests/42sh_output_1 tmp_tests/bash_output_1
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# false && ls"
+echo "false && ls" > tmp_tests/42sh_cmd
+./42sh < tmp_tests/42sh_cmd | cat > tmp_tests/42sh_output_2
+echo "false && ls" > tmp_tests/bash_cmd
+bash < tmp_tests/42sh_cmd | cat > tmp_tests/bash_output_2
+diff tmp_tests/42sh_output_2 tmp_tests/bash_output_2
+echo $? | sed -e 's/0/YES/g' -e 's/2/NO/g'
+
+echo "# pwd &&"
+pwd &&
+echo $? | sed -e 's/1/YES/g' -e 's/0/NO/g'
+
+echo "# && pwd"
+&& pwd
+echo $? | sed -e 's/1/YES/g' -e 's/0/NO/g'
+
+echo "Testing quote substitution"
+
+echo test1 test2 >> tmp_tests/42sh_quote
+echo "" >> tmp_tests/42sh_quote
+echo '' >> tmp_tests/42sh_quote
+echo $HOME '$HOME' $HOME >> tmp_tests/42sh_quote
+echo $HOME '$HOME ' $HOME >> tmp_tests/42sh_quote
+echo $HOME ' $HOME' $HOME >> tmp_tests/42sh_quote
+echo $HOME ' $HOME ' $HOME >> tmp_tests/42sh_quote
+echo $HOME' $HOME '$HOME >> tmp_tests/42sh_quote
+echo $HOME'$HOME '$HOME >> tmp_tests/42sh_quote
+echo $HOME' $HOME'$HOME >> tmp_tests/42sh_quote
+echo $HOME'$HOME'$HOME >> tmp_tests/42sh_quote
+echo $HOME'$HOME ?'$HOME >> tmp_tests/42sh_quote
+echo $HOME'$HOME?'$HOME >> tmp_tests/42sh_quote
+echo $HOME' $HOME' >> tmp_tests/42sh_quote
+echo $HOME'$HOME' >> tmp_tests/42sh_quote
+echo -n $HOME'$HOME' >> tmp_tests/42sh_quote

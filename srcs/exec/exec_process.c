@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static void	assert_file(char *target, int mode)
+static void	assert_file(int i, char *target, int mode)
 {
 	struct stat		sb;
 	int				flag;
@@ -22,13 +22,13 @@ static void	assert_file(char *target, int mode)
 	if (stat(target, &sb) == 0 && S_ISDIR(sb.st_mode))
 	{
 		print_err("42sh: Is a directory: ", target);
-		exit(1);
+		close(i);
 	}
 	flag = (mode == O_RDONLY) ? R_OK : W_OK;
 	if (stat(target, &sb) == 0 && access(target, flag) != 0)
 	{
 		print_err("42sh: Permission denied: ", target);
-		exit(1);
+		close(i);
 	}
 }
 
@@ -39,7 +39,7 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 	i = -1;
 	while (++i < 3)
 	{
-		assert_file(s[i].target, s[i].open_mode);
+		assert_file(i, s[i].target, s[i].open_mode);
 		if (s[i].target && s[i].open_mode == O_RDONLY &&
 			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
 		{
