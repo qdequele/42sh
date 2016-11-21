@@ -12,8 +12,12 @@
 
 #include <ft_sh.h>
 
-static 	void lets_export(char **cmds, int i, char *p_value, char *p_key)
+static 	void lets_export(char **cmds, int i)
 {
+	char 	*value;
+	char 	*p_key;
+	char 	*p_value;
+
 	while (cmds[i])
 	{
 		if ((p_value = ft_strchr(cmds[i], '=')) != NULL)
@@ -30,9 +34,7 @@ static 	void lets_export(char **cmds, int i, char *p_value, char *p_key)
 			vars_add_or_modify(vars_recover(), cmds[i], value);
 		}
 		else if (!value)
-		{
 			vars_add_or_modify(&g_export, cmds[i], "");
-		}
 		i++;
 	}
 }
@@ -56,9 +58,6 @@ static 	void display_export_list(t_list *env)
 int 	builtins_export(t_list **env, char **cmds)
 {
 	int 	i;
-	char 	*value;
-	char 	*p_value;
-	char 	*p_key;
 
 	i = 1;
 	(void)env;
@@ -67,7 +66,7 @@ int 	builtins_export(t_list **env, char **cmds)
 		display_export_list(g_export);
 		return (1);
 	}
-	lets_export(cmds, i, p_value, p_key);
+	lets_export(cmds, i);
 	return (1);
 
 }
