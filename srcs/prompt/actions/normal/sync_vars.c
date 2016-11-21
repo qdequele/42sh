@@ -51,10 +51,11 @@ void	load_vars(void)
 	{
 		while (ft_get_next_line(fd, &line) > 0)
 		{
-			split[0] = ft_strsub(line, 0, ft_strlen(line) - ft_strlen(ft_strchr(line, '=')));
-			split[1] = (ft_strrchr(line, '=')) ? 
-				ft_strsub(line, 
-					ft_strlen(line) - ft_strlen(ft_strrchr(line, '=') + 1), 
+			split[0] = ft_strsub(line, 0, ft_strlen(line) -
+				ft_strlen(ft_strchr(line, '=')));
+			split[1] = (ft_strrchr(line, '=')) ?
+				ft_strsub(line,
+					ft_strlen(line) - ft_strlen(ft_strrchr(line, '=') + 1),
 					ft_strlen(line) - ft_strlen(split[0])) : ft_strdup("");
 			vars_add_or_modify(&g_g_vars, split[0], split[1]);
 			free(line);
