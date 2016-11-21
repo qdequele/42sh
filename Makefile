@@ -121,6 +121,8 @@ test		:	re
 	@rm -r -f test/spec/42sh/quoting/double-quotes/*-multiline-*
 	@rm -r -f test/spec/42sh/quoting/simple-quotes/*-multiline-*
 	@rm -r -f test/spec/42sh/quoting/mixed
+	@rm -r -f test/spec/42sh/mixed
+	@rm -r -f test/spec/42sh/local-variable
 	@rm -r -f test/spec/21sh/pipe/005-asynchronous
 	@rm -r -f test/spec/21sh/pipe/006-exit-status
 
