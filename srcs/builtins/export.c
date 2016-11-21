@@ -12,12 +12,14 @@
 
 #include <ft_sh.h>
 
-static	int	is_formated(char *str)
+static int	is_formated(char *str)
 {
-	int	i;
-	char 	*p_key;
+	int		i;
+	char	*p_key;
 
 	i = 0;
+	if (ft_strcmp(str, "-p") == 0)
+		return (0);
 	if ((p_key = ft_strchr(str, '=')) != NULL)
 		str = ft_strsub(str, 0, ft_strlen(str) - ft_strlen(p_key));
 	if (!ft_isalpha(str[i]) && str[i] != '_')
@@ -34,7 +36,7 @@ static	int	is_formated(char *str)
 	return (1);
 }
 
-static	int	is_error(char **cmds)
+static int	is_error(char **cmds)
 {
 	if (is_formated(cmds[1]) == -1)
 	{
@@ -46,34 +48,30 @@ static	int	is_error(char **cmds)
 	return (0);
 }
 
-static void	lets_export(char **cmds, int i)
+static void	lets_export(char *cmd)
 {
 	char	*value;
 	char	*p_key;
 	char	*p_value;
 
-	while (cmds[++i])
+	if ((p_value = ft_strchr(cmd, '=')) != NULL)
 	{
-		if ((p_value = ft_strchr(cmds[i], '=')) != NULL)
-		{
-			p_key = ft_strsub(cmds[i], 0, ft_strlen(cmds[i]) -
-				(ft_strlen(p_value)));
-			p_value++;
-			vars_add_or_modify(&g_g_vars, p_key, p_value);
-			env_add_or_modify(&g_env, p_key, p_value);
-			vars_add_or_modify(&g_export, p_key, p_value);
-			free(p_key);
-		}
-		else if ((value = vars_get(g_l_vars, cmds[i])) != NULL ||
-			(value = vars_get(g_export, cmds[i])) != NULL)
-		{
-			env_add_or_modify(&g_env, cmds[i], value);
-			vars_add_or_modify(&g_g_vars, cmds[i], value);
-			vars_add_or_modify(&g_export, cmds[i], value);
-		}
-		else if (!value)
-			vars_add_or_modify(&g_export, cmds[i], "");
+		p_key = ft_strsub(cmd, 0, ft_strlen(cmd) -
+			(ft_strlen(p_value)));
+		p_value++;
+		vars_add_or_modify(&g_g_vars, p_key, p_value);
+		env_add_or_modify(&g_env, p_key, p_value);
+		vars_add_or_modify(&g_export, p_key, p_value);
+		free(p_key);
 	}
+	else if ((value = vars_get(g_l_vars, cmd)) != NULL)
+	{
+		env_add_or_modify(&g_env, cmd, value);
+		vars_add_or_modify(&g_g_vars, cmd, value);
+		vars_add_or_modify(&g_export, cmd, value);
+	}
+	else if (!value)
+		vars_add_or_modify(&g_export, cmd, "");
 }
 
 static void	display_export_list(t_list *env)
@@ -95,24 +93,24 @@ int			builtins_export(t_list **env, char **cmds)
 {
 	int		i;
 
-	i = 1;
+	i = 0;
 	UNUSED(env);
-	if (!cmds[i] || (!cmds[i + 1] && ft_strcmp(cmds[i], "-p") == 0))
+	if (!cmds[1] || (!cmds[2] && ft_strcmp(cmds[1], "-p") == 0))
 	{
 		display_export_list(g_export);
-		if (!cmds[++i])
-			return (1);
+		return (1);
 	}
-	else if (cmds[i][0] == '-' && cmds[i][1] != 'p' && cmds[i][2] != '\0')
+	else if (cmds[1] && cmds[1][0] == '-' && cmds[1][1] != 'p' && cmds[1][2] != '\0')
 	{
 		ft_putstr_fd("42sh: export: ", 2);
 		ft_putstr_fd(cmds[i], 2);
 		ft_putendl_fd(": invalid option", 2);
 		return (1);
 	}
-	if (is_error(cmds))
-		return (0);
-	i--;
-	lets_export(cmds, i);
+	if (cmds[1] && cmds[1][0] == '-')
+		i++;
+	while (cmds[++i])
+		if (is_error(cmds) != 1)
+			lets_export(cmds[i]);
 	return (1);
 }
