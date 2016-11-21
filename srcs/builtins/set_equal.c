@@ -27,7 +27,6 @@ int			builtins_set_equal(t_list **env, char **cmds)
 			p_key = ft_strsub(cmds[i], 0, ft_strlen(cmds[i]) - (ft_strlen(p_value)));
 			p_value++;
 			vars_add_or_modify(vars_recover(), p_key, p_value);
-			vars_add_or_modify(&g_env, p_key, p_value);
 			free(p_key);
 		}
 		else 
