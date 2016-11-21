@@ -50,7 +50,6 @@ static	char	*read_read(void)
 	char	*ret;
 	char	*tmp;
 
-	init_term(0);
 	ft_bzero(b, 9);
 	ret = ft_strdup("");
 	ft_putstr_c(GREEN, "Read> ");

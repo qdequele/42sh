@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-int		vars_show(t_list *l_var)
+int			vars_show(t_list *l_var)
 {
 	t_list	*elem;
 	t_var	*var;
@@ -39,7 +39,7 @@ int		vars_show(t_list *l_var)
 	return (0);
 }
 
-char	*vars_get(t_list *l_var, char *f_key)
+char		*vars_get(t_list *l_var, char *f_key)
 {
 	t_list	*elem;
 	t_var	*var;
@@ -58,14 +58,13 @@ char	*vars_get(t_list *l_var, char *f_key)
 				else
 					return ("");
 			}
-				
 			elem = elem->next;
 		}
 	}
 	return (NULL);
 }
 
-void	vars_add_or_modify(t_list **l_vars, char *key, char *value)
+void		vars_add_or_modify(t_list **l_vars, char *key, char *value)
 {
 	t_list	*elem;
 	t_var	*var;
@@ -91,7 +90,7 @@ void	vars_add_or_modify(t_list **l_vars, char *key, char *value)
 	free(var);
 }
 
-void	vars_change_readonly(t_list **l_vars, char *key, int rdo)
+void		vars_change_readonly(t_list **l_vars, char *key, int rdo)
 {
 	t_list	*elem;
 

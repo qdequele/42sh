@@ -34,7 +34,7 @@ static void	assert_file(int i, char *target, int mode)
 
 static void	get_new_stdio(t_process *p, t_io_channel *s)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (++i < 3)
@@ -77,8 +77,8 @@ void		launch_process_builtin(t_process *p)
 
 void		launch_process(t_process *p, pid_t pgid, int foreground)
 {
-	char					**env;
-	pid_t					pid;
+	char			**env;
+	pid_t			pid;
 	struct stat		sb;
 
 	if (!p)

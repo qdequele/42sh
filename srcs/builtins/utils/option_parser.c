@@ -14,7 +14,7 @@
 
 static t_options	parse_options_init(void)
 {
-	t_options	options;
+	t_options		options;
 
 	options.start = 1;
 	options.error = 0;
@@ -26,7 +26,7 @@ static t_options	parse_options_init(void)
 static int			parse_options_helper(t_options *options, char *m_options,
 	char option)
 {
-	int	res;
+	int				res;
 
 	if (ft_is_in(m_options, option))
 	{
@@ -44,11 +44,11 @@ static int			parse_options_helper(t_options *options, char *m_options,
 	return (res);
 }
 
-t_options		t_options_parser(char **cmds, char *m_options)
+t_options			t_options_parser(char **cmds, char *m_options)
 {
-	t_options	options;
-	int			i;
-	int			n;
+	t_options		options;
+	int				i;
+	int				n;
 
 	i = 1;
 	options = parse_options_init();

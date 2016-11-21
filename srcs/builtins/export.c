@@ -12,7 +12,6 @@
 
 #include <ft_sh.h>
 
-
 static	int	is_formated(char *str)
 {
 	int	i;
@@ -47,17 +46,18 @@ static	int	is_error(char **cmds)
 	return (0);
 }
 
-static 	void lets_export(char **cmds, int i)
+static void	lets_export(char **cmds, int i)
 {
-	char 	*value;
-	char 	*p_key;
-	char 	*p_value;
+	char	*value;
+	char	*p_key;
+	char	*p_value;
 
 	while (cmds[i])
 	{
 		if ((p_value = ft_strchr(cmds[i], '=')) != NULL)
 		{
-			p_key = ft_strsub(cmds[i], 0, ft_strlen(cmds[i]) - (ft_strlen(p_value)));
+			p_key = ft_strsub(cmds[i], 0, ft_strlen(cmds[i]) -
+				(ft_strlen(p_value)));
 			p_value++;
 			vars_add_or_modify(&g_g_vars, p_key, p_value);
 			env_add_or_modify(&g_env, p_key, p_value);
@@ -77,9 +77,9 @@ static 	void lets_export(char **cmds, int i)
 	}
 }
 
-static 	void display_export_list(t_list *env)
+static void	display_export_list(t_list *env)
 {
-	t_list *cur;
+	t_list	*cur;
 
 	cur = env;
 	while (cur)
@@ -92,13 +92,13 @@ static 	void display_export_list(t_list *env)
 	}
 }
 
-int 	builtins_export(t_list **env, char **cmds)
+int			builtins_export(t_list **env, char **cmds)
 {
-	int 	i;
+	int		i;
 
 	i = 1;
 	UNUSED(env);
-	if ( !cmds[i] || (!cmds[i + 1] && ft_strcmp(cmds[i], "-p") == 0))
+	if (!cmds[i] || (!cmds[i + 1] && ft_strcmp(cmds[i], "-p") == 0))
 	{
 		display_export_list(g_export);
 		return (1);
@@ -107,5 +107,4 @@ int 	builtins_export(t_list **env, char **cmds)
 		return (0);
 	lets_export(cmds, i);
 	return (1);
-
 }

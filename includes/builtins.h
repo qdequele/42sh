@@ -51,8 +51,8 @@ typedef struct		s_options
 
 t_list				*g_env;
 t_list				*g_l_vars;
-t_list 				*g_g_vars;
-t_list 				*g_export;
+t_list				*g_g_vars;
+t_list				*g_export;
 
 int					builtins_cd(t_list **env, char **cmds);
 int					builtins_env(t_list **env, char **cmds);
