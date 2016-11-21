@@ -12,6 +12,8 @@ clone the directory.
 
 `$ make test`
 
+## Run as shell
+
 move the executable on your path
 
 `$ cp 42sh /usr/bin/`
