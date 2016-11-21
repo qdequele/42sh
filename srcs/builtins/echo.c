@@ -34,7 +34,7 @@ int				builtins_echo(t_list **env, char **cmds)
 	int			i;
 	int			j;
 
-	(void)env;
+	UNUSED(env);
 	i = ft_count_raw_aoc(cmds);
 	if (i <= 1)
 	{

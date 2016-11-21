@@ -18,10 +18,10 @@ int			builtins_readonly(t_list **env, char **cmds)
 	int		i;
 
 	i = 1;
-	(void)env;
+	UNUSED(env);
 	if (cmds[i] && ft_strcmp(cmds[i], "-g") == 0)
 	{
-		l_var = vars_recover();
+		l_var = &g_g_vars;
 		i++;
 	}
 	else

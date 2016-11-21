@@ -46,7 +46,7 @@ void		free_shell(void)
 	env_free(&g_env);
 	env_free(&g_export);
 	vars_free(&g_l_vars);
-	vars_free(vars_recover());
+	vars_free(&g_g_vars);
 	free_jobs(&(shell->jobs));
 	history_free(&(shell->history));
 }

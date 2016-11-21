@@ -19,14 +19,14 @@ int			builtins_set_equal(t_list **env, char **cmds)
 	char 	*p_value;
 
 	i = 0;
-	(void)env;
+	UNUSED(env);
 	while (cmds[i])
 	{
 		if ((p_value = ft_strchr(cmds[i], '=')) != NULL)
 		{
 			p_key = ft_strsub(cmds[i], 0, ft_strlen(cmds[i]) - (ft_strlen(p_value)));
 			p_value++;
-			vars_add_or_modify(vars_recover(), p_key, p_value);
+			vars_add_or_modify(&g_g_vars, p_key, p_value);
 			free(p_key);
 		}
 		else 

@@ -21,7 +21,7 @@ void	save_vars(void)
 
 	index = -1;
 	reset_vars();
-	elem = *vars_recover();
+	elem = g_g_vars;
 	fd = open("./ressources/vars", O_RDWR | O_CREAT | O_APPEND, 0666);
 	if (fd <= 0)
 		return ;
@@ -45,9 +45,7 @@ void	load_vars(void)
 	int			fd;
 	char		*line;
 	char		*split[2];
-	t_list		**vars;
 
-	vars = vars_recover();
 	fd = open("./ressources/vars", O_RDWR, 0666);
 	if (fd > 0)
 	{
@@ -58,7 +56,7 @@ void	load_vars(void)
 				ft_strsub(line, 
 					ft_strlen(line) - ft_strlen(ft_strrchr(line, '=') + 1), 
 					ft_strlen(line) - ft_strlen(split[0])) : ft_strdup("");
-			vars_add_or_modify(vars_recover(), split[0], split[1]);
+			vars_add_or_modify(&g_g_vars, split[0], split[1]);
 			free(line);
 			free(split[0]);
 			free(split[1]);

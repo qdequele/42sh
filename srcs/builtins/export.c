@@ -12,33 +12,6 @@
 
 #include <ft_sh.h>
 
-// int			builtins_export(t_list **env, char **cmds)
-// {
-// 	int		i;
-// 	char	*value;
-
-// 	(void)env;
-// 	i = 1;
-// 	if (!cmds[i])
-// 	{
-// 		print_err("export: Need an argument.", "");
-// 		return (1);
-// 	}
-// 	while (cmds[i])
-// 	{
-// 		value = vars_get(g_l_vars, cmds[i]);
-// 		if (!value)
-// 			print_err("export: Impossible to find ", cmds[i]);
-// 		else
-// 		{
-// 			env_add_or_modify(&g_env, cmds[i], value);
-// 			vars_add_or_modify(vars_recover(), cmds[i], value);
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
 static 	void display_export_list(t_list *env)
 {
 	t_list *cur;
@@ -54,7 +27,6 @@ static 	void display_export_list(t_list *env)
 	}
 }
 
-
 int 	builtins_export(t_list **env, char **cmds)
 {
 	int 	i;
@@ -63,7 +35,7 @@ int 	builtins_export(t_list **env, char **cmds)
 	char 	*p_key;
 
 	i = 1;
-	(void)env;
+	UNUSED(env);
 	if ( !cmds[i] || (!cmds[i + 1] && ft_strcmp(cmds[i], "-p") == 0))
 	{
 		display_export_list(g_export);
@@ -75,14 +47,14 @@ int 	builtins_export(t_list **env, char **cmds)
 		{
 			p_key = ft_strsub(cmds[i], 0, ft_strlen(cmds[i]) - (ft_strlen(p_value)));
 			p_value++;
-			vars_add_or_modify(vars_recover(), p_key, p_value);
+			vars_add_or_modify(&g_g_vars, p_key, p_value);
 			vars_add_or_modify(&g_env, p_key, p_value);
 			free(p_key);
 		}
 		else if ((value = vars_get(g_l_vars, cmds[i])) != NULL)
 		{
 			env_add_or_modify(&g_env, cmds[i], value);
-			vars_add_or_modify(vars_recover(), cmds[i], value);
+			vars_add_or_modify(&g_g_vars, cmds[i], value);
 		}
 		else if (!value)
 		{

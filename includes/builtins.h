@@ -51,6 +51,7 @@ typedef struct		s_options
 
 t_list				*g_env;
 t_list				*g_l_vars;
+t_list 				*g_g_vars;
 t_list 				*g_export;
 
 int					builtins_cd(t_list **env, char **cmds);
@@ -89,7 +90,6 @@ void				env_free(t_list **l_env);
 int					shell_core(t_list **env, char **cmds);
 void				create_last_var(char *var_name, char **var_value, char opt);
 void				vars_init(void);
-t_list				**vars_recover(void);
 int					vars_show(t_list *l_var);
 void				vars_show_global(t_list *l_var);
 char				*vars_get(t_list *l_var, char *f_key);

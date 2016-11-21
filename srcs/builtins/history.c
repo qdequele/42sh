@@ -33,7 +33,7 @@ int				builtins_history(t_list **env, char **cmds)
 {
 	t_shell		*shell;
 
-	(void)env;
+	UNUSED(env);
 	shell = recover_shell();
 	if (cmds[1])
 	{

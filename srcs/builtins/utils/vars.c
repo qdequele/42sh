@@ -12,13 +12,6 @@
 
 #include <ft_sh.h>
 
-t_list	**vars_recover(void)
-{
-	static t_list	*global_vars;
-
-	return (&global_vars);
-}
-
 int		vars_show(t_list *l_var)
 {
 	t_list	*elem;

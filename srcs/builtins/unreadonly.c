@@ -17,11 +17,11 @@ int			builtins_unreadonly(t_list **env, char **cmds)
 	t_list	**l_var;
 	int		i;
 
-	(void)env;
+	UNUSED(env);
 	i = 1;
 	if (cmds[i] && ft_strcmp(cmds[i], "-g") == 0)
 	{
-		l_var = vars_recover();
+		l_var = &g_g_vars;
 		i++;
 	}
 	else

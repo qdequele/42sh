@@ -33,7 +33,7 @@ static void	exit_shell(int status)
 
 int			builtins_exit(t_list **env, char **cmds)
 {
-	(void)env;
+	UNUSED(env);
 	if (!cmds[1])
 		exit_shell(ft_atoi(vars_get(g_l_vars, "?")));
 	else if (cmds[2])
