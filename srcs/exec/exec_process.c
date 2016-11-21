@@ -43,7 +43,7 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 		if (s[i].target && s[i].open_mode == O_RDONLY &&
 			(s[i].fd = open(s[i].target, O_RDONLY)) == -1)
 		{
-			print_err("42sh: No such file: ", s[i].target);
+			print_err("42sh: No such file or directory", "");
 			exit(1);
 		}
 		else if (s[i].target && (s[i].fd =
