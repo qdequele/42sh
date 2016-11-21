@@ -25,7 +25,7 @@ int			builtins_readonly(t_list **env, char **cmds)
 		i++;
 	}
 	else
-		l_var = &g_vars;
+		l_var = &g_l_vars;
 	while (cmds[i])
 	{
 		vars_change_readonly(l_var, cmds[i], 1);

@@ -30,7 +30,7 @@ char	*get_cmd_env(char *cmd, char *var_raw)
 	var = ft_strsub(var_raw, 1, i > 0 ? i - 1 : i);
 	env_value = env_get(g_env, var);
 	if (!env_value || (env_value && !*(env_value)))
-		env_value = vars_get(g_vars, var);
+		env_value = vars_get(g_l_vars, var);
 	cmd = ft_strfjoin(cmd, env_value);
 	if (right && *right)
 		cmd = ft_strfjoin(cmd, right);

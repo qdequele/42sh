@@ -51,7 +51,7 @@ void	put_job_in_foreground(t_job *j, int cont)
 	wait_for_job(j);
 	log_job_exit_signal(j);
 	tmp = ft_itoa(get_job_exit_code(j));
-	vars_add_or_modify(&g_vars, "?", tmp);
+	vars_add_or_modify(&g_l_vars, "?", tmp);
 	free(tmp);
 	tcsetpgrp(0, shell->pgid);
 }
