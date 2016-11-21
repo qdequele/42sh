@@ -52,7 +52,7 @@ static void	lets_export(char **cmds, int i)
 	char	*p_key;
 	char	*p_value;
 
-	while (cmds[i])
+	while (cmds[++i])
 	{
 		if ((p_value = ft_strchr(cmds[i], '=')) != NULL)
 		{
@@ -73,7 +73,6 @@ static void	lets_export(char **cmds, int i)
 		}
 		else if (!value)
 			vars_add_or_modify(&g_export, cmds[i], "");
-		i++;
 	}
 }
 
@@ -101,10 +100,19 @@ int			builtins_export(t_list **env, char **cmds)
 	if (!cmds[i] || (!cmds[i + 1] && ft_strcmp(cmds[i], "-p") == 0))
 	{
 		display_export_list(g_export);
+		if (!cmds[++i])
+			return (1);
+	}
+	else if (cmds[i][0] == '-' && cmds[i][1] != 'p' && cmds[i][2] != '\0')
+	{
+		ft_putstr_fd("42sh: export: ", 2);
+		ft_putstr_fd(cmds[i], 2);
+		ft_putendl_fd(": invalid option", 2);
 		return (1);
 	}
 	if (is_error(cmds))
 		return (0);
+	i--;
 	lets_export(cmds, i);
 	return (1);
 }
