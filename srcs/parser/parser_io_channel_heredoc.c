@@ -94,6 +94,14 @@ int					parse_heredoc_redir(t_process *p, int channel, char *target)
 	list = NULL;
 	ft_bzero(b, 4);
 	pipe(pipe_fd);
+	if (!target || !(*target))
+	{
+		vars_add_or_modify(&g_vars, "?", "1");
+		print_err("42sh: syntax error near unexpected token `newline'", "");
+		write(pipe_fd[1], "\0", 1);
+		assign_new_fd(p, pipe_fd, channel);
+		return (0);
+	}
 	ft_putstr_c(GREEN, "heredoc> ");
 	read_heredoc(b, target, pipe_fd);
 	assign_new_fd(p, pipe_fd, channel);
