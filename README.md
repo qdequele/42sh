@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/qdequele/42sh.svg?token=mi9C1puzfr9iJFdZt5bh&branch=master)](https://travis-ci.com/qdequele/42sh)
+
 # 42SH
 
 42sh is an simple an light command line. This project is sourced by project of the 42School (@42Born2Code).
