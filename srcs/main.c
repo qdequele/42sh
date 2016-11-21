@@ -71,7 +71,7 @@ int				shell_file(char **argv)
 	int			res;
 
 	fd = (!isatty(0)) ? 0 : open(argv[1], O_RDWR);
-	while (fd > 0 && ft_get_next_line(fd, &line) &&
+	while (fd >= 0 && ft_get_next_line(fd, &line) &&
 		recover_shell()->last_exit_code == -1)
 	{
 		if (line)
