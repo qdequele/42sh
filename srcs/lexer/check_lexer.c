@@ -17,6 +17,7 @@ static void		check_lexer_error(char *token)
 	ft_putstr_fd("42sh: syntax error near unexpected token `", 2);
 	ft_putstr_fd(token, 2);
 	ft_putendl_fd("`", 2);
+	vars_add_or_modify(&g_vars, "?", "1");
 }
 
 static int		check_lexer_single_bg(t_list *token_list)
@@ -65,6 +66,16 @@ int				check_lexer(t_list *token_list)
 		if (t->type == PIPE && t_next->type != CMD)
 		{
 			check_lexer_error("|");
+			return (1);
+		}
+		if ((t->type == PIPE && t_next->type == OR) || (t->type == OR && t_next->type == PIPE))
+		{
+			check_lexer_error("|");
+			return (1);
+		}
+		if ((t->type == AND && t_next->type == TO_BACKGROUND) || (t->type == TO_BACKGROUND && t_next->type == AND))
+		{
+			check_lexer_error("&");
 			return (1);
 		}
 		token_list = token_list->next;
