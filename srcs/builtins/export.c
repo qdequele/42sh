@@ -100,7 +100,8 @@ int			builtins_export(t_list **env, char **cmds)
 		display_export_list(g_export);
 		return (1);
 	}
-	else if (cmds[1] && cmds[1][0] == '-' && cmds[1][1] != 'p' && cmds[1][2] != '\0')
+	else if (cmds[1] && cmds[1][0] == '-' && cmds[1][1] != 'p'
+		&& cmds[1][2] != '\0')
 	{
 		ft_putstr_fd("42sh: export: ", 2);
 		ft_putstr_fd(cmds[i], 2);
