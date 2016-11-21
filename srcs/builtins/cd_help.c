@@ -22,20 +22,11 @@ int		cd_error(int type, char *path)
 	else if (type == 2)
 		ft_putstr_fd("string not in pwd\n", 2);
 	else if (type == 3)
-	{
-		ft_putstr_fd(path, 2);
-		ft_putstr_fd(": No such file or directory\n", 2);
-	}
+		print_err(path, ": No such file or directory");
 	else if (type == 4)
-	{
-		ft_putstr_fd(path, 2);
-		ft_putstr_fd(": Not a directory\n", 2);
-	}
+		print_err(path, ": Not a directory");
 	else if (type == 5)
-	{
-		ft_putstr_fd(path, 2);
-		ft_putstr_fd(": Permission denied\n", 2);
-	}
+		print_err(path, ": Permission denied");
 	return (1);
 }
 

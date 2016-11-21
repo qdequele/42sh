@@ -21,6 +21,9 @@ int			builtins_unsetenv(t_list **env, char **cmds)
 	{
 		if (env_get(*env, cmds[i]) == NULL)
 			print_err(cmds[i], ": Wrong key.");
+		else if (ft_strcmp(cmds[i], "PATH") == 0)
+			env_add_or_modify(&g_env, cmds[i],
+				"/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin");
 		else
 			remove_key(env, cmds[i], &env_free_one);
 		i++;
