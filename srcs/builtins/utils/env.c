@@ -35,6 +35,7 @@ char			*env_get(t_list *l_env, char *f_key)
 {
 	t_list		*elem;
 	t_env		*env;
+	char		*str;
 
 	elem = l_env;
 	if (elem)
@@ -48,6 +49,12 @@ char			*env_get(t_list *l_env, char *f_key)
 				return (env->value);
 			elem = elem->next;
 		}
+	}
+	if (ft_strcmp(f_key, "PATH") == 0)
+	{
+		str = "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin";
+		env_add_or_modify(&g_env, f_key, str);
+		return (ft_strdup(str));
 	}
 	return ("");
 }
