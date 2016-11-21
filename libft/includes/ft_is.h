@@ -13,6 +13,7 @@
 #ifndef FT_IS_H
 # define FT_IS_H
 
+int		ft_is_in(char *str, char c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);

@@ -23,7 +23,7 @@ FT_ARR_SRC			=	$(addprefix ft_array/,$(_FT_ARR_SRC))
 #Define FT_IS
 _FT_IS_SRC			=	ft_isprint.c ft_isalnum.c ft_isascii.c ft_isalpha.c \
 						ft_isdigit.c ft_isnegative.c ft_isupper.c ft_islower.c\
-						ft_isspace.c
+						ft_isspace.c ft_is_in.c
 
 FT_IS_SRC			=	$(addprefix ft_is/,$(_FT_IS_SRC))
 

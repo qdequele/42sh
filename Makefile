@@ -15,12 +15,14 @@ NAME		=	42sh
 LIB			=	./libft/libft.a
 _SRC		=	builtins/utils/parser.c\
 				builtins/utils/env.c\
+				builtins/utils/option_parser.c\
 				builtins/utils/remove_key.c\
 				builtins/utils/vars.c\
 				builtins/utils/vars_free.c\
 				builtins/utils/read_create_var.c\
 				builtins/utils/one_history_error.c\
 				builtins/cd.c\
+				builtins/cd_help.c\
 				builtins/echo.c\
 				builtins/env.c\
 				builtins/exit.c\

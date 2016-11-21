@@ -16,6 +16,7 @@
 
 # define EXPORTS (ft_strcmp(cmds[0], "export") == 0)
 # define READ_OPT_R (ft_strcmp(cmds[1], "-r") == 0)
+# define PATH_MAX 4096
 
 typedef int	(*t_func)(t_list **env, char **cmds);
 typedef struct stat	t_stat;
@@ -40,6 +41,15 @@ typedef struct		s_var
 	char			*value;
 	int				readonly;
 }					t_var;
+
+typedef struct		s_options
+{
+	char			options[256];
+	int				start;
+	int				error;
+	int				error_char;
+	int				options_counter;
+}					t_options;
 
 t_list				*g_vars;
 
@@ -90,5 +100,11 @@ void				vars_free(t_list **l_vars);
 int					builtins_readonly(t_list **env, char **cmds);
 int					builtins_unreadonly(t_list **env, char **cmds);
 void				print_error_history(int i, char *cmds);
+int					cd_error(int type, char *path);
+char				*cd_assert_home(void);
+char				*cd_assert_multiple_args(char **cmds, t_options *options);
+void				cd_update_path(char *old_path, char *path);
+int					cd_change_directory(char *curpath, int is_physical);
+t_options			t_options_parser(char **cmds, char *m_options);
 
 #endif
