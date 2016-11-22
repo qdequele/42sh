@@ -53,12 +53,12 @@ char			*bultins_one_history(char *cmds)
 	shell = recover_shell();
 	i = (int)ft_atoi(&cmds[1]);
 	list = shell->history;
-	if ((list = ft_lst_seek(list, &cmds[1])) != NULL)
-		cmds = (char*)list->content;
+	if (i <= ft_lstcount(shell->history) && i > 0)
+		cmds = (char*)ft_lstget_at(shell->history, (i - 1))->content;
 	else if (i == 0)
 		print_error_history(i, cmds);
-	else if (i <= ft_lstcount(shell->history) && i > 0)
-		cmds = (char*)ft_lstget_at(shell->history, (i - 1))->content;
+	else if ((list = ft_lst_seek(list, &cmds[1])) != NULL)
+		cmds = (char*)list->content;
 	else
 		print_error_history(i, cmds);
 	return (cmds);

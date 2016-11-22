@@ -28,7 +28,6 @@ static int	lexer_skip_double_quote(char *input)
 		length++;
 		input++;
 	}
-
 	return (length);
 }
 
@@ -43,7 +42,6 @@ static int	lexer_skip_single_quote(char *input)
 		length++;
 		input++;
 	}
-
 	return (length);
 }
 
