@@ -32,7 +32,11 @@ void	utils_move_end(void)
 
 	shell = recover_shell();
 	while (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
+	{
 		utils_move_right();
+		if (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
+			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
+	}
 }
 
 void	utils_move_max_top(void)
