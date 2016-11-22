@@ -29,20 +29,22 @@ void		clean_prompt(void)
 	else
 		i = ft_lstcount(shell->prompt->line);
 	while (shell->prompt->i_pos < i)
+	{
 		utils_move_right();
+	}
 	while (shell->prompt->i_pos > 0)
 	{
 		if ((shell->prompt->i_pos + shell->prompt->p_length)
 			% recover_term()->wins.ws_col == 0)
 		{
-			j++;
-			tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
+			tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 			tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
 		}
 		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 		utils_move_left();
 	}
+	i = 0;
 	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
 }
 

@@ -22,8 +22,8 @@ static void		move_to_history(void)
 	if (shell->history_position >= 0 &&
 		shell->history_position <= (ft_lstcount(shell->history) - 1))
 	{
-		ft_lstdel(&shell->prompt->line, free_char);
 		clean_prompt();
+		ft_lstdel(&shell->prompt->line, free_char);
 		ft_putstr_fd((char*)ft_lstget_at(shell->history,
 			pos)->content, recover_term()->tty);
 		shell->prompt->i_pos = ft_strlen((char*)ft_lstget_at(

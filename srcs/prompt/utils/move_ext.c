@@ -34,7 +34,7 @@ void	utils_move_end(void)
 	while (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 	{
 		utils_move_right();
-		if (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
+		if (shell->prompt->i_pos == ft_lstcount(shell->prompt->line))
 			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
 	}
 }
