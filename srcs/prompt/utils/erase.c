@@ -20,11 +20,14 @@ void	erase_one_char(void)
 	if (shell->prompt->i_pos <= ft_lstcount(shell->prompt->line)
 		&& shell->prompt->i_pos > 0)
 	{
-		tputs(tgoto(LESTR, 0, 0), 1, ft_tputs);
-		tputs(DMSTR, 1, ft_tputs);
-		tputs(DCSTR, 1, ft_tputs);
-		tputs(EDSTR, 1, ft_tputs);
-		shell->prompt->i_pos--;
+		if ((shell->prompt->i_pos + shell->prompt->p_length)
+			% recover_term()->wins.ws_col == 0)
+		{
+			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
+			tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
+		}                                           
+		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
+		utils_move_left();
 		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_pos,
 															free_char);
 	}
