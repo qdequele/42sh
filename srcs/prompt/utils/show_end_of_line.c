@@ -24,14 +24,15 @@ void	print_eol(void)
 	index = shell->prompt->i_pos;
 	i = 0;
 	string = (char *)malloc(sizeof(char) *
-						(ft_lstcount(shell->prompt->line) - index + 1));
+						(ft_lstcount(shell->prompt->line) - index + 2));
 	while (index + i < ft_lstcount(shell->prompt->line))
 	{
 		tmp = ft_lstget_at(shell->prompt->line, index + i)->content;
 		string[i] = *(char*)tmp;
 		i++;
 	}
-	string[i] = '\0';
+	string[i] = ' ';
+	string[++i] = '\0';
 	write(recover_term()->tty, string, i);
 	shell->prompt->i_pos += i;
 	free(string);
