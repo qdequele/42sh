@@ -93,7 +93,7 @@ void		launch_process(t_process *p, pid_t pgid, int foreground)
 	reset_major_signals();
 	get_new_stdio(p, p->stdio);
 	if (p->argv && p->argv[0] && p->argv[0][0] == '!')
-		exit(0) ;
+		exit(0);
 	execve(p->argv[0], p->argv, env);
 	if (stat(p->argv[0], &sb) == 0 && access(p->argv[0], X_OK) != 0)
 		print_err("42sh: Permission denied: ", p->argv[0]);
