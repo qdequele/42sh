@@ -106,7 +106,7 @@ char			**parse_cmd_argv(t_process *p, char *cmd)
 		if (is_token_redir(*s))
 			s += parse_io_channel(p, s);
 		else
-			argv[i++] = ft_skip_char(ft_skip_char(ft_strdup(*s++), '\''), '"');
+			argv[i++] = ft_skip_char(ft_skip_char(ft_strdup(*s++), '"'), '\'');
 	}
 	argv[i] = NULL;
 	free(cmd);
