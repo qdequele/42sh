@@ -27,6 +27,7 @@ void	erase_one_char(void)
 		shell->prompt->i_pos--;
 		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_pos,
 															free_char);
+		print_eol();
 	}
 }
 
@@ -55,6 +56,7 @@ void	delete_one_char(void)
 		tputs(EDSTR, 1, ft_tputs);
 		ft_lstdel_at(&shell->prompt->line, shell->prompt->i_pos,
 															free_char);
+		print_eol();
 	}
 }
 
