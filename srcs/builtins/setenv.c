@@ -36,12 +36,12 @@ static	int	is_error(char **cmds)
 		print_err("setenv: Too many arguments.", "");
 		return (1);
 	}
-	else if (is_formated(cmds[1]) == -1 && !EXPORTS)
+	else if (is_formated(cmds[1]) == -1)
 	{
 		print_err("setenv: Variable name must begin with a letter.", "");
 		return (1);
 	}
-	else if (is_formated(cmds[1]) == 0 && !EXPORTS)
+	else if (is_formated(cmds[1]) == 0)
 	{
 		print_err("setenv: Variable name must contain ",
 			"alphanumeric characters.");

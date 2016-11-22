@@ -36,12 +36,12 @@ static int	check_variable(char **cmds, int i)
 		print_err("set: Too many arguments.", "");
 		return (1);
 	}
-	else if (is_formated(cmds[i]) == -1 && !EXPORTS)
+	else if (is_formated(cmds[i]) == -1)
 	{
 		print_err("set: Variable name must begin with a letter.", "");
 		return (1);
 	}
-	else if (is_formated(cmds[i]) == 0 && !EXPORTS)
+	else if (is_formated(cmds[i]) == 0)
 	{
 		print_err("set: Variable name must contain ",
 			"alphanumeric characters.");

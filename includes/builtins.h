@@ -14,7 +14,6 @@
 # define BUILTINS_H
 # include <ft_sh.h>
 
-# define EXPORTS (ft_strcmp(cmds[0], "export") == 0)
 # define READ_OPT_R (ft_strcmp(cmds[1], "-r") == 0)
 # define PATH_MAX 4096
 
