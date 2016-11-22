@@ -26,13 +26,14 @@ void	ft_lstremdup(t_list **list, int (*comp)(void *, void *),
 	count = 1;
 	while (prev && next)
 	{
-		while (comp(prev->content, next->content))
+		while (prev && next && comp(prev->content, next->content))
 		{
 			ft_lstdel_at(list, count, del);
 			next = prev->next;
 		}
 		prev = next;
-		next = prev->next;
+		if (prev)
+			next = prev->next;
 		count++;
 	}
 }
