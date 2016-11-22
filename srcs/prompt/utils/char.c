@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-static void	put_specific_char(char c, int fd)
+void	put_specific_char(char c, int fd)
 {
 	if (c == '|' || c == '&' || c == ';')
 		ft_putchar_fd_c(YELLOW, c, fd);
@@ -55,4 +55,32 @@ void		inser_char(char c)
 	{
 		print_eol();
 	}
+}
+
+void		print_eol(void)
+{
+	t_shell	*shell;
+	t_list	*new_line;
+	t_term	*term;
+	char	c;
+	int		i;
+
+	shell = recover_shell();
+	term = recover_term();
+	new_line = ft_lstget_at(shell->prompt->line, shell->prompt->i_pos);
+	i = 0;
+	while (new_line)
+	{
+		c = ((char *)new_line->content)[0];
+		if (c && ft_isprint(c))
+		{
+			put_specific_char(c, term->tty);
+			i++;
+		}
+		new_line = new_line->next;
+	}
+	put_specific_char(' ', term->tty);
+	i++;
+	while (--i >= 0)
+		tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
 }

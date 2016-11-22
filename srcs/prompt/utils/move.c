@@ -74,13 +74,13 @@ void	utils_move_right(void)
 	if (shell->prompt->i_pos < ft_lstcount(shell->prompt->line))
 	{
 		shell->prompt->i_pos++;
+		tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
+		pos = shell->prompt->i_pos - shell->prompt->p_pos;
 		if ((pos + shell->prompt->p_length)
 			% term->wins.ws_col == 0)
 		{
 			tputs(tgoto(DOSTR, 0, 0), 0, ft_tputs);
 			tputs(tgoto(CRSTR, 0, 0), 0, ft_tputs);
 		}
-		else
-			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
 	}
 }

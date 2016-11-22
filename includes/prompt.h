@@ -99,6 +99,7 @@ void			add_history(char *line);
 /*
 ** Action - Common
 */
+void			put_specific_char(char c, int fd);
 void			add_char(char c);
 void			inser_char(char c);
 t_status		action_insert_char(char *b);

@@ -16,29 +16,16 @@ void		clean_prompt(void)
 {
 	t_shell	*shell;
 	int		i;
+	int		j;
 
-	i = 0;
 	shell = recover_shell();
-	if (shell->prompt->str_cpy && shell->prompt->flag_cut == 0)
-		i = ft_lstcount(shell->prompt->line) -
-					ft_strlen(shell->prompt->str_cpy);
-	else
-		i = ft_lstcount(shell->prompt->line);
-	while (shell->prompt->i_pos < i)
-		utils_move_right();
-	while (shell->prompt->i_pos > 0)
-	{
-		if ((shell->prompt->i_pos + shell->prompt->p_length)
-			% recover_term()->wins.ws_col == 0)
-		{
-			tputs(tgoto(RISTR, 0, 0), 0, ft_tputs);
-			tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
-			tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
-		}
-		tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
-		utils_move_left();
-	}
-	tputs(tgoto(DCSTR, 0, 0), 0, ft_tputs);
+	j = 0;
+	i = ft_lstcount(shell->prompt->line) + 1;
+	utils_move_start();
+	while (++j <= i)
+		ft_tputs(' ');
+	while (--j > 0)
+		tputs(tgoto(LESTR, 0, 0), 0, ft_tputs);
 }
 
 void		clean_last_x_char(int i)
