@@ -43,8 +43,7 @@ char			*ft_skip_char(char *str, char c)
 	new_str = ft_strnew(ft_strlen(str));
 	while (str[i])
 	{
-		if ((size_t)(i + nb_quotes) > (ft_strlen(str)) ||
-			nb_quotes >= finded_quotes)
+		if ((size_t)(i + nb_quotes) > (ft_strlen(str)))
 			break ;
 		while (str[i + nb_quotes] == c && nb_quotes < finded_quotes)
 			nb_quotes++;
