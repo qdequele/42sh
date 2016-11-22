@@ -23,13 +23,13 @@ t_status	action_insert_char(char *b)
 	}
 	else
 	{
-		if (b[0])
+		if (b[0] && ft_isprint(b[0]))
 			inser_char(b[0]);
-		if (b[1])
+		if (b[1] && ft_isprint(b[1]))
 			inser_char(b[1]);
-		if (b[2])
+		if (b[2] && ft_isprint(b[2]))
 			inser_char(b[2]);
-		if (b[3])
+		if (b[3] && ft_isprint(b[3]))
 			inser_char(b[3]);
 	}
 	return (READING);
