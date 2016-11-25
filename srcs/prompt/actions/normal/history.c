@@ -63,8 +63,9 @@ t_status		action_history_down(char *b)
 	}
 	else if (shell->history_position == 0)
 	{
-		ft_lstdel(&shell->prompt->line, free_char);
 		clean_prompt();
+		ft_lstdel(&shell->prompt->line, free_char);
+		shell->history_position--;
 	}
 
 	return (READING);
