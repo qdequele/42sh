@@ -16,6 +16,7 @@ int			builtins_unset(t_list **env, char **cmds)
 {
 	t_list	**l_var;
 	int		i;
+	int		ret;
 
 	i = 1;
 	UNUSED(env);
@@ -28,7 +29,13 @@ int			builtins_unset(t_list **env, char **cmds)
 		l_var = &g_l_vars;
 	while (cmds[i])
 	{
-		remove_key(l_var, cmds[i], &vars_free_one);
+		ret = remove_key(l_var, cmds[i], &vars_free_one);
+		if (ret > 0)
+		{
+			ft_putstr_fd("unset: ", 2);
+			print_err(cmds[i], " : no such vars");
+			return (ret);
+		}
 		i++;
 	}
 	return (0);

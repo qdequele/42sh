@@ -77,7 +77,7 @@ char				*check_value(char opt, char *var_value);
 t_builtin			*builtins_init(void);
 int					builtins_find(char *cmd);
 int					builtins_exec(t_list **env, char **cmds);
-void				remove_key(t_list **head, char *key,
+int					remove_key(t_list **head, char *key,
 						void (*del)(void *, size_t));
 void				env_parse_to_list(t_list **l_env, char **environ);
 char				**env_parse_from_list(t_list *l_env);
@@ -93,7 +93,7 @@ int					vars_show(t_list *l_var);
 void				vars_show_global(t_list *l_var);
 char				*vars_get(t_list *l_var, char *f_key);
 void				vars_add_or_modify(t_list **l_vars, char *key, char *value);
-void				vars_change_readonly(t_list **l_vars, char *key, int rdo);
+int					vars_change_readonly(t_list **l_vars, char *key, int rdo);
 void				vars_free_one(void *elem, size_t size);
 void				vars_free(t_list **l_vars);
 int					builtins_readonly(t_list **env, char **cmds);

@@ -16,6 +16,7 @@ int			builtins_unreadonly(t_list **env, char **cmds)
 {
 	t_list	**l_var;
 	int		i;
+	int		ret;
 
 	UNUSED(env);
 	i = 1;
@@ -28,7 +29,13 @@ int			builtins_unreadonly(t_list **env, char **cmds)
 		l_var = &g_l_vars;
 	while (cmds[i])
 	{
-		vars_change_readonly(l_var, cmds[i], 0);
+		ret = vars_change_readonly(l_var, cmds[i], 0);
+		if (ret > 0)
+		{
+			ft_putstr_fd("unreadonly : ", 2);
+			print_err(cmds[i], " : no such vars");
+			return (ret);
+		}
 		i++;
 	}
 	return (0);

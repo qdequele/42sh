@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-void	remove_key(t_list **head, char *key, void (*del)(void *, size_t))
+int			remove_key(t_list **head, char *key, void (*del)(void *, size_t))
 {
 	t_list	*temp;
 	t_list	*prev;
@@ -23,7 +23,7 @@ void	remove_key(t_list **head, char *key, void (*del)(void *, size_t))
 		*head = temp->next;
 		del(temp->content, sizeof(temp));
 		free(temp);
-		return ;
+		return (0);
 	}
 	while (temp != NULL && ft_strcmp(((t_env *)temp->content)->key, key) != 0)
 	{
@@ -31,8 +31,9 @@ void	remove_key(t_list **head, char *key, void (*del)(void *, size_t))
 		temp = temp->next;
 	}
 	if (temp == NULL)
-		return ;
+		return (1);
 	prev->next = temp->next;
 	del(temp->content, sizeof(temp));
 	free(temp);
+	return (1);
 }

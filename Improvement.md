@@ -8,15 +8,11 @@
 
 ##BUGS
 
-- echo "'" should print '
-- echo '"'' should print "
-- cat << -> 42sh: syntax error near unexpected token `newline'
--  cat ||| test should be an error
--  cat &&& test should be an error
+- echo "no newline" 1>&2 | cat -e
 
 ##INPROVEMENT
 
-- readonly/unreadonly/unset/unsetenv - better message for not found
 - \ should avoid next char or write on multi line
+- upgrade autocomplete with "shadow line" (line in soft color) like fish
 
 

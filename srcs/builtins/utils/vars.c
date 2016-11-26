@@ -90,7 +90,7 @@ void		vars_add_or_modify(t_list **l_vars, char *key, char *value)
 	free(var);
 }
 
-void		vars_change_readonly(t_list **l_vars, char *key, int rdo)
+int			vars_change_readonly(t_list **l_vars, char *key, int rdo)
 {
 	t_list	*elem;
 
@@ -100,8 +100,9 @@ void		vars_change_readonly(t_list **l_vars, char *key, int rdo)
 		if (ft_strcmp(((t_var *)elem->content)->key, key) == 0)
 		{
 			((t_var *)elem->content)->readonly = rdo;
-			return ;
+			return (0);
 		}
 		elem = elem->next;
 	}
+	return (1);
 }
