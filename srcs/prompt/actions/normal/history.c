@@ -61,5 +61,10 @@ t_status		action_history_down(char *b)
 		shell->history_position--;
 		move_to_history();
 	}
+	if (shell->history_position == 0)
+	{
+		clean_prompt();
+		ft_lstdel(&shell->prompt->line, free_char);
+	}
 	return (READING);
 }
