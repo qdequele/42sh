@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cd_help.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/21 21:39:46 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/21 21:39:46 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-int		cd_error(int type, char *path)
+int			cd_error(int type, char *path)
 {
 	ft_putstr_fd("cd: ", 2);
 	if (type == 0)
@@ -27,14 +27,16 @@ int		cd_error(int type, char *path)
 		print_err(path, ": Not a directory");
 	else if (type == 5)
 		print_err(path, ": Permission denied");
+	free(path);
 	return (1);
 }
 
-char	*cd_assert_home(void)
+static char	*search_home(void)
 {
 	int		fd;
-	char	*logname;
 	char	*line;
+	char	*directory;
+	char	*logname;
 
 	logname = env_get(g_env, "LOGNAME");
 	if (*env_get(g_env, "HOME") == '\0')
@@ -45,15 +47,32 @@ char	*cd_assert_home(void)
 		while (ft_get_next_line(fd, &line))
 		{
 			if (ft_strncmp(logname, line, ft_strlen(logname)) == 0)
-				return (ft_strrchr(line, ':') + 1);
+				directory = ft_strrchr(line, ':') + 1;
 		}
 		close(fd);
-		return (NULL);
 	}
-	return (env_get(g_env, "HOME"));
+	else
+		directory = env_get(g_env, "HOME");
+	return (directory);
 }
 
-char	*cd_assert_multiple_args(char **cmds, t_options *options)
+char		*cd_assert_home(char *path)
+{
+	char	*sub;
+	char	*directory;
+
+	if (ft_strlen(path) > 0)
+		sub = ft_strsub(path, 1, ft_strlen(path) - 1);
+	else
+		sub = ft_strdup("");
+	directory = search_home();
+	directory = ft_strjoin(directory, sub);
+	free(sub);
+	free(path);
+	return (directory);
+}
+
+char		*cd_assert_multiple_args(char **cmds, t_options *options)
 {
 	char	cdpath[PATH_MAX];
 	char	directory[PATH_MAX];
@@ -61,12 +80,12 @@ char	*cd_assert_multiple_args(char **cmds, t_options *options)
 	if (cmds[options->start] && cmds[options->start + 1]
 		&& cmds[options->start + 2])
 	{
-		cd_error(1, "");
+		cd_error(1, ft_strdup(""));
 		return (NULL);
 	}
 	getcwd(cdpath, PATH_MAX);
 	if (!ft_strstr(cdpath, cmds[options->start]))
-		cd_error(2, "");
+		cd_error(2, ft_strdup(""));
 	else
 	{
 		directory[0] = 0;
@@ -81,29 +100,8 @@ char	*cd_assert_multiple_args(char **cmds, t_options *options)
 	return (NULL);
 }
 
-void	cd_update_path(char *old_path, char *path)
+void		cd_update_path(char *old_path, char *path)
 {
 	env_add_or_modify(&g_env, "OLDPWD", old_path);
 	env_add_or_modify(&g_env, "PWD", path);
-}
-
-int		cd_change_directory(char *curpath, int is_physical)
-{
-	t_stat		stat_;
-	char		old_path[PATH_MAX];
-	char		new_path[PATH_MAX];
-
-	getcwd(old_path, 256);
-	if (stat(curpath, &stat_) == -1)
-		return (cd_error(3, curpath));
-	if (!S_ISDIR(stat_.st_mode))
-		return (cd_error(4, curpath));
-	if (chdir(curpath) != 0)
-		return (cd_error(5, curpath));
-	getcwd(new_path, 256);
-	if (is_physical && stat(curpath, &stat_) == 0 && !S_ISLNK(stat_.st_mode))
-		cd_update_path(old_path, curpath);
-	else
-		cd_update_path(old_path, new_path);
-	return (0);
 }

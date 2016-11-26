@@ -62,12 +62,12 @@
 - env -i env
 - env -i key=value key2=value2 env
 - env -i key=value
-- env ./21sh
-- env -i ./21sh
-- env -i PATH= ./21sh
-- env -i TERM=xterm-256color ./21sh
-- env -i PATH=/usr/bin ./21sh
-- env -i PATH= TERM=xterm-256color ./21sh
+- env ./42sh
+- env -i ./42sh
+- env -i PATH= ./42sh
+- env -i TERM=xterm-256color ./42sh
+- env -i PATH=/usr/bin ./42sh
+- env -i PATH= TERM=xterm-256color ./42sh
 ```
 
 ###exit

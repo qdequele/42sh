@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjamin <bjamin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 15:21:17 by qdequele          #+#    #+#             */
-/*   Updated: 2016/11/18 22:56:26 by bjamin           ###   ########.fr       */
+/*   Updated: 2016/11/18 22:56:26 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int					builtins_unreadonly(t_list **env, char **cmds);
 int					builtins_set_equal(t_list **env, char **cmds);
 void				print_error_history(int i, char *cmds);
 int					cd_error(int type, char *path);
-char				*cd_assert_home(void);
+char				*cd_assert_home(char *path);
 char				*cd_assert_multiple_args(char **cmds, t_options *options);
 void				cd_update_path(char *old_path, char *path);
 int					cd_change_directory(char *curpath, int is_physical);

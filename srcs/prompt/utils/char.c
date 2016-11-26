@@ -12,7 +12,7 @@
 
 #include <ft_sh.h>
 
-void	put_specific_char(char c, int fd)
+void		put_specific_char(char c, int fd)
 {
 	if (c == '|' || c == '&' || c == ';')
 		ft_putchar_fd_c(YELLOW, c, fd);

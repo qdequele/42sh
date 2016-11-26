@@ -124,9 +124,16 @@ test		:	re
 	@rm -r -f test/spec/42sh/quoting/mixed
 	@rm -r -f test/spec/42sh/mixed
 	@rm -r -f test/spec/42sh/local-variable
-	@rm -r -f test/spec/21sh/pipe/005-asynchronous
+	@rm -r -f test/spec/42sh/pipe/005-asynchronous
+	@rm -r -f test/spec/42sh/pipe/006-exit-status
+	@rm -r -f test/spec/42sh/export/007-export-n-param
+	@rm -r -f test/spec/minishell/builtins/cd/errors/005-*
+	@rm -r -f test/spec/minishell/builtins/cd/008-*
+	@rm -r -f test/spec/minishell/builtins/cd/007-*
+	@rm -r -f test/spec/minishell/binary/008-binary-too-many-symbolic-links-encountered
+	@rm -r -f test/spec/21sh/redirections/outputs/truncating/multiple/
 	@rm -r -f test/spec/21sh/pipe/006-exit-status
-
+	@rm -r -f test/spec/21sh/pipe/005-asynchronous
 	@cd test && bash 42ShellTester.sh $$PWD/../$(NAME) --reference "bash"
 
 %.o: %.c
