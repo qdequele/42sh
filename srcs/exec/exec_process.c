@@ -58,6 +58,7 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 	while (++i < 3)
 		if (s[i].dead_end)
 			close(i);
+
 }
 
 void		launch_process_builtin(t_process *p)
@@ -67,6 +68,8 @@ void		launch_process_builtin(t_process *p)
 	save_stdio[0] = dup(0);
 	save_stdio[1] = dup(1);
 	save_stdio[2] = dup(2);
+	if (p->stdio[1].aggr == 1)
+		close(p->stdio[1].fd);
 	get_new_stdio(p, p->stdio);
 	p->status = builtins_exec(&g_env, p->argv);
 	p->completed = 1;
