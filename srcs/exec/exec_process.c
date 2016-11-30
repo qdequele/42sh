@@ -58,7 +58,6 @@ static void	get_new_stdio(t_process *p, t_io_channel *s)
 	while (++i < 3)
 		if (s[i].dead_end)
 			close(i);
-
 }
 
 void		launch_process_builtin(t_process *p)
