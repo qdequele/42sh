@@ -100,6 +100,14 @@ _SRC		=	builtins/utils/parser.c\
 				shell/term.c\
 				main.c
 
+INC			=	./includes/builtins.h \
+				./includes/executor.h \
+				./includes/ft_sh.h \
+				./includes/lexer.h \
+				./includes/parser.h \
+				./includes/prompt.h \
+				./includes/shell.h
+
 SRC			=	$(addprefix srcs/,$(_SRC))
 OBJ			=	$(SRC:.c=.o)
 CFLAGS		=	-Wall -Wextra -Werror -g -ggdb
@@ -107,7 +115,7 @@ INCLUDES	=	-I./libft/ -I./includes/
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(INC)
 	@make -C ./libft/
 	@gcc $(CFLAGS) -L /usr/lib -ltermcap $(OBJ) $(LIB) $(INCLUDES) -o $(NAME)
 	@echo $(NAME) " - compiled"
@@ -160,4 +168,3 @@ run:
 start: run
 
 .PHONY: all, clean, fclean, re
-
